@@ -35,7 +35,7 @@
   eol          = crlf
   filemode     = false
   ignorecase   = false
-  editor       = $HOMEBREW_PREFIX/bin/nvim
+  editor       = nvim
   pager        = less -+$LESS -FRX
 [hub]
     protocol = https
