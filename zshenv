@@ -14,7 +14,7 @@ export localbin=/usr/local/bin
 export PERL5LIB=/Users/Shared/MyDocs/locallib/perl/5.8.8/ext/
 export JRUBY_HOME=~/private/projects/ruby/jruby-1.0.1
 export JRUBY_BIN=$JRUBY_HOME/bin
-export local_gem=/Users/mliang/.gem/ruby/1.8/bin
+export local_gem=/Users/cliang/.gem/ruby/1.8/bin
 export LESSOPEN="| lesspipe.sh %s"
 export GREP_COLOR=auto
 export FTP_PASSIVE=1
@@ -39,12 +39,12 @@ export CTIER_ROOT=~/projects/daptiv/ControlTier
 export CTL_BASE=$CTIER_ROOT/ctl
 export CTL_HOME=$CTIER_ROOT/pkgs/ctl-3.6.1
 export CTL_BIN=$CTL_HOME/bin
-export PPM_BLD_DIR=/Users/mliang/build/ppm
+export PPM_BLD_DIR=/Users/cliang/build/ppm
 export PPM_PKGS_LOC=/Volumes/Builds/TeamCity/Chaff
 export fileShare=/Volumes/Builds/TeamCity/Chaff
 
 # for jetty server
-export JETTY_HOME=/Users/mliang/projects/daptiv/ControlTier/myServer/pkgs/jetty-6.1.21
+export JETTY_HOME=/Users/cliang/projects/daptiv/ControlTier/pkgs/jetty-6.1.21
 export JETTY_LOGS=$JETTY_HOME/logs
 export CTL_CLI_TERSE=true
 
@@ -104,8 +104,8 @@ export __CF_USER_TEXT_ENCODING=0x1F5:0x8000100:0x8000100
 # === main page path
 export -U MANPATH=/usr/share/man:/usr/local/share/man:/opt/local/share/man/:~/private/perl/5.8.8/man:~/man:/usr/local/man/
 # === these are for ODBC
-export ODBCINI=/Users/mliang/Library/ODBC/odbc.ini
-export ODBCINSTINI=/Users/mliang/Library/ODBC/odbcinst.ini
+export ODBCINI=/Users/cliang/Library/ODBC/odbc.ini
+export ODBCINSTINI=/Users/cliang/Library/ODBC/odbcinst.ini
 
 # === environment variables for perforce ===
 export P4DIFF=diffmerge
