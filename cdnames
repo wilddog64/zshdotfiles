@@ -1,4 +1,4 @@
 src=~/src
-centerpoint=~src/centerpoint
-dotnet=~src/dotnet
-vision=~/src/vision
+centerpoint=~src/marketleader/centerpoint
+dotnet=~src/marketleader/dotnet
+vision=~/src/marketleader/vision
