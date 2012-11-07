@@ -130,3 +130,5 @@ export ZSH_THEME=cloud
 # === Favoir Editor ===
 export EDITOR=vi
 # autoload -Uz compinstall && compinstall
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
