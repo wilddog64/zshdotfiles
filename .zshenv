@@ -63,12 +63,6 @@ VM_VAPPRUN_HOME=/opt/local/vmware/vapprun
 export RDECK_BASE=/Users/chengkai/rundeck
 export RDECK_BIN=/opt/local/rundeck/tools/bin
 
-# === The orginal version is saved in .profile.pysave
-typeset -U PATH
-export PATH=.:$git_home:$darwin_ports_bin:$darwin_ports_sbin:$localbin:$user_bin:$JRUBY_BIN:$TF_CLC_HOME:$RDECK_BIN:$PATH
-# PATH="${PATH}:/Library/Frameworks/Python.framework/Versions/Current/bin":$local_gem:$mysql_bin:$git_core:$CTL_BIN:$VM_OVF_TOOL_HOME:$VM_VAPPRUN_HOME:/opt/local/libexec/gnubin
-PATH="${PATH}:/Library/Frameworks/Python.framework/Versions/Current/bin":$local_gem:$mysql_bin:$git_core:$CTL_BIN:$VM_OVF_TOOL_HOME:$VM_VAPPRUN_HOME:/opt/local/libexec/gnubin:/Users/chengkai/rundeck/tools/bin:~/build/ppm/bin
-export -U PATH
 
 # === FreeTDS, this is for sqsh
 export SYBASE=/opt/local
