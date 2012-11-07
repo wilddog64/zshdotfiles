@@ -99,6 +99,10 @@ if [[ -r ~/.zsh/bindingkeys ]]; then
     source ~/.zsh/bindingkeys
 fi
 
+# source rvm file if it existed
+if [[ -r ~/.rvm/scripts/rvm ]]; then
+    source /home/chengkai/.rvm/scripts/rvm
+fi
 
 # === generate osx app aliases dynamically when new shell
 # defaults domains 2>&1 |  defaults domains 2>&1 | perl -F', ' -a -nle 'print map { $_ =~ s/\s+//g; $prg = (split /\./)[-1]; print qq{ alias $prg="start -i $_" } if length $_ > 0 } @F' | grep -v 1 | awk -F: '{ print $2 }' > ~/.zsh/osx_app.aliases
