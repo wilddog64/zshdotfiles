@@ -115,15 +115,6 @@ export JAVAROOT=/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/
 export TMP=/tmp
 export TMPDIR=/tmp
 
-# === Mono Setting ===
-# MONO_VER=2.10.2
-# PKG_CONFIG_PATH="/Library/Frameworks/Mono.framework/Versions/$MONO_VER/share/pkgconfig:/Library/Frameworks/Mono.framework/Versions/$MONO_VER/lib/pkgconfig:$PKG_CONFIG_PATH"
-# PATH="/Library/Frameworks/Mono.framework/Versions/$MONO_VER/bin:$PATH"
-# LDFLAGS="-L/Library/Frameworks/Mono.framework/Versions/$MONO_VER/lib $LDFLAGS"
-# CPPFLAGS="-I/Library/Frameworks/Mono.framework/Versions/$MONO_VER/include $CPPFLAGS"
-# LD_LIBRARY_PATH="/Library/Frameworks/Mono.framework/Versions/$MONO_VER/lib:$LD_LIBRARY_PATH"
-# MANPATH="/Library/Frameworks/Mono.framework/Versions/$MONO_VER/share/man:/Library/Frameworks/Mono.framework/Versions/$MONO_VER/man:$MANPATH"
-
 export PKG_CONFIG_PATH PATH LDFLAGS CPPFLAGS LD_LIBRARY_PATH MANPATH 
 
 # === theme ===
