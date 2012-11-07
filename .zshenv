@@ -89,15 +89,6 @@ export LANG=en_US.UTF-8
 # === do not record command that's in the history already
 export HISTCONTROL=both
 
-# === this will allow pbcopy work fine with acent characters
-export __CF_USER_TEXT_ENCODING=0x1F5:0x8000100:0x8000100
-
-# === main page path
-export -U MANPATH=/usr/share/man:/usr/local/share/man:/opt/local/share/man/:~/private/perl/5.8.8/man:~/man:/usr/local/man/
-# === these are for ODBC
-export ODBCINI=/Users/mliang/Library/ODBC/odbc.ini
-export ODBCINSTINI=/Users/mliang/Library/ODBC/odbcinst.ini
-
 # === environment variables for perforce ===
 export P4DIFF=diffmerge
 # export P4CHARSET=utf16le-bom
