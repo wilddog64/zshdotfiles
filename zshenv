@@ -1,3 +1,5 @@
+# make cursor shown at the end of command line when recall history
+unsetopt global_rcs
 
 # === user specific environment variables: path, perl library, and ruby
 export user_bin=~/bin
