@@ -18,6 +18,11 @@ export HISTCONTROL=both
 # === this will allow pbcopy work fine with acent characters
 export __CF_USER_TEXT_ENCODING=0x1F5:0x8000100:0x8000100
 
+# === for JAVA
+# export JAVA_HOME=/usr
+export JAVA_HOME=/Library/Java/Home
+export JAVAROOT=/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home
+
 # === for temprary working directory
 export TMP=/tmp
 export TMPDIR=/tmp
