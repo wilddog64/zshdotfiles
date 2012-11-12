@@ -36,4 +36,7 @@ export ZSH_THEME=cloud
 export EDITOR=vi
 # autoload -Uz compinstall && compinstall
 
+# === export JAVA_HOME enviornment variable ===
+export JAVA_HOME=/usr
+
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
