@@ -1,5 +1,7 @@
 src=~/src
-marketleader=~src/marketleader
+gitrepo=~src/gitrepo
+marketleader=~gitrepo/marketleader
 centerpoint=~marketleader/centerpoint
 dotnet=~~marketleader/dotnet
 vision=~~marketleader/vision
+atlassian=~marketleader/atlassian
