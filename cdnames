@@ -1,3 +1,4 @@
+project=~/project
 src=~/src
 gitrepo=~src/gitrepo
 marketleader=~gitrepo/marketleader
