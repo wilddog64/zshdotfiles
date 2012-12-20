@@ -35,4 +35,10 @@ export EDITOR=vi
 # === export JAVA_HOME enviornment variable ===
 export JAVA_HOME=/usr
 
+# === export rundeck environment variables
+RDECK_HOME=/etc/rundeck
+RDECK_BASE=/etc/rundeck
+export RDECK_HOME
+export RDECK_BASE
+
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
