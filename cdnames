@@ -6,3 +6,4 @@ centerpoint=~marketleader/centerpoint
 dotnet=~~marketleader/dotnet
 vision=~~marketleader/vision
 atlassian=~marketleader/atlassian
+build_scripts=~marketleader/build-deploy
