@@ -7,3 +7,4 @@ dotnet=~~marketleader/dotnet
 vision=~~marketleader/vision
 atlassian=~marketleader/atlassian
 build_scripts=~marketleader/build-deploy
+chef_repo=~projects/sourcecontrol/git/chefrepo
