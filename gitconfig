@@ -1,0 +1,40 @@
+[user]
+	name = "chengkai liang "
+	email = ckm.liang@gmail.com
+[alias]
+        timeline     = log --oneline --graph
+        st           = status
+        rebase-abort = rebase --abort
+        co           = checkout
+        diffc        = diff --cached
+	pushu = push
+	merge-with-no-commit-no-ff = merge --no-commit --no-ff
+	cob = checkout
+	aliases = config --get-regexp ^alias\\.*$
+	pullrb = pull
+	diff-b = diff
+[branch]
+        autosetuprebase = always
+[color]
+        diff = always
+[merge]
+    sumary = true
+    tool = p4merge
+[mergetool "p4merge"]
+    cmd  = p4merge \
+        "$PWD/$BASE" \
+        "$PWD/$LOCAL" \
+        "$PWD/$REMOTE" \
+        "$PWD/$MERGED" 
+    keppBackup = false
+    trustExistCode = false
+[push]
+	default = upstream
+[difftool "sourcetree"]
+	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+	trustExitCode = true
+[core]
+	excludesfile = /Users/cliang/.gitignore_global
