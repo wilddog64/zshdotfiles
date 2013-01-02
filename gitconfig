@@ -38,3 +38,4 @@
 	trustExitCode = true
 [core]
 	excludesfile = /Users/cliang/.gitignore_global
+	pager = cat
