@@ -36,9 +36,10 @@ export EDITOR=vi
 export JAVA_HOME=/usr
 
 # === export rundeck environment variables
-RDECK_HOME=/etc/rundeck
+RDECK_HOME=/var/lib/rundeck/
 RDECK_BASE=/etc/rundeck
 export RDECK_HOME
 export RDECK_BASE
+export CLI_CP=$(find /var/lib/rundeck/cli -name \*.jar -printf %p:)
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
