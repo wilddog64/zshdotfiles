@@ -1,6 +1,6 @@
 [user]
-	name = "chengkai liang "
-	email = ckm.liang@gmail.com
+	name = "chengkai liang"
+	email = chengkail@marketleader.com
 [alias]
         timeline     = log --oneline --graph
         st           = status
@@ -17,6 +17,7 @@
         autosetuprebase = always
 [color]
         diff = always
+	ui = on
 [merge]
     sumary = true
     tool = p4merge
