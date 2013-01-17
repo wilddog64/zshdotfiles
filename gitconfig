@@ -13,6 +13,7 @@
 	aliases = config --get-regexp ^alias\\.*$
 	pullrb = pull
 	diff-b = diff
+	info = log --pretty='%h %an %aD %s'
 [branch]
         autosetuprebase = always
 [color]
