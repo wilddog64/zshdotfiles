@@ -2,19 +2,18 @@
 	name = "chengkai liang"
 	email = chengkail@marketleader.com
 [alias]
-        timeline     = log --oneline --graph
-        st           = status
-        rebase-abort = rebase --abort
-        co           = checkout
-        diffc        = diff --cached
-	pushu = push
-	merge-with-no-commit-no-ff = merge --no-commit --no-ff
-	cob = checkout
-	aliases = config --get-regexp ^alias\\.*$
-	pullrb = pull
-	diff-b = diff
-	info = log --pretty='%h %an %aD %s'
-    outgoing = "!f() { git diff --name-status ..$1;  }; f"
+    timeline                   = log --date relative --pretty='%Cgreen %h %gn %ai %cN %ci %s' --graph
+    st                         = status
+    rebase-abort               = rebase --abort
+    co                         = checkout
+    diffc                      = diff --cached
+    pushu                      = push
+    merge-with-no-commit-no-ff = merge --no-commit --no-ff
+    cob                        = checkout
+    aliases                    = config --get-regexp ^alias\\.*$
+    pullrb                     = pull
+    diff-b                     = diff
+    outgoing                   = "!f() { git diff --name-status ..$1;  }; f"
 [branch]
         autosetuprebase = always
 [color]
