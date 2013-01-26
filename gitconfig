@@ -15,6 +15,7 @@
     diff-b                     = diff
     outgoing                   = "!f() { git diff --name-status ..$1;  }; f"
     tip                        = log --date relative --pretty='%Cgreen %h %an %ai %s' -1
+	todayschanges = whatchanged --oneline --since=\"yesterday\"
 [branch]
         autosetuprebase = always
 [color]
