@@ -9,5 +9,5 @@ vision=~marketleader/vision
 atlassian=~marketleader/atlassian
 build_scripts=~marketleader/build-deploy
 sharperagent=~marketleader/sharperagent
-win7dev_marketleader=~gitrepo/win7dev_marketleader
+win7dev_sharperagent=~gitrepo/win7dev_marketleader/sharperagent
 chef_repo=~projects/sourcecontrol/git/chefrepo
