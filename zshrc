@@ -116,6 +116,11 @@ if [[ -r ~/lib/shell/zsh/my_shell_functions ]]; then
    source ~/lib/shell/zsh/my_shell_functions
 fi
 
+if [[ "$OS" = "Windows_NT" ]]
+then
+    export PATH=/cygdrive/c/tools/scm/MSysGit/bin:$PATH
+fi
+
 
 # === load zsh modules
 autoload -U promptinit # custom prompt
