@@ -150,6 +150,12 @@ zmodload zsh/datetime
 # === zsh/sched module ===
 zmodload zsh/sched
 
+# all the windows related settings should be in this block
+if [ -n "$OS" -a "$OS" = "Windows_NT" ]
+then
+    export PATH=$PATH:/cygdrive/c/tools/bin
+fi
+
 # === backward delete all the way to slash
 backward-delete-to-slash () {
   local WORDCHARS=${WORDCHARS//\//}
@@ -171,3 +177,4 @@ fpath=(
         /Users/cliang/.zen/zsh/scripts
         /Users/cliang/.zen/zsh/zle )
 autoload -U zen
+
