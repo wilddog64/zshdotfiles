@@ -132,8 +132,14 @@ autoload -U zmv
 
 
 # ===load completion system
+
 autoload -U compinit
-compinit
+if [ -n "$OS" -a "$OS" = "Windows_NT" ]
+then
+    compinit -u
+else
+    compinit
+fi
 
 # if [ -r $CTL_HOME/etc/bash_completion.sh ]
 # then
