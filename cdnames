@@ -3,7 +3,7 @@ src=~/src
 gitrepo=~src/gitrepo
 marketleader=~gitrepo/marketleader
 centerpoint=~marketleader/centerpoint
-oneserve=~marketleader/oneserve-dotnet
+oneserve=~marketleader/dotnet
 tools=~marketleader/tools
 vision=~marketleader/vision
 atlassian=~marketleader/atlassian
@@ -14,4 +14,3 @@ marketleader=~gitrepo/marketleader
 sharperagent=~marketleader/sharperagent
 sharperagentwebsites=~marketleader/sharperagentwebsites
 chef_repo=~projects/sourcecontrol/git/chefrepo
-
