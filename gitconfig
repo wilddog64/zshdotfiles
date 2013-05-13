@@ -44,4 +44,4 @@
 [core]
 	excludesfile = /Users/cliang/.gitignore_global
 	pager = cat
-    autocrlf = input
+    autocrlf = true
