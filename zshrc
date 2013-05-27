@@ -57,6 +57,9 @@ setopt ALWAYS_TO_END                 # always move cursor to the end after compl
 
 setopt PRINT_EIGHT_BIT
 
+# let system know where is rbenv
+export RBENV_ROOT=/usr/local/var/rbenv
+
 # === options for jobs
 setopt AUTO_RESUME
 
