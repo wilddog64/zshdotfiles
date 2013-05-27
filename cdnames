@@ -1,6 +1,7 @@
 projects=~/projects
 src=~/src
 gitrepo=~src/gitrepo
+personal=~gitrepo/personal
 marketleader=~gitrepo/marketleader
 centerpoint=~marketleader/centerpoint
 oneserve=~marketleader/dotnet
