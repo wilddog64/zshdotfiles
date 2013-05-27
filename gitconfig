@@ -1,22 +1,27 @@
 [user]
-	name = "chengkai liang "
-	email = ckm.liang@gmail.com
+	name = "chengkai liang"
+	email = chengkail@marketleader.com
 [alias]
-        timeline     = log --oneline --graph
-        st           = status
-        rebase-abort = rebase --abort
-        co           = checkout
-        diffc        = diff --cached
-	pushu = push
-	merge-with-no-commit-no-ff = merge --no-commit --no-ff
-	cob = checkout
-	aliases = config --get-regexp ^alias\\.*$
-	pullrb = pull
-	diff-b = diff
+    timeline                   = log --date relative --pretty='%Cgreen %h %an %ai %s' --graph
+    st                         = status
+    rebase-abort               = rebase --abort
+    co                         = checkout
+    diffc                      = diff --cached
+    pushu                      = push
+    merge-with-no-commit-no-ff = merge --no-commit --no-ff
+    cob                        = checkout
+    aliases                    = config --get-regexp ^alias\\.*$
+    pullrb                     = pull
+    diff-b                     = diff
+    outfiles                   = "!f() { git diff --name-status ..$1;  }; f"
+    tip                        = log --date relative --pretty='%Cgreen %h %an %ai %s' -1
+	todayschanges = whatchanged --oneline --since=\"yesterday\"
+	show-name = show --name-status
 [branch]
         autosetuprebase = always
 [color]
         diff = always
+	ui = on
 [merge]
     sumary = true
     tool = p4merge
@@ -39,3 +44,4 @@
 [core]
 	excludesfile = /Users/cliang/.gitignore_global
 	pager = cat
+    autocrlf = false

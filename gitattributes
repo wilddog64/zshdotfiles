@@ -1,0 +1,17 @@
+text=auto
+
+# explicity declare text files we want to always be normailzed and coverted to
+# native line endlings on checkout
+*.c text
+*.h text
+*.cs text
+*.xml text eol=lf
+
+# explicity declare text files we want to always have CRLF line endlings
+*.sln text eol=crlf
+
+# denote all files that are truly binary and should not be modified
+*.png binary
+*.jpg binary
+*.exe binary
+*.dll binary

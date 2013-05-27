@@ -80,3 +80,6 @@ alias lsd='ls -ld'
 alias lsd='ls -ald'
 alias lsc='ls -C'
 alias k='gitk'
+alias nant91='mono ~/lib/nant/v0.91/core/bin/NAnt.exe $*'
+alias nant92='mono ~/lib/nant/v0.92/core/bin/NAnt.exe $*'
+alias gwtf="git wtf | perl -nle 'print if /.*out of sync.*/ ... /^$/'"

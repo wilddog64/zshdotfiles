@@ -57,6 +57,9 @@ setopt ALWAYS_TO_END                 # always move cursor to the end after compl
 
 setopt PRINT_EIGHT_BIT
 
+# let system know where is rbenv
+export RBENV_ROOT=/usr/local/var/rbenv
+
 # === options for jobs
 setopt AUTO_RESUME
 
@@ -116,6 +119,11 @@ if [[ -r ~/lib/shell/zsh/my_shell_functions ]]; then
    source ~/lib/shell/zsh/my_shell_functions
 fi
 
+if [[ "$OS" = "Windows_NT" ]]
+then
+    export PATH=/cygdrive/c/tools/scm/MSysGit/bin:$PATH
+fi
+
 
 # === load zsh modules
 autoload -U promptinit # custom prompt
@@ -127,8 +135,14 @@ autoload -U zmv
 
 
 # ===load completion system
+
 autoload -U compinit
-compinit
+if [ -n "$OS" -a "$OS" = "Windows_NT" ]
+then
+    compinit -u
+else
+    compinit
+fi
 
 # if [ -r $CTL_HOME/etc/bash_completion.sh ]
 # then
@@ -144,6 +158,12 @@ zmodload zsh/datetime
 
 # === zsh/sched module ===
 zmodload zsh/sched
+
+# all the windows related settings should be in this block
+if [ -n "$OS" -a "$OS" = "Windows_NT" ]
+then
+    export PATH=$PATH:/cygdrive/c/tools/bin
+fi
 
 # === backward delete all the way to slash
 backward-delete-to-slash () {
@@ -166,3 +186,4 @@ fpath=(
         /Users/cliang/.zen/zsh/scripts
         /Users/cliang/.zen/zsh/zle )
 autoload -U zen
+
