@@ -6,6 +6,7 @@ centerpoint=~marketleader/centerpoint
 oneserve=~marketleader/dotnet
 tools=~marketleader/tools
 vision=~marketleader/vision
+puppet=~marketleader/puppet
 atlassian=~marketleader/atlassian
 build_scripts=~marketleader/build-deploy
 sharperagent=~marketleader/sharperagent
