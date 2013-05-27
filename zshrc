@@ -21,6 +21,7 @@ setopt PUSHD_IGNORE_DUPS    # don't push duplicate old directory
                             # insert the first match immdiately.
 setopt -8                   # Append a trailing '/' to all directory names.
 setopt NOTIFY               # make shell notify background job immediately after they luanched
+unsetopt correct_all        # stop auto correct feature
 
 # === command line history options
 export HISTFILE=~/.zsh/history  # history file
@@ -55,6 +56,9 @@ setopt REC_EXACT                     # recognize exact match in completion
 setopt ALWAYS_TO_END                 # always move cursor to the end after completion
 
 setopt PRINT_EIGHT_BIT
+
+# let system know where is rbenv
+export RBENV_ROOT=/usr/local/var/rbenv
 
 # === options for jobs
 setopt AUTO_RESUME
@@ -99,6 +103,10 @@ if [[ -r ~/.zsh/bindingkeys ]]; then
     source ~/.zsh/bindingkeys
 fi
 
+# source rvm file if it existed
+if [[ -r ~/.rvm/scripts/rvm ]]; then
+    source /home/chengkai/.rvm/scripts/rvm
+fi
 
 # === generate osx app aliases dynamically when new shell
 # defaults domains 2>&1 |  defaults domains 2>&1 | perl -F', ' -a -nle 'print map { $_ =~ s/\s+//g; $prg = (split /\./)[-1]; print qq{ alias $prg="start -i $_" } if length $_ > 0 } @F' | grep -v 1 | awk -F: '{ print $2 }' > ~/.zsh/osx_app.aliases
@@ -109,6 +117,11 @@ fi
 # === third party shell libraries
 if [[ -r ~/lib/shell/zsh/my_shell_functions ]]; then
    source ~/lib/shell/zsh/my_shell_functions
+fi
+
+if [[ "$OS" = "Windows_NT" ]]
+then
+    export PATH=/cygdrive/c/tools/scm/MSysGit/bin:$PATH
 fi
 
 
@@ -122,8 +135,14 @@ autoload -U zmv
 
 
 # ===load completion system
+
 autoload -U compinit
-compinit
+if [ -n "$OS" -a "$OS" = "Windows_NT" ]
+then
+    compinit -u
+else
+    compinit
+fi
 
 # if [ -r $CTL_HOME/etc/bash_completion.sh ]
 # then
@@ -139,6 +158,12 @@ zmodload zsh/datetime
 
 # === zsh/sched module ===
 zmodload zsh/sched
+
+# all the windows related settings should be in this block
+if [ -n "$OS" -a "$OS" = "Windows_NT" ]
+then
+    export PATH=$PATH:/cygdrive/c/tools/bin
+fi
 
 # === backward delete all the way to slash
 backward-delete-to-slash () {
@@ -161,3 +186,4 @@ fpath=(
         /Users/cliang/.zen/zsh/scripts
         /Users/cliang/.zen/zsh/zle )
 autoload -U zen
+
