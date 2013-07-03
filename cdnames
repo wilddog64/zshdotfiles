@@ -5,6 +5,7 @@ personal=~gitrepo/personal
 marketleader=~gitrepo/marketleader
 centerpoint=~marketleader/centerpoint
 oneserve=~marketleader/dotnet
+nant_refactor=~marketleader/sharperagent.nant_refactor
 tools=~marketleader/tools
 vision=~marketleader/vision
 puppet2_7=~marketleader/puppet.2.7
