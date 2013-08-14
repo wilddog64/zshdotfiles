@@ -42,4 +42,4 @@ export RDECK_HOME
 export RDECK_BASE
 export CLI_CP=$(find /var/lib/rundeck/cli -name \*.jar -printf %p:)
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/bin:~/bin # Add RVM to PATH for scripting
