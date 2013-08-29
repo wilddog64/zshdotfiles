@@ -45,3 +45,5 @@
 	excludesfile = /Users/cliang/.gitignore_global
 	pager = cat
     autocrlf = false
+[credential]
+    helper = osxkeychain
