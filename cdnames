@@ -4,6 +4,7 @@ gitrepo=~src/gitrepo
 personal=~gitrepo/personal
 puppet=~personal/puppet
 chillyhilly=~puppet/chillyhilly
+vagrant_windows=~puppet/vagrant-windows
 atlassian_automation=~puppet/atlassian_automation
 marketleader=~gitrepo/marketleader
 centerpoint=~marketleader/centerpoint
