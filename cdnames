@@ -11,6 +11,7 @@ centerpoint=~marketleader/centerpoint
 oneserve=~marketleader/dotnet
 puppet_modules=~marketleader/puppet-modules
 nant_refactor=~marketleader/sharperagent.nant_refactor
+centerpoint_config=~puppet_modules/puppet_centerpoint_config
 tools=~marketleader/tools
 vision=~marketleader/vision
 puppet2_7=~marketleader/puppet.2.7
