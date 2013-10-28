@@ -26,3 +26,4 @@ marketleader=~gitrepo/marketleader
 sharperagent=~marketleader/sharperagent
 sharperagentwebsites=~marketleader/sharperagentwebsites
 chef_repo=~projects/sourcecontrol/git/chefrepo
+downloads=~/Downloads
