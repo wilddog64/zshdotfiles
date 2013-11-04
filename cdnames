@@ -15,6 +15,7 @@ puppet_modules=~marketleader/puppet-modules
 nant_refactor=~marketleader/sharperagent.nant_refactor
 centerpoint_config=~puppet_modules/puppet_centerpoint_config
 vision_config=~puppet_modules/puppet_vision_config
+config_db=~puppet_modules/puppet_config_db
 custom_facts=~puppet_modules/puppet_custom_facts
 tools=~marketleader/tools
 vision=~marketleader/vision
