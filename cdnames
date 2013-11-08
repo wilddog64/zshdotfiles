@@ -6,6 +6,7 @@ puppet=~personal/puppet
 apache_config=~puppet/puppet-apache_config
 chillyhilly=~puppet/chillyhilly
 rollinghill=~puppet/rollinghill
+mysql_setup=~puppet/puppet-mysql_setup
 vagrant_windows=~puppet/vagrant-windows
 atlassian_automation=~puppet/atlassian_automation
 marketleader=~gitrepo/marketleader
