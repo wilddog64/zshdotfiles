@@ -1,8 +1,8 @@
 # alias vi='vi -c "set noignorecase" -c "set undodir=/Users/cliang/backup/vimundo"'
-alias ..='cd ../$1'
-alias ...='cd ../../$1'
-alias ....='cd ../../../$1'
-alias .....='cd ../../../../$1'
+alias ..='cd ../'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+alias .....='cd ../../../../'
 alias b='cd -'
 alias -g R=' > ~/tmp/tmp.txt'
 alias -g T=' | tee ~/tmp/tee.txt'
@@ -42,6 +42,8 @@ alias -g X0G='| xargs -0 egrep'
 alias -g X0='| xargs -0'
 alias -g XG='| xargs egrep'
 alias -g X='| xargs'
+alias -g PN='| perl -nle'
+alias -g PP='| perl -ple'
 alias cls=clear
 alias cp='cp -v'
 alias cdpbld="cd ~/.cpan/build/"
@@ -83,3 +85,4 @@ alias k='gitk'
 alias nant91='mono ~/lib/nant/v0.91/core/bin/NAnt.exe $*'
 alias nant92='mono ~/lib/nant/v0.92/core/bin/NAnt.exe $*'
 alias gwtf="git wtf | perl -nle 'print if /.*out of sync.*/ ... /^$/'"
+alias cdiff=colordiff

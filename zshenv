@@ -41,5 +41,7 @@ RDECK_BASE=/etc/rundeck
 export RDECK_HOME
 export RDECK_BASE
 export CLI_CP=$(find /var/lib/rundeck/cli -name \*.jar -printf %p:)
+export veewee_home=/Users/cliang/src/gitrepo/personal/puppet/veewee
+export veewee_bin=$veewee_home/bin
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/bin:~/bin:$veewee_bin # Add RVM to PATH for scripting

@@ -1,0 +1,16 @@
+shell zsh             # I love zsh
+startup_message off   # turn off splash banner
+defscrollback = 5000
+shelltitle '$ |zsh'   # Dynamic window titled for running program
+msgwait 1             # msessage timeout to be 1 second
+nethack on            # turn on nethack error message
+autodetach on         # turn on autodetch
+
+# Change the xterm initialization string to avoid window size change
+termcapinfo xterm* 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+
+# Last line is status: green hostname, window list in cyan, and time and date right aligned:
+hardstatus alwayslastline "%{=b}%{G}%H: %{C}%w %=%{G}%D, %m/%d %C%a"
+ 
+# This status is the same as the above, except it puts "<username>@" in front of the hostname
+hardstatus alwayslastline "%{=b}%{G}Screen @ %0`@%H: %{C}%w %=%{G}%D, %m/%d"

@@ -175,6 +175,7 @@ zle -N backward-delete-to-slash
 autoload -Uz colors
 colors
 
+eval "$(rbenv init -)"
 # Autoload some bash completion functions if they exist.
 autoload -Uz bashcompinit
 bashcompinit
@@ -186,4 +187,3 @@ fpath=(
         /Users/cliang/.zen/zsh/scripts
         /Users/cliang/.zen/zsh/zle )
 autoload -U zen
-
