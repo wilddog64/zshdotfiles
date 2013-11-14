@@ -16,7 +16,8 @@
     outfiles                   = "!f() { git diff --name-status ..$1;  }; f"
     tip                        = log --date relative --pretty='%Cgreen %h %an %ai %s' -1
 	todayschanges              = whatchanged --oneline --since=\"yesterday\"
-	show-name                  = show --name-status
+    show-name                  = show --name-status
+    fetch                      = fetch -p
 [branch]
         autosetuprebase = always
 [color]
