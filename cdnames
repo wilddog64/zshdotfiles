@@ -3,6 +3,7 @@ src=~/src
 gitrepo=~src/gitrepo
 personal=~gitrepo/personal
 puppet=~personal/puppet
+vagrants=~personal/vagrant
 apache_config=~puppet/puppet-apache_config
 chillyhilly=~puppet/chillyhilly
 rollinghill=~puppet/rollinghill
