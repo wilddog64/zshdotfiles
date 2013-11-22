@@ -17,7 +17,7 @@
     tip                        = log --date relative --pretty='%Cgreen %h %an %ai %s' -1
 	todayschanges              = whatchanged --oneline --since=\"yesterday\"
     show-name                  = show --name-status
-    fetch                      = fetch -p
+    fetch-p                    = fetch -p
 [branch]
         autosetuprebase = always
 [color]
