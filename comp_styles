@@ -1,8 +1,8 @@
 # for zsh menu completion
 # zstyle ':completion:*' menu select=1 interactiv
 # zstyle ':completion:*:*:xdvi:*' menu yes select
-# zstyle ':completion:*:*:kill:*' menu yes select
-# zstyle ':completion:*:kill:*'   force-list always
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:kill:*'   force-list always
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' use-cache on
