@@ -18,6 +18,7 @@
 	todayschanges              = whatchanged --oneline --since=\"yesterday\"
     show-name                  = show --name-status
     fetch-p                    = fetch -p
+    rm-submodule               = "!f() { git submodule deinit $1; git rm $1; }; f"
 [branch]
         autosetuprebase = always
 [color]

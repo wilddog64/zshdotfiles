@@ -37,6 +37,7 @@ setopt HIST_VERIFY                   # make history expansion, substution, ... a
 setopt INC_APPEND_HISTORY            # append history as the order of command is executed
 setopt SHARE_HISTORY                 # make history share amount different zsh sessions
 setopt EXTENDED_HISTORY              # enable timestamp with history
+setopt HIST_FCNTL_LOCK               # use OS provide fcntl library
 
 # zsh regex
 setopt EXTENDED_GLOB        # Enable extended globbing
