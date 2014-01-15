@@ -36,12 +36,13 @@ export EDITOR=vi
 export JAVA_HOME=/usr
 
 # === export rundeck environment variables
-RDECK_HOME=/var/lib/rundeck/
-RDECK_BASE=/etc/rundeck
-export RDECK_HOME
-export RDECK_BASE
-export CLI_CP=$(find /var/lib/rundeck/cli -name \*.jar -printf %p:)
-export veewee_home=/Users/cliang/src/gitrepo/personal/puppet/veewee
-export veewee_bin=$veewee_home/bin
+# RDECK_HOME=/var/lib/rundeck/
+# RDECK_BASE=/etc/rundeck
+# export RDECK_HOME
+# export RDECK_BASE
+# export CLI_CP=$(find /var/lib/rundeck/cli -name \*.jar -printf %p:)
+# export veewee_home=/Users/cliang/src/gitrepo/personal/puppet/veewee
+# export veewee_bin=$veewee_home/bin
 
-PATH=$PATH:$HOME/.rvm/bin:~/bin:$veewee_bin # Add RVM to PATH for scripting
+export GIT_CONTRIB=/usr/local/Cellar/git/1.8.5.2/share/git-core/contrib
+PATH=$PATH:$HOME/.rvm/bin:~/bin:$veewee_bin:$GIT_CONTRIB # Add RVM to PATH for scripting
