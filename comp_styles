@@ -75,3 +75,6 @@ zstyle 'completion:*:*:kill:*:processes' insert-ids single
 zstyle 'completion:*:*:kill:*:processes' sort false
 zstyle 'completion:*:*:kill:*:processes' command 'ps -u "$USER"'
 zstyle ':completion:*:processes-names' command "ps -eo cmd= | sed 's:\([^ ]*\).*:\1:;s:\(/[^ ]*/\)::;/^\[/d'"
+
+# don't complete the same twice for kill/diff
+zstyle ':completion:*:(kill|diff):*' ignored-line yes
