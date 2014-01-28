@@ -69,3 +69,9 @@ zstyle ':completion:*:default' list-prompt '%S%M matches%s'
 
 # ignore _* for functions completion
 zstyle ':completion:*:functions' ignored-patterns '_*'
+
+zstyle 'completion:*:*:*:*:processes*' forced-list always
+zstyle 'completion:*:*:kill:*:processes' insert-ids single
+zstyle 'completion:*:*:kill:*:processes' sort false
+zstyle 'completion:*:*:kill:*:processes' command 'ps -u "$USER"'
+zstyle ':completion:*:processes-names' command "ps -eo cmd= | sed 's:\([^ ]*\).*:\1:;s:\(/[^ ]*/\)::;/^\[/d'"
