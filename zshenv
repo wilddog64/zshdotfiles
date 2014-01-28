@@ -36,11 +36,11 @@ export EDITOR=vi
 export JAVA_HOME=/usr
 
 # === export rundeck environment variables
-RDECK_HOME=/var/lib/rundeck/
-RDECK_BASE=/etc/rundeck
-export RDECK_HOME
-export RDECK_BASE
-export CLI_CP=$(find /var/lib/rundeck/cli -name \*.jar -printf %p:)
+# RDECK_HOME=/var/lib/rundeck/
+# RDECK_BASE=/etc/rundeck
+# export RDECK_HOME
+# export RDECK_BASE
+# export CLI_CP=$(find /var/lib/rundeck/cli -name \*.jar -printf %p:)
 export veewee_home=/Users/cliang/src/gitrepo/personal/puppet/veewee
 export veewee_bin=$veewee_home/bin
 
