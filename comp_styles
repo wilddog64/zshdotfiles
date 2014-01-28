@@ -66,3 +66,6 @@ zstyle ':completion:*' auto-description 'specify: %d'
 
 # Give long completion options in a list. tab to advance.
 zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+
+# ignore _* for functions completion
+zstyle ':completion:*:functions' ignored-patterns '_*'
