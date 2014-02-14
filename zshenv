@@ -38,4 +38,5 @@ export JAVA_HOME=/usr
 export GIT_CONTRIB=/usr/local/Cellar/git/1.8.5.2/share/git-core/contrib
 export BREW_ROOT=/usr/local
 export BREW_BIN=$BREW_ROOT/bin
-PATH=$BREW_BIN:$PATH:~/bin:$veewee_bin:$GIT_CONTRIB # Add RVM to PATH for scripting
+export BREW_SBIN=$BREW_ROOT/sbin
+PATH=$BREW_BIN:$BREW_SBIN:$PATH:~/bin:$veewee_bin:$GIT_CONTRIB # Add RVM to PATH for scripting
