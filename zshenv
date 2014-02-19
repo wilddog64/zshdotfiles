@@ -33,7 +33,7 @@ export EDITOR=vi
 # autoload -Uz compinstall && compinstall
 
 # === export JAVA_HOME enviornment variable ===
-export JAVA_HOME=/usr
+export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
 
 export GIT_CONTRIB=/usr/local/Cellar/git/1.8.5.2/share/git-core/contrib
 export BREW_ROOT=/usr/local
