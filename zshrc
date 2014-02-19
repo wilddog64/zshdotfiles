@@ -57,6 +57,7 @@ setopt REC_EXACT                     # recognize exact match in completion
 setopt ALWAYS_TO_END                 # always move cursor to the end after completion
 
 setopt PRINT_EIGHT_BIT
+unsetopt AUTO_PUSHD
 
 # let system know where is rbenv
 export RBENV_ROOT=/usr/local/var/rbenv
