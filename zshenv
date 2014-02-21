@@ -33,9 +33,10 @@ export EDITOR=vi
 # autoload -Uz compinstall && compinstall
 
 # === export JAVA_HOME enviornment variable ===
-export JAVA_HOME=/usr
+export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
 
-export GIT_CONTRIB=/usr/local/Cellar/git/1.8.5.2/share/git-core/contrib
+export GIT_CONTRIB=/usr/local/Cellar/git/1.9.0/share/git-core/contrib
 export BREW_ROOT=/usr/local
 export BREW_BIN=$BREW_ROOT/bin
-PATH=$PATH:~/bin:$veewee_bin:$GIT_CONTRIB:$BREW_BIN # Add RVM to PATH for scripting
+export BREW_SBIN=$BREW_ROOT/sbin
+PATH=$BREW_BIN:$BREW_SBIN:$PATH:~/bin:$veewee_bin:$GIT_CONTRIB # Add RVM to PATH for scripting
