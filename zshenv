@@ -44,7 +44,7 @@ export JAVA_HOME=/usr
 # export veewee_home=/Users/cliang/src/gitrepo/personal/puppet/veewee
 # export veewee_bin=$veewee_home/bin
 
-export GIT_CONTRIB=/usr/local/Cellar/git/1.8.5.2/share/git-core/contrib
+export GIT_CONTRIB=/usr/local/Cellar/git/1.9.0/share/git-core/contrib
 export BREW_ROOT=/usr/local
 export BREW_BIN=$BREW_ROOT/bin
 PATH=$PATH:~/bin:$veewee_bin:$GIT_CONTRIB:$BREW_BIN # Add RVM to PATH for scripting
