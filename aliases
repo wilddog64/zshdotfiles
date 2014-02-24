@@ -52,3 +52,4 @@ alias nant92='mono ~/lib/nant/v0.92/core/bin/NAnt.exe $*'
 alias gwtf="git wtf | perl -nle 'print if /.*out of sync.*/ ... /^$/'"
 alias cdiff=colordiff
 alias js='j -s'
+alias m='mate'
