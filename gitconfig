@@ -1,6 +1,6 @@
 [user]
 	name = "chengkai liang"
-	email = chengkail@marketleader.com
+	email = ckm.liang@gmail.com
 [alias]
     timeline                   = log --date relative --pretty='%Cgreen %h %an %ai %s' --graph
     st                         = status
