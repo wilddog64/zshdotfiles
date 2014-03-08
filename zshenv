@@ -40,4 +40,7 @@ export GIT_CONTRIB=/usr/local/Cellar/git/1.9.0/share/git-core/contrib
 export BREW_ROOT=/usr/local
 export BREW_BIN=$BREW_ROOT/bin
 export BREW_SBIN=$BREW_ROOT/sbin
+
+# for docker client
+export DOCKER_HOST=tcp://localhost:4243
 PATH=$BREW_BIN:$BREW_SBIN:$PATH:~/bin:$veewee_bin:$GIT_CONTRIB # Add RVM to PATH for scripting
