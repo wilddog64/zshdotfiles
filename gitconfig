@@ -44,7 +44,7 @@
 	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 	trustExitCode = true
 [core]
-	excludesfile = /Users/cliang/.gitignore_global
+	excludesfile = /Users/lianc010/.gitignore_global
 	pager = cat
     autocrlf = false
 [credential]
