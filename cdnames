@@ -2,5 +2,7 @@ src=~/src
 gitrepo=~src/gitrepo
 chef=~gitrepo/chef
 disney=~chef/disney
+bde=~disney/bde
+gm=~disney/gm
 vagrant=~chef/vagrant
 downloads=~/Downloads
