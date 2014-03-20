@@ -1,3 +1,6 @@
 src=~/src
 gitrepo=~src/gitrepo
+chef=~gitrepo/chef
+disney=~chef/disney
+vagrant=~chef/vagrant
 downloads=~/Downloads
