@@ -3,6 +3,6 @@ gitrepo=~src/gitrepo
 chef=~gitrepo/chef
 disney=~chef/disney
 bde=~disney/bde
-gm=~disney/gm
+chefmaster=~disney/chefmaster
 vagrant=~chef/vagrant
 downloads=~/Downloads
