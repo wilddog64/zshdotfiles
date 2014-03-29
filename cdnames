@@ -6,3 +6,4 @@ bde=~disney/bde
 chefmaster=~disney/chefmaster
 vagrant=~chef/vagrant
 downloads=~/Downloads
+berkshelf=~/.berkshelf/
