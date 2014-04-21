@@ -48,3 +48,8 @@ PATH=$BREW_BIN:$BREW_SBIN:$PATH:~/bin:$veewee_bin:$GIT_CONTRIB # Add RVM to PATH
 
 # for AWS CLI to access Instance Meta Data Service (IMDS)
 export NO_PROXY=169.254.169.254
+
+if [[ ! -e ~/.zsh_history ]]; then
+    mkdir -p ~/.zsh_history
+fi
+export HISTORY_BASE=~/.zsh_history
