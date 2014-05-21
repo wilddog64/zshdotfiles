@@ -195,6 +195,3 @@ fpath=(
         /Users/cliang/.zen/zsh/scripts
         /Users/cliang/.zen/zsh/zle )
 autoload -U zen
-
-# load zpython module
-zmodload zsh/zpython
