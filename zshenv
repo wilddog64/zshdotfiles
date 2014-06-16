@@ -43,7 +43,8 @@ export BREW_SBIN=$BREW_ROOT/sbin
 
 # for docker client
 export DOCKER_HOST=tcp://localhost:4243
-PATH=$BREW_BIN:$BREW_SBIN:$PATH:~/bin:$veewee_bin:$GIT_CONTRIB # Add RVM to PATH for scripting
+export GNUBIN=/usr/local/opt/coreutils/libexec/gnubin
+PATH=$GNUBIN:$BREW_BIN:$BREW_SBIN:$PATH:~/bin:$veewee_bin:$GIT_CONTRIB # Add RVM to PATH for scripting
 
 
 # for AWS CLI to access Instance Meta Data Service (IMDS)
