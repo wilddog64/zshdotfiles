@@ -1,6 +1,6 @@
 [user]
 	name = "chengkai liang"
-	email = ckm.liang@gmail.com
+	email = "chengkai.x.liang.-nd@disney.com"
 [alias]
     timeline                   = log --date relative --pretty='%Cgreen %h %an %ai %s' --graph
     st                         = status
@@ -44,8 +44,8 @@
 	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 	trustExitCode = true
 [core]
-	excludesfile = /Users/lianc010/.gitignore_global
+	excludesfile = /Users/cliang/.gitignore_global
 	pager = cat
     autocrlf = false
 [credential]
-    helper = osxkeychain
+	helper = osxkeychain

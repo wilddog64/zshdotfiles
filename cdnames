@@ -1,5 +1,6 @@
 src=~/src
 gitrepo=~src/gitrepo
+cookbooks=~src/cookbooks
 chef=~gitrepo/chef
 disney=~chef/disney
 bde=~disney/bde
