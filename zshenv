@@ -54,3 +54,6 @@ if [[ ! -e ~/.zsh_history ]]; then
     mkdir -p ~/.zsh_history
 fi
 export HISTORY_BASE=~/.zsh_history
+
+# docker port
+export DOCKER_HOST=tcp://:2375
