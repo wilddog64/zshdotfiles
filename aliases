@@ -12,9 +12,9 @@ alias cls=clear
 alias grep='grep -n'
 alias cp='cp -v'
 alias cdpbld="cd ~/.cpan/build/"
-alias del='/bin/rm -vi'
+alias del='/bin/rm -vif'
 alias diff=colordiff
-alias dirdiff="diff -Bbrq -x 'ruby_sess.*' -x '*.swp' -x '*.bak' -x '*.log.[0-9]' -x '.hg' -x '*.orig' -x '*.properties' -x '*.rdf' -x '.*' "
+alias dirdiff="diff -Bbrq -x 'ruby_sess.*' -x '*.swp' -x '*.bak' -x '*.log.[0-9]' -x '.hg' -x '*.orig' -x '*.properties' -x '*.rdf' -x '.*' " -x '.git'
 alias glnotify=growlnotify
 alias h='fc -l'
 alias ls='ls --color=auto'
