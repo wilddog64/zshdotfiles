@@ -41,8 +41,6 @@ export BREW_ROOT=/usr/local
 export BREW_BIN=$BREW_ROOT/bin
 export BREW_SBIN=$BREW_ROOT/sbin
 
-# for docker client
-export DOCKER_HOST=tcp://localhost:4243
 export GNUBIN=/usr/local/opt/coreutils/libexec/gnubin
 PATH=$GNUBIN:$BREW_BIN:$BREW_SBIN:$PATH:~/bin:$veewee_bin:$GIT_CONTRIB # Add RVM to PATH for scripting
 
@@ -56,4 +54,4 @@ fi
 export HISTORY_BASE=~/.zsh_history
 
 # docker port
-export DOCKER_HOST=tcp://:2375
+export DOCKER_HOST=tcp://192.168.59.110:2375
