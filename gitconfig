@@ -7,12 +7,11 @@
     rebase-abort               = rebase --abort
     co                         = checkout
     diffc                      = diff --cached
-    pushu                      = push
+    pushu                      = push -u
     merge-with-no-commit-no-ff = merge --no-commit --no-ff
     cob                        = checkout
     aliases                    = config --get-regexp ^alias\\.*$
-    pullrb                     = pull
-    diff-b                     = diff
+    pullrb                     = pull --rebase
     outfiles                   = "!f() { git diff --name-status ..$1;  }; f"
     tip                        = log --date relative --pretty='%Cgreen %h %an %ai %s' -1
 	todayschanges              = whatchanged --oneline --since=\"yesterday\"
