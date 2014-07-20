@@ -9,7 +9,7 @@
     diffc                      = diff --cached
     pushu                      = push -u
     merge-with-no-commit-no-ff = merge --no-commit --no-ff
-    cob                        = checkout
+    cob                        = checkout -b
     aliases                    = config --get-regexp ^alias\\.*$
     pullrb                     = pull --rebase
     outfiles                   = "!f() { git diff --name-status ..$1;  }; f"
