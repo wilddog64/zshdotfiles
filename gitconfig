@@ -10,7 +10,6 @@
     pushu                      = push -u
     merge-with-no-commit-no-ff = merge --no-commit --no-ff
     cob                        = checkout -b
-    aliases                    = config --get-regexp ^alias\\.*$
     pullrb                     = pull --rebase
     outfiles                   = "!f() { git diff --name-status ..$1;  }; f"
     tip                        = log --date relative --pretty='%Cgreen %h %an %ai %s' -1
