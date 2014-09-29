@@ -55,3 +55,6 @@ export HISTORY_BASE=~/.zsh_history
 
 # docker port
 export DOCKER_HOST=tcp://192.168.59.104:2375
+
+[[ -f /opt/boxen/env.sh ]] && source /opt/boxen/env.sh
+PATH=$BOXEN_HOME/repo/bin:$PATH
