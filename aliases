@@ -16,7 +16,7 @@ alias diff=colordiff
 alias dirdiff="diff -Bbrq -x 'ruby_sess.*' -x '*.swp' -x '*.bak' -x '*.log.[0-9]' -x '.hg' -x '*.orig' -x '*.properties' -x '*.rdf' -x '.*' " -x '.git'
 alias glnotify=growlnotify
 alias h='fc -l'
-alias ls='ls --color=auto'
+# alias ls='ls --color=auto'
 alias l='ls -Ft'
 alias ll='ls -Fhalt'
 alias lsdir='ls -aF'
