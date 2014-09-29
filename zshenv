@@ -36,11 +36,13 @@ export EDITOR=vi
 # === export JAVA_HOME enviornment variable ===
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
 
-export GIT_CONTRIB=/usr/local/Cellar/git/1.9.0/share/git-core/contrib
-export BREW_ROOT=/usr/local
-export BREW_BIN=$BREW_ROOT/bin
-export BREW_SBIN=$BREW_ROOT/sbin
+# export GIT_CONTRIB=/usr/local/Cellar/git/1.9.0/share/git-core/contrib
+# export BREW_ROOT=/opt/boxen/homebrew
+# export BREW_BIN=$BREW_ROOT/bin
+# export BREW_SBIN=$BREW_ROOT/sbin
 
 # for docker client
 export DOCKER_HOST=tcp://localhost:4243
 PATH=$BREW_BIN:$BREW_SBIN:$PATH:~/bin:$veewee_bin:$GIT_CONTRIB # Add RVM to PATH for scripting
+
+[[ -r /opt/boxen/env.sh ]] && source /opt/boxen/env.sh
