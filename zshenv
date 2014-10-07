@@ -43,6 +43,7 @@ export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
 
 # for docker client
 export DOCKER_HOST=tcp://localhost:4243
-PATH=$BREW_BIN:$BREW_SBIN:$PATH:~/bin:$veewee_bin:$GIT_CONTRIB # Add RVM to PATH for scripting
+export GNU_BIN=/usr/local/opt/coreutils/libexec/gnubin
+export PATH=$GNU_BIN:$BREW_BIN:$BREW_SBIN:$PATH:~/bin:$veewee_bin:$GIT_CONTRIB # Add RVM to PATH for scripting
 
 [[ -r /opt/boxen/env.sh ]] && source /opt/boxen/env.sh
