@@ -9,7 +9,6 @@ alias -g T=' | tee ~/tmp/tee.txt'
 alias -g PP='| perl -ple'
 alias -g PB='| pbcopy'
 alias cls=clear
-alias grep='grep -n'
 alias cp='cp -v'
 alias cdpbld="cd ~/.cpan/build/"
 alias del='/bin/rm -vi'
