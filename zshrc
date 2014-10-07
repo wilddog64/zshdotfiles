@@ -66,7 +66,7 @@ setopt PRINT_EIGHT_BIT
 unsetopt AUTO_PUSHD
 
 # let system know where is rbenv
-export RBENV_ROOT=/usr/local/var/rbenv
+# export RBENV_ROOT=/usr/local/var/rbenv
 
 # === options for jobs
 setopt AUTO_RESUME
