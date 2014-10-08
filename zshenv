@@ -37,14 +37,16 @@ export EDITOR=vi
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
 
 # export GIT_CONTRIB=/usr/local/Cellar/git/1.9.0/share/git-core/contrib
-# export BREW_ROOT=/opt/boxen/homebrew
-# export BREW_BIN=$BREW_ROOT/bin
-# export BREW_SBIN=$BREW_ROOT/sbin
+export BREW_ROOT=/usr/local
+export BREW_BIN=$BREW_ROOT/bin
+export BREW_SBIN=$BREW_ROOT/sbin
 
 # for docker client
 export DOCKER_HOST=tcp://localhost:4243
 export GNUBIN=/usr/local/opt/coreutils/libexec/gnubin
-PATH=$GNUBIN:$BREW_BIN:$BREW_SBIN:$PATH:~/bin:$veewee_bin:$GIT_CONTRIB # Add RVM to PATH for scripting
+
+
+export PATH=$GNUBIN:$BREW_BIN:$BREW_SBIN:~/bin:$GIT_CONTRIB:$PATH # Add RVM to PATH for scripting
 
 
 # for AWS CLI to access Instance Meta Data Service (IMDS)
