@@ -1,10 +1,6 @@
 src=~/src
 gitrepo=~src/gitrepo
 chef=~gitrepo/chef
-disney=~chef/disney
-bde=~disney/bde
-gm=~disney/chefmaster
 cookbooks=~/cookbooks
-vagrant=~chef/vagrant
 downloads=~/Downloads
 berkshelf=~/.berkshelf/
