@@ -198,3 +198,7 @@ autoload -U zen
 
 [[ -s `brew --prefix`/etc/autojump.sh  ]] && . `brew --prefix`/etc/autojump.sh
 eval `keychain --eval --clear --agents ssh --inherit any id_rsa`
+
+unalias run-help
+autoload run-help
+HELPDIR=/usr/local/share/zsh/help
