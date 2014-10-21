@@ -197,4 +197,4 @@ fpath=(
 autoload -U zen
 
 [[ -s `brew --prefix`/etc/autojump.sh  ]] && . `brew --prefix`/etc/autojump.sh
-eval `keychain --eval --agents ssh --inherit any id_rsa`
+eval `keychain --eval --clear --agents ssh --inherit any id_rsa`
