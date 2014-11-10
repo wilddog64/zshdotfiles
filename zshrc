@@ -173,6 +173,10 @@ then
     export PATH=$PATH:/cygdrive/c/tools/bin
 fi
 
+if [[ -e ~/.oh-my-zsh/plugins/aws/aws.plugin.zsh ]]; then
+  source ~/.oh-my-zsh/plugins/aws/aws.plugin.zsh
+fi
+
 # === backward delete all the way to slash
 backward-delete-to-slash () {
   local WORDCHARS=${WORDCHARS//\//}
