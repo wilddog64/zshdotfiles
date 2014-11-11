@@ -1,6 +1,7 @@
 src=~/src
 gitrepo=~src/gitrepo
 svn=~src/subversion
+personal=~gitrepo/personal
 puppet=~gitrepo/vagrants/puppet
 chef=~gitrepo/chef
 cookbooks=~/cookbooks
