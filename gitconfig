@@ -47,8 +47,5 @@
 	excludesfile = /Users/lianc010/.gitignore_global
 	pager = cat
     autocrlf = false
-[credential]
-    helper = /opt/boxen/bin/boxen-git-credential
-
 [hub]
 protocol = https
