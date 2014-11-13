@@ -203,6 +203,17 @@ autoload -U zen
 [[ -s `brew --prefix`/etc/autojump.sh  ]] && . `brew --prefix`/etc/autojump.sh
 eval `keychain --eval --clear --agents ssh --inherit any id_rsa`
 
+if [[ $(which pyenv) ]]; then
+  echo initialize pyenv ...
+  eval "$(pyenv init -)"
+fi
+
+if [[ $(which pyenv-virtualenv-init) ]]; then
+  echo "initialize pyenv virtualenv"
+  eval "$(pyenv virtualenv-init -)"
+fi
+
+
 unalias run-help
 autoload run-help
 HELPDIR=/usr/local/share/zsh/help
