@@ -1,6 +1,7 @@
 src=~/src
 gitrepo=~src/gitrepo
 svn=~src/subversion
+dreambox=~gitrepo/dreambox
 personal=~gitrepo/personal
 puppet=~gitrepo/vagrants/puppet
 chef=~gitrepo/chef
