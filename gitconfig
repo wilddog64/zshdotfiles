@@ -1,6 +1,6 @@
 [user]
-	name = "chengkai liang"
-	email = ckm.liang@gmail.com
+        name = "chengkai liang"
+        email = ckm.liang@gmail.com
 [alias]
     timeline                   = log --date relative --pretty='%Cgreen %h %an %ai %s' --graph
     st                         = status
@@ -15,7 +15,7 @@
     diff-b                     = diff
     outfiles                   = "!f() { git diff --name-status ..$1;  }; f"
     tip                        = log --date relative --pretty='%Cgreen %h %an %ai %s' -1
-	todayschanges              = whatchanged --oneline --since=\"yesterday\"
+        todayschanges              = whatchanged --oneline --since=\"yesterday\"
     show-name                  = show --name-status
     fetch-p                    = fetch -p
     rm-submodule               = "!f() { git submodule deinit $1; git rm $1; }; f"
@@ -23,7 +23,7 @@
         autosetuprebase = always
 [color]
         diff = always
-	ui = on
+        ui = on
 [merge]
     sumary = true
     tool = p4merge
@@ -32,20 +32,20 @@
         "$PWD/$BASE" \
         "$PWD/$LOCAL" \
         "$PWD/$REMOTE" \
-        "$PWD/$MERGED" 
+        "$PWD/$MERGED"
     keppBackup = false
     trustExistCode = false
 [push]
-	default = upstream
+        default = upstream
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+        cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+        path =
 [mergetool "sourcetree"]
-	cmd = /opt/homebrew-cask/Caskroom/sourcetree/2.0.2/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+        cmd = /opt/homebrew-cask/Caskroom/sourcetree/2.0.2/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+        trustExitCode = true
 [core]
-	excludesfile = /Users/lianc010/.gitignore_global
-	pager = cat
-    autocrlf = false
+        excludesfile = /Users/lianc010/.gitignore_global
+        pager = cat
+        autocrlf = false
 [hub]
 protocol = https
