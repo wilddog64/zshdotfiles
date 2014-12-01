@@ -218,6 +218,11 @@ if [[ $(which plenv) ]]; then
   eval "$(plenv init -)"
 fi
 
+if [[ $(which hub) ]]; then
+  echo 'initialize hub'
+  eval "$(hub alias -s)"
+fi
+
 unalias run-help
 autoload run-help
 HELPDIR=/usr/local/share/zsh/help
