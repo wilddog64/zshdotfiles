@@ -8,6 +8,7 @@ alias -g R=' > ~/tmp/tmp.txt'
 alias -g T=' | tee ~/tmp/tee.txt'
 alias -g PP='| perl -ple'
 alias -g PB='| pbcopy'
+alias -g JS='| python -m json.tool'
 alias cls=clear
 alias cp='cp -v'
 alias cdpbld="cd ~/.cpan/build/"
