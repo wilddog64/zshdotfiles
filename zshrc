@@ -201,7 +201,7 @@ fpath=(
 autoload -U zen
 
 [[ -s `brew --prefix`/etc/autojump.sh  ]] && . `brew --prefix`/etc/autojump.sh
-eval `keychain --eval --clear --agents ssh --inherit any id_rsa`
+eval `keychain --eval --agents ssh --inherit any id_rsa`
 
 if [[ $(which pyenv) ]]; then
   echo initialize pyenv ...
@@ -221,6 +221,10 @@ fi
 if [[ $(which hub) ]]; then
   echo 'initialize hub'
   eval "$(hub alias -s)"
+fi
+
+if [[ -e ~/perl5/perlbrew/etc/bashrc ]]; then
+  source ~/perl5/perlbrew/etc/bashrc
 fi
 
 unalias run-help
