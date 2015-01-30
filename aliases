@@ -53,3 +53,4 @@ alias cdiff=colordiff
 alias jh='j -s'
 alias jp='j --purge'
 alias m='mate'
+alias svn-cdiff='svn diff --diff-cmd colordiff'
