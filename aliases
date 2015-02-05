@@ -17,6 +17,7 @@ alias dirdiff="diff -Bbrq -x 'ruby_sess.*' -x '*.swp' -x '*.bak' -x '*.log.[0-9]
 alias glnotify=growlnotify
 alias h='fc -l'
 alias l='ls -Ft'
+alias grep='grep --color=no'
 alias ll='ls -Fhalt'
 alias lsdir='ls -aF'
 alias lspm='perl ~/bin/lspm.pl'
