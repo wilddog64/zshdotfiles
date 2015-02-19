@@ -188,6 +188,7 @@ autoload -Uz colors
 colors
 
 eval "$(rbenv init -)"
+export PATH="/opt/chefdk/bin:$PATH"
 # Autoload some bash completion functions if they exist.
 autoload -Uz bashcompinit
 bashcompinit
