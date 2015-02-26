@@ -19,6 +19,7 @@
     show-name                  = show --name-status
     fetch-p                    = fetch -p
     rm-submodule               = "!f() { git submodule deinit $1; git rm $1; }; f"
+    unstage                    = reset HEAD --
 [branch]
     autosetuprebase            = always
 [color]
