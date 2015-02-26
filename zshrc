@@ -189,6 +189,9 @@ colors
 
 eval "$(rbenv init -)"
 export PATH="/opt/chefdk/bin:$PATH"
+
+unalias kitchen # turn off alias created by rbenv
+
 # Autoload some bash completion functions if they exist.
 autoload -Uz bashcompinit
 bashcompinit
