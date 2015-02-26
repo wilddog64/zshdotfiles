@@ -15,7 +15,7 @@
     diff-b                     = diff
     outfiles                   = "!f() { git diff --name-status ..$1;  }; f"
     tip                        = log --date relative --pretty='%Cgreen %h %an %ai %s' -1
-    todayschanges              = whatchanged --oneline --since=\"yesterday\"
+    todayschanges              = "!f() { git whatchanged --oneline --since=yesterday | grep -v '^:'; }; f"
     show-name                  = show --name-status
     fetch-p                    = fetch -p
     rm-submodule               = "!f() { git submodule deinit $1; git rm $1; }; f"
