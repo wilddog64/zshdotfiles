@@ -2,7 +2,7 @@
     name  = "chengkai liang"
     email = ckm.liang@gmail.com
 [alias]
-    timeline                   = log --date relative --pretty='%Cgreen %h %an %ai %s' --graph
+    timeline                   = log --topo-order --date relative --pretty='%Cgreen %h %an %ai %s' --graph
     st                         = "!f() { git status --ignore-submodules --short; }; f"
     rebase-abort               = rebase --abort
     co                         = checkout
