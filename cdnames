@@ -1,7 +1,12 @@
 src=~/src
 gitrepo=~src/gitrepo
+svn=~src/subversion
+python=~gitrepo/python
+dreambox=~gitrepo/dreambox
+personal=~gitrepo/personal
 puppet=~gitrepo/vagrants/puppet
 chef=~gitrepo/chef
 cookbooks=~/cookbooks
 downloads=~/Downloads
 berkshelf=~/.berkshelf/
+chefconf2015=~gitrepo
