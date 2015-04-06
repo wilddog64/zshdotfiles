@@ -26,7 +26,7 @@ kill_git_branch() {
     _is_this_a_git_repo
     if [[ $(_at_master_branch) > 0 ]]; then
         echo current context is not at master branch, abort!
-        kill -INT $$
+        return $?
     fi
     git branch --merged | grep -v master | xargs git branch -d 2> /dev/null
 
