@@ -116,6 +116,12 @@ if [[ -r ~/.rvm/scripts/rvm ]]; then
     source /home/chengkai/.rvm/scripts/rvm
 fi
 
+# initialize docker
+if [[ $(which docker 2>&1 > /dev/null) == 0 ]]; then
+    export DOCKER_HOST=tcp://192.168.59.103:2376
+    export DOCKER_CERT_PATH=/Users/chengkai.liang/.boot2docker/certs/boot2docker-vm
+    export DOCKER_TLS_VERIFY=1
+fi
 # === generate osx app aliases dynamically when new shell
 # defaults domains 2>&1 |  defaults domains 2>&1 | perl -F', ' -a -nle 'print map { $_ =~ s/\s+//g; $prg = (split /\./)[-1]; print qq{ alias $prg="start -i $_" } if length $_ > 0 } @F' | grep -v 1 | awk -F: '{ print $2 }' > ~/.zsh/osx_app.aliases
 if [[ -r ~/.zsh/osx_app.aliases ]]; then
@@ -191,6 +197,7 @@ eval "$(rbenv init -)"
 export PATH="/opt/chefdk/bin:$PATH"
 
 unalias kitchen # turn off alias created by rbenv
+unalias knife
 
 # Autoload some bash completion functions if they exist.
 autoload -Uz bashcompinit
