@@ -116,6 +116,12 @@ if [[ -r ~/.rvm/scripts/rvm ]]; then
     source /home/chengkai/.rvm/scripts/rvm
 fi
 
+# initialize docker
+if [[ $(which docker 2>&1 > /dev/null) == 0 ]]; then
+    export DOCKER_HOST=tcp://192.168.59.103:2376
+    export DOCKER_CERT_PATH=/Users/chengkai.liang/.boot2docker/certs/boot2docker-vm
+    export DOCKER_TLS_VERIFY=1
+fi
 # === generate osx app aliases dynamically when new shell
 # defaults domains 2>&1 |  defaults domains 2>&1 | perl -F', ' -a -nle 'print map { $_ =~ s/\s+//g; $prg = (split /\./)[-1]; print qq{ alias $prg="start -i $_" } if length $_ > 0 } @F' | grep -v 1 | awk -F: '{ print $2 }' > ~/.zsh/osx_app.aliases
 if [[ -r ~/.zsh/osx_app.aliases ]]; then
@@ -173,6 +179,10 @@ then
     export PATH=$PATH:/cygdrive/c/tools/bin
 fi
 
+if [[ -e ~/.oh-my-zsh/plugins/aws/aws.plugin.zsh ]]; then
+  source ~/.oh-my-zsh/plugins/aws/aws.plugin.zsh
+fi
+
 # === backward delete all the way to slash
 backward-delete-to-slash () {
   local WORDCHARS=${WORDCHARS//\//}
@@ -184,6 +194,11 @@ autoload -Uz colors
 colors
 
 eval "$(rbenv init -)"
+export PATH="/opt/chefdk/bin:$PATH"
+
+unalias kitchen # turn off alias created by rbenv
+unalias knife
+
 # Autoload some bash completion functions if they exist.
 autoload -Uz bashcompinit
 bashcompinit
@@ -197,3 +212,32 @@ fpath=(
 autoload -U zen
 
 [[ -s `brew --prefix`/etc/autojump.sh  ]] && . `brew --prefix`/etc/autojump.sh
+eval `keychain --eval --agents ssh --inherit any id_rsa`
+
+if [[ $(which pyenv) ]]; then
+  echo initialize pyenv ...
+  eval "$(pyenv init -)"
+fi
+
+if [[ $(which pyenv-virtualenv-init) ]]; then
+  echo "initialize pyenv virtualenv"
+  eval "$(pyenv virtualenv-init -)"
+fi
+
+if [[ $(which plenv) ]]; then
+  echo 'initialize plenv'
+  eval "$(plenv init -)"
+fi
+
+if [[ $(which hub) ]]; then
+  echo 'initialize hub'
+  eval "$(hub alias -s)"
+fi
+
+if [[ -e ~/perl5/perlbrew/etc/bashrc ]]; then
+  source ~/perl5/perlbrew/etc/bashrc
+fi
+
+unalias run-help
+autoload run-help
+HELPDIR=/usr/local/share/zsh/help

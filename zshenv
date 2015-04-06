@@ -45,7 +45,6 @@ export BREW_SBIN=$BREW_ROOT/sbin
 export DOCKER_HOST=tcp://localhost:4243
 export GNUBIN=/usr/local/opt/coreutils/libexec/gnubin
 
-
 export PATH=$GNUBIN:$BREW_BIN:$BREW_SBIN:~/bin:$GIT_CONTRIB:$PATH # Add RVM to PATH for scripting
 
 
