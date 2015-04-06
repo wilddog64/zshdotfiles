@@ -3,7 +3,7 @@
     email = ckm.liang@gmail.com
 [alias]
     timeline                   = log --date relative --pretty='%Cgreen %h %an %ai %s' --graph
-    st                         = status
+    st                         = "!f() { git status --ignore-submodules --short; }; f"
     rebase-abort               = rebase --abort
     co                         = checkout
     diffc                      = diff --cached
