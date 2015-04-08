@@ -20,6 +20,7 @@
     fetch-p                    = fetch -p
     rm-submodule               = "!f() { git submodule deinit $1; git rm $1; }; f"
     unstage                    = reset HEAD --
+    wdiff                      = diff --word-diff
 [branch]
     autosetuprebase            = always
 [color]
