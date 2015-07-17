@@ -238,6 +238,10 @@ if [[ -e ~/perl5/perlbrew/etc/bashrc ]]; then
   source ~/perl5/perlbrew/etc/bashrc
 fi
 
+if [[ $(which ec2ssh) ]]; then
+  ec2ssh >/dev/null 2>&1 && eval "$(ec2ssh shellcomp -)"
+fi
+
 unalias run-help
 autoload run-help
 HELPDIR=/usr/local/share/zsh/help
