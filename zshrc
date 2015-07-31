@@ -211,6 +211,7 @@ fpath=(
         /Users/cliang/.zen/zsh/zle )
 autoload -U zen
 
+ssh-add dblOps.pem
 [[ -s `brew --prefix`/etc/autojump.sh  ]] && . `brew --prefix`/etc/autojump.sh
 eval `keychain --eval --agents ssh --inherit any id_rsa`
 
