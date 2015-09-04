@@ -50,3 +50,13 @@ set-window-option -g automatic-rename off
 
 # reload changes in tmux, handy
 bind-key r source-file ~/.zsh/tmuxrc \; display 'Reloaded!'
+
+# split panes
+bind | split-window -h
+bind - split-window -v
+
+# moving between panes
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
