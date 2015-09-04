@@ -9,6 +9,9 @@ set-option -g prefix C-a
 # use the NEW prefix key to "send-prefix" instead of the default
 unbind-key C-b; bind-key C-a send-prefix
 
+# make sure c-a can send to other apps
+bind C-a send-prefix
+
 # bound to C-a by default
 bind-key C-w last-window; bind-key w last-window
 
