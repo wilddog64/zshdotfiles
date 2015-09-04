@@ -46,4 +46,4 @@ set-window-option -g monitor-activity on
 set-window-option -g automatic-rename off
 
 # reload changes in tmux, handy
-bind-key r source-file ~/.tmuxrc
+bind-key r source-file ~/.zsh/tmuxrc \; display 'Reloaded!'
