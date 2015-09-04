@@ -79,6 +79,8 @@ setw -g mode-keys vi
 # vi like copy commands
 bind-key -t vi-copy 'v' begin-selection
 bind-key -t vi-copy 'y' copy-selection
+unbind p
+bind p paste-buffer
 
 # status bar settings
 set -g status-left-length 52
