@@ -47,9 +47,3 @@ set-window-option -g automatic-rename off
 
 # reload changes in tmux, handy
 bind-key r source-file ~/.tmuxrc
-
-# make the split panes more mnemonic
-unbind-key '"'; unbind-key %
-bind-key | split-window -h; bind-key C-| split-window -h
-bind-key _ split-window -v; bind-key C-_ cplit-window -v
-
