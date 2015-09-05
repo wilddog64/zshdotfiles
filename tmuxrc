@@ -123,3 +123,8 @@ bind-key Enter break-pane
 
 # window start with 1
 set -g base-index 1
+
+# bind C-q to detach
+unbind -n C-d
+unbind C-q
+bind -n C-q detach-client
