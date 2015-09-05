@@ -116,3 +116,6 @@ setw -g automatic-rename
 unbind C-b
 unbind '"'
 unbind %
+
+bind-key Space list-panes
+bind-key Enter break-pane
