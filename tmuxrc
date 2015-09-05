@@ -104,3 +104,5 @@ set -g window-status-current-format "#[fg=colour234,bg=colour39]⮀#[fg=colour25
 # allow monitoring windows activities
 setw -g monitor-activity on
 set -g visual-activity on
+
+setw -g automatic-rename
