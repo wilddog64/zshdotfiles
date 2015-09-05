@@ -82,6 +82,9 @@ bind-key -t vi-copy 'y' copy-selection
 unbind p
 bind p paste-buffer
 
+unbind -t v-copy Enter
+bind-key -t vi-copy Enter copy-pipe 'reattach-to-user-namespace pbcopy'
+
 # status bar settings
 set -g status-left-length 52
 set -g status-right-length 451
