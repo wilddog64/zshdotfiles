@@ -117,5 +117,6 @@ unbind C-b
 unbind '"'
 unbind %
 
+# space to list panes and Etner to break pane
 bind-key Space list-panes
 bind-key Enter break-pane
