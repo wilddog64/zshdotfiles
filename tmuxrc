@@ -128,3 +128,6 @@ set -g base-index 1
 unbind -n C-d
 unbind C-q
 bind -n C-q detach-client
+
+# no wait for another escape sequence
+set -s escape-time 0
