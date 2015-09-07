@@ -132,3 +132,10 @@ bind -n C-q detach-client
 
 # no wait for another escape sequence
 set -s escape-time 0
+
+# set colors for the active window
+# START:activewindowstatuscolor
+setw -g window-status-current-fg white
+setw -g window-status-current-bg red
+setw -g window-status-current-attr bright
+# # END:activewindowstatuscolor
