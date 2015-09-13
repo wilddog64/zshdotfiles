@@ -141,3 +141,6 @@ setw -g window-status-current-attr bright
 # # END:activewindowstatuscolor
 
 unbind -n d  # diable ctrl-a d, which make screen happy
+
+# load tmux plugin manager
+run '~/.tmux/plugins/tpm/tpm'
