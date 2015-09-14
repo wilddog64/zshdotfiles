@@ -159,3 +159,4 @@ set -g @plugin 'tmux-plugins/tmux-open'
 set -g @urlview-key 'U' # change activate key for urlview
 set -g @continuum-restore 'on'
 set -g @continuum-boot 'on' # automatically restore tmux environment after computer is turned on
+set -g @continuum-boot-options 'iterm' # start iTerm instead of Terminal.app
