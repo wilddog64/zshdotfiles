@@ -53,7 +53,7 @@ bind-key r source-file ~/.zsh/tmuxrc \; display 'Reloaded!'
 
 # split panes
 bind | split-window -h -c "#{pane_current_path}"
-bind - split-window -v
+bind - split-window -v -c "#{pane_current_path}"
 
 # moving between panes
 bind h select-pane -L
