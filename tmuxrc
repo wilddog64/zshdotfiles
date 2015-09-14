@@ -52,7 +52,7 @@ set-window-option -g automatic-rename off
 bind-key r source-file ~/.zsh/tmuxrc \; display 'Reloaded!'
 
 # split panes
-bind / split-window -h
+bind | split-window -h
 bind - split-window -v
 
 # moving between panes
@@ -154,6 +154,8 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-sessionist'
 set -g @plugin 'tmux-plugins/tmux-open'
 
+
 # custom setting for each plugin goes here
 set -g @urlview-key 'U' # change activate key for urlview
 set -g @continuum-restore 'on'
+set -g @continuum-boot 'on' # automatically restore tmux environment after computer is turned on
