@@ -52,7 +52,7 @@ set-window-option -g automatic-rename off
 bind-key r source-file ~/.zsh/tmuxrc \; display 'Reloaded!'
 
 # split panes
-bind | split-window -h
+bind | split-window -h -c "#{pane_current_path}"
 bind - split-window -v
 
 # moving between panes
