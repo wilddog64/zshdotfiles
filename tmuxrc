@@ -51,12 +51,6 @@ set-window-option -g automatic-rename off
 # reload changes in tmux, handy
 bind-key r source-file ~/.zsh/tmuxrc \; display 'Reloaded!'
 
-# moving between panes
-bind h select-pane -L
-bind j select-pane -D
-bind k select-pane -U
-bind l select-pane -R
-
 # maximize and restore a pane
 unbind Up
 bind Up new-window -d -n tmp \; swap-pane -s tmp.1 \; select-window -t tmp
