@@ -250,6 +250,7 @@ fi
 if [[ -e ~/tools/rundeck ]]; then
   export RUNDECK_BASE=~/tools/rundeck/tools
   export RUNDECK_TOOL_BIN=$RUNDECK_BASE/bin
+  export PATH=$PATH:$RUNDECK_TOOL_BIN
 fi
 unalias run-help
 autoload run-help
