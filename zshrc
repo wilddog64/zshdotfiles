@@ -243,6 +243,9 @@ if [[ -e ~/perl5/perlbrew/etc/bashrc ]]; then
   source ~/perl5/perlbrew/etc/bashrc
 fi
 
+if [[ -e /usr/libexec/java_home ]]; then
+  export JAVA_HOME=$(/usr/libexec/java_home)
+fi
 unalias run-help
 autoload run-help
 HELPDIR=/usr/local/share/zsh/help
