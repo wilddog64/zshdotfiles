@@ -246,6 +246,11 @@ fi
 if [[ -e /usr/libexec/java_home ]]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
 fi
+
+if [[ -e ~/tools/rundeck ]]; then
+  export RUNDECK_BASE=~/tools/rundeck/tools
+  export RUNDECK_TOOL_BIN=$RUNDECK_BASE/bin
+fi
 unalias run-help
 autoload run-help
 HELPDIR=/usr/local/share/zsh/help
