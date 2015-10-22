@@ -252,6 +252,16 @@ if [[ -e ~/tools/rundeck ]]; then
   export RUNDECK_TOOL_BIN=$RUNDECK_BASE/bin
   export PATH=$PATH:$RUNDECK_TOOL_BIN
 fi
+
+if [[ -f $HOME/.smartcd/lib/core/smartcd ]]; then
+  # TODO: handle system-wide install?
+  echo 'initializing smartcd'
+  source $HOME/.smartcd/lib/core/smartcd
+  [[ -f $HOME/.smartcd_config ]] && source $HOME/.smartcd_config
+else
+  echo 'smartcd not installed yet!  Run "make install" or follow the README instructions'
+fi
+
 unalias run-help
 autoload run-help
 HELPDIR=/usr/local/share/zsh/help
