@@ -262,6 +262,14 @@ else
   echo 'smartcd not installed yet!  Run "make install" or follow the README instructions'
 fi
 
+if [[ -e $(brew --prefix nvm) ]]; then
+  if [[ ! -e ~/.nvm ]]; then
+    mkdir -p ~/.nvm
+  fi
+  export NVM_DIR=~/.nvm
+  source $(brew --prefix nvm)/nvm.sh
+fi
+
 unalias run-help
 autoload run-help
 HELPDIR=/usr/local/share/zsh/help
