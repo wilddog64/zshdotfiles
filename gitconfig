@@ -1,6 +1,6 @@
 [user]
-    name  = "chengkai liang"
-    email = ckm.liang@gmail.com
+    name = Chengkai Liang
+    email = chengkai.liang@dreambox.com
 [alias]
     timeline                   = log --topo-order --date relative --pretty='%Cgreen %h %an %ai %s' --graph
     st                         = "!f() { git status --ignore-submodules --short; }; f"
@@ -41,14 +41,17 @@
 [push]
     default = upstream
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+        cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+        path =
 [mergetool "sourcetree"]
-	cmd = /opt/homebrew-cask/Caskroom/sourcetree/2.0.5.2/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+        cmd = /Users/chengkai.liang/Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+        trustExitCode = true
 [core]
     excludesfile = /Users/chengkai.liang/.gitignore_global
     pager        = cat
     autocrlf     = false
+    safecrlf     = false
+    eol          = crlf
+    filemode     = false
 [hub]
 protocol         = https
