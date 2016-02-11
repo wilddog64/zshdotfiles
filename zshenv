@@ -47,6 +47,8 @@ export GNUBIN=/usr/local/opt/coreutils/libexec/gnubin
 
 export PATH=$BREW_BIN:$GNUBIN:$BREW_BIN:$BREW_SBIN:~/bin:$GIT_CONTRIB:$PATH # Add RVM to PATH for scripting
 
+# MONO assembly
+export MONO_GAC_PREFIX=/usr/local
 
 # for AWS CLI to access Instance Meta Data Service (IMDS)
 export NO_PROXY=169.254.169.254
