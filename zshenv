@@ -57,3 +57,8 @@ if [[ ! -e ~/.zsh_history ]]; then
     mkdir -p ~/.zsh_history
 fi
 export HISTORY_BASE=~/.zsh_history
+
+# initialize perlbrew
+if [[ -r ~/perl5/perlbrew/etc/bashrc ]]; then
+    source ~/perl5/perlbrew/etc/bashrc
+fi
