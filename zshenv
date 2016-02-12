@@ -62,3 +62,4 @@ export HISTORY_BASE=~/.zsh_history
 if [[ -r ~/perl5/perlbrew/etc/bashrc ]]; then
     source ~/perl5/perlbrew/etc/bashrc
 fi
+export PELRBREW_CPAN_MIRROR=http://mirror.transip.net/CPAN/
