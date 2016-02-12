@@ -1,6 +1,7 @@
 src=~/src
 gitrepo=~src/gitrepo
 java=~gitrepo/java
+gradle=~gitrepo/gradle
 svn=~src/subversion
 python=~gitrepo/python
 dreambox=~gitrepo/dreambox
