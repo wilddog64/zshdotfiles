@@ -53,5 +53,6 @@
     safecrlf     = false
     eol          = crlf
     filemode     = false
+    ignorecase   = false
 [hub]
 protocol         = https
