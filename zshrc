@@ -200,6 +200,7 @@ unalias kitchen # turn off alias created by rbenv
 unalias knife
 unalias pry
 unalias rspec
+unalias bundle
 
 # Autoload some bash completion functions if they exist.
 autoload -Uz bashcompinit
