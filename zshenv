@@ -45,7 +45,9 @@ export HOMEBREW_GITHUB_API_TOKEN=e8c8fef32db9d77fd84c45b23b9cf6e589815c79
 export DOCKER_HOST=tcp://localhost:4243
 export GNUBIN=/usr/local/opt/coreutils/libexec/gnubin
 
-export PATH=$BREW_BIN:$GNUBIN:$BREW_BIN:$BREW_SBIN:~/bin:$GIT_CONTRIB:$PATH # Add RVM to PATH for scripting
+export DOTNET_PATH=/usr/local/share/dotnet
+
+export PATH=$DOTNET_PATH:$BREW_BIN:$GNUBIN:$BREW_BIN:$BREW_SBIN:~/bin:$GIT_CONTRIB:$PATH # Add RVM to PATH for scripting
 
 # MONO assembly
 export MONO_GAC_PREFIX=/usr/local
