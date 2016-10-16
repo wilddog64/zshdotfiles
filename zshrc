@@ -267,6 +267,8 @@ if [[ -e $(brew --prefix nvm) ]]; then
   source $(brew --prefix nvm)/nvm.sh
 fi
 
+eval $(docker-machine env default)
+
 unalias run-help
 autoload run-help
 HELPDIR=/usr/local/share/zsh/help
