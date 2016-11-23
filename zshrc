@@ -210,7 +210,10 @@ autoload -U zen
 
 ssh-add -l | grep dblOps.pem 2>&1 > /dev/null
 if [[ $? > 0 ]]; then
-  [[ -e ~/.ssh/dblOps.pem ]] && ssh-add ~/.ssh/dblOps.pem
+  if [[ -e ~/.ssh/dblOps.pem ]]; then
+      pushd ~/.ssh
+      ssh-add dblOps.pem && popd
+  fi
 fi
 
 [[ -s `brew --prefix`/etc/autojump.sh  ]] && . `brew --prefix`/etc/autojump.sh
@@ -266,8 +269,6 @@ if [[ -e $(brew --prefix nvm) ]]; then
   export NVM_DIR=~/.nvm
   source $(brew --prefix nvm)/nvm.sh
 fi
-
-eval $(docker-machine env default)
 
 unalias run-help
 autoload run-help
