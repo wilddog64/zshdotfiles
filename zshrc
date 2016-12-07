@@ -229,10 +229,10 @@ if [[ $(which pyenv-virtualenv-init) ]]; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
-if [[ $(which plenv) ]]; then
-  echo 'initialize plenv'
-  eval "$(plenv init -)"
-fi
+# if [[ $(which plenv) ]]; then
+#   echo 'initialize plenv'
+#   eval "$(plenv init -)"
+# fi
 
 if [[ $(which hub) ]]; then
   echo 'initialize hub'
