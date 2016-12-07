@@ -23,7 +23,6 @@ alias ll='ls -Fhalt'
 alias lsdir='ls -aF'
 alias lspm='perl ~/bin/lspm.pl'
 alias map=mount_smbfs
-alias md='nocorrect mkdir -p $*'
 alias mtail=multitail
 alias help=run-help
 alias list=less
