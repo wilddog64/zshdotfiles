@@ -34,7 +34,6 @@ alias rdesktop='nocorrect rdesktop'
 alias rdp='rdesktop -g 1280x760 -r clipboard:PRIMARYCLIPBOARD -d sea -u mliang $*&!'
 alias recp='cp -R'
 alias rm='rm -i'
-alias rd='rm -rf $*'
 alias sysprof='nocorrect system_profiler'
 alias vo="nocorrect p4 opened ... 2>&1 | perl -nle '$x = (`pwd` =~ /([^\/]+)\n/)[0]; /$x\/(.*?)#/; print $1' | xargs mvim"
 alias wod='curl http://www.haym37.com/wordofthedayv3.php'
