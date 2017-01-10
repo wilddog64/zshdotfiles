@@ -42,7 +42,6 @@ export BREW_SBIN=$BREW_ROOT/sbin
 export HOMEBREW_GITHUB_API_TOKEN=e8c8fef32db9d77fd84c45b23b9cf6e589815c79
 
 # for docker client
-export DOCKER_HOST=tcp://localhost:4243
 export GNUBIN=/usr/local/opt/coreutils/libexec/gnubin
 
 export DOTNET_PATH=/usr/local/share/dotnet
