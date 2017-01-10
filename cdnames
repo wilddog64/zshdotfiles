@@ -6,6 +6,7 @@ svn=~src/subversion
 python=~gitrepo/python
 dreambox=~gitrepo/dreambox
 personal=~gitrepo/personal
+ansible=~personal/ansible
 puppet=~gitrepo/vagrants/puppet
 chef=~gitrepo/chef
 cookbooks=~/cookbooks
