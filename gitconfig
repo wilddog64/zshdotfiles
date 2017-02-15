@@ -55,6 +55,6 @@
     filemode     = false
     ignorecase   = false
 [hub]
-protocol         = https
+	protocol = ssh
 [credential]
 	helper = osxkeychain
