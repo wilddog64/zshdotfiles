@@ -11,6 +11,9 @@ export AUTOJUMP_KEEP_SYMLINKS=1
 export VISUAL=vi
 set -o vi
 
+# === for groovy
+export GROOVY_HOME=/usr/local/opt/groovy/libexec
+
 # === locale language settings
 export LANG=en_US.UTF-8
 
