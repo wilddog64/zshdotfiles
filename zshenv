@@ -67,3 +67,9 @@ if [[ -r ~/perl5/perlbrew/etc/bashrc ]]; then
     source ~/perl5/perlbrew/etc/bashrc
 fi
 export PELRBREW_CPAN_MIRROR=http://mirror.transip.net/CPAN/
+
+if [[ $(uname) == 'Linux' ]]; then
+    export PATH="$HOME/.linuxbrew/bin:$PATH"
+    export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+    export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+fi
