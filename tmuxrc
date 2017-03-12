@@ -149,7 +149,6 @@ set -g @plugin 'tmux-plugins/tmux-open'
 set -g @plugin 'tmux-plugins/tmux-pain-control'
 set -g @plugin 'tmux-plugins/tmux-logging'
 
-
 # custom setting for each plugin goes here
 set -g @urlview-key 'U' # change activate key for urlview
 set -g @continuum-restore 'on'
@@ -165,3 +164,11 @@ bind -n C-j if-shell "$is_vim" "send-keys C-j" "select-pane -D"
 bind -n C-k if-shell "$is_vim" "send-keys C-k" "select-pane -U"
 bind -n C-l if-shell "$is_vim" "send-keys C-l" "select-pane -R"
 bind -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
+
+# setup for tmux-powerlineset-option -g status on
+set-option -g status-interval 2
+set-option -g status-justify "centre"
+set-option -g status-left-length 60
+set-option -g status-right-length 90
+set-option -g status-left "#(~/path/to/tmux-powerline/powerline.sh left)"
+set-option -g status-right "#(~/path/to/tmux-powerline/powerline.sh right)"
