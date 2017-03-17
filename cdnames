@@ -11,4 +11,3 @@ chef=~gitrepo/chef
 cookbooks=~/cookbooks
 downloads=~/Downloads
 berkshelf=~/.berkshelf/
-chefconf2015=~gitrepo
