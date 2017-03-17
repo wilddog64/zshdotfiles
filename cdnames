@@ -5,6 +5,7 @@ gradle=~gitrepo/gradle
 python=~gitrepo/python
 personal=~gitrepo/personal
 ansible=~gitrepo/ansible
+blackboard=~gitrepo/blackboard
 puppet=~gitrepo/vagrants/puppet
 chef=~gitrepo/chef
 cookbooks=~/cookbooks
