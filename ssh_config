@@ -1,0 +1,7 @@
+Host stash.*
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/id_rsa
+  ControlPath ~/.ssh/cm-%r@%h:%p
+  ControlMaster auto
+  ControlPersist 10m
+  AddKeysToAgent yes
