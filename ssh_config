@@ -4,5 +4,5 @@ Host stash.*
   ControlPath ~/.ssh/cm-%r@%h:%p
   ControlMaster auto
   ControlPersist 10m
-  UseKeychain no
+  UseKeychain yes
   AddKeysToAgent yes
