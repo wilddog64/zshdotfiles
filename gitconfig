@@ -1,6 +1,6 @@
 [user]
     name = Chengkai Liang
-    email = chengkai.liang@dreambox.com
+    email = ckm.liang@gmail.com
 [alias]
     timeline                   = log --topo-order --date relative --pretty='%Cgreen %h %an %ai %s' --graph
     st                         = "!f() { git status --ignore-submodules --short; }; f"
