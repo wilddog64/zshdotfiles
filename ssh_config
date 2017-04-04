@@ -1,3 +1,7 @@
+Host *
+  ForwardAgent yes
+  PubKeyAuthentication yes
+
 Host stash.*
   PreferredAuthentications publickey
   IdentityFile ~/.ssh/id_rsa
@@ -6,3 +10,12 @@ Host stash.*
   ControlPersist 10m
   UseKeychain yes
   AddKeysToAgent yes
+
+Host dev
+  Hostname 54.84.11.127
+ 
+Host dev+*
+  ControlMaster auto
+  ProxyCommand ssh -T -a $(echo %h |cut -d+ -f1) nc $(echo %h |cut -d+ -f2) %p 2>/dev/null
+  ControlPath ~/.ssh/ssh-control_%r@%h:%p
+  StrictHostKeyChecking no
