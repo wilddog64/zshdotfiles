@@ -153,15 +153,10 @@ autoload -U compinit
 if [ -n "$OS" -a "$OS" = "Windows_NT" ]
 then
     compinit -u
+    export PATH=$PATH:/cygdrive/c/tools/bin
 else
     compinit
 fi
-
-# if [ -r $CTL_HOME/etc/bash_completion.sh ]
-# then
-#     autoload bashcompinit
-#     source $CTL_HOME/etc/bash_completion.sh
-# fi
 
 # ===load completion list module
 zmodload zsh/complist
@@ -171,12 +166,6 @@ zmodload zsh/datetime
 
 # === zsh/sched module ===
 zmodload zsh/sched
-
-# all the windows related settings should be in this block
-if [ -n "$OS" -a "$OS" = "Windows_NT" ]
-then
-    export PATH=$PATH:/cygdrive/c/tools/bin
-fi
 
 if [[ -e ~/.oh-my-zsh/plugins/aws/aws.plugin.zsh ]]; then
   source ~/.oh-my-zsh/plugins/aws/aws.plugin.zsh
@@ -219,11 +208,6 @@ if [[ $(which pyenv-virtualenv-init) ]]; then
   echo "initialize pyenv virtualenv"
   eval "$(pyenv virtualenv-init -)"
 fi
-
-# if [[ $(which plenv) ]]; then
-#   echo 'initialize plenv'
-#   eval "$(plenv init -)"
-# fi
 
 if [[ $(which hub) ]]; then
   echo 'initialize hub'
