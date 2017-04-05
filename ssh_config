@@ -3,6 +3,8 @@ Host *
   PubKeyAuthentication yes
   ServerAliveInterval 240
   ServerAliveCountMax 2
+  ControlMaster auto
+  ControlPersist 10m
 
 Host stash.*
   PreferredAuthentications publickey
