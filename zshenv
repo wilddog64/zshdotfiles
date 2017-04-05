@@ -23,7 +23,6 @@ export HISTCONTROL=both
 # === this will allow pbcopy work fine with acent characters
 export __CF_USER_TEXT_ENCODING=0x1F5:0x8000100:0x8000100
 
-
 # === for temprary working directory
 export TMP=/tmp
 export TMPDIR=/tmp
@@ -61,15 +60,3 @@ if [[ ! -e ~/.zsh_history ]]; then
     mkdir -p ~/.zsh_history
 fi
 export HISTORY_BASE=~/.zsh_history
-
-# initialize perlbrew
-if [[ -r ~/perl5/perlbrew/etc/bashrc ]]; then
-    source ~/perl5/perlbrew/etc/bashrc
-fi
-export PELRBREW_CPAN_MIRROR=http://mirror.transip.net/CPAN/
-
-if [[ $(uname) == 'Linux' ]]; then
-    export PATH="$HOME/.linuxbrew/bin:$PATH"
-    export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-    export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
-fi
