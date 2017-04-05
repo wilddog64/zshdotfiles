@@ -1,6 +1,8 @@
 Host *
   ForwardAgent yes
   PubKeyAuthentication yes
+  ServerAliveInterval 240
+  ServerAliveCountMax 2
 
 Host stash.*
   PreferredAuthentications publickey
