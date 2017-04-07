@@ -61,13 +61,13 @@ if [[ ! -e ~/.zsh_history ]]; then
 fi
 
 if [[ -z $DISPLAY && -z $SSH_CONNECTION ]]; then
-	disp_no=($( ps -xww | grep -F X11.app | awk '{print $NF}' | grep -e ":[0-9]"  ))
-	if [[ -n $disp_no ]];then
-		export DISPLAY=${disp_no}.0
-	else
-		export DISPLAY=:0.0
-	fi
-	echo "DISPLAY has been set to $DISPLAY"
+    disp_no=($( ps -xww | grep -F X11.app | awk '{print $NF}' | grep -e ":[0-9]"  ))
+    if [[ -n $disp_no ]];then
+        export DISPLAY=${disp_no}.0
+    else
+        export DISPLAY=:0.0
+    fi
+    echo "DISPLAY has been set to $DISPLAY"
 fi
 
 # === options for customizing zsh behavior
@@ -79,7 +79,7 @@ setopt -Q                   # perform a path search even / in a string
 
 setopt CDABLE_VARS          # expand an argument for CD if it is not a directory or does not begin with '/'.  Expand it as it was preceded by '~'
 setopt PUSHD_IGNORE_DUPS    # don't push duplicate old directory
-							# insert the first match immdiately.
+                            # insert the first match immdiately.
 setopt -8                   # Append a trailing '/' to all directory names.
 setopt NOTIFY               # make shell notify background job immediately after they luanched
 unsetopt correct_all        # stop auto correct feature
