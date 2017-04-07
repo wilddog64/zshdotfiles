@@ -128,4 +128,3 @@ unsetopt AUTO_PUSHD
 
 # === options for jobs
 setopt AUTO_RESUME
-
