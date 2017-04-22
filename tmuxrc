@@ -67,13 +67,13 @@ set -g pane-active-border-bg yellow
 setw -g mode-keys vi
 
 # vi like copy commands
-bind-key -t vi-copy 'v' begin-selection
-bind-key -t vi-copy 'y' copy-selection
+bind-key -Tcopy-mode-vi 'v' send -X begin-selection
+bind-key -Tcopy-mode-vi 'y' send -X copy-selection
 unbind p
 bind p paste-buffer
 
-unbind -t vi-copy Enter
-bind-key -t vi-copy Enter copy-pipe 'reattach-to-user-namespace pbcopy'
+unbind -tcopy-mode-vi Enter
+bind-key -Tcopy-mode-vi Enter copy-pipe 'reattach-to-user-namespace pbcopy'
 
 # bind Control k to clear tmux buffer (history)
 bind-key -n C-k clear-history
