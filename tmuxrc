@@ -72,8 +72,9 @@ bind-key -Tcopy-mode-vi 'y' send -X copy-selection
 unbind p
 bind p paste-buffer
 
-unbind -tcopy-mode-vi Enter
-bind-key -Tcopy-mode-vi Enter copy-pipe 'reattach-to-user-namespace pbcopy'
+bind-key -Tcopy-mode-vi 'y' send -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
+bind-key -Tcopy-mode-vi Escape send -X cancel
+bind-key -Tcopy-mode-vi V send -X rectangle-toggle
 
 # bind Control k to clear tmux buffer (history)
 bind-key -n C-k clear-history
