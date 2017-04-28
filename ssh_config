@@ -20,6 +20,6 @@ Host dev
  
 Host dev+*
   ControlMaster auto
-  ProxyCommand ssh -T -a $(echo %h |cut -d+ -f1) nc $(echo %h |cut -d+ -f2) %p 2>/dev/null
+  ProxyCommand ssh -T -a $(echo %h | cut -d+ -f1) nc $(echo %h | cut -d+ -f2) %p 2>/dev/null
   ControlPath ~/.ssh/ssh-control_%r@%h:%p
   StrictHostKeyChecking no
