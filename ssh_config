@@ -15,6 +15,11 @@ Host stash.*
   UseKeychain yes
   AddKeysToAgent yes
 
+Host bit-asupdevelop-lnx.int.bbpd.io
+  HostName bit-asupdevelop-lnx.int.bbpd.io
+  User root
+  IdentityFile ~/.ssh/id_rsa
+
 Host dev
   Hostname 54.84.11.127
  
@@ -23,3 +28,4 @@ Host dev+*
   ProxyCommand ssh -T -a $(echo %h | cut -d+ -f1) nc $(echo %h | cut -d+ -f2) %p 2>/dev/null
   ControlPath ~/.ssh/ssh-control_%r@%h:%p
   StrictHostKeyChecking no
+
