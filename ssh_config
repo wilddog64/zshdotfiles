@@ -34,23 +34,13 @@ Host asup913000-lnx
   User root
   IdentityFile ~/.ssh/id_rsa
 
-Host test-jenkins-1
-  HostName test-jenkins-1.int.bbpd.io
+Host intdeploy-prod
+  HostName internaldeploy-jenkins.int.bbpd.io
   user root
   IdentityFile ~/.ssh/id_rsa
 
-Host test-jenkins-1.int.bbpd.io
-  HostName test-jenkins-1.int.bbpd.io
-  user root
-  IdentityFile ~/.ssh/id_rsa
-
-Host test-jenkins-2
-  HostName test-jenkins-2.int.bbpd.io
-  user root
-  IdentityFile ~/.ssh/id_rsa
-
-Host test-jenkins-2.int.bbpd.io
-  HostName test-jenkins-2.int.bbpd.io
+Host intdeploy-stage
+  HostName stage-internaldeploy-jenkins.init.bbpd.io
   user root
   IdentityFile ~/.ssh/id_rsa
 
