@@ -39,8 +39,18 @@ Host intdeploy-prod
   user root
   IdentityFile ~/.ssh/id_rsa
 
+Host internaldeploy-jenkins.init.bbpd.io
+  HostName internaldeploy-jenkins.int.bbpd.io
+  user root
+  IdentityFile ~/.ssh/id_rsa
+
 Host intdeploy-stage
-  HostName stage-internaldeploy-jenkins.init.bbpd.io
+  HostName staging-internaldeploy-jenkins.int.bbpd.io
+  user root
+  IdentityFile ~/.ssh/id_rsa
+
+Host staging-internaldeploy-jenkins.int.bbpd.io
+  HostName staging-internaldeploy-jenkins.int.bbpd.io
   user root
   IdentityFile ~/.ssh/id_rsa
 
