@@ -41,13 +41,13 @@
 [push]
     default = upstream
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path =
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
 [core]
-    excludesfile = /Users/chengkai.liang/.gitignore_global
+    excludesfile = /Users/cliang/.gitignore_global
     pager        = cat
     autocrlf     = false
     safecrlf     = false
@@ -55,11 +55,11 @@
     filemode     = false
     ignorecase   = false
 [hub]
-	protocol = ssh
+    protocol = ssh
 [credential]
-	helper = osxkeychain
+    helper = osxkeychain
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
