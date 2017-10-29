@@ -55,4 +55,3 @@ alias m='mate'
 alias svn-cdiff='svn diff --diff-cmd colordiff'
 alias unittest="python -m unittest discover -s . -p '*_test.py' -v"
 alias rd="rm -rf"
-alias vi="/usr/local/bin/nvim"
