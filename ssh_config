@@ -29,6 +29,13 @@ Host dev+*
   ControlPath ~/.ssh/ssh-control_%r@%h:%p
   StrictHostKeyChecking no
 
+Host stage+*
+  ControlMaster auto
+  ProxyCommand ssh -T -a $(echo %h |cut -d+ -f1) nc $(echo %h |cut -d+ -f2) %p 2>/dev/null
+  ControlPath ~/.ssh/ssh-control_%r@%h:%p
+  StrictHostKeyChecking no
+  IdentityFile ~/.ssh/learn1.pem
+
 Host asup913000-lnx
   HostName bit-asup913000-lnx.int.bbpd.io
   User root
