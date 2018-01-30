@@ -48,6 +48,33 @@ Host eu+*
  ControlPath ~/.ssh/ssh-control_%r@%h:%p
  StrictHostKeyChecking no
 
+Host prod
+    Hostname 54.86.185.200
+
+Host prod+*
+ ControlMaster auto
+ ProxyCommand ssh -T -a $(echo %h |cut -d+ -f1) nc $(echo %h |cut -d+ -f2) %p 2>/dev/null
+ ControlPath ~/.ssh/ssh-control_%r@%h:%p
+ StrictHostKeyChecking no
+
+Host cn
+    Hostname 52.80.121.107
+
+Host cn+*
+ ControlMaster auto
+ ProxyCommand ssh -T -a $(echo %h |cut -d+ -f1) nc $(echo %h |cut -d+ -f2) %p 2>/dev/null
+ ControlPath ~/.ssh/ssh-control_%r@%h:%p
+ StrictHostKeyChecking no
+
+Host playground
+    Hostname 54.156.242.20
+
+Host playground+*
+ ControlMaster auto
+ ProxyCommand ssh -T -a $(echo %h |cut -d+ -f1) nc $(echo %h |cut -d+ -f2) %p 2>/dev/null
+ ControlPath ~/.ssh/ssh-control_%r@%h:%p
+ StrictHostKeyChecking no
+
 Host asup913000-lnx
   HostName bit-asup913000-lnx.int.bbpd.io
   User root
