@@ -109,3 +109,13 @@ Host bit-asup91201510-lnx.int.bbpd.io
    HostName bit-asup91201510-lnx.int.bbpd.io
    user root
   IdentityFile ~/.ssh/id_rsa
+
+Host dashmanatbb
+   HostName chef-dashmanatbb.bbpd.io
+   user ubuntu
+   IdentityFile ~/.ssh/learn1.pem
+
+Host chef-dashmanatbb.bbpd.io
+   HostName chef-dashmanatbb.bbpd.io
+   user ubuntu
+   IdentityFile ~/.ssh/learn1.pem
