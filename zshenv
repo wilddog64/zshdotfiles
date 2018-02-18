@@ -70,6 +70,14 @@ if [[ -z $DISPLAY && -z $SSH_CONNECTION ]]; then
     echo "DISPLAY has been set to $DISPLAY"
 fi
 
+# for phpbrew
+if [[ -e ~/cliang/.phpbrew/bashrc ]]; then
+    source ~/cliang/.phpbrew/bashrc
+fi
+
+export PHPBREW_SET_PROMPT=1
+export PHPBREW_RC_ENABLE=1
+
 # === options for customizing zsh behavior
 setopt AUTO_NAME_DIRS
 setopt -J                   # set AUTO_CD
