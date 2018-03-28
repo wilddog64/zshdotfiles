@@ -16,7 +16,7 @@ alias del='/bin/rm -vi'
 alias diff=colordiff
 alias dirdiff="diff -Bbrq -x 'ruby_sess.*' -x '*.swp' -x '*.bak' -x '*.log.[0-9]' -x '.hg' -x '*.orig' -x '*.properties' -x '*.rdf' -x '.*' "
 alias glnotify=growlnotify
-alias h='fc -l'
+alias h='fc -l -d'
 alias l='ls -Ft'
 alias grep='grep --color=no'
 alias ll='ls -Fhalt'
