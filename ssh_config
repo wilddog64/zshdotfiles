@@ -1,121 +1,89 @@
-Host *
-  ForwardAgent yes
-  PubKeyAuthentication yes
-  ServerAliveInterval 240
-  ServerAliveCountMax 2
-  ControlMaster auto
-  ControlPersist 10m
-
 Host stash.*
   PreferredAuthentications publickey
-  IdentityFile ~/.ssh/id_rsa
-  ControlPath ~/.ssh/cm-%r@%h:%p
+  IdentityFile /Users/cliang/.ssh/id_rsa
+
+Host *
+  User cliang
   ControlMaster auto
-  ControlPersist 10m
-  UseKeychain yes
-  AddKeysToAgent yes
-
-Host bit-asupdevelop-lnx.int.bbpd.io
-  HostName bit-asupdevelop-lnx.int.bbpd.io
-  User root
+  ForwardAgent yes
   IdentityFile ~/.ssh/id_rsa
 
-Host dev
-  Hostname 54.84.11.127
+Host prod
+  IdentityFile /Users/cliang/.ssh/id_rsa
+  Hostname 54.86.185.200
+  StrictHostKeyChecking no
  
-Host dev+*
+Host prod+*
   ControlMaster auto
-  ProxyCommand ssh -T -a $(echo %h | cut -d+ -f1) nc $(echo %h | cut -d+ -f2) %p 2>/dev/null
+  ProxyCommand ssh -T -a $(echo %h |cut -d+ -f1) nc $(echo %h |cut -d+ -f2) %p 2>/dev/null
   ControlPath ~/.ssh/ssh-control_%r@%h:%p
   StrictHostKeyChecking no
-
+ 
 Host stage
-    hostname 54.86.15.31
-
+  Hostname 54.86.15.31
+  StrictHostKeyChecking no
+ 
 Host stage+*
   ControlMaster auto
   ProxyCommand ssh -T -a $(echo %h |cut -d+ -f1) nc $(echo %h |cut -d+ -f2) %p 2>/dev/null
   ControlPath ~/.ssh/ssh-control_%r@%h:%p
   StrictHostKeyChecking no
-  IdentityFile ~/.ssh/learn1.pem
+ 
+Host dev
+  Hostname 54.84.11.127
+ 
+Host dev+*
+  ControlMaster auto
+  ProxyCommand ssh -T -a $(echo %h |cut -d+ -f1) nc $(echo %h |cut -d+ -f2) %p 2>/dev/null
+  ControlPath ~/.ssh/ssh-control_%r@%h:%p
+  StrictHostKeyChecking no
+ 
+Host sin
+  Hostname 52.220.20.0
+
+Host sin+*
+  ControlMaster auto
+  ProxyCommand ssh -T -a $(echo %h |cut -d+ -f1) nc $(echo %h |cut -d+ -f2) %p 2>/dev/null
+  ControlPath ~/.ssh/ssh-control_%r@%h:%p
+  StrictHostKeyChecking no
+
+Host aus
+  Hostname 52.65.172.49
+
+Host aus+*
+  ControlMaster auto
+  ProxyCommand ssh -T -a $(echo %h |cut -d+ -f1) nc $(echo %h |cut -d+ -f2) %p 2>/dev/null
+  ControlPath ~/.ssh/ssh-control_%r@%h:%p
+  StrictHostKeyChecking no
 
 Host eu
- Hostname 35.157.154.33
+  IdentityFile /Users/cliang/.ssh/id_rsa
+  Hostname 35.157.154.33
 
 Host eu+*
+  IdentityFile /Users/cliang/.ssh/id_rsa
+  ControlMaster auto
+  ProxyCommand ssh -T -a $(echo %h |cut -d+ -f1) nc $(echo %h |cut -d+ -f2) %p 2>/dev/null
+  ControlPath ~/.ssh/ssh-control_%r@%h:%p
+  StrictHostKeyChecking no
+
+Host gov
+  IdentityFile /Users/cliang/.ssh/id_rsa
+  Hostname learn-us-gov-west-1-jumphost.bbpd.io
+  StrictHostKeyChecking no
+
+Host gov+*
+  IdentityFile /Users/cliang/.ssh/id_rsa
+  ControlMaster auto
+  ProxyCommand ssh -T -a $(echo %h |cut -d+ -f1) nc $(echo %h |cut -d+ -f2) %p 2>/dev/null
+  ControlPath ~/.ssh/ssh-control_%r@%h:%p
+  StrictHostKeyChecking no
+
+Host pg
+ Hostname 54.156.242.20
+
+Host pg+*
  ControlMaster auto
  ProxyCommand ssh -T -a $(echo %h |cut -d+ -f1) nc $(echo %h |cut -d+ -f2) %p 2>/dev/null
  ControlPath ~/.ssh/ssh-control_%r@%h:%p
  StrictHostKeyChecking no
-
-Host prod
-    Hostname 54.86.185.200
-
-Host prod+*
- ControlMaster auto
- ProxyCommand ssh -T -a $(echo %h |cut -d+ -f1) nc $(echo %h |cut -d+ -f2) %p 2>/dev/null
- ControlPath ~/.ssh/ssh-control_%r@%h:%p
- StrictHostKeyChecking no
-
-Host cn
-    Hostname 52.80.121.107
-
-Host cn+*
- ControlMaster auto
- ProxyCommand ssh -T -a $(echo %h |cut -d+ -f1) nc $(echo %h |cut -d+ -f2) %p 2>/dev/null
- ControlPath ~/.ssh/ssh-control_%r@%h:%p
- StrictHostKeyChecking no
-
-Host playground
-    Hostname 54.156.242.20
-
-Host playground+*
- ControlMaster auto
- ProxyCommand ssh -T -a $(echo %h |cut -d+ -f1) nc $(echo %h |cut -d+ -f2) %p 2>/dev/null
- ControlPath ~/.ssh/ssh-control_%r@%h:%p
- StrictHostKeyChecking no
-
-Host asup913000-lnx
-  HostName bit-asup913000-lnx.int.bbpd.io
-  User root
-  IdentityFile ~/.ssh/id_rsa
-
-Host intdeploy-prod
-  HostName internaldeploy-jenkins.int.bbpd.io
-  user root
-  IdentityFile ~/.ssh/id_rsa
-
-Host internaldeploy-jenkins.init.bbpd.io
-  HostName internaldeploy-jenkins.int.bbpd.io
-  user root
-  IdentityFile ~/.ssh/id_rsa
-
-Host intdeploy-stage
-  HostName staging-internaldeploy-jenkins.int.bbpd.io
-  user root
-  IdentityFile ~/.ssh/id_rsa
-
-Host staging-internaldeploy-jenkins.int.bbpd.io
-  HostName staging-internaldeploy-jenkins.int.bbpd.io
-  user root
-  IdentityFile ~/.ssh/id_rsa
-
-Host bit-asup91201510-lnx
-   HostName bit-asup91201510-lnx.int.bbpd.io
-   user root
-  IdentityFile ~/.ssh/id_rsa
-
-Host bit-asup91201510-lnx.int.bbpd.io
-   HostName bit-asup91201510-lnx.int.bbpd.io
-   user root
-  IdentityFile ~/.ssh/id_rsa
-
-Host dashmanatbb
-   HostName chef-dashmanatbb.bbpd.io
-   user ubuntu
-   IdentityFile ~/.ssh/learn1.pem
-
-Host chef-dashmanatbb.bbpd.io
-   HostName chef-dashmanatbb.bbpd.io
-   user ubuntu
-   IdentityFile ~/.ssh/learn1.pem
