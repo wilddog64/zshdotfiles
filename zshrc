@@ -177,3 +177,5 @@ fi
 unalias run-help
 autoload run-help
 HELPDIR=/usr/local/share/zsh/help
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
