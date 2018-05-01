@@ -2,3 +2,4 @@ _py3_*
 .DS_Store
 tags
 __pycache__/
+*.pyc
