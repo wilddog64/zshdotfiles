@@ -1,8 +1,8 @@
 src=~/src
 gitrepo=~src/gitrepo
-wsc=~gitrepo/wsc
-ecommerce=~wsc/eCommerce
-devops=~wsc/devops
+wsgc=~gitrepo/wsc
+ecommerce=~wsgc/eCommerce
+devops=~wsgc/devops
 java=~gitrepo/java
 gradle=~gitrepo/gradle
 python=~gitrepo/python
