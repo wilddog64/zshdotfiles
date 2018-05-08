@@ -4,6 +4,7 @@ wsgc=~src/wsgc
 svn=~src/wsgc/svn
 ecommerce=~wsgc/git/eCommerce
 devops=~wsgc/svn/devops
+svn_apps=~devops/application
 java=~gitrepo/java
 gradle=~gitrepo/gradle
 python=~gitrepo/python
