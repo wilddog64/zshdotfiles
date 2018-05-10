@@ -51,7 +51,9 @@ export GNUBIN=/usr/local/opt/coreutils/libexec/gnubin
 
 export DOTNET_PATH=/usr/local/share/dotnet
 
-export PATH=$DOTNET_PATH:$BREW_BIN:$GNUBIN:$BREW_BIN:$BREW_SBIN:~/bin:$GIT_CONTRIB:$PATH:~/bin # Add RVM to PATH for scripting
+export OPENSSL_BIN=/usr/local/opt/openssl/bin
+
+export PATH=$OPENSSL_BIN:$DOTNET_PATH:$BREW_BIN:$GNUBIN:$BREW_BIN:$BREW_SBIN:~/bin:$GIT_CONTRIB:$PATH:~/bin # Add RVM to PATH for scripting
 
 # MONO assembly
 export MONO_GAC_PREFIX=/usr/local
