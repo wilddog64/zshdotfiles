@@ -3,3 +3,4 @@ _py3_*
 tags
 __pycache__/
 *.pyc
+gradle/
