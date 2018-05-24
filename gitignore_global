@@ -8,3 +8,4 @@ build/
 .gradletasknamecache
 target/
 .gradle/
+*.bak
