@@ -54,3 +54,4 @@ alias svn-cdiff='svn diff --diff-cmd colordiff'
 alias unittest="python -m unittest discover -s . -p '*_test.py' -v"
 alias rd="rm -rf"
 alias md='mkdir -p'
+alias dirs='dirs -pv'
