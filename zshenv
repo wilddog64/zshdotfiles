@@ -28,7 +28,7 @@ export TMP=/tmp
 export TMPDIR=/tmp
 
 # === theme ===
-export ZSH_THEME=cloud
+export ZSH_THEME=spaceship
 
 # === Favoir Editor ===
 export EDITOR=vi
