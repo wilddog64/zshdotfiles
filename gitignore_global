@@ -9,3 +9,6 @@ build/
 target/
 .gradle/
 *.bak
+.m2/
+.vagrant/
+*.retry
