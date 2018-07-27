@@ -183,3 +183,11 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 if [[ -e /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
     source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
+
+if [[ -e /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh ]]; then
+    source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+fi
+
+if [[ -e /usr/local/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh ]]; then
+    source /usr/local/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh
+fi
