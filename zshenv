@@ -139,3 +139,6 @@ setopt PRINT_EIGHT_BIT
 
 # === options for jobs
 setopt AUTO_RESUME
+
+# set zsh-autosuggestions buffer size to 20
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
