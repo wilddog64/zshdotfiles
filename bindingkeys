@@ -4,3 +4,5 @@ bindkey -M viins '^O' copy-prev-shell-word
 bindkey '^P' push-line # push current command line into a buffer, for later use
 bindkey '^r' history-incremental-search-backward
 bindkey '^s' autosuggest-accept
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
