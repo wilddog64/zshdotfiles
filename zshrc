@@ -175,7 +175,7 @@ if [[ -e $(brew --prefix nvm) ]]; then
 fi
 
 if [[ -e /opt/puppetlabs/pdk ]]; then
-    eval $(/usr/libexec/path_helper -s)
+    export PATH=$PATH:/opt/puppetlabs/pdk/bin
 fi
 
 
