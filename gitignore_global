@@ -1,0 +1,11 @@
+_py3_*
+.DS_Store
+tags
+__pycache__/
+*.pyc
+gradle/
+build/
+.gradletasknamecache
+target/
+.gradle/
+*.bak

@@ -1,10 +1,15 @@
 src=~/src
 gitrepo=~src/gitrepo
+wsgc=~src/wsgc/git
+svn=~src/wsgc/svn
+ecommerce=~wsgc/eCommerce
+devops=~svn/devops
+svn_apps=~devops/application
 java=~gitrepo/java
 gradle=~gitrepo/gradle
-python=~gitrepo/python
 personal=~gitrepo/personal
 ansible=~personal/ansible
+python=~personal/python
 puppet=~gitrepo/vagrants/puppet
 chef=~gitrepo/chef
 cookbooks=~/cookbooks

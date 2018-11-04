@@ -121,8 +121,8 @@ autoload -Uz is-at-least
 
 fpath=(
         $fpath
-        /Users/cliang/.zen/zsh/scripts
-        /Users/cliang/.zen/zsh/zle )
+        ~/.zen/zsh/scripts
+        ~/.zen/zsh/zle )
 autoload -U zen
 
 [[ -s `brew --prefix`/etc/autojump.sh  ]] && . `brew --prefix`/etc/autojump.sh

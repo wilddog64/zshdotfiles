@@ -28,7 +28,7 @@ export TMP=/tmp
 export TMPDIR=/tmp
 
 # === theme ===
-export ZSH_THEME=cloud
+export ZSH_THEME=spaceship
 
 # === Favoir Editor ===
 export EDITOR=vi
@@ -36,6 +36,9 @@ export EDITOR=vi
 
 # === export JAVA_HOME enviornment variable ===
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-10.jdk/Contents/Home
+
+# === MAVEN options
+export MAVEN_OPTS="-Xmx1024m -Xms512m -Djavax.net.ssl.trustStore=/Users/cliang1/.cacerts-wsi"
 
 # export GIT_CONTRIB=/usr/local/Cellar/git/1.9.0/share/git-core/contrib
 export BREW_ROOT=/usr/local
@@ -48,7 +51,9 @@ export GNUBIN=/usr/local/opt/coreutils/libexec/gnubin
 
 export DOTNET_PATH=/usr/local/share/dotnet
 
-export PATH=$DOTNET_PATH:$BREW_BIN:$GNUBIN:$BREW_BIN:$BREW_SBIN:~/bin:$GIT_CONTRIB:$PATH:~/bin # Add RVM to PATH for scripting
+export OPENSSL_BIN=/usr/local/opt/openssl/bin
+
+export PATH=$OPENSSL_BIN:$DOTNET_PATH:$BREW_BIN:$GNUBIN:$BREW_BIN:$BREW_SBIN:~/bin:$GIT_CONTRIB:$PATH:~/bin # Add RVM to PATH for scripting
 
 # MONO assembly
 export MONO_GAC_PREFIX=/usr/local
@@ -131,7 +136,6 @@ setopt REC_EXACT                     # recognize exact match in completion
 setopt ALWAYS_TO_END                 # always move cursor to the end after completion
 
 setopt PRINT_EIGHT_BIT
-unsetopt AUTO_PUSHD
 
 # === options for jobs
 setopt AUTO_RESUME

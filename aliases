@@ -19,6 +19,7 @@ alias glnotify=growlnotify
 alias h='fc -l -i'
 alias l='ls -Ft'
 alias grep='grep --color=no'
+alias ls='ls --color=auto'
 alias ll='ls -Fhalt'
 alias lsdir='ls -aF'
 alias lspm='perl ~/bin/lspm.pl'
@@ -53,4 +54,4 @@ alias svn-cdiff='svn diff --diff-cmd colordiff'
 alias unittest="python -m unittest discover -s . -p '*_test.py' -v"
 alias rd="rm -rf"
 alias md='mkdir -p'
-alias vi=nvim
+alias dirs='dirs -pv'
