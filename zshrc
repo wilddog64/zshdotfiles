@@ -122,7 +122,8 @@ autoload -Uz is-at-least
 fpath=(
         $fpath
         ~/.zen/zsh/scripts
-        ~/.zen/zsh/zle )
+        ~/.zen/zsh/zle
+       ~/.zfunctions )
 autoload -U zen
 
 [[ -s `brew --prefix`/etc/autojump.sh  ]] && . `brew --prefix`/etc/autojump.sh
@@ -179,3 +180,6 @@ autoload run-help
 HELPDIR=/usr/local/share/zsh/help
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+autoload -U promptinit; promptinit
+prompt spaceship
