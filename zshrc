@@ -181,7 +181,7 @@ HELPDIR=/usr/local/share/zsh/help
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-autoload -U promptinit; promptinit
-prompt spaceship
-
-export SPACESHIP_TIME_SHOW=true
+# autoload -U promptinit; promptinit
+# prompt spaceship
+# 
+# export SPACESHIP_TIME_SHOW=true
