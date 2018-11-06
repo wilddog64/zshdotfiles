@@ -185,3 +185,7 @@ autoload -U promptinit; promptinit
 prompt spaceship
 
 export SPACESHIP_TIME_SHOW=true
+
+if [[ -e ~/src/gitrepo/personal/zsh-autosuggestions ]]; then
+    source ~/src/gitrepo/personal/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
