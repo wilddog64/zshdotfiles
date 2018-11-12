@@ -186,10 +186,6 @@ prompt spaceship
 
 export SPACESHIP_TIME_SHOW=true
 
-if [[ -e ~/src/gitrepo/personal/zsh-autosuggestions ]]; then
-    source ~/src/gitrepo/personal/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
-
 if [[ -e /opt/puppetlabs/pdk ]]; then
     export PATH=$PATH:/opt/puppetlabs/pdk/bin
 fi
