@@ -129,17 +129,20 @@ autoload -U zen
 [[ -s `brew --prefix`/etc/autojump.sh  ]] && . `brew --prefix`/etc/autojump.sh
 eval `keychain --eval --agents ssh --inherit any id_rsa`
 
-if [[ $(which pyenv) ]]; then
+which pyenv 2>&1 > /dev/null
+if [[ $? == 0 ]]; then
   echo initialize pyenv ...
   eval "$(pyenv init -)"
 fi
 
-if [[ $(which pyenv-virtualenv-init) ]]; then
+which pyenv-virtualenv-init 2>&1 > /dev/null
+if [[ $? == 0 ]]; then
   echo "initialize pyenv virtualenv"
   eval "$(pyenv virtualenv-init -)"
 fi
 
-if [[ $(which hub) ]]; then
+which hub 2>&1 > /dev/null
+if [[ $? == 0 ]]; then
   echo 'initialize hub'
   eval "$(hub alias -s)"
 fi
