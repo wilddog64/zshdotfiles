@@ -1,8 +1,11 @@
 src=~/src
 gitrepo=~src/gitrepo
+gigamon=~gitrepo/gigamon
+gpuppet=~gigamon/puppet
 java=~gitrepo/java
 gradle=~gitrepo/gradle
 personal=~gitrepo/personal
+puppet=~personal/puppet
 ansible=~personal/ansible
 python=~personal/python
 berkshelf=~/.berkshelf/
