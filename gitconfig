@@ -2,26 +2,16 @@
     name = Chengkai Liang
     email = ckm.liang@gmail.com
 [alias]
-    timeline                   = log --topo-order --date relative --pretty='%Cgreen %h %an %ai %s' --graph
-    st                         = "!f() { git status --ignore-submodules --short; }; f"
-    rebase-abort               = rebase --abort
-    co                         = checkout
-    diffc                      = diff --cached
-    pushu                      = push
-    merge-with-no-commit-no-ff = merge --no-commit --no-ff
-    cob                        = checkout -b
-    aliases                    = config --get-regexp ^alias\\.*$
-    pullrb                     = pull
-    diff-b                     = diff
-    outfiles                   = "!f() { git diff --name-status ..$1;  }; f"
-    tip                        = log --date relative --pretty='%Cgreen %h %an %ai %s' -1
-    todayschanges              = "!f() { git whatchanged --oneline --since=yesterday | grep -v '^:'; }; f"
-    show-name                  = show --name-status
-    fetch-p                    = fetch -p
-    rm-submodule               = "!f() { git submodule deinit $1; git rm $1; }; f"
-    unstage                    = reset HEAD --
-    wdiff                      = diff --word-diff
-    push-tags                  = "!f() { git push; git push --tag; }; f"
+    co = checkout
+    st = "!f() { git status --ignore-submodules --short; }; f"
+    diffc = diff --cached
+    merge-with-no-ff = merge --no-ff
+    aliases = config --get-regexp ^alias\\.*$
+    pullrb = pull --rebase
+    outfiles = "!f() { git diff --name-status ..$1;  }; f"
+    tip = log --date relative --pretty='%Cgreen %h %an %ai %s' -1
+    todayschanges = "!f() { git whatchanged --oneline --since=yesterday | grep -v '^:'; }; f"
+    push-tag = "!f() { git push; git push --tag; }; f"
 [branch]
     autosetuprebase            = always
 [color]
@@ -41,13 +31,13 @@
 [push]
     default = upstream
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path =
 [mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+    cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
 [core]
-	excludesfile = /Users/cliang1/.gitignore_global
+    excludesfile = /Users/cliang1/.gitignore_global
     pager        = cat
     autocrlf     = false
     safecrlf     = false
@@ -64,4 +54,4 @@
     process = git-lfs filter-process
     required = true
 [http]
-	sslVerify = false
+    sslVerify = false
