@@ -12,6 +12,7 @@
     tip = log --date relative --pretty='%Cgreen %h %an %ai %s' -1
     todayschanges = "!f() { git whatchanged --oneline --since=yesterday | grep -v '^:'; }; f"
     push-tag = "!f() { git push; git push --tag; }; f"
+    timeline = log --topo-order --date relative --pretty='%Cgreen %h %an %ai %s' --graph
 [branch]
     autosetuprebase            = always
 [color]
