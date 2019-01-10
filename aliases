@@ -21,7 +21,6 @@ alias l='ls -Ft'
 alias grep='grep --color=no'
 alias ll='ls -Fhalt'
 alias lsdir='ls -aF'
-alias lspm='perl ~/bin/lspm.pl'
 alias help=run-help
 alias list=less
 alias perldoc='perldoc -t'
