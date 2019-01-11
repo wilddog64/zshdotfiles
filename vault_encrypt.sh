@@ -34,7 +34,7 @@ fi
 LDAP_USER="${2}"
 
 # Export Vault specific parameters
-export VAULT_ADDR="${VAULT_ADDR:-https://secrets.icebrg.io}"
+export VAULT_ADDR="${VAULT_ADDR:-https://vault.icebrg.io}"
 
 # Validate that we have a token
 if ! vault token-lookup >> /dev/null 2>&1; then
