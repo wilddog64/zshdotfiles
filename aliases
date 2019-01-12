@@ -9,6 +9,7 @@ alias -g T=' | tee ~/tmp/tee.txt'
 alias -g PP='| perl -ple'
 alias -g PB='| pbcopy'
 alias -g JS='| python -m json.tool'
+alias -g EN='| vault_encrypt -u cliang'
 alias cls=clear
 alias cp='cp -v'
 alias cdpbld="cd ~/.cpan/build/"
