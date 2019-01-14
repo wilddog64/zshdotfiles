@@ -64,4 +64,4 @@ fi
 EM=$(echo ${JSON_PAYLOAD} | jq -r '.data.ciphertext' | base64 | tr -d '\n')
 
 # Wrap the base64 encoded encrypted message in the format that EYAML expects
-echo "ENC[PKCS7Vault,${EM}]"
+echo "ENC[PKCS1Vault,${EM}]"
