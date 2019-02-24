@@ -53,8 +53,9 @@ export DOTNET_PATH=/usr/local/share/dotnet
 
 export OPENSSL_BIN=/usr/local/opt/openssl/bin
 export GTAR_PATH=/usr/local/opt/gnu-tar/libexec/gnubin
+export PUPPET_BOLT=/opt/puppetlabs/bolt/bin
 
-export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$BREW_BIN:$GNUBIN:$BREW_BIN:$BREW_SBIN:$GIT_CONTRIB:$PATH:~/bin # Add RVM to PATH for scripting
+export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$BREW_BIN:$GNUBIN:$BREW_BIN:$BREW_SBIN:$GIT_CONTRIB:$PATH:$PUPPET_BOLT:~/bin # Add RVM to PATH for scripting
 
 # MONO assembly
 export MONO_GAC_PREFIX=/usr/local
