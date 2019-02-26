@@ -53,10 +53,7 @@ plugins=(git
          git-extra
          autojump
          gem
-         knife
          per-directory-history
-         thor
-         svn
          gradle
          zsh-navigation-tools
          zsh-autosuggestions
