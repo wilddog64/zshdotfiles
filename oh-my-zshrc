@@ -43,7 +43,23 @@ module_path=($module_path /usr/local/lib/zpython)
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git bundler web-search vi-mode vagrant rake brew git-extra autojump gem knife per-directory-history thor svn gradle zsh-navigation-tools zsh-autosuggestions zsh-syntax-highlighting z terraform)
+plugins=(git
+         bundler
+         web-search
+         vi-mode
+         vagrant
+         rake
+         brew
+         git-extra
+         autojump
+         gem
+         per-directory-history
+         gradle
+         zsh-navigation-tools
+         zsh-autosuggestions
+         zsh-syntax-highlighting
+         z
+         terraform)
 
 source $ZSH/oh-my-zsh.sh
 
