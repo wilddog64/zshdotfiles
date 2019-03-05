@@ -37,9 +37,6 @@ export EDITOR=vi
 # === export JAVA_HOME enviornment variable ===
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-10.jdk/Contents/Home
 
-# === MAVEN options
-export MAVEN_OPTS="-Xmx1024m -Xms512m -Djavax.net.ssl.trustStore=/Users/cliang1/.cacerts-wsi"
-
 # export GIT_CONTRIB=/usr/local/Cellar/git/1.9.0/share/git-core/contrib
 export BREW_ROOT=/usr/local
 export BREW_BIN=$BREW_ROOT/bin
