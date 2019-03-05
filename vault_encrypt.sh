@@ -1,5 +1,5 @@
 #!/bin/bash
-
+export VAULT_SKIP_VERIFY=1
 # Transit key to target for encryption - defaults to puppet
 TRANSIT_KEY="${TRANSIT_KEY:-puppet}"
 
@@ -42,7 +42,7 @@ if ! vault token-lookup >> /dev/null 2>&1; then
 
     # Open up a TTY FD for user input
     exec 3</dev/tty
-    if ! vault login -tls-skip-verify -method=ldap username=${LDAP_USER} <&3 >> /dev/null 2>&1; then
+    if ! vault login -method=ldap username=${LDAP_USER} <&3 >> /dev/null 2>&1; then
         echo -e "\nAuthentication failed."
         exit 1
     fi
