@@ -6,6 +6,8 @@
     st = "!f() { git status --ignore-submodules --short; }; f"
     diffc = diff --cached
     merge-with-no-ff = merge --no-ff
+    merge-master = merge --no-ff master
+    merge-develop = merge --no-ff develop
     aliases = config --get-regexp ^alias\\.*$
     pullrb = pull --rebase
     outfiles = "!f() { git diff --name-status ..$1;  }; f"
