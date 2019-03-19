@@ -189,3 +189,10 @@ export SPACESHIP_TIME_SHOW=true
 if [[ -e /opt/puppetlabs/pdk ]]; then
     export PATH=$PATH:/opt/puppetlabs/pdk/bin
 fi
+
+which goenv 2>&1 > /dev/null
+
+if [[ $? == 0 ]]; then
+    echo initialize go env
+    eval "$(goenv init -)"
+fi
