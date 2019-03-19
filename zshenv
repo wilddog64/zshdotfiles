@@ -88,7 +88,7 @@ setopt AUTO_NAME_DIRS
 setopt -J                   # set AUTO_CD
 setopt -E                   # push silent - won't print when doing pushd/popd
 # setopt -Y                   # menu completion
-setopt -Q                   # perform a path search even / in a string        
+setopt -Q                   # perform a path search even / in a string
 
 setopt CDABLE_VARS          # expand an argument for CD if it is not a directory or does not begin with '/'.  Expand it as it was preceded by '~'
 setopt PUSHD_IGNORE_DUPS    # don't push duplicate old directory
