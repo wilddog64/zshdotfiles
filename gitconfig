@@ -48,6 +48,7 @@
     eol          = crlf
     filemode     = false
     ignorecase   = false
+    editor       = /usr/local/bin/nvim
 [hub]
     protocol = ssh
 [credential]
