@@ -50,7 +50,7 @@ plugins=(git
          vagrant
          rake
          brew
-         git-extra
+         git-extras
          gem
          per-directory-history
          gradle
