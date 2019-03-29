@@ -35,7 +35,7 @@ export EDITOR=vi
 # autoload -Uz compinstall && compinstall
 
 # === export JAVA_HOME enviornment variable ===
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-10.jdk/Contents/Home
+export JAVA_HOME=/usr
 
 # === MAVEN options
 export MAVEN_OPTS="-Xmx1024m -Xms512m -Djavax.net.ssl.trustStore=/Users/cliang1/.cacerts-wsi"
