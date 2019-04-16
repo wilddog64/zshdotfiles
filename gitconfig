@@ -53,3 +53,7 @@
     protocol = ssh
 [credential]
     helper = osxkeychain
+
+[bulkworkspaces]
+    puppet = /Users/cliang/src/gitrepo/gigamon/gigamon-puppet-repo
+    ansible = /Users/cliang/src/gitrepo/personal/ansible
