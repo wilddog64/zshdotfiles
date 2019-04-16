@@ -37,9 +37,6 @@ export EDITOR=vi
 # === export JAVA_HOME enviornment variable ===
 export JAVA_HOME=/usr
 
-# === MAVEN options
-export MAVEN_OPTS="-Xmx1024m -Xms512m -Djavax.net.ssl.trustStore=/Users/cliang1/.cacerts-wsi"
-
 # export GIT_CONTRIB=/usr/local/Cellar/git/1.9.0/share/git-core/contrib
 export BREW_ROOT=/usr/local
 export BREW_BIN=$BREW_ROOT/bin
@@ -52,8 +49,14 @@ export GNUBIN=/usr/local/opt/coreutils/libexec/gnubin
 export DOTNET_PATH=/usr/local/share/dotnet
 
 export OPENSSL_BIN=/usr/local/opt/openssl/bin
+export GTAR_PATH=/usr/local/opt/gnu-tar/libexec/gnubin
+export PUPPET_BOLT=/opt/puppetlabs/bolt/bin
+export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$BREW_BIN:$GNUBIN:$BREW_BIN:$BREW_SBIN:$GIT_CONTRIB:$PATH:$PUPPET_BOLT:~/bin # Add RVM to PATH for scripting
 
-export PATH=$OPENSSL_BIN:$DOTNET_PATH:$BREW_BIN:$GNUBIN:$BREW_BIN:$BREW_SBIN:~/bin:$GIT_CONTRIB:$PATH:~/bin # Add RVM to PATH for scripting
+export GOENVGOROOT=$HOME/.goenvs
+export GOENVTARGET=$HOME/go/bin
+export GOENVHOME=$HOME/workspace
+export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$BREW_BIN:$GNUBIN:$BREW_BIN:$BREW_SBIN:$GIT_CONTRIB:$PATH:$PUPPET_BOLT:$GOENVTARGET:~/bin
 
 # MONO assembly
 export MONO_GAC_PREFIX=/usr/local
@@ -61,6 +64,7 @@ export MONO_GAC_PREFIX=/usr/local
 # for AWS CLI to access Instance Meta Data Service (IMDS)
 export NO_PROXY=169.254.169.254
 
+export VAULT_ADDR=https://vault.icebrg.io
 if [[ ! -e ~/.zsh_history ]]; then
     mkdir -p ~/.zsh_history
 fi
@@ -112,11 +116,12 @@ setopt INC_APPEND_HISTORY            # append history as the order of command is
 setopt SHARE_HISTORY                 # make history share amount different zsh sessions
 setopt EXTENDED_HISTORY              # enable timestamp with history
 setopt HIST_FCNTL_LOCK               # use OS provide fcntl library
-DIRSTACKSIZE=10
 setopt AUTO_PUSHD
 setopt PUSHD_MINUS
 setopt PUSHD_SILENT
 setopt PUSHD_TO_HOME
+
+DIRSTACKSIZE=10
 
 # zsh regex
 setopt EXTENDED_GLOB        # Enable extended globbing
