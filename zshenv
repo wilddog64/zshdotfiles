@@ -64,6 +64,9 @@ export MONO_GAC_PREFIX=/usr/local
 # for AWS CLI to access Instance Meta Data Service (IMDS)
 export NO_PROXY=169.254.169.254
 
+# make zsh vim mode faster
+export KEYTIMEOUT=1
+
 export VAULT_ADDR=https://vault.icebrg.io
 if [[ ! -e ~/.zsh_history ]]; then
     mkdir -p ~/.zsh_history
