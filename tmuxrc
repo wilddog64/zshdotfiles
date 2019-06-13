@@ -36,16 +36,6 @@ bind Down last-window \; swap-pane -s tmp.1 \; kill-pane -t tmp
 # vi mode-keys
 setw -g mode-keys vi
 
-# vi like copy commands
-bind-key -Tcopy-mode-vi 'v' send -X begin-selection
-bind-key -Tcopy-mode-vi 'y' send -X copy-selection
-unbind p
-bind p paste-buffer
-
-bind-key -Tcopy-mode-vi 'y' send -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
-bind-key -Tcopy-mode-vi Escape send -X cancel
-bind-key -Tcopy-mode-vi V send -X rectangle-toggle
-
 # bind Control k to clear tmux buffer (history)
 bind-key -n C-k clear-history
 
@@ -94,7 +84,6 @@ set -g @plugin 'tmux-plugins/tmux-open'
 set -g @plugin 'tmux-plugins/tmux-pain-control'
 set -g @plugin 'tmux-plugins/tmux-logging'
 set -g @plugin 'christoomey/vim-tmux-navigator'
-set -g @plugin 'tmux-plugins/vim-tmux-focus-events'
 
 # custom setting for each plugin goes here
 set -g @urlview-key 'U' # change activate key for urlview
