@@ -1,5 +1,5 @@
 [user]
-    name = Chengkai Liang
+    name = CK
     email = chengkai.liang@gigamon.com
 [alias]
     co = checkout
@@ -57,3 +57,5 @@
 [bulkworkspaces]
     puppet = /Users/cliang/src/gitrepo/gigamon/gigamon-puppet-repo
     ansible = /Users/cliang/src/gitrepo/personal/ansible
+    tmux = /Users/cliang/.tmux/plugins
+    tmux-plugins = /Users/cliang/.tmux/plugins
