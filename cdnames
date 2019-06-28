@@ -1,6 +1,7 @@
 src=~/src
 gitrepo=~src/gitrepo
 gigamon=~gitrepo/gigamon
+golang=~gigamon/golang
 terraform=~gigamon/terraform
 gpuppet=~gigamon/gigamon-puppet-repo/icebrg-puppet-repo
 java=~gitrepo/java
