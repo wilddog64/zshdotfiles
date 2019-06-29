@@ -1,6 +1,6 @@
 [user]
     name = CK
-    email = chengkai.liang@gigamon.com
+    email = ckm.liang@gmail.com
 [alias]
     co = checkout
     st = "!f() { git status --ignore-submodules --short; }; f"
