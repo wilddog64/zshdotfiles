@@ -55,7 +55,7 @@ fi
 if [[ -r ~/.zsh/osx_app.aliases ]]; then
    source ~/.zsh/osx_app.aliases
 fi
-  
+
 # === third party shell libraries
 if [[ -r ~/lib/shell/zsh/my_shell_functions ]]; then
    source ~/lib/shell/zsh/my_shell_functions
@@ -194,7 +194,6 @@ if [[ -e /opt/puppetlabs/pdk ]]; then
 fi
 
 which goenv 2>&1 > /dev/null
-
 if [[ $? == 0 ]]; then
     echo initialize go env
     eval "$(goenv init -)"
