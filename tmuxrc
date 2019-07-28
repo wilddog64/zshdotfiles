@@ -110,6 +110,7 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-sessionist'
 set -g @plugin 'tmux-plugins/tmux-urlview'
 set -g @plugin 'jimeh/tmux-themepack'
+set -g @plugin 'laktak/extrakto'
 
 # custom setting for each plugin goes here
 set -g @urlview-key 'U' # change activate key for urlview
