@@ -84,6 +84,10 @@ bind-key -Tcopy-mode-vi V send -X rectangle-toggle
 # use control-{hjkl} to nagivate between vim and tmux panes
 is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
     | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+
+has_pane="tmux list-window | grep '-'"
+bind-key -n C-p  if-shell "$has_pane" "send-keys C-p" "tmux select-window -t $(tmux list-windows | grep '-' | perl -ne 'print $1 if /(\d+):/')"
+
 bind-key -n C-h if-shell "$is_vim" "send-keys C-h"  "select-pane -L"
 bind-key -n C-j if-shell "$is_vim" "send-keys C-j"  "select-pane -D"
 bind-key -n C-k if-shell "$is_vim" "send-keys C-k"  "select-pane -U"
