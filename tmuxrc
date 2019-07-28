@@ -120,7 +120,7 @@ set -g @continuum-boot-options 'iterm' # start iTerm instead of Terminal.app
 set -g @resurrect-strategy-vim 'session' # restore vim sessions
 set -g focus-events on
 set -g history-limit 50000
-set -g @themepack 'powerline/block/blue' # use powerline/black/blue thempack
+set -g @themepack 'powerline/gray' # use powerline/gray thempack
 
 if "test ! -d ~/.tmux/plugins/tpm" \
    "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && ~/.tmux/plugins/tpm/bin/install_plugins'"
