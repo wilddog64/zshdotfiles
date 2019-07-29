@@ -67,11 +67,6 @@ then
 fi
 
 
-# === load zsh modules
-autoload -U promptinit # custom prompt
-promptinit
-prompt clint
-
 # ===magic mv
 autoload -U zmv
 
@@ -185,7 +180,7 @@ HELPDIR=/usr/local/share/zsh/help
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 autoload -U promptinit; promptinit
-prompt spaceship
+# prompt spaceship
 
 export SPACESHIP_TIME_SHOW=true
 
