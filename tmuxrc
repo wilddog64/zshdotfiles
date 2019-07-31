@@ -82,7 +82,8 @@ bind-key -Tcopy-mode-vi V send -X rectangle-toggle
 
 # replace C-p to run our onliner script: go back to a last active window
 unbind C-p
-bind-key C-p run-shell "tmux select-window -t $(tmux list-windows | awk -F: '$2 ~ \"-\" { print $1 }')"
+# bind-key C-p run-shell "tmux select-window -t $(tmux list-windows | awk -F: '$2 ~ \"-\" { print $1 }')"
+bind-key C-p last-window
 
 # load tmux plugin manager
 run '~/.tmux/plugins/tpm/tpm'
