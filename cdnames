@@ -5,4 +5,4 @@ java=~gitrepo/java
 gradle=~gitrepo/gradle
 personal=~gitrepo/personal
 ansible=~personal/ansible
-python=~personal/python
+python=~bfg/python
