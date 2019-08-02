@@ -44,6 +44,9 @@ export BREW_BIN=$BREW_ROOT/bin
 export BREW_SBIN=$BREW_ROOT/sbin
 export HOMEBREW_GITHUB_API_TOKEN=e8c8fef32db9d77fd84c45b23b9cf6e589815c79
 
+# setup GROOVY_HOME environment variable
+export GROOVY_HOME=/usr/local/opt/groovy/libexec
+
 # for docker client
 # /usr/local/opt/coreutils/libexec/gnubin
 export GNUBIN=/usr/local/opt/coreutils/libexec/gnubin
