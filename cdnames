@@ -4,5 +4,7 @@ bfg=~gitrepo/bfg
 java=~gitrepo/java
 gradle=~gitrepo/gradle
 personal=~gitrepo/personal
+terraform=~personal/terraform
+gcp=~terraform/gcp
 ansible=~personal/ansible
 python=~bfg/python
