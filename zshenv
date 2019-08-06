@@ -59,6 +59,8 @@ export GOENVGOROOT=$HOME/.goenvs
 export GOENVTARGET=$HOME/go/bin
 export GOENVHOME=$HOME/workspace
 export LINUXBREW=/home/linuxbrew/.linuxbrew/bin
+# zsh auto-suggestion higlight style
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=gray,bold,underline"
 export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$BREW_BIN:$GNUBIN:$BREW_BIN:$BREW_SBIN:$GIT_CONTRIB:$PATH:$PUPPET_BOLT:$GOENVTARGET:~/bin:$LINUXBREW
 
 # MONO assembly
