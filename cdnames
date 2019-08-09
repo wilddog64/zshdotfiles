@@ -1,13 +1,10 @@
 src=~/src
 gitrepo=~src/gitrepo
-gigamon=~gitrepo/gigamon
-golang=~gigamon/golang
+bfg=~gitrepo/bfg
 terraform=~gigamon/terraform
-gpuppet=~gigamon/gigamon-puppet-repo/icebrg-puppet-repo
 java=~gitrepo/java
 gradle=~gitrepo/gradle
 personal=~gitrepo/personal
-puppet=~gigamon/gigamon-puppet-repo
 ansible=~personal/ansible
 python=~personal/python
 berkshelf=~/.berkshelf/
