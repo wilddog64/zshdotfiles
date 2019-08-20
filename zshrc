@@ -197,3 +197,13 @@ fi
 if [[ -z "$TMUX" && "$SSH_CONNECTION" != "" ]]; then
     tmx work
 fi
+
+# install .iterm2_shell_integration.zsh script if it does not exist
+if [[ ! -f ~/.iterm2_shell_integration.zsh ]]; then
+    curl -L https://iterm2.com/misc/install_shell_integration.sh | bash
+fi
+
+# enable the .iterm2_shell_integration.zsh script
+if [[ -f ~/.iterm2_shell_integration.zsh && -r ~/.iterm2_shell_integration.zsh ]]; then
+    source ~/.iterm2_shell_integration.zsh
+fi
