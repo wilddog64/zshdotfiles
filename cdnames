@@ -1,7 +1,6 @@
 src=~/src
 gitrepo=~src/gitrepo
 bfg=~gitrepo/bfg
-terraform=~gigamon/terraform
 java=~gitrepo/java
 gradle=~gitrepo/gradle
 personal=~gitrepo/personal
