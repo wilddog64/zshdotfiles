@@ -122,7 +122,7 @@ fpath=(
 autoload -U zen
 
 [[ -s `brew --prefix`/etc/autojump.sh  ]] && . `brew --prefix`/etc/autojump.sh
-eval `keychain --eval --agents ssh --inherit any id_rsa`
+# eval `keychain --eval --agents ssh --inherit any id_rsa`
 
 which pyenv 2>&1 > /dev/null
 if [[ $? == 0 ]]; then
@@ -192,4 +192,8 @@ which goenv 2>&1 > /dev/null
 if [[ $? == 0 ]]; then
     echo initialize go env
     eval "$(goenv init -)"
+fi
+
+if [[ -z "$TMUX" && "$SSH_CONNECTION" != "" ]]; then
+    tmx work
 fi
