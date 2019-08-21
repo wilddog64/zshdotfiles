@@ -91,6 +91,7 @@ set -g @plugin 'tmux-plugins/tmux-pain-control'
 set -g @plugin 'tmux-plugins/tmux-logging'
 set -g @plugin 'christoomey/vim-tmux-navigator'
 set -g @plugin 'tmux-plugins/tmux-open'
+set -g @plugin 'tmux-plugins/tmux-yank'
 
 # custom setting for each plugin goes here
 set -g @urlview-key 'U' # change activate key for urlview
