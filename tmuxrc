@@ -75,6 +75,7 @@ bind-key C-p last-window
 
 set -g focus-events on
 set -g history-limit 50000
+set-option -g mouse on
 
 # windows and panes navigation
 bind -r C-[ previous-window
