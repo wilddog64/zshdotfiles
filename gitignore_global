@@ -12,3 +12,4 @@ target/
 *~
 *.log
 .terraform/
+tags
