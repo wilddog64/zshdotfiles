@@ -109,6 +109,7 @@ set -g @resurrect-strategy-vim 'session' # restore vim sessions
 set -g @resurrect-strategy-vim 'session'  # restore vim
 set -g @resurrect-strategy-nvim 'session' # restore nvim
 set -g @resurrect-save-shell-history 'on' # restore shell history
+set -g @resurrect-capture-pane-contents 'on' # save pane contents
 
 # better-mouse-scroll settings
 set -g @scroll-without-changing-pane 'on'
