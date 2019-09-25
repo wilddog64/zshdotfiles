@@ -58,7 +58,8 @@ plugins=(git
          zsh-autosuggestions
          zsh-syntax-highlighting
          z
-         terraform)
+         terraform
+         kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
