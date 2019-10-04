@@ -61,3 +61,6 @@
     tmux-plugins = /Users/cliang/.tmux/plugins
 [http]
 	cookiefile = /Users/chengkai.liang/.gitcookies
+
+[credential "https://source.developers.google.com"]
+	helper = gcloud.sh

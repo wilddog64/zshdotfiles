@@ -59,7 +59,8 @@ plugins=(git
          zsh-syntax-highlighting
          z
          terraform
-         kubectl)
+         kubectl
+         helm)
 
 source $ZSH/oh-my-zsh.sh
 
