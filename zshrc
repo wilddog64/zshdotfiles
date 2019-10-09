@@ -40,11 +40,6 @@ if [[ -r ~/.zsh/bindingkeys ]]; then
     source ~/.zsh/bindingkeys
 fi
 
-# source rvm file if it existed
-if [[ -r ~/.rvm/scripts/rvm ]]; then
-    source /home/chengkai/.rvm/scripts/rvm
-fi
-
 # initialize docker
 if [[ $(which docker-machine) == 0 ]]; then
 	eval $(docker-machine env)
