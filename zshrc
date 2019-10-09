@@ -7,11 +7,6 @@ if [[ -r ~/.zsh/aliases ]]; then
     source ~/.zsh/aliases
 fi
 
-# === Cocoa Applications
-if [[ -r /.zsh/apps_aliases ]]; then
-  source ~/.zsh/apps_aliases
-fi
-
 # === zsh shell functions
 if [[ -r ~/.zsh/my_func.zsh ]]; then
     source ~/.zsh/my_func.zsh
