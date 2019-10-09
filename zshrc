@@ -32,10 +32,6 @@ if [[ -r ~/.zsh/zsh_comp_styles ]]; then
     source ~/.zsh/comp_styles
 fi
 
-if [[ -r ~/.zsh/rdp.aliases ]]; then
-    source ~/.zsh/rdp.aliases
-fi
-
 if [[ -r ~/.zsh/bindingkeys ]]; then
     source ~/.zsh/bindingkeys
 fi
