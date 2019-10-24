@@ -57,7 +57,7 @@ plugins=(git
          zsh-navigation-tools
          zsh-autosuggestions
          zsh-syntax-highlighting
-         z
+         autojump
          terraform
          kubectl
          helm)
