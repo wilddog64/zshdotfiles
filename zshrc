@@ -18,7 +18,7 @@ if [[ -r ~/.zsh/cdnames ]]; then
 fi
 
 # === key bindings
-if [[ -r ~/.zsh/zsh_bindingkeys ]]; then
+if [[ -r ~/.zsh/bindingkeys ]]; then
     source ~/.zsh/bindingkeys
 fi
 
