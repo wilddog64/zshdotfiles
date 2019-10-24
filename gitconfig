@@ -58,9 +58,11 @@
     puppet = /Users/cliang/src/gitrepo/gigamon/gigamon-puppet-repo
     ansible = /Users/cliang/src/gitrepo/personal/ansible
     tmux = /Users/cliang/.tmux/plugins
-    tmux-plugins = /Users/cliang/.tmux/plugins
-[http]
-	cookiefile = /Users/chengkai.liang/.gitcookies
+    tmux-plugins = /Users/chengkai.liang/.tmux/plugins
+    terraform = /Users/chengkai.liang/src/gitrepo/bfg/src/terraform
 
-[credential "https://source.developers.google.com"]
-	helper = gcloud.sh
+# [http]
+#     cookiefile = /Users/chengkai.liang/.gitcookies
+#
+# [credential "https://source.developers.google.com"]
+#     helper = gcloud.sh
