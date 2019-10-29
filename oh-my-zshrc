@@ -45,15 +45,10 @@ module_path=($module_path /usr/local/lib/zpython)
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git
          bundler
-         web-search
          vi-mode
-         vagrant
-         rake
          brew
          git-extras
-         gem
          per-directory-history
-         gradle
          zsh-navigation-tools
          zsh-autosuggestions
          zsh-syntax-highlighting
@@ -72,5 +67,4 @@ test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_in
 # Set Spaceship ZSH as a prompt
 # autoload -U promptinit; promptinit
 # prompt spaceship
-
 autoload -U +X bashcompinit && bashcompinit
