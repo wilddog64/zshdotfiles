@@ -1,0 +1,61 @@
+[character]
+symbol = "➜"
+error_symbol = "✗"
+use_symbol_for_status = true
+
+[directory]
+truncation_length = 3
+truncate_to_repo = false
+style = "bold cyan"
+
+[git_branch]
+symbol = "🌱 "
+style = "bold purple"
+
+[git_state]
+progress_divider = " of "
+cherry_pick = "🍒 PICKING"
+
+[git_status]
+conflicted = "🏳"
+ahead = "🏎💨"
+behind = "😰"
+diverged = "😵"
+untracked = "🤷‍"
+stashed = "📦"
+modified = "📝"
+staged.value = "++"
+staged.style = "green"
+staged_count.enabled = true
+staged_count.style = "green"
+renamed = "👅"
+deleted = "🗑
+
+[golang]
+symbol = "🏎💨
+
+[hostname]
+ssh_only = false
+prefix = "⟪"
+suffix = "⟫"
+trim_at = ".bigfishgames.com"
+disabled = false
+
+[jobs]
+symbol = "+ "
+threshold = 4
+
+[kubernetes]
+symbol = "⛵ "
+style = "dim green"
+disabled = false
+
+[python]
+symbol = "👾 "
+pyenv_version_name = true
+pyenv_prefix = "foo "
+
+[time]
+disabled = false
+format = "🕙[ %T ]"
+utc_time_offset = -5
