@@ -55,7 +55,12 @@ export DOTNET_PATH=/usr/local/share/dotnet
 export OPENSSL_BIN=/usr/local/opt/openssl/bin
 export GTAR_PATH=/usr/local/opt/gnu-tar/libexec/gnubin
 export PUPPET_BOLT=/opt/puppetlabs/bolt/bin
-export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$BREW_BIN:$GNUBIN:$BREW_BIN:$BREW_SBIN:$GIT_CONTRIB:$PATH:$PUPPET_BOLT:~/bin # Add RVM to PATH for scripting
+export SPINNAKER_FOR_GCP=~/spinnaker-for-gcp/scripts/
+export SPINNAKER_INSTALL=$SPINNAKER_FOR_GCP/install
+export SPINNAKER_MANAGE=$SPINNAKER_FOR_GCP/manage
+export SPINNAKER_EXPOSE=$SPINNAKER_FOR_GCP/expose
+export SPINNAKER_CLI=$SPINNAKER_FOR_GCP/cli
+export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$BREW_BIN:$GNUBIN:$BREW_BIN:$BREW_SBIN:$GIT_CONTRIB:$PATH:$PUPPET_BOLT:~/bin:$SPINNAKER_INSTALL:$SPINNAKER_MANAGE:$SPINNAKER_EXPOSE:$SPINNAKER_CLI
 
 export GOENVGOROOT=$HOME/.goenvs
 export GOENVTARGET=$HOME/go/bin
