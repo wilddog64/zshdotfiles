@@ -9,7 +9,7 @@ export FTP_PASSIVE=1
 export AUTOJUMP_KEEP_SYMLINKS=1
 # === make command line editing like vi, ya ya ya!!!
 export VISUAL=vi
-# export ZSH_THEME=bira
+export ZSH_THEME=apple
 set -o vi
 
 # === for groovy
