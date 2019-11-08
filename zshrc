@@ -180,7 +180,7 @@ if [[ -e ~/.zsh/hal_completion ]]; then
     source ~/.zsh/hal_completion
 fi
 
-which starship 2>&1 > /dev/null
-if [[ $? == 0 ]]; then
-    eval "$(starship init zsh)"
-fi
+# which starship 2>&1 > /dev/null
+# if [[ $? == 0 ]]; then
+#     eval "$(starship init zsh)"
+# fi
