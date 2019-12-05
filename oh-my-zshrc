@@ -68,7 +68,3 @@ test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_in
 # autoload -U promptinit; promptinit
 # prompt spaceship
 autoload -U +X bashcompinit && bashcompinit
-
-  # Set Spaceship ZSH as a prompt
-  autoload -U promptinit; promptinit
-  prompt spaceship
