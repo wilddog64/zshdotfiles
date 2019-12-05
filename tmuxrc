@@ -75,7 +75,7 @@ bind-key C-p last-window
 
 set -g focus-events on
 set -g history-limit 50000
-set-option -g mouse on
+# set-option -g mouse on
 
 # windows and panes navigation
 bind -r C-[ previous-window
@@ -98,7 +98,7 @@ set -g @plugin 'tmux-plugins/tmux-logging'
 set -g @plugin 'christoomey/vim-tmux-navigator'
 set -g @plugin 'tmux-plugins/tmux-open'
 set -g @plugin 'tmux-plugins/tmux-yank'
-set -g @plugin 'nhdaly/tmux-better-mouse-mode'
+# set -g @plugin 'nhdaly/tmux-better-mouse-mode'
 
 # custom setting for each plugin goes here
 set -g @urlview-key 'U' # change activate key for urlview
@@ -112,4 +112,4 @@ set -g @resurrect-strategy-nvim 'session' # restore nvim
 set -g @resurrect-capture-pane-contents 'on' # save pane contents
 
 # better-mouse-scroll settings
-set -g @scroll-without-changing-pane 'on'
+# set -g @scroll-without-changing-pane 'on'
