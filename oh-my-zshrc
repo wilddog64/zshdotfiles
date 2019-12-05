@@ -48,6 +48,7 @@ plugins=(git
          vi-mode
          brew
          git-extras
+         git-prompt
          per-directory-history
          zsh-navigation-tools
          zsh-autosuggestions
