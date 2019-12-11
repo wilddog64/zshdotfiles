@@ -60,6 +60,7 @@
     tmux = /Users/cliang/.tmux/plugins
     tmux-plugins = /Users/chengkai.liang/.tmux/plugins
     terraform = /Users/chengkai.liang/src/gitrepo/bfg/src/terraform
+    release = /Users/chengkai.liang/src/gitrepo/bfg/relesse
 
 # [http]
 #     cookiefile = /Users/chengkai.liang/.gitcookies
