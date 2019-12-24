@@ -50,7 +50,7 @@
     ignorecase   = false
     editor       = /usr/local/bin/nvim
 [hub]
-    protocol = ssh
+    protocol = https
 [credential]
     helper = osxkeychain
 
