@@ -98,7 +98,7 @@ fpath=(
 autoload -U zen
 
 [[ -s `brew --prefix`/etc/autojump.sh  ]] && . `brew --prefix`/etc/autojump.sh
-eval `keychain --eval --agents ssh --inherit any id_rsa`
+eval `keychain --eval --agents ssh --inherit any id_ecdsa`
 
 which pyenv 2>&1 > /dev/null
 if [[ $? == 0 ]]; then
@@ -130,15 +130,6 @@ if [[ -e ~/tools/rundeck ]]; then
   export RUNDECK_BASE=~/tools/rundeck/tools
   export RUNDECK_TOOL_BIN=$RUNDECK_BASE/bin
   export PATH=$PATH:$RUNDECK_TOOL_BIN
-fi
-
-if [[ -f $HOME/.smartcd/lib/core/smartcd ]]; then
-  # TODO: handle system-wide install?
-  echo 'initializing smartcd'
-  source $HOME/.smartcd/lib/core/smartcd
-  [[ -f $HOME/.smartcd_config ]] && source $HOME/.smartcd_config
-else
-  echo 'smartcd not installed yet!  Run "make install" or follow the README instructions'
 fi
 
 if [[ -e $(brew --prefix nvm) ]]; then

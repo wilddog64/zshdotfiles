@@ -69,3 +69,5 @@ test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_in
 # autoload -U promptinit; promptinit
 # prompt spaceship
 autoload -U +X bashcompinit && bashcompinit
+
+[ -r "$HOME/.smartcd_config" ] && ( [ -n $BASH_VERSION ] || [ -n $ZSH_VERSION ] ) && source ~/.smartcd_config
