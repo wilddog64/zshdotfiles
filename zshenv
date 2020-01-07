@@ -79,7 +79,6 @@ export NO_PROXY=169.254.169.254
 # make zsh vim mode faster
 export KEYTIMEOUT=1
 
-export VAULT_ADDR=https://vault.icebrg.io
 if [[ ! -e ~/.zsh_history ]]; then
     mkdir -p ~/.zsh_history
 fi
