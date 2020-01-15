@@ -8,7 +8,7 @@
     diffc            = diff --cached
     merge-develop    = merge --no-ff develop
     merge-master     = merge --no-ff master
-    merge-with-no-ff = merge --no-ff
+    merge-no-ff      = merge --no-ff
     outfiles         = "!f() { git diff --name-status ..$1;  }; f"
     pullrb           = pull --rebase
     push-all         = "!f() { git push -u --all; git push --tag; }; f"
