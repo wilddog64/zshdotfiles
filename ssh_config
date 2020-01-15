@@ -1,9 +1,8 @@
 Host stash.*
   PreferredAuthentications publickey
-  IdentityFile /Users/cliang/.ssh/id_rsa
+  IdentityFile /Users/chengkai.liang/.ssh/id_ecdsa
 
 Host *
-  User cliang
   ControlMaster auto
   ForwardAgent yes
-  IdentityFile ~/.ssh/id_rsa
+  IdentityFile ~/.ssh/id_ecdsa
