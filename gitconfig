@@ -14,7 +14,7 @@
     push-all         = "!f() { git push -u --all; git push --tag; }; f"
     push-tag         = "!f() { git push "$@"; git push  "$@" --tag; }; f"
     st               = "!f() { git status --ignore-submodules --short; }; f"
-    tags             = "!f() { git tag | sort -V }; f"
+    tags             = "!f() { git tag | sort -V; }; f"
     timeline         = log --topo-order --date relative --pretty='%Cgreen %h %an %ai %s' --graph
     tip              = log --date relative --pretty='%Cgreen %h %an %ai %s' -1
     todayschanges    = "!f() { git whatchanged --oneline --since=yesterday | grep -v '^:'; }; f"
