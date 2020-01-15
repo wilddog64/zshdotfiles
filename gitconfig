@@ -1,24 +1,26 @@
 [user]
     name = CK
     email = chengkai.liang@bigfishgames.com
+
 [alias]
-    co = checkout
-    st = "!f() { git status --ignore-submodules --short; }; f"
-    diffc = diff --cached
+    aliases          = config --get-regexp ^alias\\.*$
+    co               = checkout
+    diffc            = diff --cached
+    merge-develop    = merge --no-ff develop
+    merge-master     = merge --no-ff master
     merge-with-no-ff = merge --no-ff
-    merge-master = merge --no-ff master
-    merge-develop = merge --no-ff develop
-    aliases = config --get-regexp ^alias\\.*$
-    pullrb = pull --rebase
-    outfiles = "!f() { git diff --name-status ..$1;  }; f"
-    tip = log --date relative --pretty='%Cgreen %h %an %ai %s' -1
-    todayschanges = "!f() { git whatchanged --oneline --since=yesterday | grep -v '^:'; }; f"
-    push-tag = "!f() { git push "$@"; git push  "$@" --tag; }; f"
-    push-all = "!f() { git push -u --all; git push --tag; }; f"
-    timeline = log --topo-order --date relative --pretty='%Cgreen %h %an %ai %s' --graph
-    tags = "!f() { git tag | sort -V }; f"
+    outfiles         = "!f() { git diff --name-status ..$1;  }; f"
+    pullrb           = pull --rebase
+    push-all         = "!f() { git push -u --all; git push --tag; }; f"
+    push-tag         = "!f() { git push "$@"; git push  "$@" --tag; }; f"
+    st               = "!f() { git status --ignore-submodules --short; }; f"
+    tags             = "!f() { git tag | sort -V }; f"
+    timeline         = log --topo-order --date relative --pretty='%Cgreen %h %an %ai %s' --graph
+    tip              = log --date relative --pretty='%Cgreen %h %an %ai %s' -1
+    todayschanges    = "!f() { git whatchanged --oneline --since=yesterday | grep -v '^:'; }; f"
+
 [branch]
-    autosetuprebase            = always
+    autosetuprebase = always
 [color]
     diff = always
     ui   = on
