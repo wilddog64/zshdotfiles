@@ -16,6 +16,7 @@
     push-tag = "!f() { git push "$@"; git push  "$@" --tag; }; f"
     push-all = "!f() { git push -u --all; git push --tag; }; f"
     timeline = log --topo-order --date relative --pretty='%Cgreen %h %an %ai %s' --graph
+    tags = "!f() { git tag | sort -V }; f"
 [branch]
     autosetuprebase            = always
 [color]
