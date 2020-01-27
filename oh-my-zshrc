@@ -47,13 +47,13 @@ plugins=(git
          bundler
          vi-mode
          brew
+         fasd
          git-extras
          git-prompt
          per-directory-history
          zsh-navigation-tools
          zsh-autosuggestions
          zsh-syntax-highlighting
-         autojump
          terraform
          kubectl
          helm)
