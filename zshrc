@@ -166,6 +166,11 @@ if [[ -e /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.i
      source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 fi
 
+which fasd
+if [[ $? == 0 ]]; then
+    eval "$(fasd --init posix-alias zsh-hook)"
+fi
+
 # enable hal commands completion
 if [[ -e ~/.zsh/hal_completion ]]; then
     source ~/.zsh/hal_completion
