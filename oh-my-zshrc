@@ -47,6 +47,7 @@ plugins=(git
          bundler
          vi-mode
          brew
+         forgit
          git-extras
          git-prompt
          per-directory-history
