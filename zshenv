@@ -118,19 +118,19 @@ unsetopt correct_all        # stop auto correct feature
 
 # === command line history options
 export HISTFILE=~/.zsh/history  # history file
-export HISTSIZE=10000                # lines to be saved
+export HISTSIZE=10000           # lines to be saved
 export SAVEHIST=5000
-setopt HIST_EXPIRE_DUPS_FIRST        # replace the oldest history event that is duplicated
-setopt HIST_FIND_NO_DUPS             # do not find duplicated commands
-setopt HIST_IGNORE_ALL_DUPS          # ignore all duplication commands
-setopt HIST_IGNORE_SPACE             # ignore line begin with space - will not be put into history file when next command is executed
-setopt HIST_REDUCE_BLANKS            # remove superfluous blanks from each command line being added to the history list
-setopt HIST_SAVE_NO_DUPS             # do not write dup command into history
-setopt HIST_VERIFY                   # make history expansion, substution, ... appear on the command line
-setopt INC_APPEND_HISTORY            # append history as the order of command is executed
-setopt SHARE_HISTORY                 # make history share amount different zsh sessions
-setopt EXTENDED_HISTORY              # enable timestamp with history
-setopt HIST_FCNTL_LOCK               # use OS provide fcntl library
+setopt HIST_EXPIRE_DUPS_FIRST   # replace the oldest history event that is duplicated
+setopt HIST_FIND_NO_DUPS        # do not find duplicated commands
+setopt HIST_IGNORE_ALL_DUPS     # ignore all duplication commands
+setopt HIST_IGNORE_SPACE        # ignore line begin with space - will not be put into history file when next command is executed
+setopt HIST_REDUCE_BLANKS       # remove superfluous blanks from each command line being added to the history list
+setopt HIST_SAVE_NO_DUPS        # do not write dup command into history
+setopt HIST_VERIFY              # make history expansion, substution, ... appear on the command line
+setopt INC_APPEND_HISTORY       # append history as the order of command is executed
+setopt SHARE_HISTORY            # make history share amount different zsh sessions
+setopt EXTENDED_HISTORY         # enable timestamp with history
+setopt HIST_FCNTL_LOCK          # use OS provide fcntl library
 setopt AUTO_PUSHD
 setopt PUSHD_MINUS
 setopt PUSHD_SILENT
