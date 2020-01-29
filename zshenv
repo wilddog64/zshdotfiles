@@ -7,6 +7,8 @@ export LESSOPEN="| lesspipe.sh %s"
 export GREP_COLOR=auto
 export FTP_PASSIVE=1
 export AUTOJUMP_KEEP_SYMLINKS=1
+export TOUCHBAR_GIT_ENABLED=true
+
 # === make command line editing like vi, ya ya ya!!!
 export VISUAL=vi
 # export ZSH_THEME=powerlevel10k

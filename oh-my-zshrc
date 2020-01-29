@@ -56,7 +56,8 @@ plugins=(git
          zsh-syntax-highlighting
          terraform
          kubectl
-         helm)
+         helm
+         zsh-iterm-touchbar)
 
 source $ZSH/oh-my-zsh.sh
 
