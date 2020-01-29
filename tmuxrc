@@ -113,3 +113,6 @@ set -g @resurrect-capture-pane-contents 'on' # save pane contents
 
 # better-mouse-scroll settings
 # set -g @scroll-without-changing-pane 'on'
+
+# enable tmux 24-bit color
+set -ga terminal-overrides ",xterm-256color:Tc"
