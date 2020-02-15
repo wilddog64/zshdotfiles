@@ -1,8 +1,8 @@
 Host stash.*
   PreferredAuthentications publickey
   IdentityFile /Users/chengkai.liang/.ssh/id_ecdsa
-
-Host *
   ControlMaster auto
   ForwardAgent yes
-  IdentityFile ~/.ssh/id_ecdsa
+
+Host github.com
+  IdentityFile ~/.ssh/id_github_ecdsa

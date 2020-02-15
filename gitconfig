@@ -45,7 +45,6 @@
     trustExitCode = true
 [core]
     excludesfile = /Users/cliang/.gitignore_global
-	pager = delta --dark
     autocrlf     = false
     safecrlf     = false
     eol          = crlf
