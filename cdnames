@@ -9,4 +9,5 @@ ansible=~personal/ansible
 python=~bfg/python
 bde=~bfg/src/bde
 pow=~bfg/src/pow
+ghe=~bfg/src/ghe
 swarm=~bde/docker-swarm
