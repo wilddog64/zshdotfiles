@@ -6,3 +6,8 @@ Host stash.*
 
 Host github.com
   IdentityFile ~/.ssh/id_github_ecdsa
+
+Host accounts01
+  Hostname accounts01.sea.bigfishgames.com
+  User cliang
+  IdentityFile ~/.ssh/id_github_ecdsa
