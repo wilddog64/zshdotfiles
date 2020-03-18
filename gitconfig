@@ -1,6 +1,7 @@
 [user]
     name = CK
     email = chengkai.liang@bigfishgames.com
+    bitbucket = chengkai
 
 [alias]
     aliases          = config --get-regexp ^alias\\.*$
@@ -63,7 +64,7 @@
     tmux-plugins = /Users/chengkai.liang/.tmux/plugins
     terraform = /Users/chengkai.liang/src/gitrepo/bfg/src/terraform
     release = /Users/chengkai.liang/src/gitrepo/bfg/relesse
-	docker-repos = /Users/chengkai.liang/src/gitrepo/bfg/src/ghe/bde/dockers
+    docker-repos = /Users/chengkai.liang/src/gitrepo/bfg/src/ghe/bde/dockers
 
 # [http]
 #     cookiefile = /Users/chengkai.liang/.gitcookies
@@ -72,7 +73,7 @@
     helper = gcloud.sh
 
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
