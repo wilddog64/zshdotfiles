@@ -32,6 +32,7 @@ export __CF_USER_TEXT_ENCODING=0x1F5:0x8000100:0x8000100
 export TMP=/tmp
 export TMPDIR=/tmp
 
+export ZDOTDIR=/Users/chengkai.liang/src/gitrepo/personal/zshdotfiles/
 # === theme ===
 
 # === Favoir Editor ===
