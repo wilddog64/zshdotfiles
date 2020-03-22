@@ -52,6 +52,7 @@
     filemode     = false
     ignorecase   = false
     editor       = /usr/local/bin/nvim
+    pager        = less -F -X
 [hub]
     protocol = https
 [credential]
