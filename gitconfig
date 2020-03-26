@@ -66,6 +66,7 @@
     terraform = /Users/chengkai.liang/src/gitrepo/bfg/src/terraform
     release = /Users/chengkai.liang/src/gitrepo/bfg/relesse
     docker-repos = /Users/chengkai.liang/src/gitrepo/bfg/src/ghe/bde/dockers
+	dockers = /Users/chengkai.liang/src/gitrepo/bfg/src/bde/docker-swarm/dockers
 
 # [http]
 #     cookiefile = /Users/chengkai.liang/.gitcookies
