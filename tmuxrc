@@ -111,6 +111,11 @@ set -g @resurrect-strategy-nvim 'session' # restore nvim
 # set -g @resurrect-save-shell-history 'on' # restore shell history
 set -g @resurrect-capture-pane-contents 'on' # save pane contents
 
+# for vim
+set -g @resurrect-strategy-vim 'session'
+# for neovim
+set -g @resurrect-strategy-nvim 'session'
+
 # better-mouse-scroll settings
 # set -g @scroll-without-changing-pane 'on'
 
