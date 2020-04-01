@@ -103,6 +103,7 @@ set -g @plugin 'tmux-plugins/tmux-yank'
 # custom setting for each plugin goes here
 set -g @urlview-key 'U' # change activate key for urlview
 set -g @continuum-restore 'on'
+set -g @continuum-save-interval '30'
 set -g @continuum-boot 'on' # automatically restore tmux environment after computer is turned on
 set -g @continuum-boot-options 'iterm' # start iTerm instead of Terminal.app
 set -g @resurrect-strategy-vim 'session' # restore vim sessions
