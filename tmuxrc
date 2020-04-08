@@ -102,20 +102,19 @@ set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @urlview-key 'U' # change activate key for urlview
 set -g @continuum-restore 'on'
 set -g @continuum-save-interval '15'
-set -g @continuum-boot-options 'iterm,fullscreen' - start iTerm
+set -g @continuum-boot-options 'iterm,fullscreen' # start iTerm
 set -g @continuum-boot 'on' # automatically restore tmux environment after computer is turned on
 set -g @continuum-boot-options 'iterm' # start iTerm instead of Terminal.app
 set -g @resurrect-strategy-vim 'session' # restore vim sessions
 set -g @resurrect-strategy-vim 'session'  # restore vim
 set -g @resurrect-strategy-nvim 'session' # restore nvim
-# set -g @resurrect-save-shell-history 'on' # restore shell history
+set -g @resurrect-save-shell-history 'on' # restore shell history
 
 # set tmux-resurrect options for saving session information
 set -g @resurrect-capture-pane-contents 'on' # save pane contents
 set -g @resurrect-save-command-strategy 'pgrep' # use pgrep instead of ps to find process info
-set -g default-command "reattach-to-user-namespace -l $SHELL"
 set -g @resurrect-capture-pane-contents 'on'
-
+#
 # for vim
 set -g @resurrect-strategy-vim 'session'
 # for neovim
