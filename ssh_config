@@ -13,6 +13,8 @@ Host release01
   Hostname release01.sea.bigfishgames.com
   User cliang
   IdentityFile ~/.ssh/id_github_ecdsa
+  ControlMaster auto
+  ForwardAgent yes
 
 Host release01.qast
   Hostname release01.qast.bigfishgames.com
