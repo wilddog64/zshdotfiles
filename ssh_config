@@ -21,6 +21,12 @@ Host release01.qast
   User cliang
   IdentityFile ~/.ssh/id_github_ecdsa
 
+Host release-master.qast
+   Hostname release-master.qast.bigfishgames.com
+   User cliang
+  IdentityFile ~/.ssh/id_github_ecdsa
+  ForwardAgent yes
+
 Host github.com
   Hostname ssh.github.com
   Port 443
