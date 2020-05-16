@@ -180,3 +180,7 @@ fi
 # if [[ $? == 0 ]]; then
 #     eval "$(starship init zsh)"
 # fi
+
+if [[ -e /usr/local/bin/direnv ]]; then
+    eval "$(direnv hook zsh)"
+fi
