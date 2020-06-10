@@ -48,15 +48,20 @@ autoload -U zmv
 
 
 # ===load completion system
+autoload -Uz compinit
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
 
-autoload -U compinit
-if [ -n "$OS" -a "$OS" = "Windows_NT" ]
-then
-    compinit -u
-    export PATH=$PATH:/cygdrive/c/tools/bin
-else
-    compinit
-fi
+# autoload -U compinit
+# if [ -n "$OS" -a "$OS" = "Windows_NT" ]
+# then
+#     compinit -u
+#     export PATH=$PATH:/cygdrive/c/tools/bin
+# else
+#     compinit
+# fi
 
 # ===load completion list module
 zmodload zsh/complist
@@ -67,9 +72,9 @@ zmodload zsh/datetime
 # === zsh/sched module ===
 zmodload zsh/sched
 
-if [[ -e ~/.oh-my-zsh/plugins/aws/aws.plugin.zsh ]]; then
-  source ~/.oh-my-zsh/plugins/aws/aws.plugin.zsh
-fi
+# if [[ -e ~/.oh-my-zsh/plugins/aws/aws.plugin.zsh ]]; then
+#   source ~/.oh-my-zsh/plugins/aws/aws.plugin.zsh
+# fi
 
 # === backward delete all the way to slash
 backward-delete-to-slash () {
@@ -81,8 +86,10 @@ zle -N backward-delete-to-slash
 autoload -Uz colors
 colors
 
-eval "$(rbenv init -)"
-export PATH="/opt/chefdk/bin:$PATH"
+rbenv() {
+  eval "$(rbenv init -)"
+  export PATH="/opt/chefdk/bin:$PATH"
+}
 
 # Autoload some bash completion functions if they exist.
 autoload -Uz bashcompinit
