@@ -1,6 +1,7 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+# zmodload zsh/zprof
 # point to zpython module path
 module_path=($module_path /usr/local/lib/zpython)
 
@@ -48,14 +49,14 @@ plugins=(
          docker
          vi-mode
          brew
-         git-extras
-         git-prompt
+         # git-extras
+         # git-prompt
          per-directory-history
          zsh-navigation-tools
          zsh-autosuggestions
          zsh-syntax-highlighting
          kubectl
-         helm
+         # helm
          z
          )
 
@@ -74,3 +75,5 @@ autoload -U +X bashcompinit && bashcompinit
 # [ -r "$HOME/.smartcd_config" ] && ( [ -n $BASH_VERSION ] || [ -n $ZSH_VERSION ] ) && source ~/.smartcd_config
 
 complete -o nospace -C /usr/local/bin/vault vault
+
+# zprof
