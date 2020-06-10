@@ -48,11 +48,11 @@ autoload -U zmv
 
 
 # ===load completion system
-autoload -Uz compinit
-for dump in ~/.zcompdump(N.mh+24); do
-  compinit
-done
-compinit -C
+# autoload -Uz compinit
+# for dump in ~/.zcompdump(N.mh+24); do
+#   compinit
+# done
+# compinit -C
 
 # autoload -U compinit
 # if [ -n "$OS" -a "$OS" = "Windows_NT" ]
