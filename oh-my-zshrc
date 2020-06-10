@@ -45,21 +45,17 @@ module_path=($module_path /usr/local/lib/zpython)
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(
          git
-         bundler
          docker
          vi-mode
          brew
-         forgit
          git-extras
          git-prompt
          per-directory-history
          zsh-navigation-tools
          zsh-autosuggestions
          zsh-syntax-highlighting
-         terraform
          kubectl
          helm
-         zsh-iterm-touchbar
          z
          )
 
