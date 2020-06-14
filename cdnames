@@ -10,4 +10,5 @@ python=~bfg/python
 bde=~bfg/src/bde
 pow=~bfg/src/pow
 ghe=~bfg/src/ghe
+sdk=~ghe/sdk
 swarm=~bde/docker-swarm
