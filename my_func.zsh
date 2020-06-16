@@ -1,3 +1,7 @@
+escape() {
+	echo "$1" | sed 's/\([\.\+\$\*]\)/\\\1/g'
+}
+
 zman() {
     PAGER="less -g -s '+/^       "$1"'" man zshall
 }
@@ -161,11 +165,11 @@ tfwc() {
 }
 
 tfwn() {
-    tfw new $1
+    tfw new $(escape $1)
 }
 
 tfwd() {
-    tfw delete $1
+    tfw delete $(escape $1)
 }
 
 tfs() {
@@ -177,7 +181,7 @@ tfsl() {
 }
 
 tfsd() {
-    tfs delete $1
+    tfs delete $(escape $1)
 }
 
 tfsp() {
