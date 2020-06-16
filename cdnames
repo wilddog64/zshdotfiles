@@ -13,4 +13,5 @@ bde=~bfg/src/bde
 pow=~bfg/src/pow
 ghe=~bfg/src/ghe
 sdk=~ghe/sdk
+cbuilder=~bde/clouderbuilders
 swarm=~bde/docker-swarm
