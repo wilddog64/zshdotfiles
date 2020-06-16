@@ -136,4 +136,54 @@ tmuxkillf () {
     unsetopt re_match_pcre
 }
 
+tf() {
+    terraform "$@"
+}
 
+tfp() {
+    tf plan "$@"
+}
+
+tfpd() {
+    tf plan -destroy "$@"
+}
+
+tfw() {
+    tf workspace "$@"
+}
+
+tfwl() {
+    tfw list
+}
+
+tfwc() {
+    tfw show
+}
+
+tfwn() {
+    tfw new $1
+}
+
+tfwd() {
+    tfw delete $1
+}
+
+tfs() {
+    tf state "$@"
+}
+
+tfsl() {
+    tfs list
+}
+
+tfsd() {
+    tfs delete $1
+}
+
+tfsp() {
+    tfs pull "$@"
+}
+
+tfsrm() {
+    tfs rm "$@"
+}
