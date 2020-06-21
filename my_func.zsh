@@ -144,6 +144,9 @@ tf() {
     terraform "$@"
 }
 
+tfa() {
+    tf apply "$@"
+}
 tfp() {
     tf plan "$@"
 }
