@@ -183,6 +183,10 @@ tfwd() {
     tfw delete $(escape $1)
 }
 
+tfws() {
+    tfw select $(escape $1)
+}
+
 tfs() {
     tf state "$@"
 }
