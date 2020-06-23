@@ -144,6 +144,10 @@ tf() {
     terraform "$@"
 }
 
+tfi() {
+    tf init
+}
+
 tfa() {
     tf apply "$@"
 }
