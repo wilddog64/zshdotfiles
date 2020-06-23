@@ -148,6 +148,10 @@ tfi() {
     tf init
 }
 
+tfu() {
+    tf get -update "$@"
+}
+
 tfa() {
     tf apply "$@"
 }
