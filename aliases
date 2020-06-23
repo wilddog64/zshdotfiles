@@ -43,5 +43,5 @@ alias md='mkdir -p'
 alias vi='/usr/local/bin/nvim'
 alias vim='/usr/local/bin/vim'
 alias r='exec -l $SHELL'
-alias smartcd='EDITOR=vim smartcd "$@"'
-alias gsutil='docker run -v $(pwd):/opt -w /opt --volumes-from gcloud-config -it gcr.io/google.com/cloudsdktool/cloud-sdk gsutil "$@"'
+alias grep=rg
+# alias smartcd='EDITOR=vim smartcd "$@"'
