@@ -148,6 +148,10 @@ tfd() {
     tf $(escape destroy)
 }
 
+tfg() {
+    tf graph -verbose -draw-cycles -type=plan-destroy | dot -Tpng > jenkins.png
+}
+
 tfi() {
     tf init
 }
