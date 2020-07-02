@@ -17,7 +17,7 @@ alias dirdiff="diff -Bbrq -x 'ruby_sess.*' -x '*.swp' -x '*.bak' -x '*.log.[0-9]
 alias glnotify=growlnotify
 alias h='fc -l -i'
 alias l='ls -Ft'
-alias grep='grep --color=no'
+alias grep=rg
 alias ll='ls -Fhalt'
 alias lsdir='ls -aF'
 alias help=run-help
@@ -40,5 +40,4 @@ alias md='mkdir -p'
 alias vi='/usr/local/bin/nvim'
 alias vim='/usr/local/bin/vim'
 alias r='exec -l $SHELL'
-alias grep=rg
 # alias smartcd='EDITOR=vim smartcd "$@"'
