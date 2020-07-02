@@ -144,6 +144,10 @@ tf() {
     terraform "$@"
 }
 
+tfd() {
+    tf $(escape destroy)
+}
+
 tfi() {
     tf init
 }
