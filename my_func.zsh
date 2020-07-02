@@ -149,7 +149,8 @@ tfd() {
 }
 
 tfg() {
-    tf graph -verbose -draw-cycles -type=plan-destroy | dot -Tpng > jenkins.png
+    tf graph -verbose -draw-cycles -type=plan-destroy | dot -Tpng > /tmp/graph.png
+    open /tmp/graph.png
 }
 
 tfi() {
