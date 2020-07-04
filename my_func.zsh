@@ -148,6 +148,10 @@ tfd() {
     tf $(escape destroy)
 }
 
+tfo() {
+    tf $(escape output)
+}
+
 tfg() {
     tf graph -verbose -draw-cycles -type=plan-destroy | dot -Tpng > /tmp/graph.png
     open /tmp/graph.png
