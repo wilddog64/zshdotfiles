@@ -140,6 +140,18 @@ tmuxkillf () {
     unsetopt re_match_pcre
 }
 
+kube_current_context() {
+    kubectl config current-context
+}
+
+kube_contexts() {
+    kubectl config get-contexts
+}
+
+kube_use_context() {
+    kubectl config use-context "escape $1"
+}
+
 tf() {
     terraform "$@"
 }
