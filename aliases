@@ -40,4 +40,5 @@ alias md='mkdir -p'
 alias vi='/usr/local/bin/nvim'
 alias vim='/usr/local/bin/vim'
 alias r='exec -l $SHELL'
+alias zs="z | sort -V"
 # alias smartcd='EDITOR=vim smartcd "$@"'
