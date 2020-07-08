@@ -105,7 +105,7 @@ fpath=(
 autoload -U zen
 
 [[ -s `brew --prefix`/etc/autojump.sh  ]] && . `brew --prefix`/etc/autojump.sh
-eval `keychain --eval --agents ssh --inherit any id_ecdsa`
+eval `keychain --eval --agents ssh --inherit any id_rsa`
 
 which pyenv 2>&1 > /dev/null
 if [[ $? == 0 ]]; then
@@ -191,3 +191,10 @@ fi
 if [[ -e /usr/local/bin/direnv ]]; then
     eval "$(direnv hook zsh)"
 fi
+
+if [[ -e /usr/local/share/antigen/antigen.zsh ]]; then
+    source /usr/local/share/antigen/antigen.zsh
+fi
+
+# install zsh-autosuggestions
+antigen bundle zsh-users/zsh-autosuggestions
