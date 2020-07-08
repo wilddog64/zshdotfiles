@@ -192,6 +192,8 @@ if [[ -e /usr/local/bin/direnv ]]; then
     eval "$(direnv hook zsh)"
 fi
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 if [[ -e /usr/local/share/antigen/antigen.zsh ]]; then
     source /usr/local/share/antigen/antigen.zsh
 fi
