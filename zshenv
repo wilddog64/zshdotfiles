@@ -8,7 +8,7 @@ export GREP_COLOR=auto
 export FTP_PASSIVE=1
 export AUTOJUMP_KEEP_SYMLINKS=1
 export TOUCHBAR_GIT_ENABLED=true
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+# export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 # === make command line editing like vi, ya ya ya!!!
 export VISUAL=vi
