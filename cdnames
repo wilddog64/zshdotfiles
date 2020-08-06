@@ -1,6 +1,7 @@
 src=~/src
 gitrepo=~src/gitrepo
 bfg=~gitrepo/bfg
+bde=~bfg/src/bde
 java=~gitrepo/java
 gradle=~gitrepo/gradle
 personal=~gitrepo/personal
@@ -9,7 +10,6 @@ tmod=~terraform/modules
 tstack=~terraform/stacks
 ansible=~bde/ansible
 py=~bfg/python
-bde=~bfg/src/bde
 pow=~bfg/src/pow
 ghe=~bfg/src/ghe
 sdk=~ghe/sdk
