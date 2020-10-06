@@ -198,5 +198,13 @@ if [[ -e /usr/local/share/antigen/antigen.zsh ]]; then
     source /usr/local/share/antigen/antigen.zsh
 fi
 
+if [[ -e /usr/local/opt/fzf/shell/key-bindings.zsh ]]; then
+    source /usr/local/opt/fzf/shell/key-bindings.zsh
+fi
+
+if [[ -e /usr/local/opt/fzf/shell/completion.zsh ]]; then
+    source /usr/local/opt/fzf/shell/completion.zsh
+fi
+
 # install zsh-autosuggestions
 antigen bundle zsh-users/zsh-autosuggestions
