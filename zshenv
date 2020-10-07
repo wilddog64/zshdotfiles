@@ -165,3 +165,5 @@ setopt PRINT_EIGHT_BIT
 
 # === options for jobs
 setopt AUTO_RESUME
+
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
