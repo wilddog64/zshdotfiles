@@ -37,8 +37,8 @@ alias unittest="python -m unittest discover -s . -p '*_test.py' -v"
 alias rd="rm -rf"
 alias md='mkdir -p'
 # alias dirs='dirs -pv'
-alias nvi='/usr/local/bin/nvim'
-alias vi='/usr/local/bin/vim'
+alias vi='/usr/local/bin/nvim'
+alias vim='/usr/local/bin/vim'
 alias r='exec -l $SHELL'
 alias zs="z | sort -V"
 # alias smartcd='EDITOR=vim smartcd "$@"'
