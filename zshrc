@@ -205,6 +205,3 @@ fi
 if [[ -e /usr/local/opt/fzf/shell/completion.zsh ]]; then
     source /usr/local/opt/fzf/shell/completion.zsh
 fi
-
-# install zsh-autosuggestions
-antigen bundle zsh-users/zsh-autosuggestions
