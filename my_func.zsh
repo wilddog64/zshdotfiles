@@ -152,82 +152,82 @@ kube_use_context() {
     kubectl config use-context "escape $1"
 }
 
-tf() {
-    terraform "$@"
-}
-
-tfd() {
-    tf $(escape destroy)
-}
-
-tfo() {
-    tf $(escape output)
-}
-
-tfg() {
-    tf graph -verbose -draw-cycles -type=plan-destroy | dot -Tpng > /tmp/graph.png
-    open /tmp/graph.png
-}
-
-tfi() {
-    tf init
-}
-
-tfu() {
-    tf get -update "$@"
-}
-
-tfa() {
-    tf apply "$@"
-}
-tfp() {
-    tf plan "$@"
-}
-
-tfpd() {
-    tf plan -destroy "$@"
-}
-
-tfw() {
-    tf workspace "$@"
-}
-
-tfwl() {
-    tfw list
-}
-
-tfwc() {
-    tfw show
-}
-
-tfwn() {
-    tfw new $(escape $1)
-}
-
-tfwd() {
-    tfw delete $(escape $1)
-}
-
-tfws() {
-    tfw select $(escape $1)
-}
-
-tfs() {
-    tf state "$@"
-}
-
-tfsl() {
-    tfs list
-}
-
-tfsd() {
-    tfs delete $(escape $1)
-}
-
-tfsp() {
-    tfs pull "$@"
-}
-
-tfsrm() {
-    tfs rm "$@"
-}
+# tf() {
+#     terraform "$@"
+# }
+# 
+# tfd() {
+#     tf $(escape destroy)
+# }
+# 
+# tfo() {
+#     tf $(escape output)
+# }
+# 
+# tfg() {
+#     tf graph -verbose -draw-cycles -type=plan-destroy | dot -Tpng > /tmp/graph.png
+#     open /tmp/graph.png
+# }
+# 
+# tfi() {
+#     tf init
+# }
+# 
+# tfu() {
+#     tf get -update "$@"
+# }
+# 
+# tfa() {
+#     tf apply "$@"
+# }
+# tfp() {
+#     tf plan "$@"
+# }
+# 
+# tfpd() {
+#     tf plan -destroy "$@"
+# }
+# 
+# tfw() {
+#     tf workspace "$@"
+# }
+# 
+# tfwl() {
+#     tfw list
+# }
+# 
+# tfwc() {
+#     tfw show
+# }
+# 
+# tfwn() {
+#     tfw new $(escape $1)
+# }
+# 
+# tfwd() {
+#     tfw delete $(escape $1)
+# }
+# 
+# tfws() {
+#     tfw select $(escape $1)
+# }
+# 
+# tfs() {
+#     tf state "$@"
+# }
+# 
+# tfsl() {
+#     tfs list
+# }
+# 
+# tfsd() {
+#     tfs delete $(escape $1)
+# }
+# 
+# tfsp() {
+#     tfs pull "$@"
+# }
+# 
+# tfsrm() {
+#     tfs rm "$@"
+# }
