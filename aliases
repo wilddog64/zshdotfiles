@@ -42,6 +42,3 @@ alias vim='/usr/local/bin/vim'
 alias r='exec -l $SHELL'
 alias zs="z | sort -V"
 # alias smartcd='EDITOR=vim smartcd "$@"'
-alias harness_prod='gcloud compute ssh --project services-host-3b114438 --internal-ip harness-on-vm'
-alias harness_dev='gcloud compute ssh --project services-host-dev-5babb4e8 --internal-ip harness-on-vm'
-alias duoauth='duoauth -e "https://duo.gov.wbx2.com/dag/saml2/idp/SSOService.php?spentityid=DISBBN5ZD2RGHEHSQJZY" -u chengkli.fed -k'
