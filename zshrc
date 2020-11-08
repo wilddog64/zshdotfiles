@@ -205,3 +205,8 @@ fi
 if [[ -e /usr/local/opt/fzf/shell/completion.zsh ]]; then
     source /usr/local/opt/fzf/shell/completion.zsh
 fi
+
+if [[ -r $HOME/.smartcd_config ]]; then
+    echo load smartcd config
+    source ~/.smartcd_config
+fi
