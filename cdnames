@@ -9,7 +9,6 @@ terraform=~cisco/terraform
 tmod=~terraform/modules
 tworkspace=~terraform/workspaces
 ansible=~cisco/ansible
-py=~bfg/python
 pow=~bfg/src/pow
 ghe=~bfg/src/ghe
 sdk=~ghe/sdk
