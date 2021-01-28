@@ -68,6 +68,8 @@
     docker-repos = /Users/chengkai.liang/src/gitrepo/bfg/src/ghe/bde/dockers
     dockers = /Users/chengkai.liang/src/gitrepo/bfg/src/bde/docker-swarm/dockers
     gummydrop = /Users/chengkai.liang/src/gitrepo/bfg/src/bde/gummy_drops
+    t-workspaces = /Users/chengkli/src/gitrepo/cisco/terraform/workspaces
+    t-modules = /Users/chengkli/src/gitrepo/cisco/terraform/modules
 
 # [http]
 #     cookiefile = /Users/chengkai.liang/.gitcookies
