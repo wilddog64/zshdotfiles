@@ -3,6 +3,7 @@ svn=~src/svn
 gitrepo=~src/gitrepo
 cisco=~gitrepo/cisco
 java=~gitrepo/java
+py=~cisco/python
 gradle=~gitrepo/gradle
 personal=~gitrepo/personal
 terra=~cisco/terraform
