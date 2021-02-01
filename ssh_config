@@ -1,32 +1,8 @@
-Host stash.*
+Host agovw1-bastion.gov.wbx2.com
+  Hostname agovw1-bastion
+  User chengkli.fed
   PreferredAuthentications publickey
-  IdentityFile /Users/chengkai.liang/.ssh/id_ecdsa
+  IdentityFile /Users/chengkai.liang/.ssh/id_rsa
+  ControlPath ~/.ssh/ssh_mux_%h_%p_%r
   ControlMaster auto
   ForwardAgent yes
-
-Host accounts01
-  Hostname accounts01.sea.bigfishgames.com
-  User cliang
-  IdentityFile ~/.ssh/id_github_ecdsa
-
-Host release01
-  Hostname release01.sea.bigfishgames.com
-  User cliang
-  IdentityFile ~/.ssh/id_github_ecdsa
-  ControlMaster auto
-  ForwardAgent yes
-
-Host release01.qast
-  Hostname release01.qast.bigfishgames.com
-  User cliang
-  IdentityFile ~/.ssh/id_github_ecdsa
-
-Host release-master.qast
-   Hostname release-master.qast.bigfishgames.com
-   User cliang
-  IdentityFile ~/.ssh/id_github_ecdsa
-  ForwardAgent yes
-
-Host github.com
-  Hostname ssh.github.com
-  Port 443
