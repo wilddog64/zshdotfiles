@@ -55,6 +55,7 @@ plugins=(
          zsh-navigation-tools
          zsh-autosuggestions
          zsh-syntax-highlighting
+         vagrant
          # kubectl
          # helm
          z
