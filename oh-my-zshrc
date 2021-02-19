@@ -55,7 +55,7 @@ plugins=(
          zsh-navigation-tools
          zsh-autosuggestions
          zsh-syntax-highlighting
-         kubectl
+         # kubectl
          # helm
          z
          )
