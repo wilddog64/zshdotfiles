@@ -4,6 +4,7 @@ gitrepo=~src/gitrepo
 cisco=~gitrepo/cisco
 java=~gitrepo/java
 py=~cisco/python
+vagrant=~cisco/vagrant
 gradle=~gitrepo/gradle
 personal=~gitrepo/personal
 terra=~cisco/terraform
