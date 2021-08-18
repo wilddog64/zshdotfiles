@@ -1,7 +1,7 @@
 [user]
-    name = CK
-    email = chengkli@cisco.com
-    bitbucket = chengkai
+  name = chengkai liang
+  email = chengkli@cisco.com
+  bitbucket = chengkai
 
 [alias]
     aliases          = config --get-regexp ^alias\\.*$
@@ -39,20 +39,20 @@
 [push]
     default = upstream
 [difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-    path =
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path =
 [mergetool "sourcetree"]
-    cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-    trustExitCode = true
+  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
 [core]
-    excludesfile = /Users/cliang/.gitignore_global
-    autocrlf     = false
-    safecrlf     = false
-    eol          = crlf
-    filemode     = false
-    ignorecase   = false
-    editor       = /usr/local/bin/nvim
-    pager        = less -F -X
+  excludesfile = /Users/chengkli/.gitignore_global
+  autocrlf     = false
+  safecrlf     = false
+  eol          = crlf
+  filemode     = false
+  ignorecase   = false
+  editor       = /usr/local/bin/nvim
+  pager        = less -F -X
 [hub]
     protocol = https
 [credential]
