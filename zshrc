@@ -110,7 +110,7 @@ eval `keychain --eval --agents ssh --inherit any id_rsa`
 which pyenv 2>&1 > /dev/null
 if [[ $? == 0 ]]; then
   echo initialize pyenv ...
-  eval "$(pyenv init -)"
+  eval "$(pyenv init --path)"
 fi
 
 which pyenv-virtualenv-init 2>&1 > /dev/null
