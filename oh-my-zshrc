@@ -58,6 +58,7 @@ plugins=(
          zsh-syntax-highlighting
          vagrant
          # kubectl
+         dotnet
          # helm
          z
          )
