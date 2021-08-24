@@ -45,22 +45,24 @@ module_path=($module_path /usr/local/lib/zpython)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(
-         aws
-         git
-         docker
-         vi-mode
-         brew
          # git-extras
          # git-prompt
+         # helm
+         # kubectl
+         aws
+         brew
+         docker
+         git
          per-directory-history
-         zsh-navigation-tools
-         zsh-autosuggestions
-         zsh-syntax-highlighting
          vagrant
          # kubectl
          dotnet
          # helm
+         vi-mode
          z
+         zsh-autosuggestions
+         zsh-navigation-tools
+         zsh-syntax-highlighting
          )
 
 source $ZSH/oh-my-zsh.sh
