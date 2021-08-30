@@ -53,7 +53,9 @@ plugins=(
          brew
          docker
          git
+         kops
          per-directory-history
+         terraform
          vagrant
          # kubectl
          dotnet
