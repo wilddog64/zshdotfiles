@@ -1,5 +1,4 @@
 src=~/src
-svn=~src/svn
 gitrepo=~src/gitrepo
 cisco=~gitrepo/cisco
 java=~gitrepo/java
