@@ -1,7 +1,6 @@
 [user]
   name = chengkai liang
   email = chengkli@cisco.com
-  bitbucket = chengkai
 
 [alias]
     aliases          = config --get-regexp ^alias\\.*$
@@ -70,6 +69,7 @@
     gummydrop = /Users/chengkai.liang/src/gitrepo/bfg/src/bde/gummy_drops
     t-workspaces = /Users/chengkli/src/gitrepo/cisco/terraform/workspaces
     t-modules = /Users/chengkli/src/gitrepo/cisco/terraform/modules
+	pre-prod = /Users/chengkli/src/gitrepo/cisco/pre-prod
 
 # [http]
 #     cookiefile = /Users/chengkai.liang/.gitcookies
