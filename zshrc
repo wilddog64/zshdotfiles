@@ -210,3 +210,7 @@ if [[ -r $HOME/.smartcd_config ]]; then
     echo load smartcd config
     source ~/.smartcd_config
 fi
+
+if [[ /usr/local/bin/thefuck ]]; then
+  eval $(thefuck --alias)
+fi
