@@ -58,12 +58,10 @@
     helper = osxkeychain
 
 [bulkworkspaces]
-    tmux = /Users/cliang/.tmux/plugins
-    tmux-plugins = /Users/cliang/.tmux/plugins
-    python = /Users/cliang/src/gitrepo/personal/python
-    jenkins = /Users/cliang/src/gitrepo/personal/jenkins
-    aws-tf-modules = /Users/chengkailiang/src/gitrepo/personal/terraform/aws/modules
-    aws-tf-workspaces = /Users/chengkailiang/src/gitrepo/personal/terraform/aws/workspaces
+    tmux-plugins = /Users/chengkli/.tmux/plugins
+    t-workspaces = /Users/chengkli/src/gitrepo/cisco/terraform/workspaces
+    t-modules = /Users/chengkli/src/gitrepo/cisco/terraform/modules
+    pre-prod = /Users/chengkli/src/gitrepo/cisco/pre-prod
 
 # [http]
 #     cookiefile = /Users/chengkai.liang/.gitcookies
