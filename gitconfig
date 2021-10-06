@@ -58,15 +58,8 @@
     helper = osxkeychain
 
 [bulkworkspaces]
-    puppet = /Users/cliang/src/gitrepo/gigamon/gigamon-puppet-repo
-    ansible = /Users/cliang/src/gitrepo/personal/ansible
     tmux = /Users/cliang/.tmux/plugins
     tmux-plugins = /Users/chengkai.liang/.tmux/plugins
-    terraform = /Users/chengkai.liang/src/gitrepo/bfg/src/terraform
-    release = /Users/chengkai.liang/src/gitrepo/bfg/relesse
-    docker-repos = /Users/chengkai.liang/src/gitrepo/bfg/src/ghe/bde/dockers
-    dockers = /Users/chengkai.liang/src/gitrepo/bfg/src/bde/docker-swarm/dockers
-    gummydrop = /Users/chengkai.liang/src/gitrepo/bfg/src/bde/gummy_drops
     t-workspaces = /Users/chengkli/src/gitrepo/cisco/terraform/workspaces
     t-modules = /Users/chengkli/src/gitrepo/cisco/terraform/modules
     pre-prod = /Users/chengkli/src/gitrepo/cisco/pre-prod
