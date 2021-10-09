@@ -123,6 +123,10 @@ ftpane() {
   fi
 }
 
+find_myip() {
+    dig +short myip.opendns.com @resolver1.opendns.com
+}
+
 # zsh; needs setopt re_match_pcre. You can, of course, adapt it to your own shell easily.
 # this function use fzf to filter a list sessions for user to kill off
 tmuxkillf () {
