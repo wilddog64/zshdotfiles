@@ -22,8 +22,11 @@
 [branch]
     autosetuprebase = always
 [color]
-    diff = always
-    ui   = on
+    diff = false
+    status = false
+    brnch = false
+    interactive = false
+    ui   = true
 [merge]
     sumary = true
     tool = p4merge
