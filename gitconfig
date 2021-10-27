@@ -54,7 +54,7 @@
   filemode     = false
   ignorecase   = false
   editor       = /usr/local/bin/nvim
-  pager        = less -F -X
+  pager        = less -+$LESS -FRX
 [hub]
     protocol = https
 [credential]
