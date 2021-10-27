@@ -22,10 +22,10 @@
 [branch]
     autosetuprebase = always
 [color]
-    diff = false
-    status = false
-    brnch = false
-    interactive = false
+    diff = true
+    status = true
+    brnch = true
+    interactive = true
     ui   = true
 [merge]
     sumary = true
