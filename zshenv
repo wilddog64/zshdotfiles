@@ -3,7 +3,9 @@ unsetopt global_rcs
 
 # === user specific environment variables: path, perl library, and ruby
 export user_bin=~/bin
-export LESSOPEN="| lesspipe.sh %s"
+export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" 
+export LESS_ADVANCED_PREPROCESSOR=1
+export LESSCLOSE="lessclose.sh %s %s"
 export GREP_COLOR=auto
 export FTP_PASSIVE=1
 export AUTOJUMP_KEEP_SYMLINKS=1
