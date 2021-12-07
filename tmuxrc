@@ -5,6 +5,7 @@
 
 # set the command prefix to match gnuscreen (i.e. CTRL+a)
 set-option -g prefix C-a
+set-option -g default-shell /home/linuxbrew/.linuxbrew/bin/zsh
 
 # use the NEW prefix key to "send-prefix" instead of the default
 unbind-key C-b; bind-key C-a send-prefix
