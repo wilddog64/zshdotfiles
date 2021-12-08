@@ -14,7 +14,6 @@ export TOUCHBAR_GIT_ENABLED=true
 export FZF_BASE=/usr/local/opt/fzf
 
 # === make command line editing like vi, ya ya ya!!!
-export VISUAL=vi
 # export ZSH_THEME=powerlevel10k
 export ZSH_THEME=agnoster
 set -o vi
@@ -39,7 +38,6 @@ export TMPDIR=/tmp
 # === theme ===
 
 # === Favoir Editor ===
-export EDITOR=vi
 # autoload -Uz compinstall && compinstall
 
 # === export JAVA_HOME enviornment variable ===
@@ -53,6 +51,9 @@ export HOMEBREW_GITHUB_API_TOKEN=e8c8fef32db9d77fd84c45b23b9cf6e589815c79
 
 # setup GROOVY_HOME environment variable
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
+
+export EDITOR=$BREW_ROOT/bin/vi
+export VISUAL=$BREW_ROOT/bin/vi
 
 export LESSOPEN="|$BREW_ROOT/bin/lesspipe.sh %s"
 # for docker client
