@@ -169,8 +169,8 @@ if [[ $? == 0 ]]; then
 fi
 
 # make gcloud autocompletion work
-if [[ -e /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ]]; then
-     source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+if [[ -e $BREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ]]; then
+     source $BREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 fi
 
 # which fasd
@@ -188,29 +188,32 @@ fi
 #     eval "$(starship init zsh)"
 # fi
 
-if [[ -e /usr/local/bin/direnv ]]; then
+if [[ -e $BREW/bin/direnv ]]; then
     eval "$(direnv hook zsh)"
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-if [[ -e /usr/local/share/antigen/antigen.zsh ]]; then
-    source /usr/local/share/antigen/antigen.zsh
+if [[ -e $BREW_ROOT/share/antigen/antigen.zsh ]]; then
+  echo loading antigen
+    source $BREW_ROOT/share/antigen/antigen.zsh
 fi
 
-if [[ -e /usr/local/opt/fzf/shell/key-bindings.zsh ]]; then
-    source /usr/local/opt/fzf/shell/key-bindings.zsh
+if [[ -e $BREW_ROOT/opt/fzf/shell/key-bindings.zsh ]]; then
+  echo load fzf key-bindings script
+    source $BREW_ROOT/opt/fzf/shell/key-bindings.zsh
 fi
 
-if [[ -e /usr/local/opt/fzf/shell/completion.zsh ]]; then
-    source /usr/local/opt/fzf/shell/completion.zsh
+if [[ -e $BREW_ROOT/opt/fzf/shell/completion.zsh ]]; then
+  echo loading fzf auto complete script
+    source $BREW_ROOT/opt/fzf/shell/completion.zsh
 fi
 
 if [[ -r $HOME/.smartcd_config ]]; then
-    echo load smartcd config
+    echo loading smartcd config
     source ~/.smartcd_config
 fi
 
-if [[ /usr/local/bin/thefuck ]]; then
+if [[ $BREW_ROOT/bin/thefuck ]]; then
   eval $(thefuck --alias)
 fi

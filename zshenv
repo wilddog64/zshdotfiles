@@ -3,7 +3,6 @@ unsetopt global_rcs
 
 # === user specific environment variables: path, perl library, and ruby
 export user_bin=~/bin
-export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" 
 export LESS_ADVANCED_PREPROCESSOR=1
 export LESSCLOSE="lessclose.sh %s %s"
 export GREP_COLOR=auto
@@ -12,16 +11,21 @@ export AUTOJUMP_KEEP_SYMLINKS=1
 export TOUCHBAR_GIT_ENABLED=true
 # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
-export FZF_BASE=/usr/local/opt/fzf
+# setup homebrew environment variables
+export BREW_ROOT=$(brew --prefix)
+export BREW_BIN=$BREW_ROOT/bin
+export BREW_SBIN=$BREW_ROOT/sbin
+export HOMEBREW_GITHUB_API_TOKEN=e8c8fef32db9d77fd84c45b23b9cf6e589815c79
+
+export FZF_BASE=$BREW_ROOT/opt/fzf
 
 # === make command line editing like vi, ya ya ya!!!
-export VISUAL=vi
 # export ZSH_THEME=powerlevel10k
 export ZSH_THEME=agnoster
 set -o vi
 
 # === for groovy
-export GROOVY_HOME=/usr/local/opt/groovy/libexec
+export GROOVY_HOME=$BREW_ROOT/opt/groovy/libexec
 
 # === locale language settings
 export LANG=en_US.UTF-8
@@ -40,36 +44,29 @@ export TMPDIR=/tmp
 # === theme ===
 
 # === Favoir Editor ===
-export EDITOR=vi
 # autoload -Uz compinstall && compinstall
 
 # === export JAVA_HOME enviornment variable ===
 export JAVA_HOME=/usr
 
 # export GIT_CONTRIB=/usr/local/Cellar/git/1.9.0/share/git-core/contrib
-export BREW_ROOT=/usr/local
-export BREW_BIN=$BREW_ROOT/bin
-export BREW_SBIN=$BREW_ROOT/sbin
-export HOMEBREW_GITHUB_API_TOKEN=e8c8fef32db9d77fd84c45b23b9cf6e589815c79
 
 # setup GROOVY_HOME environment variable
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
 
+export EDITOR=$BREW_ROOT/bin/vi
+export VISUAL=$BREW_ROOT/bin/vi
+
+export LESSOPEN="|$BREW_ROOT/bin/lesspipe.sh %s"
 # for docker client
 # /usr/local/opt/coreutils/libexec/gnubin
 export GNUBIN=/usr/local/opt/coreutils/libexec/gnubin
 
-export DOTNET_PATH=/usr/local/share/dotnet
-export POSTGRES_BIN=/usr/local/opt/libpq/bin
-export OPENSSL_BIN=/usr/local/opt/openssl/bin
-export GTAR_PATH=/usr/local/opt/gnu-tar/libexec/gnubin
-export PUPPET_BOLT=/opt/puppetlabs/bolt/bin
-export SPINNAKER_FOR_GCP=~/spinnaker-for-gcp/scripts/
-export SPINNAKER_INSTALL=$SPINNAKER_FOR_GCP/install
-export SPINNAKER_MANAGE=$SPINNAKER_FOR_GCP/manage
-export SPINNAKER_EXPOSE=$SPINNAKER_FOR_GCP/expose
-export SPINNAKER_CLI=$SPINNAKER_FOR_GCP/cli
-export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$BREW_BIN:$GNUBIN:$BREW_BIN:$BREW_SBIN:$GIT_CONTRIB:$PATH:$PUPPET_BOLT:~/bin:$SPINNAKER_INSTALL:$SPINNAKER_MANAGE:$SPINNAKER_EXPOSE:$SPINNAKER_CLI:$POSTGRES_BIN
+export DOTNET_PATH=$BREW_ROOT/share/dotnet
+export POSTGRES_BIN=$BREW_ROOT/opt/libpq/bin
+export OPENSSL_BIN=$BREW_ROOT/opt/openssl/bin
+export GTAR_PATH=$BREW_ROOT/opt/gnu-tar/libexec/gnubin
+export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$BREW_BIN:$GNUBIN:$BREW_BIN:$BREW_SBIN:$GIT_CONTRIB:$PATH:$PUPPET_BOLT:~/bin:$POSTGRES_BIN
 
 export GOENVGOROOT=$HOME/.goenvs
 export GOENVTARGET=$HOME/go/bin
@@ -79,7 +76,7 @@ export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$BREW_BIN:$GNUBIN:$BREW_BIN:$BR
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=gray,bold,underline"
 
 # MONO assembly
-export MONO_GAC_PREFIX=/usr/local
+export MONO_GAC_PREFIX=$BREW_ROOT
 
 # for AWS CLI to access Instance Meta Data Service (IMDS)
 export NO_PROXY=169.254.169.254
@@ -103,8 +100,8 @@ if [[ -z $DISPLAY && -z $SSH_CONNECTION ]]; then
 fi
 
 # for phpbrew
-if [[ -e ~/cliang/.phpbrew/bashrc ]]; then
-    source ~/cliang/.phpbrew/bashrc
+if [[ -e $HOME/.phpbrew/bashrc ]]; then
+    source $HOME/.phpbrew/bashrc
 fi
 
 export PHPBREW_SET_PROMPT=1

@@ -53,7 +53,7 @@
   eol          = crlf
   filemode     = false
   ignorecase   = false
-  editor       = /usr/local/bin/nvim
+  editor       = $BREW_ROOT/bin/nvim
   pager        = less -+$LESS -FRX
 [hub]
     protocol = https
@@ -68,9 +68,6 @@
 
 # [http]
 #     cookiefile = /Users/chengkai.liang/.gitcookies
-
-[credential "https://source.developers.google.com"]
-    helper = gcloud.sh
 
 [filter "lfs"]
     clean = git-lfs clean -- %f
