@@ -3,7 +3,6 @@ unsetopt global_rcs
 
 # === user specific environment variables: path, perl library, and ruby
 export user_bin=~/bin
-export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" 
 export LESS_ADVANCED_PREPROCESSOR=1
 export LESSCLOSE="lessclose.sh %s %s"
 export GREP_COLOR=auto
@@ -55,6 +54,7 @@ export HOMEBREW_GITHUB_API_TOKEN=e8c8fef32db9d77fd84c45b23b9cf6e589815c79
 # setup GROOVY_HOME environment variable
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
 
+export LESSOPEN="|$BREW_ROOT/bin/lesspipe.sh %s"
 # for docker client
 # /usr/local/opt/coreutils/libexec/gnubin
 export GNUBIN=/usr/local/opt/coreutils/libexec/gnubin
