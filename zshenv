@@ -59,8 +59,8 @@ export GROOVY_HOME=/usr/local/opt/groovy/libexec
 # /usr/local/opt/coreutils/libexec/gnubin
 export GNUBIN=/usr/local/opt/coreutils/libexec/gnubin
 
-export DOTNET_PATH=/usr/local/share/dotnet
-export POSTGRES_BIN=/usr/local/opt/libpq/bin
+export DOTNET_PATH=$BREW_ROOT/share/dotnet
+export POSTGRES_BIN=$BREW_ROOT/opt/libpq/bin
 export OPENSSL_BIN=/usr/local/opt/openssl/bin
 export GTAR_PATH=/usr/local/opt/gnu-tar/libexec/gnubin
 export PUPPET_BOLT=/opt/puppetlabs/bolt/bin
