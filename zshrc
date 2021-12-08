@@ -169,8 +169,8 @@ if [[ $? == 0 ]]; then
 fi
 
 # make gcloud autocompletion work
-if [[ -e /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ]]; then
-     source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+if [[ -e $BREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ]]; then
+     source $BREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 fi
 
 # which fasd
@@ -188,7 +188,7 @@ fi
 #     eval "$(starship init zsh)"
 # fi
 
-if [[ -e /usr/local/bin/direnv ]]; then
+if [[ -e $BREW/bin/direnv ]]; then
     eval "$(direnv hook zsh)"
 fi
 
@@ -214,6 +214,6 @@ if [[ -r $HOME/.smartcd_config ]]; then
     source ~/.smartcd_config
 fi
 
-if [[ /usr/local/bin/thefuck ]]; then
+if [[ $BREW_ROOT/bin/thefuck ]]; then
   eval $(thefuck --alias)
 fi

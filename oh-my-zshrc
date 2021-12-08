@@ -3,7 +3,7 @@ ZSH=$HOME/.oh-my-zsh
 
 # zmodload zsh/zprof
 # point to zpython module path
-module_path=($module_path /usr/local/lib/zpython)
+module_path=($module_path $BREW/lib/zpython)
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/

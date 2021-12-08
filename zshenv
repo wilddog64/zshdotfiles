@@ -17,7 +17,7 @@ export BREW_BIN=$BREW_ROOT/bin
 export BREW_SBIN=$BREW_ROOT/sbin
 export HOMEBREW_GITHUB_API_TOKEN=e8c8fef32db9d77fd84c45b23b9cf6e589815c79
 
-export FZF_BASE=/usr/local/opt/fzf
+export FZF_BASE=$BREW_ROOT/opt/fzf
 
 # === make command line editing like vi, ya ya ya!!!
 # export ZSH_THEME=powerlevel10k
@@ -25,7 +25,7 @@ export ZSH_THEME=agnoster
 set -o vi
 
 # === for groovy
-export GROOVY_HOME=/usr/local/opt/groovy/libexec
+export GROOVY_HOME=$BREW_ROOT/opt/groovy/libexec
 
 # === locale language settings
 export LANG=en_US.UTF-8
@@ -76,7 +76,7 @@ export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$BREW_BIN:$GNUBIN:$BREW_BIN:$BR
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=gray,bold,underline"
 
 # MONO assembly
-export MONO_GAC_PREFIX=/usr/local
+export MONO_GAC_PREFIX=$BREW_ROOT
 
 # for AWS CLI to access Instance Meta Data Service (IMDS)
 export NO_PROXY=169.254.169.254
