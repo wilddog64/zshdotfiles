@@ -210,7 +210,7 @@ if [[ -e $BREW_ROOT/opt/fzf/shell/completion.zsh ]]; then
 fi
 
 if [[ -r $HOME/.smartcd_config ]]; then
-    echo load smartcd config
+    echo loading smartcd config
     source ~/.smartcd_config
 fi
 
