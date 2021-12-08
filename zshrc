@@ -194,16 +194,16 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-if [[ -e /usr/local/share/antigen/antigen.zsh ]]; then
-    source /usr/local/share/antigen/antigen.zsh
+if [[ -e $BREW_ROOT/share/antigen/antigen.zsh ]]; then
+    source $BREW_ROOT/share/antigen/antigen.zsh
 fi
 
-if [[ -e /usr/local/opt/fzf/shell/key-bindings.zsh ]]; then
-    source /usr/local/opt/fzf/shell/key-bindings.zsh
+if [[ -e $BREW_ROOT/opt/fzf/shell/key-bindings.zsh ]]; then
+    source $BREW_ROOT/opt/fzf/shell/key-bindings.zsh
 fi
 
-if [[ -e /usr/local/opt/fzf/shell/completion.zsh ]]; then
-    source /usr/local/opt/fzf/shell/completion.zsh
+if [[ -e $BREW_ROOT/opt/fzf/shell/completion.zsh ]]; then
+    source $BREW_ROOT/opt/fzf/shell/completion.zsh
 fi
 
 if [[ -r $HOME/.smartcd_config ]]; then
