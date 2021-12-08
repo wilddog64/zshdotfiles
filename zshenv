@@ -61,15 +61,9 @@ export GNUBIN=/usr/local/opt/coreutils/libexec/gnubin
 
 export DOTNET_PATH=$BREW_ROOT/share/dotnet
 export POSTGRES_BIN=$BREW_ROOT/opt/libpq/bin
-export OPENSSL_BIN=/usr/local/opt/openssl/bin
-export GTAR_PATH=/usr/local/opt/gnu-tar/libexec/gnubin
-export PUPPET_BOLT=/opt/puppetlabs/bolt/bin
-export SPINNAKER_FOR_GCP=~/spinnaker-for-gcp/scripts/
-export SPINNAKER_INSTALL=$SPINNAKER_FOR_GCP/install
-export SPINNAKER_MANAGE=$SPINNAKER_FOR_GCP/manage
-export SPINNAKER_EXPOSE=$SPINNAKER_FOR_GCP/expose
-export SPINNAKER_CLI=$SPINNAKER_FOR_GCP/cli
-export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$BREW_BIN:$GNUBIN:$BREW_BIN:$BREW_SBIN:$GIT_CONTRIB:$PATH:$PUPPET_BOLT:~/bin:$SPINNAKER_INSTALL:$SPINNAKER_MANAGE:$SPINNAKER_EXPOSE:$SPINNAKER_CLI:$POSTGRES_BIN
+export OPENSSL_BIN=$BREW_ROOT/opt/openssl/bin
+export GTAR_PATH=$BREW_ROOT/opt/gnu-tar/libexec/gnubin
+export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$BREW_BIN:$GNUBIN:$BREW_BIN:$BREW_SBIN:$GIT_CONTRIB:$PATH:$PUPPET_BOLT:~/bin:$POSTGRES_BIN
 
 export GOENVGOROOT=$HOME/.goenvs
 export GOENVTARGET=$HOME/go/bin
