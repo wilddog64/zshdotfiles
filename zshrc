@@ -195,14 +195,17 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [[ -e $BREW_ROOT/share/antigen/antigen.zsh ]]; then
+  echo loading antigen
     source $BREW_ROOT/share/antigen/antigen.zsh
 fi
 
 if [[ -e $BREW_ROOT/opt/fzf/shell/key-bindings.zsh ]]; then
+  echo load fzf key-bindings script
     source $BREW_ROOT/opt/fzf/shell/key-bindings.zsh
 fi
 
 if [[ -e $BREW_ROOT/opt/fzf/shell/completion.zsh ]]; then
+  echo loading fzf auto complete script
     source $BREW_ROOT/opt/fzf/shell/completion.zsh
 fi
 
