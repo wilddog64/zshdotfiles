@@ -97,8 +97,8 @@ if [[ -z $DISPLAY && -z $SSH_CONNECTION ]]; then
 fi
 
 # for phpbrew
-if [[ -e ~/cliang/.phpbrew/bashrc ]]; then
-    source ~/cliang/.phpbrew/bashrc
+if [[ -e $HOME/.phpbrew/bashrc ]]; then
+    source $HOME/.phpbrew/bashrc
 fi
 
 export PHPBREW_SET_PROMPT=1
