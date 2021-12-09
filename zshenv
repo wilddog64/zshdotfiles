@@ -53,8 +53,8 @@ export JAVA_HOME=/usr
 # setup GROOVY_HOME environment variable
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
 
-export EDITOR=$BREW_ROOT/bin/vi
-export VISUAL=$BREW_ROOT/bin/vi
+export EDITOR=$BREW_ROOT/bin/nvim
+export VISUAL=$BREW_ROOT/bin/nvim
 
 export LESSOPEN="|$BREW_ROOT/bin/lesspipe.sh %s"
 # for docker client
