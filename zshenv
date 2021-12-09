@@ -15,7 +15,6 @@ export TOUCHBAR_GIT_ENABLED=true
 export BREW_ROOT=$(brew --prefix)
 export BREW_BIN=$BREW_ROOT/bin
 export BREW_SBIN=$BREW_ROOT/sbin
-export HOMEBREW_GITHUB_API_TOKEN=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
 
 export FZF_BASE=$BREW_ROOT/opt/fzf
 
