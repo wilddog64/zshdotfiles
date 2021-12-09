@@ -53,6 +53,7 @@ plugins=(
          brew
          docker
          git
+         gh
          kops
          per-directory-history
          terraform
