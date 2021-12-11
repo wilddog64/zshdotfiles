@@ -169,8 +169,8 @@ if [[ $? == 0 ]]; then
 fi
 
 # make gcloud autocompletion work
-if [[ -e $BREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ]]; then
-     source $BREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+if [[ -e $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ]]; then
+     source $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 fi
 
 # which fasd
@@ -188,25 +188,25 @@ fi
 #     eval "$(starship init zsh)"
 # fi
 
-if [[ -e $BREW/bin/direnv ]]; then
+if [[ -e $HOMEBREW_PREFIX/bin/direnv ]]; then
     eval "$(direnv hook zsh)"
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-if [[ -e $BREW_ROOT/share/antigen/antigen.zsh ]]; then
+if [[ -e $HOMEBREW_PREFIX/share/antigen/antigen.zsh ]]; then
   echo loading antigen
-    source $BREW_ROOT/share/antigen/antigen.zsh
+    source $HOMEBREW_PREFIX/share/antigen/antigen.zsh
 fi
 
-if [[ -e $BREW_ROOT/opt/fzf/shell/key-bindings.zsh ]]; then
+if [[ -e $HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh ]]; then
   echo load fzf key-bindings script
-    source $BREW_ROOT/opt/fzf/shell/key-bindings.zsh
+    source $HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh
 fi
 
-if [[ -e $BREW_ROOT/opt/fzf/shell/completion.zsh ]]; then
+if [[ -e $HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh ]]; then
   echo loading fzf auto complete script
-    source $BREW_ROOT/opt/fzf/shell/completion.zsh
+    source $HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh
 fi
 
 if [[ -r $HOME/.smartcd_config ]]; then
@@ -214,6 +214,6 @@ if [[ -r $HOME/.smartcd_config ]]; then
     source ~/.smartcd_config
 fi
 
-if [[ $BREW_ROOT/bin/thefuck ]]; then
+if [[ $HOMEBREW_PREFIX/bin/thefuck ]]; then
   eval $(thefuck --alias)
 fi

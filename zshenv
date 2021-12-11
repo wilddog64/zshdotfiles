@@ -13,12 +13,14 @@ export TOUCHBAR_GIT_ENABLED=true
 
 export PATH=/usr/local/bin:$PATH
 
+# populate homebrew enviornment variables
+eval $(brew shellenv)
 # setup homebrew environment variables
 export BREW_ROOT=$(brew --prefix)
-export BREW_BIN=$BREW_ROOT/bin
-export BREW_SBIN=$BREW_ROOT/sbin
+export HOMEBREW_BIN=$HOMEBREW_PREFIX/bin
+export HOMEBREW_SBIN=$HOMEBREW_PREFIX/sbin
 
-export FZF_BASE=$BREW_ROOT/opt/fzf
+export FZF_BASE=$HOMEBREW_PREFIX/opt/fzf
 
 # === make command line editing like vi, ya ya ya!!!
 # export ZSH_THEME=powerlevel10k
@@ -26,7 +28,7 @@ export ZSH_THEME=agnoster
 set -o vi
 
 # === for groovy
-export GROOVY_HOME=$BREW_ROOT/opt/groovy/libexec
+export GROOVY_HOME=$HOMEBREW_PREFIX/opt/groovy/libexec
 
 # === locale language settings
 export LANG=en_US.UTF-8
@@ -55,24 +57,24 @@ export JAVA_HOME=/usr
 # setup GROOVY_HOME environment variable
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
 
-export EDITOR=$BREW_ROOT/bin/nvim
-export VISUAL=$BREW_ROOT/bin/nvim
+export EDITOR=$HOMEBREW_PREFIX/bin/nvim
+export VISUAL=$HOMEBREW_PREFIX/bin/nvim
 
 export LESSOPEN="|$BREW_ROOT/bin/lesspipe.sh %s"
 # for docker client
 # /usr/local/opt/coreutils/libexec/gnubin
-export GNUBIN=/usr/local/opt/coreutils/libexec/gnubin
+export GNUBIN=$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin
 
-export DOTNET_PATH=$BREW_ROOT/share/dotnet
-export POSTGRES_BIN=$BREW_ROOT/opt/libpq/bin
-export OPENSSL_BIN=$BREW_ROOT/opt/openssl/bin
-export GTAR_PATH=$BREW_ROOT/opt/gnu-tar/libexec/gnubin
-export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$BREW_BIN:$GNUBIN:$BREW_BIN:$BREW_SBIN:$GIT_CONTRIB:$PATH:$PUPPET_BOLT:~/bin:$POSTGRES_BIN
+export DOTNET_PATH=$HOMEBREW_PREFIX/share/dotnet
+export POSTGRES_BIN=$HOMEBREW_PREFIX/opt/libpq/bin
+export OPENSSL_BIN=$HOMEBREW_PREFIX/opt/openssl/bin
+export GTAR_PATH=$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin
+export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$HOMEBREW_PREFIX:$GNUBIN:$BREW_BIN:$BREW_SBIN:$GIT_CONTRIB:$PATH:$PUPPET_BOLT:~/bin:$POSTGRES_BIN
 
 export GOENVGOROOT=$HOME/.goenvs
 export GOENVTARGET=$HOME/go/bin
 export GOENVHOME=$HOME/workspace
-export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$BREW_BIN:$GNUBIN:$BREW_BIN:$BREW_SBIN:$GIT_CONTRIB:$PATH:$PUPPET_BOLT:$GOENVTARGET:~/bin
+export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$HOMEBREW_PREFIX:$GNUBIN:$BREW_BIN:$BREW_SBIN:$GIT_CONTRIB:$PATH:$PUPPET_BOLT:$GOENVTARGET:~/bin
 # zsh auto-suggestion higlight style
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=gray,bold,underline"
 
