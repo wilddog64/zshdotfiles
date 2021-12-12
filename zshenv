@@ -170,3 +170,4 @@ setopt PRINT_EIGHT_BIT
 setopt AUTO_RESUME
 
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+export NVIM_PYTHON_LOG_FILE=/tmp/nvim.log
