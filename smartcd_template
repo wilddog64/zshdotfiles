@@ -1,0 +1,115 @@
+function kube_current_context() {
+    kubectl config current-context
+}
+
+function kube_contexts() {
+    kubectl config get-contexts
+}
+
+function kube_use_context() {
+    kubectl config use-context "escape $1"
+}
+
+function tf() {
+    terraform "$@"
+}
+
+function tfd() {
+    tf $(escape destroy)
+}
+
+function tfo() {
+    tf $(escape output)
+}
+
+function tfg() {
+    tf graph -verbose -draw-cycles -type=plan-destroy | dot -Tpng > /tmp/graph.png
+    open /tmp/graph.png
+}
+
+function tfi() {
+    tf init
+}
+
+function tfu() {
+    tf get -update "$@"
+}
+
+function tfa() {
+    tf apply "$@"
+}
+function tfp() {
+    tf plan "$@"
+}
+
+function tfpd() {
+    tf plan -destroy "$@"
+}
+
+function tfw() {
+    tf workspace "$@"
+}
+
+function tfwl() {
+    tfw list
+}
+
+function tfwc() {
+    tfw show
+}
+
+function tfwn() {
+    tfw new $(escape $1)
+}
+
+function tfwd() {
+    tfw delete $(escape $1)
+}
+
+function tfws() {
+    tfw select $(escape $1)
+}
+
+function tfs() {
+    tf state "$@"
+}
+
+function tfsl() {
+    tfs list
+}
+
+function tfsd() {
+    tfs delete $(escape $1)
+}
+
+function tfsp() {
+    tfs pull "$@"
+}
+
+function tfsrm() {
+    tfs rm "$@"
+}
+
+autostash kube_current_context
+autostash kube_contexts
+autostash kube_use_context
+autostash tf
+autostash tfd
+autostash tfo
+autostash tfg
+autostash tfi
+autostash tfu
+autostash tfa
+autostash tfp
+autostash tfpd
+autostash tfw
+autostash tfwl
+autostash tfwc
+autostash tfwn
+autostash tfwd
+autostash tfws
+autostash tfs
+autostash tfsl
+autostash tfsd
+autostash tfsp
+autostash tfsrm
