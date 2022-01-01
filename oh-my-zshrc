@@ -52,7 +52,7 @@ plugins=(
          aws
          brew
          docker
-         git
+         # git
          gh
          kops
          per-directory-history
