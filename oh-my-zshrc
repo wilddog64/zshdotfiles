@@ -49,20 +49,20 @@ plugins=(
          # git-prompt
          # helm
          # kubectl
-         aws
-         brew
-         docker
+         # aws
+         # brew
+         # docker
          # git
-         gh
-         kops
-         per-directory-history
-         terraform
-         vagrant
+         #gh
+         #kops
+         # per-directory-history
+         #terraform
+         #vagrant
          # kubectl
-         dotnet
+         # dotnet
          # helm
          vi-mode
-         z
+         # z
          zsh-autosuggestions
          zsh-navigation-tools
          zsh-syntax-highlighting
