@@ -11,3 +11,5 @@ zplug "plugins/gh", from:oh-my-zsh
 zplug "plugins/kops", from:oh-my-zsh
 zplug "plugins/vagrant", from:oh-my-zsh
 zplug "plugins/terraform", from:oh-my-zsh
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-autosuggestions", defer:2

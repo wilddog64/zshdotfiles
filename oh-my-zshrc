@@ -63,9 +63,9 @@ plugins=(
          # helm
          vi-mode
          # z
-         zsh-autosuggestions
-         zsh-navigation-tools
-         zsh-syntax-highlighting
+         # zsh-autosuggestions
+         # zsh-navigation-tools
+         # zsh-syntax-highlighting
          )
 
 source $ZSH/oh-my-zsh.sh
