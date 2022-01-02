@@ -222,6 +222,7 @@ if [[ ! -e ~/.zplug/init.zsh ]]; then
   curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 fi
 
+sleep 1
 echo load zplug
 source ~/.zplug/init.zsh
 source ~/.zsh/zplugs.zsh
