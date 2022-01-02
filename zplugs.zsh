@@ -14,3 +14,4 @@ zplug "plugins/terraform", from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions", defer:2
 zplug "zsh-users/vi-mode", from:oh-my-zsh
+zplug "mogensen/keychain", as:command
