@@ -24,7 +24,7 @@ export FZF_BASE=$HOMEBREW_PREFIX/opt/fzf
 
 # === make command line editing like vi, ya ya ya!!!
 # export ZSH_THEME=powerlevel10k
-export ZSH_THEME=agnoster
+# export ZSH_THEME=agnoster
 set -o vi
 
 # === for groovy

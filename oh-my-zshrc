@@ -49,23 +49,23 @@ plugins=(
          # git-prompt
          # helm
          # kubectl
-         aws
-         brew
-         docker
-         git
-         gh
-         kops
-         per-directory-history
-         terraform
-         vagrant
+         # aws
+         # brew
+         # docker
+         # git
+         #gh
+         #kops
+         # per-directory-history
+         #terraform
+         #vagrant
          # kubectl
-         dotnet
+         # dotnet
          # helm
-         vi-mode
-         z
-         zsh-autosuggestions
-         zsh-navigation-tools
-         zsh-syntax-highlighting
+         # vi-mode
+         # z
+         # zsh-autosuggestions
+         # zsh-navigation-tools
+         # zsh-syntax-highlighting
          )
 
 source $ZSH/oh-my-zsh.sh
@@ -101,4 +101,5 @@ autoload -U +X bashcompinit && bashcompinit
 
 complete -o nospace -C /usr/local/bin/vault vault
 
+source ~/.zsh/bindingkeys
 # zprof

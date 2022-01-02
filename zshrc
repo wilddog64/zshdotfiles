@@ -217,3 +217,13 @@ fi
 if [[ $HOMEBREW_PREFIX/bin/thefuck ]]; then
   eval $(thefuck --alias)
 fi
+
+if [[ ! -e ~/.zplug/init.zsh ]]; then
+  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+fi
+
+echo load zplug
+source ~/.zplug/init.zsh
+source ~/.zsh/zplugs.zsh
+! zplug check --verbose  && zplug install
+zplug load --verbose
