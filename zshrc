@@ -4,6 +4,7 @@
 
 # === for normal aliases
 if [[ -r ~/.zsh/aliases ]]; then
+    echo load aliases
     source ~/.zsh/aliases
 fi
 
@@ -14,11 +15,13 @@ fi
 
 # === cd names as commands  --- very handy
 if [[ -r ~/.zsh/cdnames ]]; then
+    echo load cdnames
     source ~/.zsh/cdnames
 fi
 
 # === key bindings
 if [[ -r ~/.zsh/bindingkeys ]]; then
+    echo load keybinding
     source ~/.zsh/bindingkeys
 fi
 
