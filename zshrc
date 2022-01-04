@@ -93,11 +93,6 @@ zle -N backward-delete-to-slash
 autoload -Uz colors
 colors
 
-rbenv() {
-  eval "$(rbenv init -)"
-  export PATH="/opt/chefdk/bin:$PATH"
-}
-
 # Autoload some bash completion functions if they exist.
 autoload -Uz bashcompinit
 bashcompinit
