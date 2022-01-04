@@ -17,3 +17,4 @@ zplug "zsh-users/vi-mode", from:oh-my-zsh
 zplug "mogensen/keychain", as:command, hook-build:"ln -sf $ZPLUG_REPOS/mogensen/keychain/keychain.sh $ZPLUG_BIN/keychain.sh"
 zplug "lib/clipboard", from:oh-my-zsh
 zplug "Jxck/dotfiles", as:command, use:"bin/{histuniq,color}"
+zplug "junegunn/fzf", as:command, hook-build:"make install", use:"bin/fzf"

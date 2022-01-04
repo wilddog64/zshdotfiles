@@ -19,6 +19,10 @@ if [[ -r ~/.zsh/cdnames ]]; then
     source ~/.zsh/cdnames
 fi
 
+if [[ -r ~/.zsh/fzf.zsh ]]; then
+  source ~/.zsh/fzf.zsh
+fi
+
 # === key bindings
 if [[ -r ~/.zsh/bindingkeys ]]; then
     echo load keybinding
