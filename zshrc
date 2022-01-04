@@ -228,6 +228,12 @@ if [ -n $TILIX_ID ] || [ -n $VTE_VERSION ]; then
   source /etc/profile.d/vte.sh
 fi
 
+rbenv=$(brew --prefix rbenv)
+if [[ -e $rbenv ]]; then
+  echo initializing rbenv
+  eval "$(rbenv init - zsh)"
+fi
+
 sleep 1 # sleep one second for zplug to be ready
 echo load zplug
 source ~/.zplug/init.zsh
