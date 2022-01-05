@@ -240,3 +240,4 @@ source ~/.zplug/init.zsh
 source ~/.zsh/zplugs.zsh
 ! zplug check --verbose  && zplug install
 zplug load --verbose
+set +o vi
