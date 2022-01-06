@@ -224,7 +224,7 @@ if [[ ! -e ~/.zplug/init.zsh ]]; then
   curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 fi
 
-if [ -n $TILIX_ID ] || [ -n $VTE_VERSION ]; then
+if [[ -n "$TILIX_ID" ]] || [[ -n "$VTE_VERSION" ]]; then
   source /etc/profile.d/vte.sh
 fi
 
