@@ -19,3 +19,4 @@ zplug "lib/clipboard", from:oh-my-zsh
 zplug "Jxck/dotfiles", as:command, use:"bin/{histuniq,color}"
 zplug "junegunn/fzf", as:command, hook-build:"make install", use:"bin/fzf"
 zplug "b4b4r07/zsh-vimode-visual", defer:3
+zplug "lib/directories", from:oh-my-zsh
