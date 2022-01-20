@@ -1,8 +1,3 @@
-# alias vi='vi -c "set noignorecase" -c "set undodir=/Users/cliang/backup/vimundo"'
-# alias ..='cd ../'
-# alias ...='cd ../../'
-# alias ....='cd ../../../'
-# alias .....='cd ../../../../'
 alias b='cd -'
 alias -g R=' > /tmp/tmp.txt'
 alias -g T=' | tee /tmp/tee.txt'
@@ -11,7 +6,6 @@ alias -g JS='| python -m json.tool'
 alias -g EN='| vault_encrypt -u cliang'
 alias cls=clear
 # alias cdpbld="cd ~/.cpan/build/"
-alias del='/bin/rm -vi'
 alias diff=colordiff
 alias dirdiff="diff -Bbrq -x 'ruby_sess.*' -x '*.swp' -x '*.bak' -x '*.log.[0-9]' -x '.hg' -x '*.orig' -x '*.properties' -x '*.rdf' -x '.*' "
 alias glnotify=growlnotify
@@ -30,9 +24,6 @@ alias lsd='ls -ld'
 alias lsd='ls -ald'
 alias lsc='ls -C'
 alias cdiff=colordiff
-alias jh='j -s'
-alias jp='j --purge'
-alias m='mate'
 alias unittest="python -m unittest discover -s . -p '*_test.py' -v"
 alias rd="rm -rf"
 alias md='mkdir -p'
