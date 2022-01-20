@@ -2,11 +2,6 @@
 
 # === get all apps and create an aliases for them
 
-# === for normal aliases
-if [[ -r ~/.zsh/aliases ]]; then
-    echo load aliases
-    source ~/.zsh/aliases
-fi
 
 # === zsh shell functions
 if [[ -r ~/.zsh/my_func.zsh ]]; then
@@ -241,3 +236,9 @@ source ~/.zsh/zplugs.zsh
 ! zplug check --verbose  && zplug install
 zplug load --verbose
 set +o vi
+
+# === for normal aliases, so we our aliases setup won't overwrite by zplug
+if [[ -r ~/.zsh/aliases ]]; then
+    echo load aliases
+    source ~/.zsh/aliases
+fi
