@@ -2,10 +2,6 @@
 
 # === get all apps and create an aliases for them
 
-# === for normal aliases
-if [[ -r ~/.zsh/aliases ]]; then
-    source ~/.zsh/aliases
-fi
 
 # === zsh shell functions
 if [[ -r ~/.zsh/my_func.zsh ]]; then
@@ -14,11 +10,17 @@ fi
 
 # === cd names as commands  --- very handy
 if [[ -r ~/.zsh/cdnames ]]; then
+    echo load cdnames
     source ~/.zsh/cdnames
+fi
+
+if [[ -r ~/.zsh/fzf.zsh ]]; then
+  source ~/.zsh/fzf.zsh
 fi
 
 # === key bindings
 if [[ -r ~/.zsh/bindingkeys ]]; then
+    echo load keybinding
     source ~/.zsh/bindingkeys
 fi
 
@@ -85,11 +87,6 @@ zle -N backward-delete-to-slash
 
 autoload -Uz colors
 colors
-
-rbenv() {
-  eval "$(rbenv init -)"
-  export PATH="/opt/chefdk/bin:$PATH"
-}
 
 # Autoload some bash completion functions if they exist.
 autoload -Uz bashcompinit
@@ -222,8 +219,26 @@ if [[ ! -e ~/.zplug/init.zsh ]]; then
   curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 fi
 
+if [[ -n "$TILIX_ID" ]] || [[ -n "$VTE_VERSION" ]]; then
+  source /etc/profile.d/vte.sh
+fi
+
+rbenv=$(brew --prefix rbenv)
+if [[ -e $rbenv ]]; then
+  echo initializing rbenv
+  eval "$(rbenv init - zsh)"
+fi
+
+sleep 1 # sleep one second for zplug to be ready
 echo load zplug
 source ~/.zplug/init.zsh
 source ~/.zsh/zplugs.zsh
 ! zplug check --verbose  && zplug install
 zplug load --verbose
+set +o vi
+
+# === for normal aliases, so we our aliases setup won't overwrite by zplug
+if [[ -r ~/.zsh/aliases ]]; then
+    echo load aliases
+    source ~/.zsh/aliases
+fi

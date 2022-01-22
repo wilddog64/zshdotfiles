@@ -92,15 +92,15 @@ if [[ ! -e ~/.zsh_history ]]; then
     mkdir -p ~/.zsh_history
 fi
 
-if [[ -z $DISPLAY && -z $SSH_CONNECTION ]]; then
-    disp_no=($( ps -xww | grep -F X11.app | awk '{print $NF}' | grep -e ":[0-9]"  ))
-    if [[ -n $disp_no ]];then
-        export DISPLAY=${disp_no}.0
-    else
-        export DISPLAY=:0.0
-    fi
-    echo "DISPLAY has been set to $DISPLAY"
-fi
+# if [[ -z $DISPLAY && -z $SSH_CONNECTION ]]; then
+#     disp_no=($( ps -xww | grep -F X11.app | awk '{print $NF}' | grep -e ":[0-9]"  ))
+#     if [[ -n $disp_no ]];then
+#         export DISPLAY=${disp_no}.0
+#     else
+#         export DISPLAY=:0.0
+#     fi
+#     echo "DISPLAY has been set to $DISPLAY"
+# fi
 
 # for phpbrew
 if [[ -e $HOME/.phpbrew/bashrc ]]; then

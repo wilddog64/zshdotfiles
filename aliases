@@ -1,8 +1,3 @@
-# alias vi='vi -c "set noignorecase" -c "set undodir=/Users/cliang/backup/vimundo"'
-alias ..='cd ../'
-alias ...='cd ../../'
-alias ....='cd ../../../'
-alias .....='cd ../../../../'
 alias b='cd -'
 alias -g R=' > /tmp/tmp.txt'
 alias -g T=' | tee /tmp/tee.txt'
@@ -11,10 +6,8 @@ alias -g JS='| python -m json.tool'
 alias -g EN='| vault_encrypt -u cliang'
 alias cls=clear
 # alias cdpbld="cd ~/.cpan/build/"
-alias del='/bin/rm -vi'
 alias diff=colordiff
 alias dirdiff="diff -Bbrq -x 'ruby_sess.*' -x '*.swp' -x '*.bak' -x '*.log.[0-9]' -x '.hg' -x '*.orig' -x '*.properties' -x '*.rdf' -x '.*' "
-alias glnotify=growlnotify
 alias h='fc -l -i'
 alias l='ls -Ft'
 alias grep=rg
@@ -30,16 +23,15 @@ alias lsd='ls -ld'
 alias lsd='ls -ald'
 alias lsc='ls -C'
 alias cdiff=colordiff
-alias jh='j -s'
-alias jp='j --purge'
-alias m='mate'
 alias unittest="python -m unittest discover -s . -p '*_test.py' -v"
 alias rd="rm -rf"
 alias md='mkdir -p'
 # alias dirs='dirs -pv'
-alias vi="$BREW_ROOT/bin/nvim"
-alias vim='/usr/local/bin/vim'
+alias vi="$HOMEBREW_PREFIX/bin/nvim"
+alias vim="$HOMEBREW_PREFIX/bin/vim"
 alias r='exec -l $SHELL'
 alias zs="z | sort -V"
 # alias smartcd='EDITOR=vim smartcd "$@"'
 alias duoauth='duoauth -e "https://duo.gov.wbx2.com/dag/saml2/idp/SSOService.php?spentityid=DISBBN5ZD2RGHEHSQJZY" -u chengkli.fed -k --profile fedramp'
+alias staging='awssamlapi --profile staging'
+alias sandbox='awssamlapi --profile sandbox'
