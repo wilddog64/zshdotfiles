@@ -21,4 +21,4 @@ zplug "junegunn/fzf", as:command, hook-build:"make install", use:"bin/fzf"
 zplug "b4b4r07/zsh-vimode-visual", defer:3
 zplug "lib/directories", from:oh-my-zsh
 zplug "greymd/tmux-xpanes", as:command, use:"bin/xpanes"
-zplug "cxreg/smartcd", from:github, hook-build: "make install; ln -sf ~/.zsh/smartcd_config ~/.smartcd_config"
+zplug "cxreg/smartcd", from:github, hook-build: "mkdir -p $HOME/.smartcd; ln -sf ./{helper,lib} $HOME/.smartcd ln -sf ~/.zsh/smartcd_config ~/.smartcd_config"
