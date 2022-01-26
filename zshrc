@@ -229,7 +229,7 @@ if [[ -e $rbenv ]]; then
   eval "$(rbenv init - zsh)"
 fi
 
-sleep 1 # sleep one second for zplug to be ready
+sleep 3 # sleep one second for zplug to be ready
 echo load zplug
 source ~/.zplug/init.zsh
 source ~/.zsh/zplugs.zsh
