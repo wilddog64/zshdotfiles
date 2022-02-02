@@ -13,22 +13,6 @@ export TOUCHBAR_GIT_ENABLED=true
 
 export PATH=/usr/local/bin:$PATH
 
-# populate homebrew enviornment variables
-eval $(brew shellenv)
-# setup homebrew environment variables
-export BREW_ROOT=$(brew --prefix)
-export HOMEBREW_BIN=$HOMEBREW_PREFIX/bin
-export HOMEBREW_SBIN=$HOMEBREW_PREFIX/sbin
-
-export FZF_BASE=$HOMEBREW_PREFIX/opt/fzf
-
-# === make command line editing like vi, ya ya ya!!!
-# export ZSH_THEME=powerlevel10k
-export ZSH_THEME=agnoster
-set -o vi
-
-# === for groovy
-export GROOVY_HOME=$HOMEBREW_PREFIX/opt/groovy/libexec
 
 # === locale language settings
 export LANG=en_US.UTF-8
@@ -36,8 +20,6 @@ export LANG=en_US.UTF-8
 # === do not record command that's in the history already
 export HISTCONTROL=both
 
-# === this will allow pbcopy work fine with acent characters
-export __CF_USER_TEXT_ENCODING=0x1F5:0x8000100:0x8000100
 
 # === for temprary working directory
 export TMP=/tmp
@@ -54,32 +36,18 @@ export JAVA_HOME=/usr
 
 # export GIT_CONTRIB=/usr/local/Cellar/git/1.9.0/share/git-core/contrib
 
-# setup GROOVY_HOME environment variable
-export GROOVY_HOME=/usr/local/opt/groovy/libexec
-
-export EDITOR=$HOMEBREW_PREFIX/bin/nvim
-export VISUAL=$HOMEBREW_PREFIX/bin/nvim
-
 export LESSOPEN="|$BREW_ROOT/bin/lesspipe.sh %s"
 # for docker client
 # /usr/local/opt/coreutils/libexec/gnubin
-export GNUBIN=$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin
-
-export DOTNET_PATH=$HOMEBREW_PREFIX/share/dotnet
-export POSTGRES_BIN=$HOMEBREW_PREFIX/opt/libpq/bin
-export OPENSSL_BIN=$HOMEBREW_PREFIX/opt/openssl/bin
-export GTAR_PATH=$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin
-export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$HOMEBREW_BIN:$GNUBIN:$HOMEBREW_BIN:$HOMEBREW_SBIN:$GIT_CONTRIB:$PATH:$PUPPET_BOLT:~/bin:$POSTGRES_BIN
 
 export GOENVGOROOT=$HOME/.goenvs
 export GOENVTARGET=$HOME/go/bin
 export GOENVHOME=$HOME/workspace
 export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$GNUBIN:$GIT_CONTRIB:$PATH:$GOENVTARGET:~/bin
-# zsh auto-suggestion higlight style
+
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=gray,bold,underline"
 
 # MONO assembly
-export MONO_GAC_PREFIX=$BREW_ROOT
 
 # for AWS CLI to access Instance Meta Data Service (IMDS)
 export NO_PROXY=169.254.169.254

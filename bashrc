@@ -9,6 +9,5 @@ fi
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
-export SHELL=/home/linuxbrew/.linuxbrew/bin/zsh
-export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
+export SHELL=/usr/bin/zsh
 [ -n $SHELL ] && exec -l $SHELL -i

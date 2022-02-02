@@ -101,7 +101,6 @@ fpath=(
        ~/.zfunctions )
 autoload -U zen
 
-[[ -s `brew --prefix`/etc/autojump.sh  ]] && . `brew --prefix`/etc/autojump.sh
 eval `keychain --eval --agents ssh --inherit any id_rsa`
 
 which pyenv 2>&1 > /dev/null
@@ -120,28 +119,6 @@ which hub 2>&1 > /dev/null
 if [[ $? == 0 ]]; then
   echo 'initialize hub'
   eval "$(hub alias -s)"
-fi
-
-if [[ -e ~/perl5/perlbrew/etc/bashrc ]]; then
-  source ~/perl5/perlbrew/etc/bashrc
-fi
-
-if [[ -e /usr/libexec/java_home ]]; then
-  export JAVA_HOME=$(/usr/libexec/java_home)
-fi
-
-if [[ -e ~/tools/rundeck ]]; then
-  export RUNDECK_BASE=~/tools/rundeck/tools
-  export RUNDECK_TOOL_BIN=$RUNDECK_BASE/bin
-  export PATH=$PATH:$RUNDECK_TOOL_BIN
-fi
-
-if [[ -e $(brew --prefix nvm) ]]; then
-  if [[ ! -e ~/.nvm ]]; then
-    mkdir -p ~/.nvm
-  fi
-  export NVM_DIR=~/.nvm
-  source $(brew --prefix nvm)/nvm.sh
 fi
 
 unalias run-help
@@ -191,28 +168,9 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-if [[ -e $HOMEBREW_PREFIX/share/antigen/antigen.zsh ]]; then
-  echo loading antigen
-    source $HOMEBREW_PREFIX/share/antigen/antigen.zsh
-fi
-
-if [[ -e $HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh ]]; then
-  echo load fzf key-bindings script
-    source $HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh
-fi
-
-if [[ -e $HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh ]]; then
-  echo loading fzf auto complete script
-    source $HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh
-fi
-
 if [[ -r $HOME/.smartcd_config ]]; then
     echo loading smartcd config
     source ~/.smartcd_config
-fi
-
-if [[ $HOMEBREW_PREFIX/bin/thefuck ]]; then
-  eval $(thefuck --alias)
 fi
 
 if [[ ! -e ~/.zplug/init.zsh ]]; then
@@ -221,12 +179,6 @@ fi
 
 if [[ -n "$TILIX_ID" ]] || [[ -n "$VTE_VERSION" ]]; then
   source /etc/profile.d/vte.sh
-fi
-
-rbenv=$(brew --prefix rbenv)
-if [[ -e $rbenv ]]; then
-  echo initializing rbenv
-  eval "$(rbenv init - zsh)"
 fi
 
 sleep 3 # sleep one second for zplug to be ready
