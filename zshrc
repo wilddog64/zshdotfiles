@@ -132,11 +132,6 @@ if [[ $? == 0 ]]; then
     eval "$(goenv init -)"
 fi
 
-# make gcloud autocompletion work
-if [[ -e $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ]]; then
-     source $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
-fi
-
 # which fasd
 # if [[ $? == 0 ]]; then
 #     eval "$(fasd --init posix-alias zsh-hook)"
