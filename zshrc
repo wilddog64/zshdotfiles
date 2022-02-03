@@ -190,3 +190,4 @@ if [[ -r ~/.zsh/aliases ]]; then
 fi
 
 export PATH=~/bin:$PATH
+set -o vi
