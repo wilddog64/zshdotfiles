@@ -180,5 +180,5 @@ if [[ -r ~/.zsh/aliases ]]; then
     source ~/.zsh/aliases
 fi
 
-export PATH=~/bin:$PATH
+export PATH=~/usr/bin:$PATH
 set -o vi
