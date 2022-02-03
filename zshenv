@@ -11,7 +11,7 @@ export AUTOJUMP_KEEP_SYMLINKS=1
 export TOUCHBAR_GIT_ENABLED=true
 # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
-export PATH=/usr/local/bin:$PATH
+export PATH=~/bin:$PATH
 
 
 # === locale language settings
