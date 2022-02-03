@@ -24,6 +24,7 @@ export TMPDIR=/tmp
 
 # export ZDOTDIR=/Users/chengkai.liang/src/gitrepo/personal/zshdotfiles/
 # === theme ===
+export ZSH_THEME=agnoster
 
 # === Favoir Editor ===
 # autoload -Uz compinstall && compinstall
@@ -133,5 +134,3 @@ setopt PRINT_EIGHT_BIT
 
 # === options for jobs
 setopt AUTO_RESUME
-
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
