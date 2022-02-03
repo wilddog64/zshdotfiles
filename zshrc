@@ -188,3 +188,5 @@ if [[ -r ~/.zsh/aliases ]]; then
     echo load aliases
     source ~/.zsh/aliases
 fi
+
+export PATH=~/bin:$PATH
