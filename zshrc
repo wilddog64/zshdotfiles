@@ -163,7 +163,7 @@ if [[ ! -e ~/.zplug/init.zsh ]]; then
 fi
 
 if [[ -n "$TILIX_ID" ]] || [[ -n "$VTE_VERSION" ]]; then
-  source /etc/profile.d/vte.sh
+  [[ -e /etc/profile.d/vte.sh ]] && source /etc/profile.d/vte.sh
 fi
 
 sleep 3 # sleep one second for zplug to be ready
