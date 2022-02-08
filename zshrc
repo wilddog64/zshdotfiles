@@ -25,11 +25,6 @@ if [[ -r ~/.zsh/zsh_comp_styles ]]; then
     source ~/.zsh/comp_styles
 fi
 
-# initialize docker
-if [[ $(which docker-machine) == 0 ]]; then
-	eval $(docker-machine env)
-fi
-
 # === third party shell libraries
 if [[ -r ~/lib/shell/zsh/my_shell_functions ]]; then
    source ~/lib/shell/zsh/my_shell_functions
@@ -91,19 +86,8 @@ fpath=(
        ~/.zfunctions )
 autoload -U zen
 
-eval `keychain --eval --agents ssh --inherit any id_rsa`
+# eval `keychain --eval --agents ssh --inherit any id_rsa`
 
-which pyenv 2>&1 > /dev/null
-if [[ $? == 0 ]]; then
-  echo initialize pyenv ...
-  eval "$(pyenv init --path)"
-fi
-
-which pyenv-virtualenv-init 2>&1 > /dev/null
-if [[ $? == 0 ]]; then
-  echo "initialize pyenv virtualenv"
-  eval "$(pyenv virtualenv-init -)"
-fi
 
 which hub 2>&1 > /dev/null
 if [[ $? == 0 ]]; then
@@ -126,11 +110,11 @@ if [[ -e /opt/puppetlabs/pdk ]]; then
     export PATH=$PATH:/opt/puppetlabs/pdk/bin
 fi
 
-which goenv 2>&1 > /dev/null
-if [[ $? == 0 ]]; then
-    echo initialize go env
-    eval "$(goenv init -)"
-fi
+# which goenv 2>&1 > /dev/null
+# if [[ $? == 0 ]]; then
+#     echo initialize go env
+#     eval "$(goenv init -)"
+# fi
 
 # which fasd
 # if [[ $? == 0 ]]; then
