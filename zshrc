@@ -165,4 +165,7 @@ if [[ -r ~/.zsh/aliases ]]; then
 fi
 
 export PATH=~/usr/bin:$PATH
+export ZSH_THEME=agnoster
+source ~/.oh-my-zsh/oh-my-zsh.sh
 set -o vi
+
