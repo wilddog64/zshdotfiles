@@ -9,6 +9,9 @@ set-option -g prefix C-a
 # use the NEW prefix key to "send-prefix" instead of the default
 unbind-key C-b; bind-key C-a send-prefix
 
+# allow tmux interact with system clipboard
+set -g set-clipboard on
+
 # make sure c-a can send to other apps
 bind C-a send-prefix
 
