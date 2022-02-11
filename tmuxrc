@@ -36,6 +36,13 @@ bind Down last-window \; swap-pane -s tmp.1 \; kill-pane -t tmp
 # vi mode-keys
 setw -g mode-keys vi
 
+# bind vi keys for copy and paste
+bind -T copy-mode-vi v send -X begin-selection
+# bind -T copy-mode-vi 'C-v' send -X rectangle-toggle
+bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "yank"
+bind P paste-buffer
+bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "yank"
+
 # bind Control k to clear tmux buffer (history)
 bind-key -n C-k clear-history
 
@@ -87,7 +94,7 @@ run '~/.tmux/plugins/tpm/tpm'
 set -g @plugin 'christoomey/vim-tmux-navigator'
 set -g @plugin 'jbnicolai/tmux-fpp'
 # set -g @plugin 'tmux-plugins/tmux-continuum'
-set -g @plugin 'tmux-plugins/tmux-copycat'
+# set -g @plugin 'tmux-plugins/tmux-copycat'
 set -g @plugin 'tmux-plugins/tmux-logging'
 set -g @plugin 'tmux-plugins/tmux-open'
 set -g @plugin 'tmux-plugins/tmux-pain-control'
@@ -95,7 +102,7 @@ set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-sessionist'
 set -g @plugin 'tmux-plugins/tmux-urlview'
-set -g @plugin 'tmux-plugins/tmux-yank'
+# set -g @plugin 'tmux-plugins/tmux-yank'
 # set -g @plugin 'nhdaly/tmux-better-mouse-mode'
 
 # custom setting for each plugin goes here
