@@ -158,14 +158,13 @@ source ~/.zsh/zplugs.zsh
 zplug load --verbose
 set +o vi
 
-# === for normal aliases, so we our aliases setup won't overwrite by zplug
-if [[ -r ~/.zsh/aliases ]]; then
-    echo load aliases
-    source ~/.zsh/aliases
-fi
-
 export PATH=~/usr/bin:$PATH
 export ZSH_THEME=agnoster
 source ~/.oh-my-zsh/oh-my-zsh.sh
 set -o vi
 
+# === for normal aliases, so we our aliases setup won't overwrite by zplug
+if [[ -r ~/.zsh/aliases ]]; then
+    echo load aliases
+    source ~/.zsh/aliases
+fi
