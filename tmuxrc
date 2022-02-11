@@ -9,6 +9,9 @@ set-option -g prefix C-a
 
 set -g default-shell /usr/bin/zsh
 
+# make tmux work with clipboard
+set -g set-clipboard on
+
 # use the NEW prefix key to "send-prefix" instead of the default
 unbind-key C-b; bind-key C-a send-prefix
 
