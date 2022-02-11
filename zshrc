@@ -142,21 +142,10 @@ if [[ -r $HOME/.smartcd_config ]]; then
     source ~/.smartcd_config
 fi
 
-if [[ ! -e ~/.zplug/init.zsh ]]; then
-  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-fi
-
 if [[ -n "$TILIX_ID" ]] || [[ -n "$VTE_VERSION" ]]; then
   source /etc/profile.d/vte.sh
 fi
 
-sleep 3 # sleep one second for zplug to be ready
-echo load zplug
-source ~/.zplug/init.zsh
-source ~/.zsh/zplugs.zsh
-! zplug check --verbose  && zplug install
-zplug load --verbose
-set +o vi
 
 export PATH=~/usr/bin:$PATH
 export ZSH_THEME=agnoster
@@ -168,3 +157,15 @@ if [[ -r ~/.zsh/aliases ]]; then
     echo load aliases
     source ~/.zsh/aliases
 fi
+
+# === load zplug
+if [[ ! -e ~/.zplug/init.zsh ]]; then
+  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+fi
+sleep 3 # sleep one second for zplug to be ready
+echo load zplug
+source ~/.zplug/init.zsh
+source ~/.zsh/zplugs.zsh
+! zplug check --verbose  && zplug install
+zplug load --verbose
+set +o vi
