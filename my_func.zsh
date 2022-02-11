@@ -155,3 +155,15 @@ kube_contexts() {
 kube_use_context() {
     kubectl config use-context "escape $1"
 }
+
+s3cp() {
+  aws s3 cp --sse aws:kms "$@"
+}
+
+s3sync() {
+  aws s3 sync --sse aws:kms "$@"
+}
+
+s3rm() {
+  aws s3 rm "$@"
+}
