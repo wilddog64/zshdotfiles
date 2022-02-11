@@ -167,3 +167,8 @@ s3sync() {
 s3rm() {
   aws s3 rm "$@"
 }
+
+ecr_login() {
+  region=$1
+  aws ecr get-login-password --region $region | docker login --username AWS --password-stdin "$(cat ~/.aws/account.txt).dkr.ecr.$region.amazonaws.com"
+}
