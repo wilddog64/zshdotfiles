@@ -62,7 +62,6 @@ set -g visual-activity on
 setw -g automatic-rename
 
 # unbind keys
-unbind C-b
 unbind '"'
 unbind %
 
