@@ -13,8 +13,14 @@ set -g default-shell /usr/bin/zsh
 set -g set-clipboard on
 set-option -g mouse
 
+
 # use the NEW prefix key to "send-prefix" instead of the default
 unbind-key C-b; bind-key C-a send-prefix
+
+# mouse draging copy
+setw -g mode-mouse on
+set-option mouse-select-window on
+
 
 # make sure c-a can send to other apps
 bind C-a send-prefix
