@@ -11,8 +11,6 @@ set-option -g prefix C-a
 unbind-key C-b; bind-key C-a send-prefix
 
 # mouse draging copy
-setw -g mode-mouse on
-set-option mouse-select-window on
 
 # make sure c-a can send to other apps
 bind C-a send-prefix
@@ -38,9 +36,6 @@ unbind Up
 bind Up new-window -d -n tmp \; swap-pane -s tmp.1 \; select-window -t tmp
 unbind Down
 bind Down last-window \; swap-pane -s tmp.1 \; kill-pane -t tmp
-
-# vi mode-keys
-setw -g mode-keys vi
 
 # bind Control k to clear tmux buffer (history)
 bind-key -n C-k clear-history
@@ -114,7 +109,7 @@ set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-sessionist'
 set -g @plugin 'tmux-plugins/tmux-urlview'
-# set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'tmux-plugins/tmux-yank'
 # set -g @plugin 'nhdaly/tmux-better-mouse-mode'
 
 # custom setting for each plugin goes here
@@ -147,3 +142,12 @@ set -g @resurrect-capture-pane-contents 'on'
 # enable tmux 24-bit color
 set -ga terminal-overrides ",xterm-256color:Tc"
 
+# vi mode-keys
+setw -g mode-keys vi
+
+# bind vi keys for copy and paste
+bind -T copy-mode-vi v send -X begin-selection
+bind -T copy-mode-vi 'C-v' send -X rectangle-toggle
+bind -T copy-mode-vi y send-keys -X copy-pipe-no-clear "yank"
+bind P paste-buffer
+bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "yank"
