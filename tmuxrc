@@ -10,9 +10,7 @@ set-option -g prefix C-a
 set -g default-shell /usr/bin/zsh
 
 # make tmux work with clipboard
-set -g set-clipboard on
 set-option -g mouse
-
 
 # use the NEW prefix key to "send-prefix" instead of the default
 unbind-key C-b; bind-key C-a send-prefix
@@ -106,12 +104,6 @@ bind -n C-h select-pane -L
 bind -n C-j select-pane -D
 bind -n C-k select-pane -U
 
-<<<<<<< HEAD
-# bind vi keys for copy and paste
-bind -T copy-mode-vi v send -X begin-selection
-bind -T copy-mode-vi C-v rectangle-toggle
-bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "yank"
-=======
 run '~/.tmux/plugins/tpm/tpm'
 set -g @plugin 'christoomey/vim-tmux-navigator'
 set -g @plugin 'jbnicolai/tmux-fpp'
@@ -164,18 +156,14 @@ setw -g mode-keys vi
 bind -T copy-mode-vi v send -X begin-selection
 bind -T copy-mode-vi 'C-v' send -X rectangle-toggle
 bind -T copy-mode-vi y send-keys -X copy-pipe-no-clear "yank"
->>>>>>> 60e80b8... combine key binding with tmux-yank plugin
 bind P paste-buffer
 bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-no-clear "yank"
 
 # double-click and triple-click
 
-bind -T copy-mode    DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "pasteit"
-bind -T copy-mode-vi DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "pasteit"
-bind -n DoubleClick1Pane select-pane \; copy-mode -M \; send -X select-word \; send -X copy-pipe-no-clear "pasteit"
-bind -T copy-mode    TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "pasteit"
-bind -T copy-mode-vi TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "pasteit"
-bind -n TripleClick1Pane select-pane \; copy-mode -M \; send -X select-line \; send -X copy-pipe-no-clear "pasteit"
-
-# middle click to paste from x11 primary clipboard
-bind -n MouseDown2Pane run "tmux set-buffer -b primary_selection \"pasteit\"; tmux paste-buffer -b primary_selection; tmux delete-buffer -b primary_selection"
+bind -T copy-mode    DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "yank"
+bind -T copy-mode-vi DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "yank"
+bind -n DoubleClick1Pane select-pane \; copy-mode -M \; send -X select-word \; send -X copy-pipe-no-clear "yank"
+bind -T copy-mode    TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "yank"
+bind -T copy-mode-vi TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "yank"
+bind -n TripleClick1Pane select-pane \; copy-mode -M \; send -X select-line \; send -X copy-pipe-no-clear "yank"
