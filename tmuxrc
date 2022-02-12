@@ -166,4 +166,4 @@ bind -T copy-mode-vi 'C-v' send -X rectangle-toggle
 bind -T copy-mode-vi y send-keys -X copy-pipe-no-clear "yank"
 >>>>>>> 60e80b8... combine key binding with tmux-yank plugin
 bind P paste-buffer
-bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "yank"
+bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-no-clear "yank"
