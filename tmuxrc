@@ -6,7 +6,7 @@
 
 # set the command prefix to match gnuscreen (i.e. CTRL+a)
 set-option -g prefix C-a
-set -g mouse on
+setw -g mouse on
 
 # use the NEW prefix key to "send-prefix" instead of the default
 unbind-key C-b; bind-key C-a send-prefix
@@ -155,12 +155,9 @@ bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-no-clear "yank"
 
 # double-click and triple-click
 
-bind -T copy-mode    DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "pasteit"
-bind -T copy-mode-vi DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "pasteit"
-bind -n DoubleClick1Pane select-pane \; copy-mode -M \; send -X select-word \; send -X copy-pipe-no-clear "pasteit"
-bind -T copy-mode    TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "pasteit"
-bind -T copy-mode-vi TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "pasteit"
-bind -n TripleClick1Pane select-pane \; copy-mode -M \; send -X select-line \; send -X copy-pipe-no-clear "pasteit"
-
-# middle click to paste from x11 primary clipboard
-bind -n MouseDown2Pane run "tmux set-buffer -b primary_selection \"pasteit\"; tmux paste-buffer -b primary_selection; tmux delete-buffer -b primary_selection"
+bind -T copy-mode    DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "yank"
+bind -T copy-mode-vi DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "yank"
+bind -n DoubleClick1Pane select-pane \; copy-mode -M \; send -X select-word \; send -X copy-pipe-no-clear "yank"
+bind -T copy-mode    TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "yank"
+bind -T copy-mode-vi TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "yank"
+bind -n TripleClick1Pane select-pane \; copy-mode -M \; send -X select-line \; send -X copy-pipe-no-clear "yank"
