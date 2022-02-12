@@ -167,3 +167,12 @@ bind -T copy-mode-vi y send-keys -X copy-pipe-no-clear "yank"
 >>>>>>> 60e80b8... combine key binding with tmux-yank plugin
 bind P paste-buffer
 bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-no-clear "yank"
+
+# double-click and triple-click
+
+bind -T copy-mode    DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "pasteit"
+bind -T copy-mode-vi DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "pasteit"
+bind -n DoubleClick1Pane select-pane \; copy-mode -M \; send -X select-word \; send -X copy-pipe-no-clear "pasteit"
+bind -T copy-mode    TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "pasteit"
+bind -T copy-mode-vi TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "pasteit"
+bind -n TripleClick1Pane select-pane \; copy-mode -M \; send -X select-line \; send -X copy-pipe-no-clear "pasteit"
