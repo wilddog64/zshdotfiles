@@ -176,3 +176,6 @@ bind -n DoubleClick1Pane select-pane \; copy-mode -M \; send -X select-word \; s
 bind -T copy-mode    TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "pasteit"
 bind -T copy-mode-vi TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "pasteit"
 bind -n TripleClick1Pane select-pane \; copy-mode -M \; send -X select-line \; send -X copy-pipe-no-clear "pasteit"
+
+# middle click to paste from x11 primary clipboard
+bind -n MouseDown2Pane run "tmux set-buffer -b primary_selection \"pasteit\"; tmux paste-buffer -b primary_selection; tmux delete-buffer -b primary_selection"
