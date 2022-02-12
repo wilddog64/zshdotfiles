@@ -10,13 +10,10 @@ set-option -g prefix C-a
 # use the NEW prefix key to "send-prefix" instead of the default
 unbind-key C-b; bind-key C-a send-prefix
 
-<<<<<<< HEAD
-=======
-# allow tmux interact with system clipboard
-set -g set-clipboard on
-set-option -g mouse
+# mouse draging copy
+setw -g mode-mouse on
+set-option mouse-select-window on
 
->>>>>>> d724793... turn on mouse mode
 # make sure c-a can send to other apps
 bind C-a send-prefix
 
