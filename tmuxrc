@@ -13,6 +13,10 @@ unbind-key C-b; bind-key C-a send-prefix
 set -g set-clipboard on
 set-option -g mouse
 
+# mouse draging copy
+setw -g mode-mouse on
+set-option mouse-select-window on
+
 # make sure c-a can send to other apps
 bind C-a send-prefix
 
