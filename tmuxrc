@@ -17,11 +17,9 @@ set-option -g mouse
 # use the NEW prefix key to "send-prefix" instead of the default
 unbind-key C-b; bind-key C-a send-prefix
 
-# mouse draging copy
+# turn on mouse mode
 setw -g mode-mouse on
 
-# allow tmux interact with system clipboard
-set -g set-clipboard on
 
 # make sure c-a can send to other apps
 bind C-a send-prefix
@@ -47,9 +45,6 @@ unbind Up
 bind Up new-window -d -n tmp \; swap-pane -s tmp.1 \; select-window -t tmp
 unbind Down
 bind Down last-window \; swap-pane -s tmp.1 \; kill-pane -t tmp
-
-# vi mode-keys
-setw -g mode-keys vi
 
 # bind Control k to clear tmux buffer (history)
 bind-key -n C-k clear-history
@@ -111,9 +106,64 @@ bind -n C-h select-pane -L
 bind -n C-j select-pane -D
 bind -n C-k select-pane -U
 
+<<<<<<< HEAD
 # bind vi keys for copy and paste
 bind -T copy-mode-vi v send -X begin-selection
 bind -T copy-mode-vi C-v rectangle-toggle
 bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "yank"
+=======
+run '~/.tmux/plugins/tpm/tpm'
+set -g @plugin 'christoomey/vim-tmux-navigator'
+set -g @plugin 'jbnicolai/tmux-fpp'
+# set -g @plugin 'tmux-plugins/tmux-continuum'
+# set -g @plugin 'tmux-plugins/tmux-copycat'
+set -g @plugin 'tmux-plugins/tmux-logging'
+set -g @plugin 'tmux-plugins/tmux-open'
+set -g @plugin 'tmux-plugins/tmux-pain-control'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-sessionist'
+set -g @plugin 'tmux-plugins/tmux-urlview'
+set -g @plugin 'tmux-plugins/tmux-yank'
+# set -g @plugin 'nhdaly/tmux-better-mouse-mode'
+
+# custom setting for each plugin goes here
+set -g @urlview-key 'U' # change activate key for urlview
+# set -g @continuum-restore 'on'
+set -g @continuum-save-interval '15'
+set -g @continuum-boot-options 'iterm,fullscreen' # start iTerm
+set -g @continuum-boot 'on' # automatically restore tmux environment after computer is turned on
+set -g @continuum-boot-options 'iterm' # start iTerm instead of Terminal.app
+set -g @resurrect-strategy-vim 'session' # restore vim sessions
+set -g @resurrect-strategy-nvim 'session' # restore nvim
+set -g @resurrect-save-shell-history 'on' # restore shell history
+
+# set tmux-resurrect options for saving session information
+set -g @resurrect-capture-pane-contents 'on' # save pane contents
+set -g @resurrect-save-command-strategy 'pgrep' # use pgrep instead of ps to find process info
+set -g @resurrect-capture-pane-contents 'on'
+#
+# for vim
+set -g @resurrect-strategy-vim 'session'
+# for neovim
+set -g @resurrect-strategy-nvim 'session'
+
+# restore pane
+set -g @resurrect-capture-pane-contents 'on'
+
+# better-mouse-scroll settings
+# set -g @scroll-without-changing-pane 'on'
+
+# enable tmux 24-bit color
+set -ga terminal-overrides ",xterm-256color:Tc"
+
+# vi mode-keys
+setw -g mode-keys vi
+
+# bind vi keys for copy and paste
+bind -T copy-mode-vi v send -X begin-selection
+bind -T copy-mode-vi 'C-v' send -X rectangle-toggle
+bind -T copy-mode-vi y send-keys -X copy-pipe-no-clear "yank"
+>>>>>>> 60e80b8... combine key binding with tmux-yank plugin
 bind P paste-buffer
 bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "yank"
