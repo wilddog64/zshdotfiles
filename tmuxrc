@@ -19,7 +19,6 @@ unbind-key C-b; bind-key C-a send-prefix
 
 # mouse draging copy
 setw -g mode-mouse on
-set-option mouse-select-window on
 
 # allow tmux interact with system clipboard
 set -g set-clipboard on
