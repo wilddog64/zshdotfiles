@@ -60,6 +60,8 @@ if [[ ! -e ~/.zsh_history ]]; then
     mkdir -p ~/.zsh_history
 fi
 
+export FORGIT_INSTALL_DIR=~/.zplug/repos/wfxr/forgit
+
 # if [[ -z $DISPLAY && -z $SSH_CONNECTION ]]; then
 #     disp_no=($( ps -xww | grep -F X11.app | awk '{print $NF}' | grep -e ":[0-9]"  ))
 #     if [[ -n $disp_no ]];then
