@@ -100,6 +100,13 @@ if [[ ! -e ~/.zsh_history ]]; then
     mkdir -p ~/.zsh_history
 fi
 
+export HOMEBREW_PREFIX="/usr/local";
+export HOMEBREW_CELLAR="/usr/local/Cellar";
+export HOMEBREW_REPOSITORY="/usr/local/Homebrew";
+export PATH="/usr/local/bin:/usr/local/sbin${PATH+:$PATH}";
+export MANPATH="/usr/local/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/usr/local/share/info:${INFOPATH:-}";
+
 # if [[ -z $DISPLAY && -z $SSH_CONNECTION ]]; then
 #     disp_no=($( ps -xww | grep -F X11.app | awk '{print $NF}' | grep -e ":[0-9]"  ))
 #     if [[ -n $disp_no ]];then
@@ -178,3 +185,5 @@ setopt PRINT_EIGHT_BIT
 setopt AUTO_RESUME
 
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
+
