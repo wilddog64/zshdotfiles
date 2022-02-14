@@ -4,6 +4,7 @@
 ##
 
 
+set-option -g default-shell /usr/bin/zsh
 # set the command prefix to match gnuscreen (i.e. CTRL+a)
 set-option -g prefix C-a
 setw -g mouse on
