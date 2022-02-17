@@ -1,3 +1,31 @@
+autostash FORGIT_INSTALL_DIR=~/.zplug/repos/wfxr/forgit
+autostash kube_current_context
+autostash kube_contexts
+autostash kube_use_context
+autostash tf
+autostash tfd
+autostash tfo
+autostash tfg
+autostash tfi
+autostash tfu
+autostash tfa
+autostash tfp
+autostash tfpncov
+autostash tfpd
+autostash tfw
+autostash tfwl
+autostash tfwc
+autostash tfwn
+autostash tfwd
+autostash tfws
+autostash tfs
+autostash tfsl
+autostash tfsd
+autostash tfsp
+autostash tfsrm
+autostash get_aws_token
+autostash vi
+
 function kube_current_context() {
     kubectl config current-context
 }
@@ -38,8 +66,16 @@ function tfu() {
 function tfa() {
     tf apply "$@"
 }
+
 function tfp() {
     tf plan "$@"
+}
+
+function tfpncov() {
+  [[ ! -e .terraform && ! -d .terraform ]] && echo "terraform does not init yet, abort!!" && return -1
+  tfp -no-color | tee /tmp/plan.output
+  [[ ! -e /tmp/plan.output ]] && echo "terraform plan does not generated, no vi!!" && return -1
+  vi /tmp/plan.output
 }
 
 function tfpd() {
@@ -89,27 +125,3 @@ function tfsp() {
 function tfsrm() {
     tfs rm "$@"
 }
-
-autostash kube_current_context
-autostash kube_contexts
-autostash kube_use_context
-autostash tf
-autostash tfd
-autostash tfo
-autostash tfg
-autostash tfi
-autostash tfu
-autostash tfa
-autostash tfp
-autostash tfpd
-autostash tfw
-autostash tfwl
-autostash tfwc
-autostash tfwn
-autostash tfwd
-autostash tfws
-autostash tfs
-autostash tfsl
-autostash tfsd
-autostash tfsp
-autostash tfsrm
