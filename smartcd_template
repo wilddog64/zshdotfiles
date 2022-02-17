@@ -42,6 +42,13 @@ function tfp() {
     tf plan "$@"
 }
 
+function tfpncov() {
+  [[ ! -e .terraform && ! -d .terraform ]] && echo "terraform does not init yet, abort!!" && return -1
+  tfp -no-color | tee /tmp/plan.output
+  [[ ! -e /tmp/plan.output ]] && echo "terraform plan does not generated, no vi!!" && return -1
+  vi -c 'normal GG' /tmp/plan.output
+}
+
 function tfpd() {
     tf plan -destroy "$@"
 }
