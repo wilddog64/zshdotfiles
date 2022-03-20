@@ -110,7 +110,7 @@ set -g @continuum-boot 'on' # automatically restore tmux environment after compu
 set -g @continuum-boot-options 'iterm' # start iTerm instead of Terminal.app
 set -g @resurrect-strategy-vim 'session' # restore vim sessions
 set -g @resurrect-strategy-nvim 'session' # restore nvim
-set -g @resurrect-save-shell-history 'on' # restore shell history
+# set -g @resurrect-save-shell-history 'on' # restore shell history
 set -g @resurrect-capture-pane-contents 'on'
 
 # set tmux-resurrect options for saving session information
