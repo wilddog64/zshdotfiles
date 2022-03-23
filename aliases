@@ -32,6 +32,6 @@ alias vim="$HOMEBREW_PREFIX/bin/vim"
 alias r='exec -l $SHELL'
 alias zs="z | sort -V"
 # alias smartcd='EDITOR=vim smartcd "$@"'
-alias duoauth='duoauth -e "https://duo.gov.wbx2.com/dag/saml2/idp/SSOService.php?spentityid=DISBBN5ZD2RGHEHSQJZY" -u chengkli.fed -k --profile fedramp'
+alias fed='duoauth -e "https://duo.gov.wbx2.com/dag/saml2/idp/SSOService.php?spentityid=DISBBN5ZD2RGHEHSQJZY" -u chengkli.fed -k --profile fedramp'
 alias staging='awssamlapi --profile staging'
 alias sandbox='awssamlapi --profile sandbox'
