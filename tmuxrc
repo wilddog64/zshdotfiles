@@ -6,7 +6,7 @@
 
 # set the command prefix to match gnuscreen (i.e. CTRL+a)
 set-option -g prefix C-a
-setw -g mouse on
+# setw -g mouse on
 
 # use the NEW prefix key to "send-prefix" instead of the default
 unbind-key C-b; bind-key C-a send-prefix
