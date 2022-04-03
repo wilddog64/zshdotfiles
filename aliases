@@ -32,3 +32,4 @@ alias zs="z | sort -V"
 alias duoauth='duoauth -e "https://duo.gov.wbx2.com/dag/saml2/idp/SSOService.php?spentityid=DISBBN5ZD2RGHEHSQJZY" -u chengkli.fed -k --profile fedramp'
 alias staging='awssamlapi --profile staging'
 alias sandbox='awssamlapi --profile sandbox'
+alias vi=~/bin/nvim
