@@ -35,3 +35,4 @@ alias zs="z | sort -V"
 alias fed='duoauth -e "https://duo.gov.wbx2.com/dag/saml2/idp/SSOService.php?spentityid=DISBBN5ZD2RGHEHSQJZY" -u chengkli.fed -k --profile fedramp'
 alias staging='awssamlapi --profile staging'
 alias sandbox='awssamlapi --profile sandbox'
+alias tostg='ssh -A chengkli.fed@ec2-35-160-48-77.us-west-2.compute.amazonaws.com'
