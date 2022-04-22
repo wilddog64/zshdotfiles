@@ -1,7 +1,7 @@
 alias b='cd -'
 alias -g R=' > /tmp/tmp.txt'
 alias -g T=' | tee /tmp/tee.txt'
-alias -g PB='| pbcopy'
+alias -g PB='| yank'
 alias -g JS='| python -m json.tool'
 alias -g EN='| vault_encrypt -u cliang'
 alias cls=clear
