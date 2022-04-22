@@ -3,7 +3,7 @@ unsetopt global_rcs
 
 # === user specific environment variables: path, perl library, and ruby
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PYENV_ROOT/bin:$PATH":~/.local/bin
 export user_bin=~/bin
 export LESS_ADVANCED_PREPROCESSOR=1
 export LESSCLOSE="lessclose.sh %s %s"
