@@ -1,0 +1,6 @@
+bind -m vi-command '"ciw":"lbcw"'
+bind -m vi-command '"diw":"lbdw"'
+bind -m vi-command '"yiw":"lbyw"'
+bind -m vi-command '"ciW":"lBcW"'
+bind -m vi-command '"diW":"lBdW"'
+bind -m vi-command '"yiW":"lByW"'
