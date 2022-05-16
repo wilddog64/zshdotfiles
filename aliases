@@ -8,6 +8,7 @@ alias cls=clear
 # alias cdpbld="cd ~/.cpan/build/"
 alias diff=colordiff
 alias dirdiff="diff -Bbrq -x 'ruby_sess.*' -x '*.swp' -x '*.bak' -x '*.log.[0-9]' -x '.hg' -x '*.orig' -x '*.properties' -x '*.rdf' -x '.*' "
+alias ls='ls --color=auto'
 alias h='fc -l -i'
 alias l='ls -Ft'
 alias grep=rg
