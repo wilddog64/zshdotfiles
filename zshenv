@@ -79,6 +79,9 @@ export PHPBREW_SET_PROMPT=1
 export PHPBREW_RC_ENABLE=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 
+export PATH=/usr/bin:$PATH
+export DOCKER_HOST=unix:///run/user/1000/docker.sock
+
 # === options for customizing zsh behavior
 setopt AUTO_NAME_DIRS
 setopt -J                   # set AUTO_CD
