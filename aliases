@@ -34,3 +34,4 @@ alias fed='duoauth -e "https://duo.gov.wbx2.com/dag/saml2/idp/SSOService.php?spe
 alias staging='awssamlapi --profile staging'
 alias sandbox='awssamlapi --profile sandbox'
 alias tree='tree --du -h'
+alias vi=/usr/bin/nvim
