@@ -166,6 +166,12 @@ if [[ -n "$TILIX_ID" ]] || [[ -n "$VTE_VERSION" ]]; then
   [[ -e /etc/profile.d/vte.sh ]] && source /etc/profile.d/vte.sh
 fi
 
+if [[ -e $HOME/.rbenv/bin/rbenv ]]; then
+   echo loading rbenv
+   export PATH=$HOME/.rbenv/bin:$PATH
+   eval "$(rbenv init -)"
+fi
+
 sleep 3 # sleep one second for zplug to be ready
 echo load zplug
 source ~/.zplug/init.zsh
