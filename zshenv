@@ -46,6 +46,7 @@ export GOENVHOME=$HOME/workspace
 export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$GNUBIN:$GIT_CONTRIB:$PATH:$GOENVTARGET:~/bin
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=gray,bold,underline"
+export EDITOR=/bin/nvim
 
 # MONO assembly
 
