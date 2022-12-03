@@ -130,7 +130,7 @@ set -g @resurrect-capture-pane-contents 'on'
 # set -g @scroll-without-changing-pane 'on'
 
 # enable tmux 25-bit color
-# set -ga terminal-overrides "screen-256color"
+# set -ga terminal-overrides "screen-253color"
 set -g default-terminal "screen-256color"
 
 # vi mode-keys
