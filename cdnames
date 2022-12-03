@@ -1,6 +1,7 @@
 src=~/src
 gitrepo=~src/gitrepo
 cisco=~gitrepo/cisco
+wbx=~cisco/wbx-ref-arch
 java=~gitrepo/java
 py=~cisco/python
 vagrant=~cisco/vagrant
