@@ -242,3 +242,8 @@ if [[ -r ~/.zsh/aliases ]]; then
     echo load aliases
     source ~/.zsh/aliases
 fi
+
+which gh
+if [[ $? == 0 ]]; then
+   eval $(gh completion -s zsh)
+fi
