@@ -247,3 +247,8 @@ which gh
 if [[ $? == 0 ]]; then
    eval $(gh completion -s zsh)
 fi
+
+export kafka_home=$(brew --prefix kafka)
+if [[ ! -z  kafka_home ]]; then
+   export PATH=$PATH:$kafka_home/bin
+fi
