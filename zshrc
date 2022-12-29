@@ -253,3 +253,9 @@ export kafka_home=$(brew --prefix kafka)
 if [[ ! -z  kafka_home ]]; then
    export PATH=$PATH:$kafka_home/bin
 fi
+
+which eksctl 2>&1 > /dev/null
+if [[ $? == 0 ]]; then
+   echo loading eksctl completion
+   eval $(eksctl completion zsh)
+fi
