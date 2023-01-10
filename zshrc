@@ -189,8 +189,6 @@ if [[ -e $HOMEBREW_PREFIX/bin/direnv ]]; then
     eval "$(direnv hook zsh)"
 fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 if [[ -e $HOMEBREW_PREFIX/share/antigen/antigen.zsh ]]; then
   echo loading antigen
     source $HOMEBREW_PREFIX/share/antigen/antigen.zsh
