@@ -3,7 +3,7 @@
 if [[ $# == 0 ]]; then
    echo "require one parameter, vpc-id (an aws vpc id)"
 fi
-aws ec2 describe-internet-gateways --filters 'Name=attachment.vpc-id,Values='$vpc | grep InternetGatewayId
+aws ec2 describe-internet-gateways --filters 'Name=attachment.vpc-id,Values='$vpc | jq -r .InternetGateways[].InternetGatewayId
 aws ec2 describe-subnets --filters 'Name=vpc-id,Values='$vpc | grep SubnetId
 aws ec2 describe-route-tables --filters 'Name=vpc-id,Values='$vpc | grep RouteTableId
 aws ec2 describe-network-acls --filters 'Name=vpc-id,Values='$vpc | grep NetworkAclId
