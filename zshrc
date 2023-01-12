@@ -257,3 +257,10 @@ if [[ $? == 0 ]]; then
    echo loading eksctl completion
    eval $(eksctl completion zsh)
 fi
+
+which chef 2>&1 > /dev/null
+if [[ $? == 0 ]]; then
+   echo loading chef environment settings for zsh
+   chef shell-init zsh > /tmp/chef_completion.zsh
+   source /tmp/chef_completion.zsh
+fi
