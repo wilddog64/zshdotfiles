@@ -100,6 +100,7 @@ set -g @plugin 'tmux-plugins/tmux-urlview'
 set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'sainnhe/tmux-fzf'
 set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @plugin 'jaclu/tmux-menus'
 # set -g @plugin 'nhdaly/tmux-better-mouse-mode'
 
 # custom setting for each plugin goes here
