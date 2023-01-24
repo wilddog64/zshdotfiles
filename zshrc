@@ -264,3 +264,8 @@ if [[ $? == 0 ]]; then
    chef shell-init zsh > /tmp/chef_completion.zsh
    source /tmp/chef_completion.zsh
 fi
+
+if [[ -e  /usr/local/share/zsh-autopair/autopair.zsh ]]; then
+   echo loading zsh-autopair
+    source /usr/local/share/zsh-autopair/autopair.zsh
+fi
