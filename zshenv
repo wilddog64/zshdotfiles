@@ -188,3 +188,6 @@ setopt AUTO_RESUME
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 export HOMEBREW_NO_INSTALL_CLEANUP=1
+
+# so we can have lazygit applied vim editing style
+export LZG_KEYBIND_MODE=vim
