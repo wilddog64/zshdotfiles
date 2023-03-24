@@ -85,6 +85,8 @@ alias la='ls -A'
 alias l='ls -CF'
 alias vi="$HOME/bin/nvim"
 alias xsel='/root/src/gitrepo/personal/win-bash-xclip-xsel/xsel'
+alias yank="xsel -i < $@"
+alias put="xsel -o"
 
 
 # Alias definitions.
@@ -152,7 +154,6 @@ export SCM_CHECK=true
 #export GITSTATUS_NUM_THREADS=8
 
 which keychain 2>&1 > /dev/null
-eval $(keychain --eval --agents ssh --inherit any id_rsa)
 
 # Set Xterm/screen/Tmux title with only a short hostname.
 # Uncomment this (or set SHORT_HOSTNAME to something else),
