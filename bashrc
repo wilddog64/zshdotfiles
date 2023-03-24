@@ -155,6 +155,10 @@ export SCM_CHECK=true
 
 which keychain 2>&1 > /dev/null
 
+if [[ $? == 0 ]]; then
+    eval $(keychain --eval --agents ssh --inherit any id_rsa)
+fi
+
 # Set Xterm/screen/Tmux title with only a short hostname.
 # Uncomment this (or set SHORT_HOSTNAME to something else),
 # Will otherwise fall back on $HOSTNAME.
