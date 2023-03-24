@@ -9,6 +9,8 @@
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
 
+export PATH=~/bin:$PATH
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 
