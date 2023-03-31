@@ -66,6 +66,7 @@ plugins=(
          # zsh-autosuggestions
          # zsh-navigation-tools
          # zsh-syntax-highlighting
+         azure
          )
 
 source $ZSH/oh-my-zsh.sh

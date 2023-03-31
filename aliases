@@ -1,9 +1,9 @@
 alias b='cd -'
-alias -g R=' > /tmp/tmp.txt'
-alias -g T=' | tee /tmp/tee.txt'
-alias -g PB='| pbcopy'
-alias -g JS='| python -m json.tool'
-alias -g EN='| vault_encrypt -u cliang'
+# alias -g R=' > /tmp/tmp.txt'
+# alias -g T=' | tee /tmp/tee.txt'
+# alias -g PB='| pbcopy'
+# alias -g JS='| python -m json.tool'
+# alias -g EN='| vault_encrypt -u cliang'
 alias cls=clear
 # alias cdpbld="cd ~/.cpan/build/"
 alias diff=colordiff
@@ -28,8 +28,6 @@ alias unittest="python -m unittest discover -s . -p '*_test.py' -v"
 alias rd="rm -rf"
 alias md='mkdir -p'
 # alias dirs='dirs -pv'
-alias vi="$HOMEBREW_PREFIX/bin/nvim"
-alias vim="$HOMEBREW_PREFIX/bin/vim"
 alias r='exec -l $SHELL'
 alias zs="z | sort -V"
 # alias smartcd='EDITOR=vim smartcd "$@"'
