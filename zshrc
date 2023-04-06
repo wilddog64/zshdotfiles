@@ -37,6 +37,12 @@ if [[ -r ~/.zsh/bindingkeys ]]; then
     source ~/.zsh/bindingkeys
 fi
 
+# which fzf 2>&1 > /dev/null
+# if [[ $? == 0 ]]; then
+#   echo loading fzf key-bindings for zsh
+# fi
+source ~/.zsh/fzf-shell/key-bindings.zsh
+
 # === zsh completion styles
 if [[ -r ~/.zsh/zsh_comp_styles ]]; then
     source ~/.zsh/comp_styles
