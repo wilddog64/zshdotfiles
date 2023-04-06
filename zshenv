@@ -19,7 +19,8 @@ export AUTOJUMP_KEEP_SYMLINKS=1
 export TOUCHBAR_GIT_ENABLED=true
 # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
-export PATH=/usr/local/bin:$PATH
+LOCAL_BIN=/home/cliang/.local/bin
+export PATH=/usr/local/bin:$LOCAL_BIN:$PATH
 
 # populate homebrew enviornment variables
 eval $(brew shellenv)
