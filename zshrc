@@ -14,15 +14,21 @@ if [[ -r ~/.zsh/cdnames ]]; then
     source ~/.zsh/cdnames
 fi
 
-if [[ -r ~/.zsh/fzf.zsh ]]; then
-  source ~/.zsh/fzf.zsh
-fi
+# if [[ -r ~/.zsh/fzf.zsh ]]; then
+#   source ~/.zsh/fzf.zsh
+# fi
 
 # === key bindings
 if [[ -r ~/.zsh/bindingkeys ]]; then
     echo load keybinding
     source ~/.zsh/bindingkeys
 fi
+
+# which fzf 2>&1 > /dev/null
+# if [[ $? == 0 ]]; then
+#   echo loading fzf key-bindings for zsh
+# fi
+source ~/.zsh/fzf-shell/key-bindings.zsh
 
 # === zsh completion styles
 if [[ -r ~/.zsh/zsh_comp_styles ]]; then
