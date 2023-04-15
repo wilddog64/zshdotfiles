@@ -32,7 +32,7 @@ export FZF_BASE=$HOMEBREW_PREFIX/opt/fzf
 
 # === make command line editing like vi, ya ya ya!!!
 # export ZSH_THEME=powerlevel10k
-export ZSH_THEME=agnoster
+export ZSH_THEME=powerlevel10k/powerlevel10k
 set -o vi
 
 # === for groovy
@@ -191,3 +191,5 @@ export HOMEBREW_NO_INSTALL_CLEANUP=1
 
 # so we can have lazygit applied vim editing style
 export LZG_KEYBIND_MODE=vim
+export export HOMEBREW_GITHUB_API_TOKEN=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
+eval $(oh-my-posh completion zsh)
