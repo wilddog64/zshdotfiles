@@ -193,3 +193,5 @@ export HOMEBREW_NO_INSTALL_CLEANUP=1
 
 # so we can have lazygit applied vim editing style
 export LZG_KEYBIND_MODE=vim
+
+export POSH_THEMES_PATH=~/.local/share/oh-my-posh/themes
