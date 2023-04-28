@@ -21,6 +21,10 @@ export TOUCHBAR_GIT_ENABLED=true
 
 export PATH=/usr/local/bin:$PATH
 
+PUPPET_HOME=/opt/puppetlabs/puppet
+PUPPET_BIN=$PUPPET_HOME/bin
+export PATH=$PUPPET_BIN:$PATH
+
 # populate homebrew enviornment variables
 eval $(brew shellenv)
 # setup homebrew environment variables
