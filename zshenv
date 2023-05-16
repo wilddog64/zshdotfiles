@@ -195,3 +195,5 @@ export HOMEBREW_NO_INSTALL_CLEANUP=1
 export LZG_KEYBIND_MODE=vim
 
 export POSH_THEMES_PATH=~/.local/share/oh-my-posh/themes
+
+export POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
