@@ -199,8 +199,19 @@ export POSH_THEMES_PATH=~/.local/share/oh-my-posh/themes
 export POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 
 # access windows directory
+export WINHOME=/mnt/c
+export WINDOWS=$WINHOME/Windows
+export WINSYS=$WINDOWS/system
+export WINSYS32=$WINDOWS/system32
+export WINPROGFILES=$WINHOME/Program\ Files
+export WINPROGFILES86=$WINHOME/Program\ Files\ \(x86\)/
 export USERPROFILE=/mnt/c/Users/chengkai.liang
 export USERDOWNLOAD=$USERPROFILE/Downloads
 export USERAPPDATA=$USERPROFILE/AppData
 export USERLOCAL=$USERAPPDATA/Local
 export USERPROGS=$USERLOCAL/Programs
+export WINAPPS=$USERLOCAL/Microsoft/WindowsApps
+export WINGET_LINKS=$USERLOCAL/Microsoft/WingetLinks
+
+# search path for windows apps
+export PATH=$PATH:$WINSYS:$WINSYS32:$WINAPPS:$WINGET_LINKS
