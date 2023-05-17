@@ -198,4 +198,9 @@ export POSH_THEMES_PATH=~/.local/share/oh-my-posh/themes
 
 export POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 
+# access windows directory
 export USERPROFILE=/mnt/c/Users/chengkai.liang
+export USERDOWNLOAD=$USERPROFILE/Downloads
+export USERAPPDATA=$USERPROFILE/AppData
+export USERLOCAL=$USERAPPDATA/Local
+export USERPROGS=$USERLOCAL/Programs
