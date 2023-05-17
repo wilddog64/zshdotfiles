@@ -24,3 +24,4 @@ winusr=$USERPROFILE
 winusrloc=$USERLOCAL
 winusrappdata=$USERAPPDATA
 winusrprogs=$USERPROGS
+winlocsettings=~winusr/Local\ Settings
