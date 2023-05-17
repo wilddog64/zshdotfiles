@@ -12,3 +12,15 @@ personal=~gitrepo/personal
 aws=~personal/aws
 terra=~personal/terraform
 ansible=~costco/ansible
+
+winhome=/mnt/c
+windows=~winhome/Windows
+winsys=~windows/System
+winsys32=~windows/System32
+winprgdata=~winhome/ProgramData
+winprgfiles=~winhome/Program\ Files/
+winprgfiles86=~winhome/Program\ Files\ \(x86\)/
+winusr=$USERPROFILE
+winusrloc=$USERLOCAL
+winusrappdata=$USERAPPDATA
+winusrprogs=$USERPROGS
