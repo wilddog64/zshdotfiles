@@ -198,6 +198,8 @@ export POSH_THEMES_PATH=~/.local/share/oh-my-posh/themes
 
 export POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 
+platform=$(uname -r)
+
 # access windows directory
 export WINHOME=/mnt/c
 export WINDOWS=$WINHOME/Windows
