@@ -21,6 +21,7 @@ winprgdata=~winhome/ProgramData
 winprgfiles=~winhome/Program\ Files/
 winprgfiles86=~winhome/Program\ Files\ \(x86\)/
 winusr=$USERPROFILE
+winusrdownload=$USERPROFILE/Downloads
 winusrloc=$USERLOCAL
 winusrappdata=$USERAPPDATA
 winusrprogs=$USERPROGS
