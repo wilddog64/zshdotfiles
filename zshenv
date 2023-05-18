@@ -213,7 +213,7 @@ export USERAPPDATA=$USERPROFILE/AppData
 export USERLOCAL=$USERAPPDATA/Local
 export USERPROGS=$USERLOCAL/Programs
 export WINAPPS=$USERLOCAL/Microsoft/WindowsApps
-export WINGET_LINKS=$USERLOCAL/Microsoft/WingetLinks
+export WINGET_LINKS=$USERLOCAL/Microsoft/Winget/Links
 
 # search path for windows apps
 export PATH=$PATH:$WINSYS:$WINSYS32:$WINAPPS:$WINGET_LINKS
