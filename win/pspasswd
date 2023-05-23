@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+pspasswd64.exe -nobanner "$@"

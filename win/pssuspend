@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+pssuspend64.exe -nobanner "$@"

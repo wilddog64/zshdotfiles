@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+psexec64.exe -nobanner "$@"
