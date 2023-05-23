@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+pushd /mnt/c/Users/chengkai.liang/bin
+tkgi.exe "$@"
+popd

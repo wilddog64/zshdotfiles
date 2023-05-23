@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+pskill64.exe -nobanner "$@"

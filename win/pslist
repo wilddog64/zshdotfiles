@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+pslist64.exe -nobanner "$@"

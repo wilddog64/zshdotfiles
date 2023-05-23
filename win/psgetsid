@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+psgetsid64.exe -nobannder "$@"
