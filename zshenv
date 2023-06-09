@@ -100,13 +100,13 @@ if [[ ! -e ~/.zsh_history ]]; then
     mkdir -p ~/.zsh_history
 fi
 
-export HOMEBREW_PREFIX="/usr/local";
-export HOMEBREW_CELLAR="/usr/local/Cellar";
-export HOMEBREW_REPOSITORY="/usr/local/Homebrew";
-export PATH="/usr/local/bin:/usr/local/sbin${PATH+:$PATH}";
-export MANPATH="/usr/local/share/man${MANPATH+:$MANPATH}:";
-export INFOPATH="/usr/local/share/info:${INFOPATH:-}";
-export FORGIT_INSTALL_DIR=~/.zplug/repos/wfxr/forgit
+# export HOMEBREW_PREFIX="/usr/local";
+# export HOMEBREW_CELLAR="/usr/local/Cellar";
+# export HOMEBREW_REPOSITORY="/usr/local/Homebrew";
+# export PATH="/usr/local/bin:/usr/local/sbin${PATH+:$PATH}";
+# export MANPATH="/usr/local/share/man${MANPATH+:$MANPATH}:";
+# export INFOPATH="/usr/local/share/info:${INFOPATH:-}";
+# export FORGIT_INSTALL_DIR=~/.zplug/repos/wfxr/forgit
 
 # if [[ -z $DISPLAY && -z $SSH_CONNECTION ]]; then
 #     disp_no=($( ps -xww | grep -F X11.app | awk '{print $NF}' | grep -e ":[0-9]"  ))
