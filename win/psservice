@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-psservice64 -nobanner "$@"
+psservice64.exe -nobanner "$@"

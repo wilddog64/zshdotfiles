@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+pushd "/mnt/c/Program Files (x86)/Microsoft SDKs/Azure/CLI2/" 2>&1 > /dev/null
+python.exe -m azure.cli "$@"
+popd
