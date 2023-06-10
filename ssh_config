@@ -1,8 +1,23 @@
-Host agovw1-bastion.gov.wbx2.com
-  Hostname agovw1-bastion
-  User chengkli.fed
-  PreferredAuthentications publickey
-  IdentityFile /Users/chengkai.liang/.ssh/id_rsa
-  ControlPath ~/.ssh/ssh_mux_%h_%p_%r
-  ControlMaster auto
+# Host docker
+#    Hostname 192.168.64.3
+#    User ubuntu
+#    PreferredAuthentications publickey
+#    # IdentityFile /Users/chengkli/.ssh/id_rsa
+#    IdentityFile /Users/cliang/.ssh/id_rsa
+#    ControlPath ~/.ssh/ssh_mux_%h_%p_%r
+#    ControlMaster auto
+
+Host bastion
+  User ec2-user
+  Hostname 18.236.159.17
   ForwardAgent yes
+  IdentityFile ~/.ssh/bastion_rsa
+  AddKeysToAgent yes
+  StrictHostKeyChecking no
+  ControlPath ~/.ssh/ssh-control_%r@%h:%p
+
+Host 10.0.*.*
+  User ec2-user
+  ProxyJump bastion
+  StrictHostKeyChecking no
+  ControlPath ~/.ssh/ssh-control_%r@%h:%p
