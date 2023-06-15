@@ -218,3 +218,4 @@ export WINCMDER=$USERPROFILE/Cmder
 
 # search path for windows apps
 export PATH=$PATH:$WINSYS:$WINSYS32:$WINAPPS:$WINGET_LINKS:$WINCMDER$WINDOWS
+export BROWSER=wslview
