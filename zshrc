@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # for XWin ...
 
 # === get all apps and create an aliases for them
@@ -15,21 +8,15 @@ if [[ -r ~/.zsh/my_func.zsh ]]; then
     source ~/.zsh/my_func.zsh
 fi
 
-# === kgc.sh: get kubernetes containers error detail
-if [[ -r ~/.zsh/kgc.sh ]]; then
-   source ~/.zsh/kgc.sh
-fi
-
 # === cd names as commands  --- very handy
 if [[ -r ~/.zsh/cdnames ]]; then
     echo load cdnames
     source ~/.zsh/cdnames
 fi
 
-if [[ -r ~/.zsh/fzf-shell/key-bindings.zsh ]]; then
-   echo source key-bindings.zsh
-   source ~/.zsh/fzf-shell/key-bindings.zsh
-fi
+# if [[ -r ~/.zsh/fzf.zsh ]]; then
+#   source ~/.zsh/fzf.zsh
+# fi
 
 # === key bindings
 if [[ -r ~/.zsh/bindingkeys ]]; then
@@ -120,8 +107,8 @@ fpath=(
        ~/.zfunctions )
 autoload -U zen
 
-which keychain 2>&1 > /dev/null
-[[ $? == 0 ]] && eval `keychain --eval id_ed25519`
+[[ -s `brew --prefix`/etc/autojump.sh  ]] && . `brew --prefix`/etc/autojump.sh
+eval `keychain --eval --agents ssh --inherit any id_rsa`
 
 which pyenv 2>&1 > /dev/null
 if [[ $? == 0 ]]; then
@@ -149,8 +136,13 @@ if [[ -e /usr/libexec/java_home ]]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
 fi
 
-brew --prefix nvm
-if [[ $? == 0 ]]; then
+if [[ -e ~/tools/rundeck ]]; then
+  export RUNDECK_BASE=~/tools/rundeck/tools
+  export RUNDECK_TOOL_BIN=$RUNDECK_BASE/bin
+  export PATH=$PATH:$RUNDECK_TOOL_BIN
+fi
+
+if [[ -e $(brew --prefix nvm) ]]; then
   if [[ ! -e ~/.nvm ]]; then
     mkdir -p ~/.nvm
   fi
@@ -205,17 +197,17 @@ fi
 
 if [[ -e $HOMEBREW_PREFIX/share/antigen/antigen.zsh ]]; then
   echo loading antigen
-  source $HOMEBREW_PREFIX/share/antigen/antigen.zsh
+    source $HOMEBREW_PREFIX/share/antigen/antigen.zsh
 fi
 
 if [[ -e $HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh ]]; then
   echo load fzf key-bindings script
-  source $HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh
+    source $HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh
 fi
 
 if [[ -e $HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh ]]; then
   echo loading fzf auto complete script
-  source $HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh
+    source $HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh
 fi
 
 if [[ -r $HOME/.smartcd_config ]]; then
@@ -228,11 +220,11 @@ if [[ ! -e ~/.zplug/init.zsh ]]; then
 fi
 
 if [[ -n "$TILIX_ID" ]] || [[ -n "$VTE_VERSION" ]]; then
-  source /etc/profile.d/vte-2.91.sh
+  source /etc/profile.d/vte.sh
 fi
 
-which rbenv
-if [[ $? == 0 ]]; then
+rbenv=$(brew --prefix rbenv)
+if [[ -e $rbenv ]]; then
   echo initializing rbenv
   eval "$(rbenv init - zsh)"
 fi
@@ -247,14 +239,19 @@ set +o vi
 
 # === for normal aliases, so we our aliases setup won't overwrite by zplug
 if [[ -r ~/.zsh/aliases ]]; then
-   echo load aliases
-   source ~/.zsh/aliases
+    echo load aliases
+    source ~/.zsh/aliases
 fi
 
 which gh 2>&1 > /dev/null
 if [[ $? == 0 ]]; then
    echo load gh completion
    eval $(gh completion -s zsh)
+fi
+
+export kafka_home=$(brew --prefix kafka)
+if [[ ! -z  kafka_home ]]; then
+   export PATH=$PATH:$kafka_home/bin
 fi
 
 which eksctl 2>&1 > /dev/null
@@ -270,16 +267,13 @@ if [[ $? == 0 ]]; then
    source /tmp/chef_completion.zsh
 fi
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+if [[ -e  /usr/local/share/zsh-autopair/autopair.zsh ]]; then
+   echo loading zsh-autopair
+    source /usr/local/share/zsh-autopair/autopair.zsh
+fi
 
-PATH="/Users/cliang/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/cliang/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/cliang/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/cliang/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/cliang/perl5"; export PERL_MM_OPT;
+if [[ -e /home/linuxbrew/.linuxbrew/opt/zsh-autopair/share/zsh-autopair/autopair.zsh ]]; then
+   echo loading zsh-autopair
+   source /home/linuxbrew/.linuxbrew/opt/zsh-autopair/share/zsh-autopair/autopair.zsh
+fi
 
-# >>>> Vagrant command completion (start)
-fpath=(/opt/vagrant/embedded/gems/gems/vagrant-2.4.1/contrib/zsh $fpath)
-compinit
-# <<<<  Vagrant command completion (end)
