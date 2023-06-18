@@ -271,3 +271,9 @@ if [[ -e  /usr/local/share/zsh-autopair/autopair.zsh ]]; then
    echo loading zsh-autopair
     source /usr/local/share/zsh-autopair/autopair.zsh
 fi
+
+if [[ -e /home/linuxbrew/.linuxbrew/opt/zsh-autopair/share/zsh-autopair/autopair.zsh ]]; then
+   echo loading zsh-autopair
+   source /home/linuxbrew/.linuxbrew/opt/zsh-autopair/share/zsh-autopair/autopair.zsh
+fi
+
