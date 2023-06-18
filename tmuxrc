@@ -9,7 +9,7 @@ set-option -g prefix C-a
 set -g default-shell "/usr/bin/zsh"
 
 # use the NEW prefix key to "send-prefix" instead of the default
-unbind-key C-b; bind-key C-a send-prefix
+# unbind-key C-b; bind-key C-a send-prefix
 
 # allow tmux interact with system clipboard
 set -g set-clipboard on
@@ -129,6 +129,8 @@ set -g @resurrect-strategy-nvim 'session'
 # restore pane
 set -g @resurrect-capture-pane-contents 'on'
 
+# for tmux-menu, change menu trigger key to F9
+
 # better-mouse-scroll settings
 # set -g @scroll-without-changing-pane 'on'
 
@@ -142,7 +144,7 @@ setw -g mode-keys vi
 # bind vi keys for copy and paste
 bind -T copy-mode-vi v send -X begin-selection
 bind -T copy-mode-vi 'C-v' send -X rectangle-toggle
-bind -T copy-mode-vi y send-keys -X copy-pipe-no-clear "yank"
+bind -T copy-mode-vi y send-keys -X copy-pipe-clear "win32yank.exe -i --lf"
 bind P paste-buffer
 # bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "yank"
 
