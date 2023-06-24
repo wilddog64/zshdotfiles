@@ -215,7 +215,9 @@ export USERPROGS=$USERLOCAL/Programs
 export WINAPPS=$USERLOCAL/Microsoft/WindowsApps
 export WINGET_LINKS=$USERLOCAL/Microsoft/Winget/Links
 export WINCMDER=$USERPROFILE/Cmder
+export WINBIN=$USERPROFILE/bin
 
 # search path for windows apps
 export PATH=$PATH:$WINSYS:$WINSYS32:$WINAPPS:$WINGET_LINKS:$WINCMDER$WINDOWS
+export PATH=$PATH:$user_bin:$WINSYS:$WINSYS32:$WINAPPS:$WINGET_LINKS:$WINCMDER:$WINDOWS:$WINBIN
 export BROWSER=wslview
