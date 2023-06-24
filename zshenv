@@ -216,8 +216,13 @@ export WINAPPS=$USERLOCAL/Microsoft/WindowsApps
 export WINGET_LINKS=$USERLOCAL/Microsoft/Winget/Links
 export WINCMDER=$USERPROFILE/Cmder
 export WINBIN=$USERPROFILE/bin
+export WINTOOL=$WINHOME/tools/neovim/nvim-win64/bin/
+export PROGRAMDATA=$WINHOME/ProgramData/chocolatey/bin
+export CHCO_HOME=$PROGRAMDATA/chocolatey
+export CHCO_BIN=$CHCO_HOME/bin
+
 
 # search path for windows apps
-export PATH=$PATH:$user_bin:$WINSYS:$WINSYS32:$WINAPPS:$WINGET_LINKS:$WINCMDER:$WINDOWS:$WINBIN
+export PATH=$CHCO_BIN:$WINSYS:$WINSYS32:$WINAPPS:$WINGET_LINKS:$WINCMDER:$WINDOWS:$WINBIN:$WINTOOL:$USRBIN:$PROGRAMDATA:$PATH
 export BROWSER=wslview
 export LPASS_AGENT_TIMEOUT=0
