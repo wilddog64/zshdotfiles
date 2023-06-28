@@ -74,6 +74,7 @@ plugins=(
          # zsh-navigation-tools
          # zsh-syntax-highlighting
          azure
+         kubectl
          )
 
 source $ZSH/oh-my-zsh.sh
