@@ -4,7 +4,7 @@
 ##
 
 # set the command prefix to match gnuscreen (i.e. CTRL+a)
-set-option -g prefix C-a
+# set-option -g prefix C-a
 
 set -g default-shell "/usr/bin/zsh"
 
@@ -12,7 +12,7 @@ set -g default-shell "/usr/bin/zsh"
 # unbind-key C-b; bind-key C-a send-prefix
 
 # allow tmux interact with system clipboard
-set -g set-clipboard on
+# set -g set-clipboard on
 # set-option -g mouse
 
 # mouse draging copy
@@ -144,7 +144,7 @@ setw -g mode-keys vi
 # bind vi keys for copy and paste
 bind -T copy-mode-vi v send -X begin-selection
 bind -T copy-mode-vi 'C-v' send -X rectangle-toggle
-bind -T copy-mode-vi y send-keys -X copy-pipe-clear "win32yank.exe -i --lf"
+bind -T copy-mode-vi y send-keys -X copy-pipe-clear "yank"
 bind P paste-buffer
 # bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "yank"
 
