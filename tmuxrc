@@ -4,7 +4,7 @@
 ##
 
 # set the command prefix to match gnuscreen (i.e. CTRL+a)
-# set-option -g prefix C-a
+set-option -g prefix C-a
 
 set -g default-shell "/usr/bin/zsh"
 
