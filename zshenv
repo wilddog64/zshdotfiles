@@ -22,7 +22,8 @@ export TOUCHBAR_GIT_ENABLED=true
 
 LOCAL_BIN=/home/cliang/.local/bin
 export PATH=/usr/local/bin:$LOCAL_BIN:$PATH
-
+export OPENJDK11_BIN=$(brew --prefix openjdk@11)/bin
+export PATH=":$OPENJDK11_BIN:$PATH"
 # populate homebrew enviornment variables
 eval $(brew shellenv)
 # setup homebrew environment variables
