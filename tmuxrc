@@ -144,7 +144,8 @@ setw -g mode-keys vi
 # bind vi keys for copy and paste
 bind -T copy-mode-vi v send -X begin-selection
 bind -T copy-mode-vi 'C-v' send -X rectangle-toggle
-bind -T copy-mode-vi y send-keys -X copy-pipe-clear "yank"
+bind -T copy-mode-vi 'y' send-keys -X copy-pipe-clear "clip.exe"
+bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "clip.exe"
 bind P paste-buffer
 # bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "yank"
 
