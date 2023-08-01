@@ -30,7 +30,7 @@ eval $(brew shellenv)
 export BREW_ROOT=$(brew --prefix)
 export HOMEBREW_BIN=$HOMEBREW_PREFIX/bin
 export HOMEBREW_SBIN=$HOMEBREW_PREFIX/sbin
-export HOMEBREW_CURL_PATH=$(brew --prefix curl)
+export HOMEBREW_CURL_PATH=$(which curl)
 
 export FZF_BASE=$HOMEBREW_PREFIX/opt/fzf
 
