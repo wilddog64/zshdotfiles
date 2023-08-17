@@ -58,7 +58,8 @@
 [hub]
     protocol = https
 [credential]
-    helper = osxkeychain
+   helper = /usr/local/bin/git-credential-manager
+   credentialStore = cache
 
 [bulkworkspaces]
     tmux-plugins = /Users/chengkli/.tmux/plugins
@@ -77,4 +78,6 @@
 [pull]
     rebase = true
 [init]
-	defaultBranch = main
+   defaultBranch = main
+[credential "https://dev.azure.com"]
+   useHttpPath = true
