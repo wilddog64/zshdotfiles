@@ -40,7 +40,8 @@
 [hub]
     protocol = https
 [credential]
-    helper = osxkeychain
+   helper = /usr/local/bin/git-credential-manager
+   credentialStore = cache
 
 [workspaces]
     tmux-plugins = /Users/chengkli/.tmux/plugins
