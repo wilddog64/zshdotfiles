@@ -106,7 +106,7 @@ set -g @plugin 'jaclu/tmux-menus'
 # set -g @plugin 'nhdaly/tmux-better-mouse-mode'
 
 # custom setting for each plugin goes here
-set -g @urlview-key 'U' # change activate key for urlview
+set -g @urlview-key 'u' # change activate key for urlview
 set -g @continuum-save-interval '15'
 set -g @continuum-boot-options 'iterm,fullscreen' # start iTerm
 set -g @continuum-boot 'on' # automatically restore tmux environment after computer is turned on
