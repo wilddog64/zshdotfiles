@@ -167,3 +167,7 @@ s3sync() {
 s3rm() {
   aws s3 rm "$@"
 }
+
+istior() {
+   k api-resources| grep -i istio | awk '{ print $4 }' | grep -v true | while read cr; do k get $(echo $cr | tr '[:upper:]' '[:lower:]') --all-namespaces; done
+}
