@@ -13,7 +13,7 @@ set -g default-shell "/usr/bin/zsh"
 
 # allow tmux interact with system clipboard
 # set -g set-clipboard on
-# set-option -g mouse
+set-option -g mouse
 
 # mouse draging copy
 
@@ -151,12 +151,12 @@ bind P paste-buffer
 
 # double-click and triple-click
 
-# bind -T copy-mode    DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "pasteit"
-# bind -T copy-mode-vi DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "pasteit"
-# bind -n DoubleClick1Pane select-pane \; copy-mode -M \; send -X select-word \; send -X copy-pipe-no-clear "pasteit"
-# bind -T copy-mode    TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "pasteit"
-# bind -T copy-mode-vi TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "pasteit"
-# bind -n TripleClick1Pane select-pane \; copy-mode -M \; send -X select-line \; send -X copy-pipe-no-clear "pasteit"
+bind -T copy-mode    DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "clip.exe"
+bind -T copy-mode-vi DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "clip.exe"
+bind -n DoubleClick1Pane select-pane \; copy-mode -M \; send -X select-word \; send -X copy-pipe-no-clear "clip.exe"
+bind -T copy-mode    TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "clip.exe"
+bind -T copy-mode-vi TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "clip.exe"
+bind -n TripleClick1Pane select-pane \; copy-mode -M \; send -X select-line \; send -X copy-pipe-no-clear "clip.exe"
 
 # middle click to paste from x11 primary clipboard
 # bind -n MouseDown2Pane run "tmux set-buffer -b primary_selection \"pasteit\"; tmux paste-buffer -b primary_selection; tmux delete-buffer -b primary_selection"
