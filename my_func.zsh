@@ -171,3 +171,13 @@ s3rm() {
 istior() {
    k api-resources| grep -i istio | awk '{ print $4 }' | grep -v true | while read cr; do k get $(echo $cr | tr '[:upper:]' '[:lower:]') --all-namespaces; done
 }
+
+enable_k8s_istio() {
+   namespace=$1
+   kubectl label namespace $namespace istio-injection=enabled
+}
+
+analyze_istio() {
+   namespace=$1
+   istioctl -n $namespace analyze
+}
