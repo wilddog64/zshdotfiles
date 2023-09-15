@@ -181,3 +181,15 @@ analyze_istio() {
    namespace=$1
    istioctl -n $namespace analyze
 }
+
+list_istio_secrets() {
+   kubectl -n istio-system get secrets
+}
+
+get_istio_secrets() {
+   kubectl -n istio-system get secrets $1 -o yaml
+}
+
+describe_istio_secret() {
+   kubectl -n istio-system describe secrets $1
+}
