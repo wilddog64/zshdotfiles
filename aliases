@@ -39,3 +39,5 @@ alias tofed='ssh -A -L 3389:10.0.22.181:3389 chengkli.fed@agovw1-bastion.gov.wbx
 alias tree='tree --du -h'
 alias vi='/usr/local/bin/nvim'
 alias ipy=ipython
+alias docker=podman
+alias ~='cd'
