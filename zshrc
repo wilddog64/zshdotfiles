@@ -276,4 +276,3 @@ if [[ -e /home/linuxbrew/.linuxbrew/opt/zsh-autopair/share/zsh-autopair/autopair
    echo loading zsh-autopair
    source /home/linuxbrew/.linuxbrew/opt/zsh-autopair/share/zsh-autopair/autopair.zsh
 fi
-
