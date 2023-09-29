@@ -181,3 +181,8 @@ analyze_istio() {
    namespace=$1
    istioctl -n $namespace analyze
 }
+
+# login to AD
+login_ad() {
+   kinit chengkai.liang@PACIFIC.COSTCOTRAVEL.COM
+}
