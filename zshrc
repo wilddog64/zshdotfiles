@@ -269,3 +269,6 @@ if [[ -e  /usr/local/share/zsh-autopair/autopair.zsh ]]; then
    echo loading zsh-autopair
     source /usr/local/share/zsh-autopair/autopair.zsh
 fi
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
