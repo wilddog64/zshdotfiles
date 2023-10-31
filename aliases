@@ -41,3 +41,4 @@ alias get="base64 | xargs -0 printf '\e]52;c;%s\007'"
 alias vi=/home/linuxbrew/.linuxbrew/bin/nvim
 alias ipy=ipython
 alias docker=podman
+alias omi=omicli
