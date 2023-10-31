@@ -18,10 +18,12 @@ export GREP_COLOR=auto
 export FTP_PASSIVE=1
 export AUTOJUMP_KEEP_SYMLINKS=1
 export TOUCHBAR_GIT_ENABLED=true
+export OMI_HOME=/opt/omi
+export OMI_BIN=$OMI_HOME/bin
 # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 LOCAL_BIN=/home/cliang/.local/bin
-export PATH=/usr/local/bin:$LOCAL_BIN:$PATH
+export PATH=/usr/local/bin:$LOCAL_BIN:$OMI_BIN:$PATH
 export OPENJDK11_BIN=$(brew --prefix openjdk@11)/bin
 export PATH=":$OPENJDK11_BIN:$PATH"
 # populate homebrew enviornment variables
