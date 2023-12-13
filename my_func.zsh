@@ -193,3 +193,8 @@ get_istio_secrets() {
 describe_istio_secret() {
    kubectl -n istio-system describe secrets $1
 }
+
+vim() {
+   mvim=$(brew --prefix macvim)/bin/vi
+   exec $mvim "$@"
+}
