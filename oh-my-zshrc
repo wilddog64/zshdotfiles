@@ -56,7 +56,8 @@ plugins=(
          # git-prompt
          # helm
          # kubectl
-         # aws
+         aws
+         rbenv
          # brew
          # docker
          # git
