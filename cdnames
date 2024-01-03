@@ -5,6 +5,7 @@ costco=~gitrepo/costco
 wbx=~costco/wbx-ref-arch
 java=~gitrepo/java
 py=~costco/python
+puppet_repo=~costco/puppet-repo
 vagrant=~costco/vagrant
 packer=~costco/packer
 gradle=~gitrepo/gradle
