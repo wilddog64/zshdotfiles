@@ -196,5 +196,5 @@ describe_istio_secret() {
 
 vim() {
    mvim=$(brew --prefix macvim)/bin/vi
-   exec $mvim "$@"
+   $mvim "$@"
 }
