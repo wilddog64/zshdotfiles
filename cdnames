@@ -1,5 +1,6 @@
 src=~/src
 gitrepo=~src/gitrepo
+golang=~gitrepo/golang
 costco=~gitrepo/costco
 wbx=~costco/wbx-ref-arch
 java=~gitrepo/java
