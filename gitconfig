@@ -65,8 +65,8 @@
     t-workspaces = /Users/chengkli/src/gitrepo/cisco/terraform/workspaces
     t-modules = /Users/chengkli/src/gitrepo/cisco/terraform/modules
     pre-prod = /Users/chengkli/src/gitrepo/cisco/pre-prod
-	aws = /Users/cliang/src/gitrepo/personal/aws
-	nvim = /Users/cliang/.local/share/nvim/site/pack/packer/start
+    aws = /Users/cliang/src/gitrepo/personal/aws
+    nvim = /Users/cliang/.local/share/nvim/site/pack/packer/start
 
 # [http]
 #     cookiefile = /Users/chengkai.liang/.gitcookies
