@@ -60,7 +60,7 @@
 [credential]
     helper = osxkeychain
 
-[bulkworkspaces]
+[workspaces]
     tmux-plugins = /Users/chengkli/.tmux/plugins
     t-workspaces = /Users/chengkli/src/gitrepo/cisco/terraform/workspaces
     t-modules = /Users/chengkli/src/gitrepo/cisco/terraform/modules
@@ -80,3 +80,7 @@
     rebase = true
 [init]
    defaultBranch = main
+[bulkworkspaces]
+	cisco-terraform = /Users/cliang/src/gitrepo/cisco/terraform
+	cisco-terraform-workspaces = /Users/cliang/src/gitrepo/cisco/terraform/workspaces
+	cisco-terraform-module = /Users/cliang/src/gitrepo/cisco/terraform/modules
