@@ -41,3 +41,4 @@ alias vi='/opt/homebrew/bin/nvim'
 alias ipy=ipython
 alias docker=podman
 alias ~='cd'
+alias tmn=tmuxinator
