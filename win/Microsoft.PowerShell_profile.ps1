@@ -1,4 +1,4 @@
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\paradox.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\pure.omp.json" | Invoke-Expression
 Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfCompletion }
 Set-PSReadlineOption -EditMode vi
 # Import the Chocolatey Profile that contains the necessary code to enable
@@ -21,7 +21,6 @@ function OnViModeChange {
     }
 }
 Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler $Function:OnViModeChange
-Set-PSReadLineOption -PredictionSource History
 
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 Set-PSReadLineKeyHandler -chord = -function Complete -vimode Command
@@ -29,3 +28,5 @@ Set-PSReadLineKeyHandler -chord "ctrl+e" -function AcceptSuggestion
 Set-PSReadLineKeyHandler -chord Tab -function ForwardWord
 
 
+
+Import-Module Az.Tools.Predictor
