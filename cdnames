@@ -6,6 +6,7 @@ wbx=~costco/wbx-ref-arch
 java=~gitrepo/java
 py=~costco/python
 puppet_repo=~costco/puppet-repo
+puppet=~costco/puppet
 vagrant=~costco/vagrant
 packer=~costco/packer
 gradle=~gitrepo/gradle
