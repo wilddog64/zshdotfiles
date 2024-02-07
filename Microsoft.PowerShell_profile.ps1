@@ -27,5 +27,5 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory
 Set-PSReadLineKeyHandler -chord = -function Complete -vimode Command
 Set-PSReadLineKeyHandler -chord "ctrl+e" -function AcceptSuggestion
 Set-PSReadLineKeyHandler -chord Tab -function ForwardWord
-
+Set-PSReadLineOption -PredictionViewStyle ListView
 
