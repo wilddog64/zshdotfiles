@@ -66,7 +66,7 @@ plugins=(
          # per-directory-history
          #terraform
          #vagrant
-         # kubectl
+         kubectl
          # dotnet
          # helm
          # vi-mode
