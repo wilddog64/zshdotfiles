@@ -32,3 +32,6 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 
 Import-Module Az.Tools.Predictor
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
+
+# enable direnv for powershell
+Invoke-Expression "$(direnv hook pwsh)"
