@@ -27,5 +27,6 @@ zplug "pyenv/pyenv", from:github, hook-build: "ln -sf $ZPLUG_REPOS/pyenv/pyenv ~
 zplug "wfxr/forgit", from:github, as:command, hook-build: "ln -sf $ZPLUG_REPOS/wfxr/forgit/bin/git-forgit $ZPLUG_HOME/bin"
 zplug "paulirish/git-open", as:plugin
 zplug 'mfaerevaag/wd', as:plugin
+zplug 'hlissner/zsh-autopair', as:plugin
 zplug romkatv/powerlevel10k, as:theme, depth:1
 # zplug 'jeffreytse/zsh-vi-mode', as:plugin
