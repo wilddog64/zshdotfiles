@@ -84,3 +84,4 @@
 	cisco-terraform = /Users/cliang/src/gitrepo/cisco/terraform
 	cisco-terraform-workspaces = /Users/cliang/src/gitrepo/cisco/terraform/workspaces
 	cisco-terraform-module = /Users/cliang/src/gitrepo/cisco/terraform/modules
+	aws-terraform = /Users/cliang/src/gitrepo/personal/aws/terraform
