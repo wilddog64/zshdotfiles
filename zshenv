@@ -223,6 +223,7 @@ export WINTOOL=$WINHOME/tools/neovim/nvim-win64/bin/
 export PROGRAMDATA=$WINHOME/ProgramData/chocolatey/bin
 export CHCO_HOME=$PROGRAMDATA/chocolatey
 export CHCO_BIN=$CHCO_HOME/bin
+export HOMEBREW_CURLRC=1
 
 
 # search path for windows apps
