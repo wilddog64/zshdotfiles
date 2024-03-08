@@ -8,6 +8,11 @@ if [[ -r ~/.zsh/my_func.zsh ]]; then
     source ~/.zsh/my_func.zsh
 fi
 
+# === kgc.sh: get kubernetes containers error detail
+if [[ -r ~/.zsh/kgc.sh ]]; then
+   source ~/.zsh/kgc.sh
+fi
+
 # === cd names as commands  --- very handy
 if [[ -r ~/.zsh/cdnames ]]; then
     echo load cdnames
