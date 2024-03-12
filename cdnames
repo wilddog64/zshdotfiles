@@ -14,6 +14,8 @@ personal=~gitrepo/personal
 aws=~personal/aws
 terra=~personal/terraform
 ansible=~costco/ansible
+ado=~costco/ado
+k8s=~ado/k8s-iac
 
 winhome=/mnt/c
 windows=~winhome/Windows
