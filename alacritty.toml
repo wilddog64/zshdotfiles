@@ -1,0 +1,26 @@
+[env]
+TERM = "xterm-256color"
+live_config_reload = "true"
+
+[window]
+decorations = "buttonless"
+dynamic_padding = false
+startup_mode = "Windowed"
+
+[font]
+size = 14.0
+
+[scrolling]
+history = 65535
+
+[colors]
+indexed_colors = [
+  { index = 16, color = "#FAB387" },
+  { index = 17, color = "#F5E0DC" },
+]
+#transparent_background_colors = false
+draw_bold_text_with_bright_colors = true
+
+[selection]
+semantic_escape_chars = "_,│‘|:\"' ()[]{}<>t"
+save_to_clipboard = true
