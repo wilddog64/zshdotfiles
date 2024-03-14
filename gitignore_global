@@ -13,3 +13,6 @@ target/
 *.log
 .terraform/
 tags
+Chart.lock
+charts/
+*secrets*
