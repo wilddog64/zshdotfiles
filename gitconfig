@@ -66,7 +66,7 @@
     t-workspaces = /Users/chengkli/src/gitrepo/cisco/terraform/workspaces
     t-modules = /Users/chengkli/src/gitrepo/cisco/terraform/modules
     pre-prod = /Users/chengkli/src/gitrepo/cisco/pre-prod
-    ado = /home/cliang/src/gitrepo/costco/ado
+	tfs = /home/cliang/src/gitrepo/costco/ado/tfs
 
 # [http]
 #     cookiefile = /Users/chengkai.liang/.gitcookies
