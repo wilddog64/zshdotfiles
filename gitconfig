@@ -50,6 +50,7 @@
     pre-prod = /Users/chengkli/src/gitrepo/cisco/pre-prod
     aws = /Users/cliang/src/gitrepo/personal/aws
     nvim = /Users/cliang/.local/share/nvim/site/pack/packer/start
+    tfs = /home/cliang/src/gitrepo/costco/ado/tfs
 
 # [http]
 #     cookiefile = /Users/chengkai.liang/.gitcookies
@@ -60,13 +61,13 @@
     process = git-lfs filter-process
     required = true
 [pull]
-	rebase = true
+   rebase = true
 [init]
    defaultBranch = main
 [bulkworkspaces]
-	cisco-terraform = /Users/cliang/src/gitrepo/cisco/terraform
-	cisco-terraform-workspaces = /Users/cliang/src/gitrepo/cisco/terraform/workspaces
-	cisco-terraform-module = /Users/cliang/src/gitrepo/cisco/terraform/modules
-	aws-terraform = /Users/cliang/src/gitrepo/personal/aws/terraform
+   cisco-terraform = /Users/cliang/src/gitrepo/cisco/terraform
+   cisco-terraform-workspaces = /Users/cliang/src/gitrepo/cisco/terraform/workspaces
+   cisco-terraform-module = /Users/cliang/src/gitrepo/cisco/terraform/modules
+   aws-terraform = /Users/cliang/src/gitrepo/personal/aws/terraform
 [safe]
-	directory = /opt/puppetlabs/pdk/share/cache/pdk-templates.git
+   directory = /opt/puppetlabs/pdk/share/cache/pdk-templates.git
