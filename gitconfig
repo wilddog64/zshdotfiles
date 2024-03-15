@@ -17,17 +17,54 @@
     timeline         = log --topo-order --date relative --pretty='%Cgreen %h %an %ai %s' --graph
     tip              = log --date relative --pretty='%Cgreen %h %an %ai %s' -1
     todayschanges    = "!f() { git whatchanged --oneline --since=yesterday | grep -v '^:'; }; f"
+    aliases        = config --get-regexp ^alias\\.*$
+    co             = checkout
+    diffc          = diff --cached
+    merge-develop  = merge --no-ff develop
+    merge-master   = merge --no-ff master
+    merge-no-ff    = merge --no-ff
+    outfiles       = "!f() { git diff --name-status ..$1;  }; f"
+    pullrb         = pull --rebase
+    push-all       = "!f() { git push -u --all "$@"; git push --tag "$@"; }; f"
+    push-tag       = "!f() { git push "$@"; git push  "$@" --tag; }; f"
+    st             = "!f() { git status --ignore-submodules --short; }; f"
+    tags           = "!f() { git tag | sort -V; }; f"
+    timeline       = log --topo-order --date relative --pretty='%Cgreen %h %an %ai %s' --graph
+    tip            = log --date relative --pretty='%Cgreen %h %an %ai %s' -1
+    todayschanges  = "!f() { git whatchanged --oneline --since=yesterday | grep -v '^:'; }; f"
 
 [branch]
-    autosetuprebase = always
+  autosetuprebase = always
 [color]
     diff = true
     status = true
     brnch = true
     interactive = true
     ui   = true
+    diff = true
+    status = true
+    brnch = true
+    interactive = true
+    ui   = true
+[merge]
+  sumary = true
+  tool = p4merge
+[mergetool "p4merge"]
+  cmd  = p4merge \
+      "$PWD/$BASE" \
+      "$PWD/$LOCAL" \
+      "$PWD/$REMOTE" \
+      "$PWD/$MERGED"
+  keppBackup     = false
+  trustExistCode = false
 [push]
-    default = upstream
+  default = upstream
+[difftool "sourcetree"]
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path =
+[mergetool "sourcetree"]
+  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
 [core]
   excludesFile = ~/.gitignore
   autocrlf     = false
@@ -37,11 +74,12 @@
   ignorecase   = false
   editor       = nvim
   pager        = less -+$LESS -FRX
+
 [hub]
-    protocol = https
+  protocol = https
 [credential]
-   helper = /usr/local/bin/git-credential-manager
-   credentialStore = cache
+  helper = /usr/local/bin/git-credential-manager
+  credentialStore = cache
 
 [workspaces]
     tmux-plugins = /Users/chengkli/.tmux/plugins
@@ -56,10 +94,11 @@
 #     cookiefile = /Users/chengkai.liang/.gitcookies
 
 [filter "lfs"]
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+
 [pull]
    rebase = true
 [init]
@@ -71,3 +110,10 @@
    aws-terraform = /Users/cliang/src/gitrepo/personal/aws/terraform
 [safe]
    directory = /opt/puppetlabs/pdk/share/cache/pdk-templates.git
+   rebase = true
+
+[init]
+  defaultBranch = main
+
+[credential "https://dev.azure.com"]
+  useHttpPath = true
