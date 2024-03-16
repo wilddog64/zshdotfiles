@@ -10,6 +10,22 @@ startup_mode = "Windowed"
 [font]
 size = 14.0
 
+[font.bold]
+family = "monaco"
+style = "Bold"
+
+[font.bold_italic]
+family = "monaco"
+style = "Bold Italic"
+
+[font.italic]
+family = "monaco"
+style = "Italic"
+
+[font.normal]
+family = "monaco"
+style = "Regular"
+
 [scrolling]
 history = 65535
 multiplier = 3
