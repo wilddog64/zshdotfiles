@@ -100,7 +100,7 @@ semantic_escape_chars = "_,│‘|:\"' ()[]{}<>t"
 save_to_clipboard = true
 
 [hints]
-#alphabet              = "jfkdls;ahgurieowpq"
+alphabet              = "jfkdls;ahgurieowpq"
 
 [[hints.enabled]]
 command             = "open" # On macOS
