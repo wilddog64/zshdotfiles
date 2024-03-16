@@ -12,6 +12,7 @@ size = 14.0
 
 [scrolling]
 history = 65535
+multiplier = 3
 
 # catpuccin-mocha, ported from .yml
 [colors.primary]
