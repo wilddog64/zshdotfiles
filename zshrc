@@ -276,3 +276,9 @@ if [[ -e /home/linuxbrew/.linuxbrew/opt/zsh-autopair/share/zsh-autopair/autopair
    echo loading zsh-autopair
    source /home/linuxbrew/.linuxbrew/opt/zsh-autopair/share/zsh-autopair/autopair.zsh
 fi
+
+which yq
+if [[ $? == 0 ]]; then
+   echo load yq zsh auto completion
+   eval $(yq shell-completion zsh)
+fi
