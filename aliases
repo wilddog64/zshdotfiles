@@ -42,3 +42,4 @@ alias vi=/home/linuxbrew/.linuxbrew/bin/nvim
 alias ipy=ipython
 alias docker=podman
 alias omi=omicli
+alias lzg=lazygit
