@@ -70,7 +70,7 @@ export JAVA_HOME=/usr
 # setup GROOVY_HOME environment variable
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
 
-export EDITOR=$HOMEBREW_PREFIX/bin/nvim
+export EDITOR=$HOMEBREW_PREFIX/bin/vim
 export VISUAL=$HOMEBREW_PREFIX/bin/nvim
 
 export LESSOPEN="|$BREW_ROOT/bin/lesspipe.sh %s"
