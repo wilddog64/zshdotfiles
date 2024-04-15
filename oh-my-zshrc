@@ -56,8 +56,7 @@ plugins=(
          # git-prompt
          # helm
          # kubectl
-         aws
-         rbenv
+         # aws
          # brew
          # docker
          # git
@@ -66,7 +65,7 @@ plugins=(
          # per-directory-history
          #terraform
          #vagrant
-         kubectl
+         # kubectl
          # dotnet
          # helm
          # vi-mode
@@ -74,7 +73,8 @@ plugins=(
          # zsh-autosuggestions
          # zsh-navigation-tools
          # zsh-syntax-highlighting
-         azure
+         # azure
+         # kubectl
          )
 
 source $ZSH/oh-my-zsh.sh
