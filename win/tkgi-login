@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 pushd /mnt/c/Users/chengkai.liang/bin
-tkgi.exe login -a us03l81tkgapi01.mgmt.costcotravel.com --sso-auto --ca-cert mgmt.cert
+/mnt/c/TKG/tkgi.exe login -a us03l81tkgapi01.mgmt.costcotravel.com --sso-auto --ca-cert mgmt.cert
 popd

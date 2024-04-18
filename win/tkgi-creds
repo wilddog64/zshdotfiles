@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-tkgi.exe get-credentials --sso-auto us03l81k8sc22
-tkgi.exe get-credentials --sso-auto us03l81k8sc32
-tkgi.exe get-credentials --sso-auto us03l81k8sc71
-tkgi.exe get-credentials --sso-auto us03l81k8sc74
-tkgi.exe get-credentials --sso-auto us03l81k8sc42
-tkgi.exe get-credentials --sso-auto us03l81k8sc80
+/mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc22
+/mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc32
+/mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc71
+/mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc74
+/mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc42
+/mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc80
 
 cp -v /mnt/c/Users/chengkai.liang/.kube/config ~/.kube/config
