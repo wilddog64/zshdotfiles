@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+/mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc02
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc22
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc32
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc71
