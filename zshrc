@@ -282,3 +282,9 @@ if [[ $? == 0 ]]; then
    echo load yq zsh auto completion
    eval $(yq shell-completion zsh)
 fi
+
+which fzf
+if [[ $? == 0 ]]; then
+   echo loading fzf zsh integration
+   eval $(fzf --zsh)
+fi

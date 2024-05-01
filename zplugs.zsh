@@ -30,6 +30,6 @@ zplug "wfxr/forgit", from:github, as:command, hook-build: "ln -sf $ZPLUG_REPOS/w
 zplug "paulirish/git-open", as:plugin
 zplug 'mfaerevaag/wd', as:plugin
 zplug 'hlissner/zsh-autopair', as:plugin
-zplug 'junegunn/fzf-git.sh', as:plugin
+# zplug 'junegunn/fzf-git.sh', as:plugin
 # zplug 'jeffreytse/zsh-vi-mode', as:plugin
 zplug romkatv/powerlevel10k, as:theme, depth:1
