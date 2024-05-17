@@ -46,3 +46,4 @@ alias lzg=lazygit
 alias gpusho='git push origin $(git symbolic-ref --short HEAD)'
 alias gdiffw='git diff --word-diff=color --word-diff-regex=.'
 alias glookz='git remote && git log --pretty=oneline --abbrev-commit | awk '"'"'{print $1}'"'"' | xargs -I {} git show {} | fzf'
+alias g=git
