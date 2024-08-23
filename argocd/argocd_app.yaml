@@ -1,14 +1,14 @@
-project: <env>-projects
+project: :env:-projects
 source:
   repoURL: 'https://alm01-ct@dev.azure.com/alm01-ct/DevOps/_git/k8s-iac'
-  path: argocd/apps/<app>
+  path: argocd/apps/:app:
   targetRevision: main
   helm:
     valueFiles:
-      - values-<env>.yaml
+      - values-:env:.yaml
 destination:
-  server: 'https://us03l81k8sc<clsterno>.k8s.pacific.costcotravel.com:8443'
-  namespace: <app>-<env>
+  server: 'https://us03l81k8sc:clsterno:.k8s.pacific.costcotravel.com:8443'
+  namespace: :app:-:env:
 syncPolicy:
   syncOptions:
     - CreateNamespace=true
