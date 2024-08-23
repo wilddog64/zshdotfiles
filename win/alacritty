@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-alacritty.exe "$@"
+/mnt/c/Program\ Files/Alacritty/alacritty.exe "$@"
