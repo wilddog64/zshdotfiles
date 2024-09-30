@@ -3,49 +3,30 @@
   email = chengkai.liang@costcotravel.com
 
 [alias]
-    aliases          = config --get-regexp ^alias\\.*$
-    co               = checkout
-    diffc            = diff --cached
-    merge-develop    = merge --no-ff develop
-    merge-master     = merge --no-ff master
-    merge-no-ff      = merge --no-ff
-    outfiles         = "!f() { git diff --name-status ..$1;  }; f"
-    push-all         = "!f() { git push -u --all "$@"; git push --tag "$@"; }; f"
-    push-tag         = "!f() { git push "$@"; git push  "$@" --tag; }; f"
-    st               = "!f() { git status --ignore-submodules --short -b; }; f"
-    tags             = "!f() { git tag | sort -V; }; f"
-    timeline         = log --topo-order --date relative --pretty='%Cgreen %h %an %ai %s' --graph
-    tip              = log --date relative --pretty='%Cgreen %h %an %ai %s' -1
-    todayschanges    = "!f() { git whatchanged --oneline --since=yesterday | grep -v '^:'; }; f"
-    aliases        = config --get-regexp ^alias\\.*$
-    co             = checkout
-    diffc          = diff --cached
-    merge-develop  = merge --no-ff develop
-    merge-master   = merge --no-ff master
-    merge-no-ff    = merge --no-ff
-    outfiles       = "!f() { git diff --name-status ..$1;  }; f"
-    pullrb         = pull --rebase
-    push-all       = "!f() { git push -u --all "$@"; git push --tag "$@"; }; f"
-    push-tag       = "!f() { git push "$@"; git push  "$@" --tag; }; f"
-    st             = "!f() { git status --ignore-submodules --short; }; f"
-    tags           = "!f() { git tag | sort -V; }; f"
-    timeline       = log --topo-order --date relative --pretty='%Cgreen %h %an %ai %s' --graph
-    tip            = log --date relative --pretty='%Cgreen %h %an %ai %s' -1
-    todayschanges  = "!f() { git whatchanged --oneline --since=yesterday | grep -v '^:'; }; f"
+  aliases       = config --get-regexp ^alias\\.*$
+  co            = checkout
+  diffc         = diff --cached
+  merge-develop = merge --no-ff develop
+  merge-master  = merge --no-ff master
+  merge-no-ff   = merge --no-ff
+  outfiles      = "!f() { git diff --name-status ..$1;  }; f"
+  pullrb        = pull --rebase
+  push-all      = "!f() { git push -u --all "$@"; git push --tag "$@"; }; f"
+  push-tag      = "!f() { git push "$@"; git push  "$@" --tag; }; f"
+  st            = "!f() { git status --ignore-submodules --short; }; f"
+  tags          = "!f() { git tag | sort -V; }; f"
+  timeline      = log --topo-order --date relative --pretty='%Cgreen %h %an %ai %s' --graph
+  tip           = log --date relative --pretty='%Cgreen %h %an %ai %s' -1
+  todayschanges = "!f() { git whatchanged --oneline --since=yesterday | grep -v '^:'; }; f"
 
 [branch]
   autosetuprebase = always
 [color]
-    diff = true
-    status = true
-    brnch = true
-    interactive = true
-    ui   = true
-    diff = true
-    status = true
-    brnch = true
-    interactive = true
-    ui   = true
+  diff = true
+  status = true
+  brnch = true
+  interactive = true
+  ui   = true
 [merge]
   sumary = true
   tool = p4merge
@@ -72,7 +53,7 @@
   eol          = crlf
   filemode     = false
   ignorecase   = false
-  editor       = nvim
+  editor       = $HOMEBREW_PREFIX/bin/nvim
   pager        = less -+$LESS -FRX
 
 [hub]
@@ -81,14 +62,11 @@
   helper = /usr/local/bin/git-credential-manager
   credentialStore = cache
 
-[workspaces]
-    tmux-plugins = /Users/chengkli/.tmux/plugins
-    t-workspaces = /Users/chengkli/src/gitrepo/cisco/terraform/workspaces
-    t-modules = /Users/chengkli/src/gitrepo/cisco/terraform/modules
-    pre-prod = /Users/chengkli/src/gitrepo/cisco/pre-prod
-    aws = /Users/cliang/src/gitrepo/personal/aws
-    nvim = /Users/cliang/.local/share/nvim/site/pack/packer/start
-    tfs = /home/cliang/src/gitrepo/costco/ado/tfs
+[bulkworkspaces]
+  tmux-plugins = /Users/chengkli/.tmux/plugins
+  pre-prod = /Users/chengkli/src/gitrepo/cisco/pre-prod
+  tfs = /home/cliang/src/gitrepo/costco/ado/tfs
+	vim-plug = /home/cliang/.local/share/vim/site/plugins
 
 # [http]
 #     cookiefile = /Users/chengkai.liang/.gitcookies
@@ -100,17 +78,7 @@
   required = true
 
 [pull]
-   rebase = true
-[init]
-   defaultBranch = main
-[bulkworkspaces]
-   cisco-terraform = /Users/cliang/src/gitrepo/cisco/terraform
-   cisco-terraform-workspaces = /Users/cliang/src/gitrepo/cisco/terraform/workspaces
-   cisco-terraform-module = /Users/cliang/src/gitrepo/cisco/terraform/modules
-   aws-terraform = /Users/cliang/src/gitrepo/personal/aws/terraform
-[safe]
-   directory = /opt/puppetlabs/pdk/share/cache/pdk-templates.git
-   rebase = true
+  rebase = true
 
 [init]
   defaultBranch = main
