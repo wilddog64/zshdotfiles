@@ -1,0 +1,76 @@
+$if clink           # begin clink-only section
+
+set colored-completion-prefix                       on
+set colored-stats                                   on
+set mark-symlinked-directories                      on
+set visible-stats                                   off
+set completion-auto-query-items                     on
+set history-point-at-end-of-anchored-search         on
+set menu-complete-wraparound                        off
+set search-ignore-case                              on
+set editing-mode                                    vi
+
+# set keymap vi
+# "shift-p": "luafunc:find_prev_colored_line"
+# "shift-n": "luafunc:find_next_colored_line"
+# "p": "luafunc:find_prev_prompt"
+# "n": "luafunc:find_next_prompt"
+
+# $if cmd.exe
+#     set keymap vi-insert
+#         M-h: vi-movement-mode
+#         M-j: vi-movement-mode
+#         M-k: vi-movement-mode
+#         M-l: vi-movement-mode
+#
+#         C-l: clear-screen
+#
+#     set keymap vi-move
+#         M-h: previous-char
+#         M-j: previous-history
+#         M-k: next-history
+#         M-l: next-char
+# $endif
+
+C-E:  "\e[F"
+# Ctrl-Enter: accept and execute the suggestion via End, Enter.
+# "\e[27;5;13~":  "\e[F\r"
+
+# The following key bindings are for emacs mode.
+set keymap emacs
+
+"\e[27;8;72~":      clink-popup-show-help           # Alt-Ctrl-Shift-H
+
+# Completion key bindings.
+"\t":               old-menu-complete               # Tab
+"\e[Z":             old-menu-complete-backward      # Shift-Tab
+"\e[27;5;32~":      clink-select-complete           # Ctrl-Space
+
+# Some key bindings I got used to from 4Dos/4NT/Take Command.
+C-b:                                                # Ctrl-B (cleared because I redefined Ctrl-F)
+C-d:                remove-history                  # Ctrl-D (replaces `delete-char`)
+C-f:                clink-expand-doskey-alias       # Ctrl-F (replaces `forward-char`)
+C-k:                add-history                     # Ctrl-K (replaces `kill-line`)
+"\e[A":             history-search-backward         # Up (replaces `previous-history`)
+"\e[B":             history-search-forward          # Down (replaces `next-history`)
+"\e[5~":            clink-popup-history             # PgUp (replaces `history-search-backward`)
+"\e[6~":                                            # PgDn (cleared because I redefined PgUp)
+"\e[1;5F":          end-of-line                     # Ctrl-End (replaces `kill-line`)
+"\e[1;5H":          beginning-of-line               # Ctrl-Home (replaces `backward-kill-line`)
+
+# Some key bindings handy in default (conhost) console windows.
+M-b:                                                # Alt-B (cleared because I redefined Alt-F)
+M-f:                clink-find-conhost              # Alt-F for "Find..." from the console's system menu
+M-m:                clink-mark-conhost              # Alt-M for "Mark" from the console's system menu
+
+# Some key bindings for interrogating the Readline configuration.
+"\C-x\C-f":         dump-functions                  # Ctrl-X, Ctrl-F
+"\C-x\C-m":         dump-macros                     # Ctrl-X, Ctrl-M
+"\C-x\C-v":         dump-variables                  # Ctrl-X, Ctrl-V
+
+# Misc other key bindings.
+"\e[27;2;32~":      clink-magic-suggest-space       # Shift-Space
+"\e[5;6~":          clink-popup-directories         # Ctrl-Shift-PgUp
+C-_:                kill-line                       # Ctrl-- (replaces `undo`)
+
+$endif              # end clink-only section

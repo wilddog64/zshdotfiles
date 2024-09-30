@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc02
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc22
+/mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc23
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc24
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc25
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc32
@@ -9,8 +10,4 @@
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc42
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc80
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81tkgcrg01.mgmt.costcotravel.com
-pushd /mnt/c/Users/chengkai.liang/bin
-/mnt/c/TKG/tkgi.exe get-kubeconfig us03l81k8sc24 -a us03l81tkgapi01.mgmt.costcotravel.com --sso-auto --ca-cert mgmt.cert
-popd
-
 cp -v /mnt/c/Users/chengkai.liang/.kube/config ~/.kube/config
