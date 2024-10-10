@@ -9,5 +9,4 @@
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc74
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc42
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc80
-/mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81tkgcrg01.mgmt.costcotravel.com
 cp -v /mnt/c/Users/chengkai.liang/.kube/config ~/.kube/config
