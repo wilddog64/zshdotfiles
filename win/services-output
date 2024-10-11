@@ -19,6 +19,6 @@ else
 fi
 rg -C 2 ingressGateway | perl -nle 'print "https://$1/$ENV{'swagger'}" if /host: (.*)/' | rg -v fully | rg -v some | rg -v prod > /tmp/services.txt
 
-vi -c "%s#\zehttps://${app_name}\(-\(\w\+\)\|.*.\(dev\)\)#\2\3 - " -c noh -c sort -c 'w!' -c 'norm G | o ' -c 'wq!' /tmp/services.txt
-vi -c "1,8t$" -c 'sil! 10,$s/\w\+ -/curl -s -w "%{response_code}"/' -c 'w!' -c 'noh | norm gg' /tmp/services.txt
+vi -c "%s#\zehttps://${app_name}\(-\(\w\+\)\|.*.\(dev\)\)#\2\3 - " -c noh -c sort -c 'w!' -c 'norm G | ma | o ' -c 'wq!' /tmp/services.txt
+vi -c "1,'at$ | 'a+2" -c 'sil! .,$s/\w\+ -/curl -s -w "%{response_code}"/' -c 'w!' -c 'noh | norm gg' /tmp/services.txt
 popd
