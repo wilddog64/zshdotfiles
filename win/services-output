@@ -30,5 +30,5 @@ rg -C 2 ingressGateway | perl -nle 'print "https://$1/$ENV{'swagger'}" if /host:
 # we prefix <env_name> - for each environment, and
 # generate curl lines to check endpoints
 vi -c "%s#\zehttps://${app_name}\(-\(\w\+\)\|.*.\(dev\)\)#\2\3 - " -c noh -c sort -c 'w!' -c 'norm G | ma | o ' -c 'wq!' /tmp/services.txt
-vi -c "1,'at$ | 'a+2" -c 'sil! .,$s/\w\+ -/curl -s -w "%{response_code}"/' -c 'w!' -c 'noh | norm gg' /tmp/services.txt
+vi -c "1,'at$ | 'a+2" -c 'sil! .,$s/\w\+ -/curl -s -w "%{response_code}\\n\\n"/' -c 'w!' -c 'noh | norm gg' /tmp/services.txt
 popd
