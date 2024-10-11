@@ -5,7 +5,7 @@ set -e       # exit whenever there are errors
 set pipefail # exit when pipe failed
 
 # we want to calculate the micro service application home directory
-# and make sure the application actually exist, and tcd into that directory
+# and make sure the application actually exist, and then cd into that directory
 # if your k8s-iac repo is at different location, then update app_home approiately
 app_home=$HOME/src/gitrepo/costco/ado/k8s-iac/argocd/apps/$app_name
 if ! [[ -e $app_home ]]
