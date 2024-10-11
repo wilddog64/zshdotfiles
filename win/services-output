@@ -1,15 +1,21 @@
 #!/usr/bin/env bash
+set -e       # exit whenever there are errors
+set pipefail # exit when pipe failed
+
+# we want to calculate the micro service application home directory
+# and make sure the application actually exist, and tcd into that directory
+# if your k8s-iac repo is at different location, then update app_home approiately
 app_name=$1
-set -e
-set pipefail
 app_home=$HOME/src/gitrepo/costco/ado/k8s-iac/argocd/apps/$app_name
 if ! [[ -e $app_home ]]
 then
    echo $app_home not exist
    exit -1
 fi
-
 pushd $app_home
+
+# here we want to determine how to construct a proper swagger endpoint for each environment
+# and pipe them into /tmp/services.txt
 swagger_ui=swagger-ui\/index.html
 prefix=$(rg -C 1 httpGet values.yaml | perl -nle 'print $1 if /path: \/(api\/mesh|api\/egress)/' | uniq)
 if [[ ! -z "${prefix}" ]]; then
@@ -19,6 +25,9 @@ else
 fi
 rg -C 2 ingressGateway | perl -nle 'print "https://$1/$ENV{'swagger'}" if /host: (.*)/' | rg -v fully | rg -v some | rg -v prod > /tmp/services.txt
 
+# data process by using vi
+# we prefix <env_name> - for each environment, and
+# generate curl lines to check endpoints
 vi -c "%s#\zehttps://${app_name}\(-\(\w\+\)\|.*.\(dev\)\)#\2\3 - " -c noh -c sort -c 'w!' -c 'norm G | ma | o ' -c 'wq!' /tmp/services.txt
 vi -c "1,'at$ | 'a+2" -c 'sil! .,$s/\w\+ -/curl -s -w "%{response_code}"/' -c 'w!' -c 'noh | norm gg' /tmp/services.txt
 popd
