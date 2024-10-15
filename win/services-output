@@ -24,6 +24,10 @@ if [[ ! -z "${prefix}" ]]; then
 else
    export swagger=$swagger_ui
 fi
+# rg (ripgrep) is a tool that works like grep but only better
+# here we grep all the files that contains ingressGateway, and show context around it
+# then we pipe this info to perl for constructing proper swagger ui endpoint and redirect
+# them to a file (/tmp/services.txt)
 rg -C 2 ingressGateway | perl -nle 'print "https://$1/$ENV{'swagger'}" if /host: (.*)/' | rg -v fully | rg -v some | rg -v prod > /tmp/services.txt
 
 # data process by using vi
