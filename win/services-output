@@ -34,7 +34,7 @@ rg -C 2 ingressGateway | perl -nle 'print "https://$1/$ENV{'swagger'}" if /host:
 # for some micro services their ingressGateway host do not have - within it, so we have to take care of this here
 # set -e make this not working. As set -e will abort script and return $? to the caller instead of use it within
 # script
-rg -C 2 ingressGateway | grep $app
+rg -C 2 ingressGateway | grep $app 2>&1 > /dev/null
 if [[ $? == 1 ]]; then
    app_name=$(echo $app | tr -d '\n' | perl -ne 'print if s/-//g')
 elif [[ $? != 0 ]]; then
