@@ -47,6 +47,5 @@ fi
 vi -c "%s#\zehttps://${app_name}\(-\(\w\+\)\|.*.\(dev\)\)#\2\3 - # | noh | sort | w! | norm G | ma | o" \
    -c "1,'at$" -c "'a+2" -c 'sil! .,$s#\ze\w\+ - #echo # | w!' \
    -c "'a+2" -c '.,$s#\zeecho \w\+ \zs- #; curl -s -w "%{response_code}\\n\\n" #' \
-   -c "'a+2" -c 'w!' -c '.,$!bash' \
-   -c 'call feedkeys(" ") | w!' /tmp/services.txt
+   -c "'a+2" -c 'w!' -c '.,$!bash' -c 'call feedkeys(" ") | w!' /tmp/services.txt
 popd
