@@ -42,6 +42,8 @@ elif [[ $? != 0 ]]; then
 fi
 
 # data process by using vi we prefix <env_name> - for each environment, and generate curl lines to check endpoints
+# we prefix <env_name> - for each environment, and
+# generate curl lines to check endpoints
 vi -c "%s#\zehttps://${app_name}\(-\(\w\+\)\|.*.\(dev\)\)#\2\3 - # | noh | sort | w! | norm G | ma | o" \
    -c "1,'at$" -c "'a+2" -c 'sil! .,$s#\ze\w\+ - #echo # | w!' \
    -c "'a+2" -c '.,$s#\zeecho \w\+ \zs- #; curl -s -w "%{response_code}\\n\\n" #' -c "'a+2" -c 'w!' -c '.,$!bash' \
