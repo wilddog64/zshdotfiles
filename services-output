@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
-app_name=$1  # command line argument
+app=$1  # command line argument
 
-set -e       # exit whenever there are errors
+# set -e       # exit whenever there are errors
 set pipefail # exit when pipe failed
 
 # we want to calculate the micro service application home directory
 # and make sure the application actually exist, and then cd into that directory
 # if your k8s-iac repo is at different location, then update app_home approiately
-app_home=$HOME/src/gitrepo/costco/ado/k8s-iac/argocd/apps/$app_name
+app_home=$HOME/src/gitrepo/costco/ado/k8s-iac/argocd/apps/$app
+echo app_home $app_home
 if ! [[ -e $app_home ]]
 then
    echo $app_home not exist
@@ -24,11 +25,27 @@ if [[ ! -z "${prefix}" ]]; then
 else
    export swagger=$swagger_ui
 fi
+# rg (ripgrep) is a tool that works like grep but only better
+# here we grep all the files that contains ingressGateway, and show context around it
+# then we pipe this info to perl for constructing proper swagger ui endpoint and redirect
+# them to a file (/tmp/services.txt)
 rg -C 2 ingressGateway | perl -nle 'print "https://$1/$ENV{'swagger'}" if /host: (.*)/' | rg -v fully | rg -v some | rg -v prod > /tmp/services.txt
+
+# for some micro services their ingressGateway host do not have - within it, so we have to take care of this here
+# set -e make this not working. As set -e will abort script and return $? to the caller instead of use it within
+# script
+rg -C 2 ingressGateway | grep $app 2>&1 > /dev/null
+if [[ $? == 1 ]]; then
+   app_name=$(echo $app | tr -d '\n' | perl -ne 'print if s/-//g')
+elif [[ $? != 0 ]]; then
+   app_name=$(echo $app)
+fi
 
 # data process by using vi
 # we prefix <env_name> - for each environment, and
 # generate curl lines to check endpoints
-vi -c "%s#\zehttps://${app_name}\(-\(\w\+\)\|.*.\(dev\)\)#\2\3 -#" -c noh -c sort -c 'w!' -c 'norm G | ma | o ' -c 'wq!' /tmp/services.txt
-vi -c "sil! 'a+2,$s#\w\+ -#curl -s -w \"%{response_code}\\n\\n\"#" -c 'w!' -c 'noh | norm gg' /tmp/services.txt
+vi -c "%s#\zehttps://${app_name}\(-\(\w\+\)\|.*.\(dev\)\)#\2\3 - # | noh | sort | w! | norm G | ma | o" \
+   -c "1,'at$" -c "'a+2" -c 'sil! .,$s#\ze\w\+ - #echo # | w!' \
+   -c "'a+2" -c '.,$s#\zeecho \w\+ \zs- #; curl -s -w "%{response_code}\\n\\n" #' -c "'a+2" -c 'w!' -c '.,$!bash' \
+   -c 'call feedkeys(" ") | w!' /tmp/services.txt
 popd
