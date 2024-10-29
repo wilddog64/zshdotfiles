@@ -1,0 +1,27 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    finalizers:
+    - kubernetes.io/pvc-protection
+    name: <name>-pvc
+    namespace: <name>-dev
+  spec:
+    accessModes:
+    - ReadWriteMany
+    resources:
+      requests:
+        storage: 20Gi
+    storageClassName: ""
+    volumeMode: Filesystem
+    volumeName: <name>-smb
+  status:
+    accessModes:
+    - ReadWriteMany
+    capacity:
+      storage: 50Gi
+    phase: Bound
+kind: List
+metadata:
+  resourceVersion: ""
