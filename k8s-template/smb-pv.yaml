@@ -5,7 +5,7 @@ metadata:
     pv.kubernetes.io/bound-by-controller: "yes"
   finalizers:
   - kubernetes.io/pv-protection
-  name: <name>-smb
+  name: odysseus-sailing-data-smb
   resourceVersion: "79772977"
   uid: d4e43069-9539-4c0c-bc77-5437662ccb31
 spec:
@@ -16,17 +16,16 @@ spec:
   claimRef:
     apiVersion: v1
     kind: PersistentVolumeClaim
-    name: <name>-pvc
-    namespace: <name>-<env>
+    name: odysseus-sailing-data-pvc
+    namespace: odysseus-sailing-data-dev
   csi:
     driver: smb.csi.k8s.io
     nodeStageSecretRef:
       name: smb-creds
-      namespace: <name>-<env>
+      namespace: odysseus-sailing-data-dev
     volumeAttributes:
-      # source: \\us03l72fl01.dev.costcotravel.com\_APPSHARES\AppFiles\Odysseus\feed\sandbox
-      source: <win-share>
-    volumeHandle: <name>-smb
+      source: \\us03l72fl01.dev.costcotravel.com\_APPSHARES\AppFiles\Odysseus\feed\sandbox
+    volumeHandle: odysseus-sailing-data-smb
   mountOptions:
   - dir_mode=0777
   - file_mode=0777
