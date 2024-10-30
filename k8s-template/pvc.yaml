@@ -5,8 +5,8 @@ items:
   metadata:
     finalizers:
     - kubernetes.io/pvc-protection
-    name: <name>-pvc
-    namespace: <name>-dev
+    name: odysseus-sailing-data-pvc
+    namespace: odysseus-sailing-data-dev
   spec:
     accessModes:
     - ReadWriteMany
@@ -15,7 +15,7 @@ items:
         storage: 20Gi
     storageClassName: ""
     volumeMode: Filesystem
-    volumeName: <name>-smb
+    volumeName: odysseus-sailing-data-smb
   status:
     accessModes:
     - ReadWriteMany
