@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# us03p01baa41-42
+# us03p01baa45-50
+# us03p01baa71-72
+# us03p01baa75-79
+
+xpanes -l mh -s --ssh build41 build42 build45 build71 build72 build75 build76 build77 build78 build79 buid80 build42 build45 build71 build72 build75 build76 build77 build78 build79 buid80
