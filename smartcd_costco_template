@@ -1,0 +1,102 @@
+@ scripts/home/cliang/src/gitrepo/costco/bash_enter
+ ########################################################################
+ # smartcd enter - /home/cliang/src/gitrepo/costco
+ #
+ # This is a smartcd script.  Commands you type will be run when you
+ # enter this directory.  The string __PATH__ will be replaced with
+ # the current path.  Some examples are editing your $PATH or creating
+ # a temporary alias:
+ #
+ #     autostash PATH=__PATH__/bin:$PATH
+ #     autostash alias restart="service stop; sleep 1; service start"
+ #
+ # See http://smartcd.org for more ideas about what can be put here
+ ########################################################################
+ autostash kdev
+ autostash kqa
+ autostash kqaauto
+ autostash kperf
+ autostash kppe
+ autostash kargo
+ autostash kclsinfo
+ autostash kcurcls
+ autostash tcinfo
+ autostash khelp
+
+ kdev() {
+   echo for dev, and devprod
+   kubectl config use-context us03l81k8sc32
+ }
+
+ kqa() {
+   echo for qa1, qa2, qa, and qaprod
+   kubectl config use-context us03l81k8sc22
+ }
+
+ kperf() {
+   echo for perf
+   kubectl config use-context us03l81k8sc24
+ }
+
+ kqaauto() {
+   echo for qaauto
+   kubectl config use-context us03l81k8sc25
+ }
+
+ kppe() {
+   echo for ppe, and preview
+   kubectl config use-context us03l81k8sc42
+ }
+
+ kargo() {
+   echo for argocd
+   kubectl config use-context us03l81k8sc80
+ }
+
+ khelp() {
+   echo us03l81k8sc32 -- dev, devprod, use kdev alias
+   echo us03l81k8sc22 -- qa1, qa2, qaprod, use kqa alias
+   echo us03l81k8sc24 -- perf, use kperf alias
+   echo us03l81k8sc25 -- qaauto, use kqaauto alias
+   echo us03l81k8sc42 -- ppe, preview, use kppe alias
+   echo us03l81k8sc80 -- argocd, use kargo alias
+ }
+
+ kcurcls() {
+   curr=$(k config current-context)
+   echo current k8s cluster: $curr
+ }
+
+ tcinfo() {
+   tkgi clusters | grep -v PKS | grep -v mnt | grep -v '~' | sed -n '/^$/d; p' | sort -V | gawk '{ print $1 " " $2 }'
+ }
+
+ t32() {
+   ip=$(tkgi cluster us03l81k8sc32 | perl -nle 'print $1 if /IP\(s\): (.*)/')
+   echo us03l81k8sc32 ip:$ip
+ }
+
+ t22() {
+   ip=$(tkgi cluster us03l81k8sc22 | perl -nle 'print $1 if /IP\(s\): (.*)/')
+   echo us03l81k8sc22 ip:$ip
+ }
+
+ t24() {
+   ip=$(tkgi cluster us03l81k8sc24 | perl -nle 'print $1 if /IP\(s\): (.*)/')
+   echo us03l81k8sc24 ip:$ip
+ }
+
+ t25() {
+   echo us03l81k8sc25 ip:$ip
+   ip=$(tkgi cluster us03l81k8sc25 | perl -nle 'print $1 if /IP\(s\): (.*)/')
+ }
+
+ t42() {
+   echo us03l81k8sc42 ip:$ip
+   ip=$(tkgi cluster us03l81k8sc42 | perl -nle 'print $1 if /IP\(s\):\s+(.*)/')
+ }
+
+ t80() {
+   echo us03l81k8sc80 ip:$ip
+   ip=$(tkgi cluster us03l81k8sc80 | perl -nle 'print $1 if /IP\(s\): (.*)/')
+ }
