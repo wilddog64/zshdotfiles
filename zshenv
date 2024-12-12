@@ -2,9 +2,6 @@
 unsetopt global_rcs
 
 # === for hoembrew environment
-export HOMEBREW_PREFIX="/usr/local";
-export HOMEBREW_CELLAR="/usr/local/Cellar";
-export HOMEBREW_REPOSITORY="/usr/local/Homebrew";
 export PATH="/usr/local/bin:/usr/local/sbin${PATH+:$PATH}";
 export MANPATH="/usr/local/share/man${MANPATH+:$MANPATH}:";
 export INFOPATH="/usr/local/share/info:${INFOPATH:-}";
@@ -34,6 +31,7 @@ export HOMEBREW_SBIN=$HOMEBREW_PREFIX/sbin
 
 export FZF_BASE=$HOMEBREW_PREFIX/opt/fzf
 
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 # === make command line editing like vi, ya ya ya!!!
 # export ZSH_THEME=powerlevel10k
 export ZSH_THEME=agnoster
