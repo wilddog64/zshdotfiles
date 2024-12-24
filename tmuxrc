@@ -47,6 +47,7 @@ set -g @plugin 'tmux-plugins/tmux-yank'         # Clipboard yank
 set -g @plugin 'tmux-plugins/tmux-urlview'      # URL viewer
 set -g @plugin 'sainnhe/tmux-fzf'               # Fuzzy finder for sessions
 set -g @plugin 'jaclu/tmux-menus'               # Menu navigation
+set -g @plugin 'tmux-plugins/tmux-pain-control' # for pane management
 
 # Plugin Settings
 set -g @continuum-boot 'on'
