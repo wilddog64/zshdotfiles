@@ -26,25 +26,8 @@
     brnch = true
     interactive = true
     ui   = true
-[merge]
-    sumary = true
-    tool = p4merge
-[mergetool "p4merge"]
-    cmd  = p4merge \
-        "$PWD/$BASE" \
-        "$PWD/$LOCAL" \
-        "$PWD/$REMOTE" \
-        "$PWD/$MERGED"
-    keppBackup     = false
-    trustExistCode = false
 [push]
     default = upstream
-[difftool "sourcetree"]
-  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path =
-[mergetool "sourcetree"]
-  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
 [core]
   excludesFile = ~/.gitignore
   autocrlf     = false
