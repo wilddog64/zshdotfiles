@@ -66,6 +66,3 @@ setw -g mode-keys vi
 bind -T copy-mode-vi v send -X begin-selection
 bind -T copy-mode-vi y send-keys -X copy-pipe-no-clear "yank"
 bind P paste-buffer
-
-# Bind prefix + Enter to convert the current pane into a new window
-bind-key Enter break-pane
