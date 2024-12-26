@@ -40,6 +40,9 @@ set-option -g set-titles-string '#H:#S.#I.#P #W #T'
 # === Plugins ===
 run '~/.tmux/plugins/tpm/tpm'
 
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'christoomey/vim-tmux-navigator' # Vim-tmux navigation
 set -g @plugin 'tmux-plugins/tmux-resurrect'    # Save and restore sessions
 set -g @plugin 'tmux-plugins/tmux-continuum'    # Auto-save sessions
@@ -64,3 +67,5 @@ bind -T copy-mode-vi v send -X begin-selection
 bind -T copy-mode-vi y send-keys -X copy-pipe-no-clear "yank"
 bind P paste-buffer
 
+# Bind prefix + Enter to convert the current pane into a new window
+bind-key Enter break-pane
