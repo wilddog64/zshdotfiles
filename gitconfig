@@ -10,7 +10,6 @@
     merge-master     = merge --no-ff master
     merge-no-ff      = merge --no-ff
     outfiles         = "!f() { git diff --name-status ..$1;  }; f"
-    pullrb           = pull --rebase
     push-all         = "!f() { git push -u --all "$@"; git push --tag "$@"; }; f"
     push-tag         = "!f() { git push "$@"; git push  "$@" --tag; }; f"
     st               = "!f() { git status --ignore-submodules --short -b; }; f"
@@ -77,7 +76,7 @@
     process = git-lfs filter-process
     required = true
 [pull]
-    rebase = true
+	rebase = true
 [init]
    defaultBranch = main
 [bulkworkspaces]
