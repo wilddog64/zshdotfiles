@@ -174,13 +174,13 @@ setopt PATH_DIRS # perform a path search even on command names with slashes in t
 setopt MULTIOS   # Allow multiple redirection echo 'a'>b>c
 
 # === job control
-setopt AUTO_CONTINUE                 # stopped jobs that are removed from job table used disown command are automatically send a CONT signal
+setopt AUTO_CONTINUE         # stopped jobs that are removed from job table used disown command are automatically send a CONT signal
 
 # === options for completion
-# setopt MENU_COMPLETE                 # turn on menu completion
-setopt COMPLETE_IN_WORD              # complete in the middle of a word
-setopt REC_EXACT                     # recognize exact match in completion
-setopt ALWAYS_TO_END                 # always move cursor to the end after completion
+# setopt MENU_COMPLETE       # turn on menu completion
+setopt COMPLETE_IN_WORD      # complete in the middle of a word
+setopt REC_EXACT             # recognize exact match in completion
+setopt ALWAYS_TO_END         # always move cursor to the end after completion
 
 setopt PRINT_EIGHT_BIT
 
