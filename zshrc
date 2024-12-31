@@ -196,17 +196,17 @@ fi
 
 if [[ -e $HOMEBREW_PREFIX/share/antigen/antigen.zsh ]]; then
   echo loading antigen
-    source $HOMEBREW_PREFIX/share/antigen/antigen.zsh
+  source $HOMEBREW_PREFIX/share/antigen/antigen.zsh
 fi
 
 if [[ -e $HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh ]]; then
   echo load fzf key-bindings script
-    source $HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh
+  source $HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh
 fi
 
 if [[ -e $HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh ]]; then
   echo loading fzf auto complete script
-    source $HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh
+  source $HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh
 fi
 
 if [[ -r $HOME/.smartcd_config ]]; then
@@ -238,8 +238,8 @@ set +o vi
 
 # === for normal aliases, so we our aliases setup won't overwrite by zplug
 if [[ -r ~/.zsh/aliases ]]; then
-    echo load aliases
-    source ~/.zsh/aliases
+   echo load aliases
+   source ~/.zsh/aliases
 fi
 
 which gh 2>&1 > /dev/null
@@ -268,7 +268,7 @@ fi
 
 if [[ -e  /usr/local/share/zsh-autopair/autopair.zsh ]]; then
    echo loading zsh-autopair
-    source /usr/local/share/zsh-autopair/autopair.zsh
+   source /usr/local/share/zsh-autopair/autopair.zsh
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
