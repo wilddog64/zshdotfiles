@@ -2,7 +2,6 @@ bindkey -M vicmd '^xp' history-beginning-search-backward
 bindkey -M vicmd '^xn' history-beginning-search-forward
 bindkey -M viins '^O' copy-prev-shell-word
 bindkey '^P' push-line-or-edit # push current command line into a buffer, for later use
-# bindkey '^r' history-incremental-search-backward
 bindkey '^s' autosuggest-accept
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
