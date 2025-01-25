@@ -107,7 +107,7 @@ fpath=(
 autoload -U zen
 
 [[ -s `brew --prefix`/etc/autojump.sh  ]] && . `brew --prefix`/etc/autojump.sh
-eval `keychain --eval --agents ssh --inherit any id_rsa`
+eval `keychain --eval --agents ssh --inherit any id_ed25519`
 
 which pyenv 2>&1 > /dev/null
 if [[ $? == 0 ]]; then
@@ -269,6 +269,13 @@ fi
 if [[ -e  /usr/local/share/zsh-autopair/autopair.zsh ]]; then
    echo loading zsh-autopair
    source /usr/local/share/zsh-autopair/autopair.zsh
+fi
+
+if [[ -e $(brew --prefix nvm) ]]; then
+   echo loading nvm
+   export NVM_DIR="$HOME/.nvm"
+   [[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ]] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"  # This loads nvm
+   [[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ]] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
