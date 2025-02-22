@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # for XWin ...
 
 # === get all apps and create an aliases for them
@@ -106,7 +113,6 @@ fpath=(
        ~/.zfunctions )
 autoload -U zen
 
-[[ -s `brew --prefix`/etc/autojump.sh  ]] && . `brew --prefix`/etc/autojump.sh
 eval `keychain --eval --agents ssh --inherit any id_ed25519`
 
 which pyenv 2>&1 > /dev/null
@@ -135,13 +141,8 @@ if [[ -e /usr/libexec/java_home ]]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
 fi
 
-if [[ -e ~/tools/rundeck ]]; then
-  export RUNDECK_BASE=~/tools/rundeck/tools
-  export RUNDECK_TOOL_BIN=$RUNDECK_BASE/bin
-  export PATH=$PATH:$RUNDECK_TOOL_BIN
-fi
-
-if [[ -e $(brew --prefix nvm) ]]; then
+which nvm
+if [[ $? == 0 ]]; then
   if [[ ! -e ~/.nvm ]]; then
     mkdir -p ~/.nvm
   fi
@@ -222,8 +223,8 @@ if [[ -n "$TILIX_ID" ]] || [[ -n "$VTE_VERSION" ]]; then
   source /etc/profile.d/vte.sh
 fi
 
-rbenv=$(brew --prefix rbenv)
-if [[ -e $rbenv ]]; then
+which rbenv
+if [[ $? == 0 ]]; then
   echo initializing rbenv
   eval "$(rbenv init - zsh)"
 fi
@@ -248,11 +249,6 @@ if [[ $? == 0 ]]; then
    eval $(gh completion -s zsh)
 fi
 
-export kafka_home=$(brew --prefix kafka)
-if [[ ! -z  kafka_home ]]; then
-   export PATH=$PATH:$kafka_home/bin
-fi
-
 which eksctl 2>&1 > /dev/null
 if [[ $? == 0 ]]; then
    echo loading eksctl completion
@@ -266,16 +262,9 @@ if [[ $? == 0 ]]; then
    source /tmp/chef_completion.zsh
 fi
 
-if [[ -e  /usr/local/share/zsh-autopair/autopair.zsh ]]; then
+if [[ -e /usr/local/share/zsh-autopair/autopair.zsh ]]; then
    echo loading zsh-autopair
    source /usr/local/share/zsh-autopair/autopair.zsh
-fi
-
-if [[ -e $(brew --prefix nvm) ]]; then
-   echo loading nvm
-   export NVM_DIR="$HOME/.nvm"
-   [[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ]] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"  # This loads nvm
-   [[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ]] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
