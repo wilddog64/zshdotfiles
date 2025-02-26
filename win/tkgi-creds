@@ -1,12 +1,24 @@
 #!/usr/bin/env bash
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc02
+/mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc05
+/mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc12
+/mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc21
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc22
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc23
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc24
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc25
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc32
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc42
+/mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc52
+/mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc54
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc71
+/mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc72
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc74
+/mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc75
+/mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc76
+/mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc77
 /mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc80
+/mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc81
+/mnt/c/TKG/tkgi.exe get-credentials --sso-auto us03l81k8sc199
+
 cp -v /mnt/c/Users/chengkai.liang/.kube/config ~/.kube/config
