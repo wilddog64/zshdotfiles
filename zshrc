@@ -26,7 +26,9 @@ if [[ -r ~/.zsh/cdnames ]]; then
     source ~/.zsh/cdnames
 fi
 
-if [[ -r ~/.zsh/fzf.zsh ]]; then
+if [[ -r /usr/share/fzf/shell/key-bindings.zsh ]]; then
+   source /usr/share/fzf/shell/key-bindings.zsh
+elif [[ -r ~/.zsh/fzf.zsh ]]; then
   source ~/.zsh/fzf.zsh
 fi
 
