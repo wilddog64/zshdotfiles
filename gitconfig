@@ -66,7 +66,8 @@
   tmux-plugins = /Users/chengkli/.tmux/plugins
   pre-prod = /Users/chengkli/src/gitrepo/cisco/pre-prod
   tfs = /home/cliang/src/gitrepo/costco/ado/tfs
-	vim-plug = /home/cliang/.local/share/vim/site/plugins
+  vim-plug = /home/cliang/.local/share/vim/site/plugins
+  puppet = /home/cliang/src/gitrepo/personal/puppet
 
 # [http]
 #     cookiefile = /Users/chengkai.liang/.gitcookies
