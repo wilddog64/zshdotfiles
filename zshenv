@@ -192,5 +192,5 @@ export WORDCHARS=${WORDCHARS//\//}
 which oh-my-posh 2>&1 > /dev/null
 if [[ $? == 0 ]]; then
    export LZG_KEYBIND_MODE=vim
-   eval $(oh-my-posh completion zsh)
+   eval $(oh-my-posh init zsh)
 fi
