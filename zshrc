@@ -114,7 +114,8 @@ fpath=(
        ~/.zfunctions )
 autoload -U zen
 
-eval `keychain --eval --agents ssh --inherit any id_ed25519`
+which keychain 2>&1 > /dev/null
+[[ $? == 0 ]] && eval `keychain --eval --agents ssh --inherit any id_ed25519`
 
 which pyenv 2>&1 > /dev/null
 if [[ $? == 0 ]]; then
@@ -221,7 +222,7 @@ if [[ ! -e ~/.zplug/init.zsh ]]; then
 fi
 
 if [[ -n "$TILIX_ID" ]] || [[ -n "$VTE_VERSION" ]]; then
-  source /etc/profile.d/vte.sh
+  source /etc/profile.d/vte-2.91.sh
 fi
 
 which rbenv
