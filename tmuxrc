@@ -14,7 +14,7 @@ set-option -g focus-events on
 
 # === Pane and Window Management ===
 set-option -g base-index 1          # Start windows at 1
-set-option -g history-limit 50000   # Increase history limit
+set-option -g history-limit 100000   # Increase history limit
 set-window-option -g automatic-rename on
 
 # Keybindings for Pane Management
