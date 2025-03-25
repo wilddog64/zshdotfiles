@@ -19,7 +19,7 @@ pushd $app_home
 # here we want to determine how to construct a proper swagger endpoint for each environment
 # and pipe them into /tmp/services.txt
 swagger_ui=swagger-ui\/index.html
-prefix=$(rg -C 1 httpGet values.yaml | perl -nle 'print $1 if /path: \/(api\/mesh|api\/egress)/' | uniq)
+prefix=$(rg -C 1 httpGet values.yaml | perl -nle 'print $1 if /path: \/(api\/mesh|api\/egress|api\/batch)/' | uniq)
 if [[ ! -z "${prefix}" ]]; then
    export swagger=$prefix\/$swagger_ui
 else
