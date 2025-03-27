@@ -68,6 +68,8 @@
   tfs = /home/cliang/src/gitrepo/costco/ado/tfs
   vim-plug = /home/cliang/.local/share/vim/site/plugins
   puppet = /home/cliang/src/gitrepo/personal/puppet
+	nvim-plugins = /home/cliang/.local/share/nvim/site/pack/packer/start
+	lazy = /home/cliang/.local/share/nvim/lazy
 
 # [http]
 #     cookiefile = /Users/chengkai.liang/.gitcookies
