@@ -8,7 +8,7 @@ unbind-key C-b
 bind-key C-a send-prefix
 
 # === Clipboard and Mouse ===
-set-option -g set-clipboard on
+# set-option -g set-clipboard on
 set-option -g mouse on
 set-option -g focus-events on
 
@@ -41,9 +41,9 @@ set-option -g set-titles-string '#H:#S.#I.#P #W #T'
 run '~/.tmux/plugins/tpm/tpm'
 
 set -g @plugin 'christoomey/vim-tmux-navigator' # Vim-tmux navigation
-set -g @plugin 'tmux-plugins/tmux-resurrect'    # Save and restore sessions
-set -g @plugin 'tmux-plugins/tmux-continuum'    # Auto-save sessions
-set -g @plugin 'tmux-plugins/tmux-yank'         # Clipboard yank
+# set -g @plugin 'tmux-plugins/tmux-resurrect'    # Save and restore sessions
+# set -g @plugin 'tmux-plugins/tmux-continuum'    # Auto-save sessions
+# set -g @plugin 'tmux-plugins/tmux-yank'         # Clipboard yank
 set -g @plugin 'tmux-plugins/tmux-urlview'      # URL viewer
 set -g @plugin 'sainnhe/tmux-fzf'               # Fuzzy finder for sessions
 set -g @plugin 'jaclu/tmux-menus'               # Menu navigation
@@ -62,7 +62,6 @@ set-option -ga terminal-overrides ",xterm-256color:Tc"
 setw -g mode-keys vi
 bind -T copy-mode-vi v send -X begin-selection
 bind -T copy-mode-vi y send-keys -X copy-pipe-no-clear "~/.zsh/yank.sh"
-bind P paste-buffer
 
 bind -T copy-mode    DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "yank.sh"
 bind -T copy-mode-vi DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "yank.sh"
