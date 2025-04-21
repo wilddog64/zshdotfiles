@@ -108,7 +108,7 @@ fpath=(
 autoload -U zen
 
 [[ -s `brew --prefix`/etc/autojump.sh  ]] && . `brew --prefix`/etc/autojump.sh
-eval `keychain --eval --agents ssh --inherit any id_rsa`
+eval `keychain --eval --agents ssh --inherit any ~/.ssh/id_ed25519`
 
 which pyenv 2>&1 > /dev/null
 if [[ $? == 0 ]]; then

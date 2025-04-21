@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+myvi=$(which nvim)
+if [[ ! -z $myvi ]]; then
+   $myvi "@*"
+else
+   echo cannot find neovim
+   exit -1
+fi
