@@ -2,6 +2,11 @@
 # Tmux Configuration
 # =============================
 
+# === unbind " % ] to avoid WSL, and alacritty issues ===
+unbind '"'
+unbind %
+unbind ']'
+
 # === Prefix Key Remapping ===
 set-option -g prefix C-a
 unbind-key C-b
