@@ -143,7 +143,7 @@ if [[ -e /usr/libexec/java_home ]]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
 fi
 
-which nvm
+brew --prefix nvm
 if [[ $? == 0 ]]; then
   if [[ ! -e ~/.nvm ]]; then
     mkdir -p ~/.nvm
