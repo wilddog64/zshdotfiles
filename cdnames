@@ -16,6 +16,7 @@ terra=~personal/terraform
 ansible=~costco/ansible
 ado=~costco/ado
 k8s=~ado/k8s-iac
+argoapps=~ado/k8s-iac/argocd/apps/
 tfs=~ado/tfs
 
 winhome=/mnt/c
