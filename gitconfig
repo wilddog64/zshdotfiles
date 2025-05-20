@@ -68,8 +68,9 @@
   tfs = /home/cliang/src/gitrepo/costco/ado/tfs
   vim-plug = /home/cliang/.local/share/vim/site/plugins
   puppet = /home/cliang/src/gitrepo/personal/puppet
-	nvim-plugins = /home/cliang/.local/share/nvim/site/pack/packer/start
-	lazy = /home/cliang/.local/share/nvim/lazy
+  nvim-plugins = /home/cliang/.local/share/nvim/site/pack/packer/start
+  lazy = /home/cliang/.local/share/nvim/lazy
+  autodeploy = /home/cliang/src/gitrepo/costco/build-deploy
 
 # [http]
 #     cookiefile = /Users/chengkai.liang/.gitcookies
@@ -88,3 +89,5 @@
 
 [credential "https://dev.azure.com"]
   useHttpPath = true
+[credential "https://tfs.pacific.costcotravel.com"]
+   provider = generic
