@@ -24,7 +24,6 @@ export PATH=$PUPPET_BIN:$PATH
 
 which brew 2>&1 > /dev/null
 if [[ $? == 0 ]] ; then
-   echo brew exist
    eval $(brew shellenv)
    # setup homebrew environment variables
    export BREW_ROOT=$(brew --prefix)
