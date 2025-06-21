@@ -115,7 +115,7 @@ fpath=(
 autoload -U zen
 
 which keychain 2>&1 > /dev/null
-[[ $? == 0 ]] && eval `keychain --eval --agents ssh --inherit any id_ed25519`
+[[ $? == 0 ]] && eval `keychain --eval id_ed25519`
 
 which pyenv 2>&1 > /dev/null
 if [[ $? == 0 ]]; then
