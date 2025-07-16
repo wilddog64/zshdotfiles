@@ -59,8 +59,9 @@
 [hub]
   protocol = https
 [credential]
-  helper = /usr/local/bin/git-credential-manager
   credentialStore = cache
+	helper = 
+	helper = /usr/local/bin/git-credential-manager
 
 [bulkworkspaces]
   tmux-plugins = /Users/chengkli/.tmux/plugins
