@@ -5,51 +5,51 @@ from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-#placeholders
+# placeholders
 
-endpoint=""
-password=""
-username=""
-factors=["Duo Push","Phone Call","Passcode"]
-#args
+endpoint = ""
+password = ""
+username = ""
+factors = ["Duo Push", "Phone Call", "Passcode"]
+# args
 parser = argparse.ArgumentParser()
 parser.add_argument("-e", "--endpoint", type=str, help="The DUO Access Gateway Endpoint. Example: https://duo.mydomain.com/dag/saml2/idp/SSOService.php?spentityid=D1234567890", required=True)
 parser.add_argument("-u", "--username", type=str, help="Your username", required=True)
-parser.add_argument("-p", "--password", type=str, help="Your password (if not provided, you will be prompted)",required=False)
+parser.add_argument("-p", "--password", type=str, help="Your password (if not provided, you will be prompted)", required=False)
 parser.add_argument("-P", "--profile", type=str, help="(Optional) The AWS Profile where the temporary credentials should be stored", default="default")
 parser.add_argument("-v", "--verbose", help="Enable verbose logging", action='store_true')
 parser.add_argument("-k", "--insecure", help="Allow insecure TLS Connections", action='store_true')
 parser.add_argument("-r", "--region", help="The region to which you wish to authenticate. Note: This defaults to a GovCloud region us-gov-west-1. Adjust it if using a commercial/sandbox account.", default='us-gov-west-1')
 
-if len(sys.argv)==1:
+if len(sys.argv) == 1:
     parser.print_help(sys.stderr)
     sys.exit(1)
-args=parser.parse_args()
+args = parser.parse_args()
 if not args.password:
     password = getpass()
 else:
     password = args.password
 
-#Setup Logging
-if(args.verbose):
+# Setup Logging
+if (args.verbose):
     logging.basicConfig(level=logging.DEBUG)
     logging.debug("Verbose Logging Enabled")
 else:
     logging.basicConfig(level=logging.INFO)
 
-#endpoint
-endpoint=args.endpoint
-username=args.username
+# endpoint
+endpoint = args.endpoint
+username = args.username
 parsed_uri = urlparse(endpoint)
-endpoint_base='{uri.scheme}://{uri.netloc}/'.format(uri=parsed_uri)
+endpoint_base = '{uri.scheme}://{uri.netloc}/'.format(uri=parsed_uri)
 
-#Create a session for the CLI Invocation
+# Create a session for the CLI Invocation
 session = requests.Session()
-if(args.insecure):
+if (args.insecure):
     session.verify = False
 def _post(endpoint,data,params):
-    req = requests.Request('POST',endpoint, data=data, headers={'Content-Type':'application/x-www-form-urlencoded'},params=params)
-   
+    req = requests.Request('POST', endpoint, data=data, headers={'Content-Type': 'application/x-www-form-urlencoded'}, params=params)
+
     prepped = session.prepare_request(req)
     settings = session.merge_environment_settings(prepped.url, {}, None, None, None)
     resp = session.send(prepped, **settings)
@@ -66,52 +66,58 @@ def getDuoForm():
         logging.debug("Retrieving Duo Form Data -> " + endpoint)
         r = _get(endpoint)
         logging.debug("Response Code " + str(r.status_code))
-        if(r.ok):
+        if (r.ok):
           return r.text
         else:
             raise Exception(F"Server returned code ${str(r.status_code)}")
     except Exception as e:
-        raise Exception ("Unexpected error retrieving the Duo Gateway Form Data: ", getattr(e, 'message', repr(e)))
+        raise Exception("Unexpected error retrieving the Duo Gateway Form Data: ", getattr(e, 'message', repr(e)))
+
+
 #Posts the username and password, along with CSRF and state tokens to start the login
-def postDuoForm(username,password,AuthState,csrfToken):
+def postDuoForm(username, password, AuthState, csrfToken):
     try:
         logging.debug("Posting Form Data to Duo")
-        resp=_post(endpoint_base+"dag/module.php/core/loginuserpass.php?",{"username":username,"password":password,"AuthState":AuthState,"csrfp_token":csrfToken},None)
+        resp = _post(endpoint_base+"dag/module.php/core/loginuserpass.php?", {"username": username, "password":password, "AuthState": AuthState, "csrfp_token": csrfToken}, None)
         return resp.text
     except Exception as e:
         raise Exception ("Error posting Duo Gateway Form Data: ", getattr(e, 'message', repr(e)))
 
-#Posts to the Frame API to start the MFA validation
-def getFrameData(postAction,sig,host):
+
+# Posts to the Frame API to start the MFA validation
+def getFrameData(postAction, sig, host):
     try:
         logging.debug("Getting Frame Data")
-        parent=endpoint_base+"dag/"+postAction
-        data={  "parent":parent,"referer":parent,"java_version":"","flash_version":"","screen_resolution_width":"2880","screen_resolution_height":"1620","color_depth":"24","is_cef_browser": "false"}
-        params={"tx":sig,"parent":parent,"v":"2.6"}
-        resp=_post(F"https://{host}/frame/web/v1/auth", data, params)
+        parent = endpoint_base+"dag/"+postAction
+        data = { "parent": parent, "referer": parent, "java_version": "", "flash_version": "", "screen_resolution_width": "2880", "screen_resolution_height": "1620", "color_depth": "24", "is_cef_browser": "false"}
+        params = {"tx": sig, "parent": parent, "v": "2.6"}
+        resp = _post(F"https://{host}/frame/web/v1/auth", data, params)
         return resp.text
     except Exception as e:
         raise Exception ("Error posting Frame Data: ", getattr(e, 'message', repr(e)))
 
+
 #Posts the second fator data chosen by the user
-def postFactor(sid,device,factor,factorval,outOfDate,host):
+def postFactor(sid, device, factor, factorval, outOfDate, host):
     try:
         logging.debug("Posting Factor Data to Duo")
-        data={"sid":sid,"device":device,"factor":factor,"out_of_date":outOfDate}
-        if(factor=="Passcode"):
-            data['passcode']=factorval
-        resp =_post(F"https://{host}/frame/prompt",data,None) 
+        data = {"sid": sid ,"device": device, "factor": factor, "out_of_date": outOfDate}
+        if (factor == "Passcode"):
+            data['passcode'] = factorval
+        resp =_post(F"https://{host}/frame/prompt", data, None)
         return resp.text
     except Exception as e:
         raise Exception ("Error posting MFA: ", getattr(e, 'message', repr(e)))
-#Checks that a push/phonecall is completed
-def isPushComplete(sid,tx,host):
+
+
+# Checks that a push/phonecall is completed
+def isPushComplete(sid, tx, host):
     try:
         logging.debug("Checking Frame Status")
-        resp = _post(F"https://{host}/frame/status",{"sid":sid,"txid":tx},None )
-        respJson=json.loads(resp.text)
-        status=respJson['response']['status_code']=="allow"
-        if(status):
+        resp = _post(F"https://{host}/frame/status", {"sid": sid, "txid" :tx}, None )
+        respJson = json.loads(resp.text)
+        status = respJson['response']['status_code'] == "allow"
+        if (status):
             return respJson['response']['result_url']
         else:
             return False
@@ -119,7 +125,7 @@ def isPushComplete(sid,tx,host):
         raise Exception ("Error checking fram status: ", getattr(e, 'message', repr(e)))
 
 #Get auth cookie back from Frame API and post back to DAG Parent
-def postFrameComplete(sid,tx,host,path,app,csrfToken,state):
+def postFrameComplete (sid,tx,host,path,app,csrfToken,state):
     try:
         logging.debug("Completing Frame")
         resp = _post(F"https://{host}{path}",{"sid":sid,"txid":tx},None )
@@ -128,14 +134,15 @@ def postFrameComplete(sid,tx,host,path,app,csrfToken,state):
         logging.debug("\n\nState -> "+state)
         logging.debug("\n\nSig -> "+sig)
         logging.debug("\n\n")
-        authResp=_post(endpoint_base+"dag/module.php/duosecurity/duo_frame.php", {"sig_response":sig,"csrfp_token":csrfToken},{"StateId":state} )
+        authResp=_post(endpoint_base + "dag/module.php/duosecurity/duo_frame.php", {"sig_response": sig, "csrfp_token": csrfToken}, {"StateId":state} )
         return authResp.text
     except Exception as e:
         raise Exception ("Error completing Frame: ", getattr(e, 'message', repr(e)))
 
-#Login to AWS with SAML Assertion
-def AWSSaml(saml,role,principal):
-    try:    
+
+# Login to AWS with SAML Assertion
+def AWSSaml(saml, role, principal):
+    try:
         logging.debug("Logging-In to AWS")
         print(F"\n\nAssuming Role {role} via SAML")
         client = boto3.client('sts', region_name=args.region)
@@ -143,14 +150,17 @@ def AWSSaml(saml,role,principal):
             RoleArn=role,
             PrincipalArn=principal,
             SAMLAssertion=saml)
-        return response
     except Exception as e:
-        raise Exception ("Error completing Frame: ", getattr(e, 'message', repr(e)))
+        raise Exception("Error completing Frame: ",
+              getattr(e, 'message', repr(e)))
 
-#Inspect the saml assertion to understand which roles and providers are applicable to user (needed for STS AssumeRole API Call)
+    return response
+
+
+# Inspect the saml assertion to understand which roles and providers are applicable to user (needed for STS AssumeRole API Call)
 def getRolesFromSAML(saml):
     try:
-        roles=[]
+        roles = []
         samlDoc = xml.etree.ElementTree.fromstring(base64.b64decode(saml))
         for attrib in samlDoc.iter('{urn:oasis:names:tc:SAML:2.0:assertion}Attribute'):
             if attrib.get('Name') == 'https://aws.amazon.com/SAML/Attributes/Role':
@@ -160,9 +170,10 @@ def getRolesFromSAML(saml):
     except Exception as e:
         raise Exception ("Error reading SAML Assertion", getattr(e, 'message', repr(e)))
 
-#Save the AWS Credentials for cli use
+
+# Save the AWS Credentials for cli use
 def saveCredentials(sts):
-    creds=os.path.join(os.path.expanduser("~"),'.aws/credentials')
+    creds = os.path.join(os.path.expanduser("~"), '.aws/credentials')
     if not os.path.exists(os.path.dirname(creds)):
         os.makedirs(os.path.dirname(creds))
     c = configparser.RawConfigParser()
@@ -174,110 +185,116 @@ def saveCredentials(sts):
     c.set(args.profile, 'aws_secret_access_key',  sts['Credentials']['SecretAccessKey'])
     c.set(args.profile, 'aws_session_token',  sts['Credentials']['SessionToken'])
     with open(creds, 'w+') as configfile:
-        c.write(configfile)    
+        c.write(configfile)
 
-#Save the AWS Config File updates
+
+# Save the AWS Config File updates
 def saveConfig():
-    config=os.path.join(os.path.expanduser("~"),'.aws/config')
+    config = os.path.join(os.path.expanduser("~"), '.aws/config')
     if not os.path.exists(os.path.dirname(config)):
         os.makedirs(os.path.dirname(config))
     c = configparser.RawConfigParser()
     if os.path.isfile(config):
         c.read(config)
-    
-    #if the profile is not default, aws config wants it prefixed with the word profile
-    profileName='default' if args.profile=='default' else F'profile {args.profile}'
-    #ensure section exists
+
+    # if the profile is not default, aws config wants it prefixed with the word profile
+    profileName = 'default' if args.profile == 'default' else F'profile {args.profile}'
+    # ensure section exists
     if not c.has_section(profileName):
         c.add_section(profileName)
-    #check for region
-    if not c.has_option(profileName,'region'):
+    # check for region
+    if not c.has_option(profileName, 'region'):
         print(F'\n\n Profile {args.profile} does not have a default region configured. Would you like to set it now?')
-        createRegion=input(' [y/n] :')
-        if(createRegion.upper()=='Y'):
-            region=input(F'\n\n Please indicate a default region for profile {args.profile}:')
-            c.set(profileName,'region',region)
-    secFlag='-k' if args.insecure  else ''
-    c.set(profileName, 'credential_process',F'duoauth -e "{args.endpoint}" -u "{args.username}" -P "{args.profile}" {secFlag}')
+        createRegion = input(' [y/n] :')
+        if (createRegion.upper() == 'Y'):
+            region = input(F'\n\n Please indicate a default region for profile {args.profile}:')
+            c.set(profileName, 'region', region)
+    secFlag = '-k' if args.insecure else ''
+    c.set(profileName, 'credential_process', F'duoauth -e "{args.endpoint}" -u "{args.username}" -P "{args.profile}" {secFlag}')
     with open(config, 'w+') as configfile:
-        c.write(configfile)    
+        c.write(configfile)
+
+
 def getUserRoleSelection(role_pairs):
     print("\n\nPlease indicate which role you wish to assume:\n\n")
     for pair in role_pairs:
-        roleArn=pair.split(',')[0]
-        roleName=roleArn.split('/')[1]
+        roleArn = pair.split(',')[0]
+        roleName = roleArn.split('/')[1]
         print("("+str(role_pairs.index(pair))+") "+roleName)
-    roleIndex=input("\n")
-    
+    roleIndex = input("\n")
+
     if not str.isdigit(roleIndex):
         print("Must provide a valid number")
         return
-    roleIndex=int(roleIndex)
-    if(roleIndex<0 or roleIndex > (len(role_pairs)-1)):
+    roleIndex = int(roleIndex)
+    if (roleIndex<0 or roleIndex > (len(role_pairs)-1)):
         print("Invalid role selection.")
         return
-    role=role_pairs[roleIndex]
-    rolesplit=role.split(',')
+    role = role_pairs[roleIndex]
+    rolesplit = role.split(',')
     return rolesplit
 
-#Primary logic.
-# Get form -> Fill it out -> Post -> Gather Frame API Sesison Data -> Start MFA with Fram API -> Post MFA -> (wait for push) - > Logged in -> Complete frame 
+
+# Primary logic.
+# Get form -> Fill it out -> Post -> Gather Frame API Sesison Data -> Start MFA with Fram API -> Post MFA -> (wait for push) - > Logged in -> Complete frame
 def getCredentials():
     try:
         #Initial form load
-        duoFormData=getDuoForm()
-        html=BeautifulSoup(duoFormData,'html.parser')
-        authState=html.find('input', attrs={'name':'AuthState'},recursive=True)['value']
-        csrfToken=html.find('input', attrs={'name':'csrfp_token'},recursive=True)['value']
-        
-        #Post auth form with user and pass (include auth state and csrf mined from form)
+        duoFormData = getDuoForm()
+        html = BeautifulSoup(duoFormData, 'html.parser')
+        authState = html.find('input', attrs={'name':'AuthState'}, recursive=True)['value']
+        csrfToken = html.find('input', attrs={'name':'csrfp_token'}, recursive=True)['value']
+
+        #P ost auth form with user and pass (include auth state and csrf mined from form)
         res=postDuoForm(username,password,authState,csrfToken)
-        #Gather the result and inspect the IFrame tag. The IFrame src value needs to be calculated for the next POST
-        html=BeautifulSoup(res,'html.parser')
-        csrfToken=html.find('input', attrs={'name':'csrfp_token'},recursive=True)['value']
-        frame=html.find('iframe',id="duo_iframe")
-        sig=frame['data-sig-request'].split(':')[0]
-        app=frame['data-sig-request'].split(':')[1]
-        state=html.find('input',attrs={'name':'StateId'},recursive=True)['value']
+        # Gather the result and inspect the IFrame tag. The IFrame src value needs to be calculated for the next POST
+        html = BeautifulSoup(res, 'html.parser')
+        csrfToken = html.find('input', attrs={'name':'csrfp_token'}, recursive=True)['value']
+        frame = html.find('iframe', id="duo_iframe")
+        sig = frame['data-sig-request'].split(':')[0]
+        app = frame['data-sig-request'].split(':')[1]
+        state = html.find('input', attrs={'name':'StateId'}, recursive=True)['value']
         logging.debug("StateId: "+state)
-        host=frame['data-host']
-        #Post to the Frame API to start the MFA Authentication workflow. We need to get to the SID value output by this step to conduct Duo Auth
-        res=getFrameData("launcher.php",sig,host)
-        html=BeautifulSoup(res,'html.parser')
-        sid=html.find('input',attrs={'name':'sid'},recursive=True)['value']
-        #Ask user how to provide secondary factor value
-        factor=input("Please provide the Authentication Factor you wish to use for MFA:\n  (0): Duo Push\n  (1): Phone Call\n  (2): Passcode\n\n")
-        factorval=""
-        if not factor in ['0','1','2']:
+        host = frame['data-host']
+        # Post to the Frame API to start the MFA Authentication workflow. We need to get to the SID value output by this step to conduct Duo Auth
+        res = getFrameData("launcher.php", sig, host)
+        html = BeautifulSoup(res, 'html.parser')
+        sid = html.find('input',attrs={'name':'sid'}, recursive=True)['value']
+        # Ask user how to provide secondary factor value
+        factor = input("Please provide the Authentication Factor you wish to use for MFA:\n  (0): Duo Push\n  (1): Phone Call\n  (2): Passcode\n\n")
+        factorval = ""
+        if factor not in ['0', '1', '2']:
             logging.error("Invalid factor number provided")
             return
-        #if factor is passcode, collect it
-        factor=factors[int(factor)]
-        if(factor=='Passcode'):
-            factorval=input("Enter the generated passcode:  ")
+        # if factor is passcode, collect it
+        factor = factors[int(factor)]
+        if(factor == 'Passcode'):
+            factorval = input("Enter the generated passcode:  ")
         #Post Secondary Factor tp Frame API  (if push is required, Frame will emit it here)
-        factorRes=postFactor(sid,"phone1",factor,factorval,"false",host)
-        factorResJSON=json.loads(factorRes)
-        txid=factorResJSON['response']['txid']
-        #Wait for the Push to complete. The API should long poll the second request for Push, but will short poll for Phone call. We wait 40 seconds for the phone call to complete
-        pushComplete=False
-        attempts=0
-        while(pushComplete==False and attempts<20):
+        factorRes = postFactor(sid, "phone1", factor, factorval, "false", host)
+        factorResJSON = json.loads(factorRes)
+        txid = factorResJSON['response']['txid']
+        # Wait for the Push to complete. The API should long poll the second
+        # request for Push, but will short poll for Phone call.
+        # We wait 40 seconds for the phone call to complete
+        pushComplete = False
+        attempts = 0
+        while (pushComplete is False and attempts < 20):
             time.sleep(2)
-            attempts=attempts+1
-            pushComplete=isPushComplete(sid,txid,host)
-        
-        #Logged in at this point if all went well. Complete Transaction
-        res= postFrameComplete(sid,txid,host,pushComplete,app,csrfToken,state)
-        html=BeautifulSoup(res,'html.parser')
-        saml=html.find('input',attrs={'name':'SAMLResponse'},recursive=True)['value']
-        #Parse SAML Roles
+            attempts = attempts + 1
+            pushComplete = isPushComplete(sid, txid, host)
+
+        # Logged in at this point if all went well. Complete Transaction
+        res = postFrameComplete(sid, txid, host, pushComplete, app, csrfToken, state)
+        html = BeautifulSoup(res, 'html.parser')
+        saml = html.find('input', attrs={'name': 'SAMLResponse'}, recursive=True)['value']
+        # Parse SAML Roles
         role_pairs = getRolesFromSAML(saml)
-       
-        #Prompt user to pick role
-        rolesplit=getUserRoleSelection(role_pairs)
-        
-        #Login To AWS
+
+        # Prompt user to pick role
+        rolesplit = getUserRoleSelection(role_pairs)
+
+        # Login To AWS
         saveCredentials(AWSSaml(saml,rolesplit[0],rolesplit[1]))
         saveConfig()
         print('\n\nCredentials have been saved to profile ['+args.profile+']')
@@ -286,6 +303,8 @@ def getCredentials():
         err = getattr(e, 'message', repr(e))
         logging.info("An unexpected error occured attempting to get credentials. For more information re-run the command with the --verbose switch.")
         logging.debug("Error Detail: "+err)
-#Enter main function
+
+
+# Enter main function
 
 getCredentials()
