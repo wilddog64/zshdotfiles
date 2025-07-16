@@ -9,5 +9,5 @@ if [ -z "$service_name" ] || [ -z "$env_name" ] || [ -z "$container" ]; then
    exit 1
 fi
 
-kubectl exec -n "$service_name-$env_name" "$container" -c istio-proxy -- curl -kv https://config-manager-service-qa2.k8s.qa.costcotravel.com/${service_name}/${env_name}
+kubectl exec -n "$service_name-$env_name" "$container" -c istio-proxy -- curl -Ss -f -kv https://config-manager-service-qa2.k8s.qa.costcotravel.com/${service_name}/${env_name}
 
