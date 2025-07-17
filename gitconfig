@@ -69,3 +69,6 @@
 	aws-terraform = /Users/cliang/src/gitrepo/personal/aws/terraform
 [safe]
 	directory = /opt/puppetlabs/pdk/share/cache/pdk-templates.git
+
+[include]
+   path = ~/.gitalias
