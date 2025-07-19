@@ -7,7 +7,7 @@ is_app_installed() {
 }
 
 # get data either form stdin or from file
-buf=$(cat "$@")
+buf=$(cat "$@" | sed -E -f ~/.zsh/sanitize.sed)
 
 copy_backend_remote_tunnel_port=$(tmux show-option -gvq "@copy_backend_remote_tunnel_port")
 copy_use_osc52_fallback=$(tmux show-option -gvq "@copy_use_osc52_fallback")
