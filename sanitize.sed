@@ -3,7 +3,7 @@
 ########################################################################
 
 # 1. URLs (http, https, jdbc, rediss, ftp, etc.)
-s#[[:alpha:]][[:alnum:].+-]*://[^[:space:]]+#REDACTED_URL#g
+s#[[:alpha:]][[:alnum:].+%-]*://[^[:space:]]*(costco\.com|costcotravel\.com)[^[:space:]]*#REDACTED_URL#g
 
 # 2. host: (case-insensitive)
 s#[Hh][Oo][Ss][Tt]:[[:space:]]*[A-Za-z0-9._%-]+#host: REDACTED_HOST#g
