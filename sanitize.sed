@@ -35,3 +35,18 @@ s#[Rr]epository[:=][[:space:]]*[A-Za-z0-9./_-]+#repository: REDACTED_REPO#g
 s#[Dd]bUsername[:=][[:space:]]*[A-Za-z0-9._-]+#dbUsername: REDACTED_DB_USER#g
 s#spring\.datasource\.username[:=][[:space:]]*[A-Za-z0-9._-]+#spring.datasource.username: REDACTED_DB_USER#g
 s#[Dd]atabase[Nn]ame=[^;,[:space:]]+#databaseName=REDACTED_DB#gp
+
+###############################################################################
+#  azureKeyvault  ── redact the value on the next line
+/^[[:space:]]*[Aa]zure[Kk]eyvault[[:space:]]*:/{
+  N
+  s/\n([[:space:]]*name[[:space:]]*:[[:space:]]*)[A-Za-z0-9-]{1,24}/\
+\1REDACTED_NAME/
+}
+
+#  azsureKeyvault  (old typo – keep only if you still see it)
+/^[[:space:]]*[Aa]zure[Kk]eyvault[[:space:]]*:/{
+  N
+  s/\n([[:space:]]*name[[:space:]]*:[[:space:]]*)[A-Za-z0-9-]{1,24}/\
+\1REDACTED_NAME/
+}
