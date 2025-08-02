@@ -3,6 +3,8 @@ emulate -L zsh
 
 if [[ "${OSTYPE}" == darwin* ]] && (( ${+commands[pbcopy]} )) && (( ${+commands[pbpaste]} )); then
    pbpaste;
+elif [ -n "${DISPLAY:-}" ] && (( ${+commands[xsel]} )); then
+   xsel --clipboard --output;
 elif [[ "${OSTYPE}" == (cygwin|msys)* ]]; then
    cat /dev/clipboard;
 elif [ -n "${WAYLAND_DISPLAY:-}" ] && (( ${+commands[wl-copy]} )) && (( ${+commands[wl-paste]} )); then
