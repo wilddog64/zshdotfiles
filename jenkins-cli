@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+java -jar $HOME/bin/jenkins-cli.jar -s "${jenkins_url}" -auth "${jenkins_user}":"${jenkins_pass}" "$@"
+
+
