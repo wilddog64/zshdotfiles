@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
+if [[ -z "$(uname -s)" != "Darwin"  ]]; then
+   echo "This script is intended for macOS only." >&2to3
+   exit 1
+fi
+
 net-refresh() {
   SVC=${1:-"Wi-Fi"}
   IF=${2:-"en0"}
