@@ -288,3 +288,5 @@ if [[ $? == 0 ]]; then
    echo loading fzf zsh integration
    eval $(fzf --zsh)
 fi
+
+fix_wsl_process

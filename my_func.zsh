@@ -186,3 +186,19 @@ analyze_istio() {
 login_ad() {
    kinit chengkai.liang@PACIFIC.COSTCOTRAVEL.COM
 }
+
+# Add to your ~/.zshrc before p10k is sourced
+fix_p10k_workers() {
+   # Clean up any stale worker file descriptors
+   for fd in {10..20}; do
+      exec {fd}>&- 2>/dev/null
+   done
+}
+
+fix_wsl_process() {
+   if grep -q "microsoft" /proc/version 2>/dev/null; then
+      # WSL-specific settings
+      typeset -g POWERLEVEL9K_DISABLE_GITSTATUS=true  # Optional if git is slow
+      typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+   fi
+}
