@@ -13,6 +13,22 @@ function is_mac() {
    fi
 }
 
+function is_linux() {
+   if [[ "$(uname -s)" == "Linux" ]]; then
+      return 0
+   else
+      return 1
+   fi
+}
+
+function is_redhat_family() {
+   [[ -f /etc/redhat-release ]] && return 0 || return 1
+}
+
+function is_debian_family() {
+   [[ -f /etc/debian_version ]] && return 0 || return 1
+}
+
 function install_colima() {
 
    if ! is_mac ; then
@@ -31,7 +47,9 @@ function install_colima() {
 
 function install_docker() {
 
-   install_colima
+   if is_mac; then
+      install_colima
+   fi
    if  ! command_exist docker ; then
       echo docker does not exist, install it
       brew install docker
@@ -39,7 +57,9 @@ function install_docker() {
       echo docker installed already
    fi
 
-   docker context use colima
+   if is_mac; then
+      docker context use colima
+   fi
    export DOCKER_HOST=unix:///Users/$USER/.colima/docker.sock
 
    if grep DOKER_HOST $HOME/.zsh/zshrc | wc -l == 0 ; then
@@ -54,7 +74,7 @@ function install_k3d() {
 
    if  ! command_exist k3d ; then
       echo k3d does not exist, install it
-      brew install k3d
+      curl -f -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
    else
       echo k3d installed already
    fi
@@ -76,7 +96,7 @@ function create_k3d_cluster() {
    cat > "$yaml" <<-EOF
 apiVersion: k3d.io/v1alpha5
 kind: Simple
-metadata: { name: lab }
+metadata: { name: $cluster_name }
 servers: 1
 agents: 3
 ports:
@@ -124,7 +144,13 @@ function install_helm() {
    fi
 }
 
-function configure_smb_csi_driver() {
+function install_smb_csi_driver() {
+   if is_mac ; then
+      echo "SMB CSI driver is not supported on macOS"
+      echo "use nfs storage class instead"
+      exit 1
+   fi
+   install_helm
    helm repo add smb-csi-driver https://kubernetes-sigs.github.io/smb-csi-driver
    helm repo update
    helm upgrade --install smb-csi-driver smb-csi-driver/smb-csi-driver \
@@ -136,10 +162,38 @@ function configure_smb_csi_driver() {
    fi
 }
 
+function install_nfscsi_storage_drivers() {
+   install_helm
+   helm repo add csi-driver-nfs https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
+   helm upgrade --install csi-nfs csi-driver-nfs/csi-driver-nfs -n kube-system
+
+   cat <<-EOF | kubectl apply -f -
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nfs-csi
+provisioner: csi-driver-nfs
+parameters:
+  archiveOnDelete: "false"
+  server: host.docker.internal
+  share: $HOME/k3d-nfs
+mountOptions:
+  - nolock
+  - noatime
+  - nfsvers=4.1
+reclaimPolicy: Retain
+volumeBindingMode: Immediate
+EOF
+kubectl annotate sc nfs csi storageclass.kubernetes.io/is-default-class=true --overwrite
+}
+
 ## -- main --
 install_k3d
 install_istioctl
-install_helm
 create_k3d_cluster "k3d-cluster"
 configure_k3d_cluster_istio "k3d-cluster"
-configure_smb_csi_driver
+if is_mac ; then
+   install_nfscsi_storage_drivers
+elif is_linux ; then
+   install_smb_csi_driver
+fi
