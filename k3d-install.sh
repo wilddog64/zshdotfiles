@@ -82,10 +82,7 @@ function install_k3d() {
 
 function install_istioctl() {
    if  ! command_exist istioctl ; then
-      echo istioctl does not exist, install it
-      brew install istioctl
-   else
-      echo istioctl installed already
+      curl -f -s https://raw.githubusercontent.com/istio/istio/master/release/downloadIstioCandidate.sh | bash
    fi
 }
 
@@ -122,6 +119,7 @@ EOF
 function configure_k3d_cluster_istio() {
    cluster_name=$1
 
+   install_istioctl
    istioctl x precheck
    istioctl install -y \
      --set profile=default \
@@ -189,7 +187,6 @@ kubectl annotate sc nfs csi storageclass.kubernetes.io/is-default-class=true --o
 
 ## -- main --
 install_k3d
-install_istioctl
 create_k3d_cluster "k3d-cluster"
 configure_k3d_cluster_istio "k3d-cluster"
 if is_mac ; then
