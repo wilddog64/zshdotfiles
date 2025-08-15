@@ -89,6 +89,11 @@ function install_istioctl() {
 function create_k3d_cluster() {
    cluster_name=$1
 
+   if k3d cluster list | grep -q "$cluster_name"; then
+      echo "Cluster $cluster_name already exists, skip"
+      return 0
+   fi
+
    yaml=$(mktemp -t k3d-XXXX.yaml)
    cat > "$yaml" <<-EOF
 apiVersion: k3d.io/v1alpha5
@@ -160,7 +165,21 @@ function install_smb_csi_driver() {
    fi
 }
 
+function create_nfs_share() {
+   if is_mac ; then
+      echo "Creating NFS share on macOS"
+      mkdir -p $HOME/k3d-nfs
+      if ! grep "$HOME/k3d-nfs" /etc/exports > /dev/null; then
+         echo "$HOME/k3d-nfs -alldirs -mapall=501:200 -network $(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}') -mask" | \
+            sudo tee -a /etc/exports
+         sudo nfsd enable
+         sudo nfsd update
+         showmount -e localhost
+      fi
+   fi
+}
 function install_nfscsi_storage_drivers() {
+   create_nfs_share
    install_helm
    helm repo add csi-driver-nfs https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
    helm upgrade --install csi-nfs csi-driver-nfs/csi-driver-nfs -n kube-system
