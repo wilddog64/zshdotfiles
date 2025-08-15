@@ -227,6 +227,21 @@ EOF
 kubectl annotate storageclass nfs-mac storageclass.kubernetes.io/is-default-class=true --overwrite
 }
 ## -- main --
+# Command line argument handling
+if [[ $# -gt 0 ]]; then
+    function_name=$1
+    shift  # Remove the function name from the arguments
+
+    if [[ "$(type -t $function_name)" == "function" ]]; then
+        # Call the function with remaining arguments
+        $function_name "$@"
+    else
+        echo "Error: Function '$function_name' not found"
+        exit 1
+    fi
+    exit 0
+fi
+
 install_k3d
 create_k3d_cluster "k3d-cluster"
 configure_k3d_cluster_istio "k3d-cluster"
