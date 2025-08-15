@@ -95,10 +95,11 @@ function create_k3d_cluster() {
    fi
 
    yaml=$(mktemp -t k3d-XXXX.yaml)
-   cat > "$yaml" <<-EOF
+    cat > "$yaml" <<EOF
 apiVersion: k3d.io/v1alpha5
 kind: Simple
-metadata: { name: $cluster_name }
+metadata:
+  name: $cluster_name
 servers: 1
 agents: 3
 ports:
@@ -107,14 +108,19 @@ ports:
   - port: 8443:443
     nodeFilters: [loadbalancer]
 options:
-  k3d: { wait: true }
+  k3d:
+    wait: true
   k3s:
     extraArgs:
       - arg: "--disable=traefik"
         nodeFilters: ["server:*"]
       - arg: "--disable=local-storage"
         nodeFilters: ["server:*"]
+hostAliases:
+  - ip: "$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')"
+    hostnames: ["host.k3d.internal"]
 EOF
+
    k3d cluster create --config "$yaml"
 
    trap 'rm -f "$yaml"' EXIT INT
@@ -175,10 +181,11 @@ function create_nfs_share() {
       echo "Creating NFS share on macOS"
       mkdir -p $HOME/k3d-nfs
       if ! grep "$HOME/k3d-nfs" /etc/exports > /dev/null; then
-         echo "$HOME/k3d-nfs -alldirs -mapall=501:200 -network $(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}') -mask 255.255.255.0" | \
+         echo "$HOME/k3d-nfs -alldirs -mapall=501:20 -network 0.0.0.0 -mask 255.255.255.0" | \
             sudo tee -a /etc/exports
          sudo nfsd enable
          sudo nfsd update
+         sudo nfsd restart  # Full restart instead of update
          showmount -e localhost
       fi
    fi
@@ -336,22 +343,22 @@ function install_nfscsi_storage_drivers() {
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: nfs-mac
+name: nfs-mac
 provisioner: nfs.csi.k8s.io
 parameters:
-  server: $(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')  # Use actual host IP
-  share: /Users/$(whoami)/k3d-nfs                                    # Use dynamic user path
+server: host.k3d.internal  # Use host alias defined in k3d config
+share: /Users/$(whoami)/k3d-nfs                                    # Use dynamic user path
 reclaimPolicy: Delete
 volumeBindingMode: Immediate
 mountOptions:
-  - vers=3                                # Downgrade to NFS v3 for better compatibility
-  - noatime
-  - nolock
+- vers=3                                # Downgrade to NFS v3 for better compatibility
+- noatime
+- nolock
 EOF
-
 # Set the StorageClass as default with correct syntax
 kubectl annotate storageclass nfs-mac storageclass.kubernetes.io/is-default-class=true --overwrite
 }
+
 ## -- main --
 # Command line argument handling
 if [[ $# -gt 0 ]]; then
