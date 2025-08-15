@@ -184,6 +184,132 @@ function create_nfs_share() {
    fi
 }
 
+function test_nfs_connectivity() {
+  echo "Testing basic connectivity to NFS server..."
+
+  # Create a pod with networking tools
+  kubectl run nfs-connectivity-test --image=nicolaka/netshoot --rm -it --restart=Never -- bash -c "
+    echo 'Attempting to reach NFS port on host...'
+    nc -zv host.k3d.internal 2049
+    echo 'DNS lookup for host...'
+    nslookup host.k3d.internal
+    echo 'Tracing route to host...'
+    traceroute host.k3d.internal
+    echo 'Testing rpcinfo...'
+    rpcinfo -p host.k3d.internal 2>/dev/null || echo 'RPC failed'
+  "
+}
+
+function test_nfs_direct() {
+  echo "Testing NFS connectivity directly from a pod..."
+
+  # Create a pod that mounts NFS directly
+  cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nfs-test-direct
+spec:
+  containers:
+  - name: nfs-mount-test
+    image: busybox
+    command: ["sh", "-c", "mount | grep nfs; echo 'Testing NFS mount...'; mkdir -p /mnt/test; mount -t nfs -o vers=3,nolock host.k3d.internal:/Users/$(whoami)/k3d-nfs /mnt/test && echo 'Mount successful' || echo 'Mount failed'; ls -la /mnt/test; sleep 3600"]
+    securityContext:
+      privileged: true
+  restartPolicy: Never
+EOF
+
+  echo "Waiting for pod to be ready..."
+  sleep 5
+  kubectl logs nfs-test-direct
+}
+
+function debug_nfs_storage() {
+  echo "===== DEBUGGING NFS STORAGE ====="
+
+  echo "1. Checking NFS server status..."
+  sudo nfsd status
+  echo "NFS exports:"
+  cat /etc/exports
+
+  echo "2. Verifying NFS connectivity from host..."
+  showmount -e localhost
+
+  echo "3. Checking CSI driver pods..."
+  kubectl get pods -n kube-system -l app.kubernetes.io/instance=csi-nfs
+
+  echo "4. Checking StorageClass..."
+  kubectl get sc nfs-mac -o yaml
+
+  echo "5. Checking for PVC events..."
+  kubectl get events -n storage-test | grep -i persistentvolumeclaim
+
+  echo "6. Checking PVC status..."
+  kubectl get pvc -n storage-test nfs-test-claim -o yaml
+
+  kubectl get pv
+  echo "===== DEBUG COMPLETE ====="
+}
+
+function test_nfs_storage() {
+  echo "Testing NFS storage with a PVC and test pod..."
+
+  # Create a test namespace
+  kubectl create namespace storage-test
+
+  # Create a test PVC
+  cat <<-EOF | kubectl apply -f - -n storage-test
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-test-claim
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: nfs-mac
+  resources:
+    requests:
+      storage: 10Mi
+EOF
+
+  echo "Waiting for PVC to be bound..."
+  kubectl wait --for=condition=Bound pvc/nfs-test-claim -n storage-test --timeout=60s || debug_nfs_storage
+
+  # Create a pod that writes to the volume
+  cat <<EOF | kubectl apply -f - -n storage-test
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nfs-test-pod
+spec:
+  containers:
+  - name: test-container
+    image: busybox
+    command: ["/bin/sh", "-c"]
+    args:
+    - echo "NFS test successful at $(date)" > /data/test.txt;
+      cat /data/test.txt;
+      sleep 3600;
+    volumeMounts:
+    - name: nfs-volume
+      mountPath: /data
+  volumes:
+  - name: nfs-volume
+    persistentVolumeClaim:
+      claimName: nfs-test-claim
+EOF
+
+  echo "Waiting for test pod to be ready..."
+  kubectl wait --for=condition=Ready pod/nfs-test-pod -n storage-test --timeout=60s
+
+  echo "Checking if test file was written successfully:"
+  kubectl exec -n storage-test nfs-test-pod -- cat /data/test.txt
+
+  echo "Testing complete. You should see the test message above if successful."
+  echo "To clean up the test, run: kubectl delete namespace storage-test"
+
+  trap 'kubectl delete namespace storage-test' EXIT
+}
 
 function install_nfscsi_storage_drivers() {
    create_nfs_share
@@ -247,6 +373,8 @@ create_k3d_cluster "k3d-cluster"
 configure_k3d_cluster_istio "k3d-cluster"
 if is_mac ; then
    install_nfscsi_storage_drivers
+   test_nfs_storage
+   test_nfs_direct
 elif is_linux ; then
    install_smb_csi_driver
 fi
