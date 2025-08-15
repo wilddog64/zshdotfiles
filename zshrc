@@ -264,6 +264,12 @@ if [[ $? == 0 ]]; then
    source /tmp/chef_completion.zsh
 fi
 
+kubectl_plugin=$HOME/.zplug/repos/robbyrussell/oh-my-zsh/plugins/kubectl/kubectl.plugin.zsh
+if [[ -f  "$kubectl_plugin" ]]; then
+   echo "loading kubectl plugin"
+   source "$kubectl_plugin"
+fi
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
