@@ -166,11 +166,16 @@ function install_smb_csi_driver() {
 }
 
 function create_nfs_share() {
+   if grep -q "k3d-nfs" /etc/exports ; then
+      echo "NFS share already exists, skip"
+      return 0
+   fi
+
    if is_mac ; then
       echo "Creating NFS share on macOS"
       mkdir -p $HOME/k3d-nfs
       if ! grep "$HOME/k3d-nfs" /etc/exports > /dev/null; then
-         echo "$HOME/k3d-nfs -alldirs -mapall=501:200 -network $(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}') -mask" | \
+         echo "$HOME/k3d-nfs -alldirs -mapall=501:200 -network $(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}') -mask 255.255.255.0" | \
             sudo tee -a /etc/exports
          sudo nfsd enable
          sudo nfsd update
@@ -178,32 +183,49 @@ function create_nfs_share() {
       fi
    fi
 }
+
+
 function install_nfscsi_storage_drivers() {
    create_nfs_share
    install_helm
    helm repo add csi-driver-nfs https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
    helm upgrade --install csi-nfs csi-driver-nfs/csi-driver-nfs -n kube-system
 
+   # First delete the StorageClass if it exists
+   if kubectl get sc nfs-mac &>/dev/null; then
+      echo "Deleting existing StorageClass nfs-mac..."
+      kubectl delete sc nfs-mac
+
+      # Wait for deletion to complete
+      while kubectl get sc nfs-mac &>/dev/null; do
+         echo "Waiting for StorageClass deletion..."
+         sleep 2
+      done
+      echo "StorageClass nfs-mac deleted successfully"
+   fi
+
+   # Then create it
+   echo "Creating new StorageClass nfs-mac..."
    cat <<-EOF | kubectl apply -f -
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: nfs-csi
-provisioner: csi-driver-nfs
+  name: nfs-mac
+provisioner: nfs.csi.k8s.io
 parameters:
-  archiveOnDelete: "false"
-  server: host.docker.internal
-  share: $HOME/k3d-nfs
-mountOptions:
-  - nolock
-  - noatime
-  - nfsvers=4.1
-reclaimPolicy: Retain
+  server: $(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')  # Use actual host IP
+  share: /Users/$(whoami)/k3d-nfs                                    # Use dynamic user path
+reclaimPolicy: Delete
 volumeBindingMode: Immediate
+mountOptions:
+  - vers=3                                # Downgrade to NFS v3 for better compatibility
+  - noatime
+  - nolock
 EOF
-kubectl annotate sc nfs csi storageclass.kubernetes.io/is-default-class=true --overwrite
-}
 
+# Set the StorageClass as default with correct syntax
+kubectl annotate storageclass nfs-mac storageclass.kubernetes.io/is-default-class=true --overwrite
+}
 ## -- main --
 install_k3d
 create_k3d_cluster "k3d-cluster"
