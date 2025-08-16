@@ -62,7 +62,8 @@ function install_docker() {
    fi
    export DOCKER_HOST=unix:///Users/$USER/.colima/docker.sock
 
-   if grep DOKER_HOST $HOME/.zsh/zshrc | wc -l == 0 ; then
+   grep DOKER_HOST $HOME/.zsh/zshrc | wc -l 2>&1 > /dev/null
+   if $? == 0 ; then
       echo "export DOCKER_HOST=unix:///Users/$USER/.colima/docker.sock" >> $HOME/.zsh/zshrc
       echo "export DOCKER_CONTEXT=colima" >> $HOME/.zsh/zshrc
       echo "restart your shell to apply the changes"
