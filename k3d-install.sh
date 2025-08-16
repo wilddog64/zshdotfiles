@@ -320,48 +320,8 @@ EOF
   echo "Testing complete. You should see the test message above if successful."
   echo "To clean up the test, run: kubectl delete namespace storage-test"
 
-  trap 'kubectl delete namespace storage-test' EXIT
-}
-
-function install_nfscsi_storage_drivers() {
-   create_nfs_share
-   install_helm
-   helm repo add csi-driver-nfs https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
-   helm upgrade --install csi-nfs csi-driver-nfs/csi-driver-nfs -n kube-system
-
-   # First delete the StorageClass if it exists
-   if kubectl get sc nfs-mac &>/dev/null; then
-      echo "Deleting existing StorageClass nfs-mac..."
-      kubectl delete sc nfs-mac
-
-      # Wait for deletion to complete
-      while kubectl get sc nfs-mac &>/dev/null; do
-         echo "Waiting for StorageClass deletion..."
-         sleep 2
-      done
-      echo "StorageClass nfs-mac deleted successfully"
-   fi
-
-   # Then create it
-   echo "Creating new StorageClass nfs-mac..."
-   cat <<-EOF | kubectl apply -f -
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-name: nfs-mac
-provisioner: nfs.csi.k8s.io
-parameters:
-server: host.k3d.internal  # Use host alias defined in k3d config
-share: /Users/$(whoami)/k3d-nfs                                    # Use dynamic user path
-reclaimPolicy: Delete
-volumeBindingMode: Immediate
-mountOptions:
-- vers=3                                # Downgrade to NFS v3 for better compatibility
-- noatime
-- nolock
-EOF
-# Set the StorageClass as default with correct syntax
-kubectl annotate storageclass nfs-mac storageclass.kubernetes.io/is-default-class=true --overwrite
+  # Clean up resources on exit
+  # trap "kubectl delete pod nfs-test -n $namespace; kubectl delete pvc nfs-pvc -n $namespace; kubectl delete pv nfs-pv" EXIT
 }
 
 ## -- main --
