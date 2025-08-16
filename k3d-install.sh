@@ -263,62 +263,74 @@ function debug_nfs_storage() {
   echo "===== DEBUG COMPLETE ====="
 }
 
-function test_nfs_storage() {
-  echo "Testing NFS storage with a PVC and test pod..."
+function test_nfs_in_pod() {
+  local nfs_ip="${1:-192.168.39.164}"  # Set to your LAN IP
+  local namespace="${2:-storage-test}"
+  local nfs_path="${3:-/tmp/k3d-nfs}"
 
-  # Create a test namespace
-  kubectl create namespace storage-test
+  # Create namespace if it doesn't exist
+  kubectl get ns "$namespace" >/dev/null 2>&1 || kubectl create ns "$namespace"
 
-  # Create a test PVC
-  cat <<-EOF | kubectl apply -f - -n storage-test
+  # Create PV
+  cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-pv
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: $nfs_ip
+    path: $nfs_path
+EOF
+
+  # Create PVC
+  cat <<EOF | kubectl apply -n "${namespace}" -f -
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: nfs-test-claim
+  name: nfs-pvc
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: nfs-mac
   resources:
     requests:
-      storage: 10Mi
+      storage: 5Gi
+  volumeName: nfs-pv
+  storageClassName: ""
 EOF
 
-  echo "Waiting for PVC to be bound..."
-  kubectl wait --for=condition=Bound pvc/nfs-test-claim -n storage-test --timeout=60s || debug_nfs_storage
-
-  # Create a pod that writes to the volume
-  cat <<EOF | kubectl apply -f - -n storage-test
+  # Create test pod
+  cat <<EOF | kubectl apply -n "${namespace}" -f -
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nfs-test-pod
+  name: nfs-test
 spec:
   containers:
-  - name: test-container
+  - name: app
     image: busybox
-    command: ["/bin/sh", "-c"]
-    args:
-    - echo "NFS test successful at $(date)" > /data/test.txt;
-      cat /data/test.txt;
-      sleep 3600;
+    command: ["sh", "-c", "echo Hello from NFS > /mnt/test.txt && sleep 3600"]
     volumeMounts:
-    - name: nfs-volume
-      mountPath: /data
+    - name: nfs-vol
+      mountPath: /mnt
   volumes:
-  - name: nfs-volume
+  - name: nfs-vol
     persistentVolumeClaim:
-      claimName: nfs-test-claim
+      claimName: nfs-pvc
 EOF
 
-  echo "Waiting for test pod to be ready..."
-  kubectl wait --for=condition=Ready pod/nfs-test-pod -n storage-test --timeout=60s
+  # Wait for pod to be ready
+  echo "Waiting for pod to be ready..."
+  kubectl wait --for=condition=Ready pod/nfs-test -n "$namespace" --timeout=60s
 
-  echo "Checking if test file was written successfully:"
-  kubectl exec -n storage-test nfs-test-pod -- cat /data/test.txt
-
-  echo "Testing complete. You should see the test message above if successful."
-  echo "To clean up the test, run: kubectl delete namespace storage-test"
+  # Test file inside pod
+  echo "Checking file content in pod:"
+  kubectl exec -n "$namespace" nfs-test -- cat /mnt/test.txt
 
   # Clean up resources on exit
   # trap "kubectl delete pod nfs-test -n $namespace; kubectl delete pvc nfs-pvc -n $namespace; kubectl delete pv nfs-pv" EXIT
