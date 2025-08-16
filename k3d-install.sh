@@ -181,11 +181,15 @@ function create_nfs_share() {
    if is_mac ; then
       echo "Creating NFS share on macOS"
       mkdir -p $HOME/k3d-nfs
-      if ! grep "$HOME/k3d-nfs" /etc/exports > /dev/null; then
-         echo "$HOME/k3d-nfs -alldirs -mapall=501:20 -network 0.0.0.0 -mask 255.255.255.0" | \
+      if ! grep "$HOME/k3d-nfs" /etc/exports 2>&1 > /dev/null; then
+         ip=$(ipconfig getifaddr en0)
+         mask=$(ipconfig getoption en0 subnet_mask)
+         prefix=$(python3 -c "import ipaddress; print(ipaddress.IPv4Network('0.0.0.0/$mask').prefixlen)")
+         network=$(python3 -c "import ipaddress; print(ipaddress.IPv4Network('$ip/$prefix', strict=False).network_address)")
+         export_line="/Users/$USER/k3d-nfs -alldirs -rw -insecure -mapall=$(id -u):$(id -g) -network $network -mask $mask"
+         echo "$export_line" | \
             sudo tee -a /etc/exports
          sudo nfsd enable
-         sudo nfsd update
          sudo nfsd restart  # Full restart instead of update
          showmount -e localhost
       fi
