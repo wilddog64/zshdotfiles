@@ -198,3 +198,30 @@ vim() {
    mvim=$(brew --prefix macvim)/bin/vi
    $mvim "$@"
 }
+
+tmx-nvim-fzf() {
+  command -v fzf >/dev/null || { echo "fzf not found"; return 1; }
+
+  local target sess win pane winpane
+  target=$(
+    tmux list-panes -a -F '#{session_name}:#{window_index}.#{pane_index}  #{pane_current_path}  #{pane_current_command}' \
+    | awk '$NF ~ /n?vim$/ {print}' \
+    | fzf --prompt="nvim panes> " \
+    | awk '{print $1}'
+  ) || return 1
+
+  [ -z "$target" ] && return 1
+
+  sess=${target%%:*}; winpane=${target#*:}
+  win=${winpane%.*};  pane=${winpane#*.}
+
+  if [ -n "$TMUX" ]; then
+    # Already in tmux: jump without nesting
+    tmux switch-client -t "$sess"
+    tmux select-window -t "$sess:$win"
+    tmux select-pane   -t "$sess:$win.$pane"
+  else
+    # Not in tmux: attach to the session
+    tmux attach -t "$sess" \; select-window -t "$win" \; select-pane -t "$pane"
+  fi
+}
