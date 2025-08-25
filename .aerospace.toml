@@ -54,6 +54,14 @@ alt-slash  = 'layout tiles horizontal vertical'
 alt-comma  = 'layout accordion horizontal vertical'
 alt-f      = 'layout floating tiling'
 alt-backslash = 'balance-sizes'
+alt-w = [
+  'flatten-workspace-tree',
+  'layout tiles horizontal vertical',
+  'balance-sizes',
+  'focus right',
+  'resize smart +300'
+]
+
 
 # Focus
 alt-h = 'focus left'
