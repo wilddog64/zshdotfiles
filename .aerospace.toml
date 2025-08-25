@@ -1,17 +1,18 @@
-# ~/.aerospace.toml  — CLEANED
+# ~/.aerospace.toml  (CLEAN)
 
-after-startup-command = []          # top-level only
+after-startup-command = []
 start-at-login = true
 
+# Normalization
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
-# Layouts: tiles | accordion
-default-root-container-layout = 'tiles'
-default-root-container-orientation = 'horizontal'
+# Layouts
+default-root-container-layout = 'tiles'            # 'tiles' | 'accordion'
+default-root-container-orientation = 'horizontal'  # 'horizontal' | 'vertical' | 'auto'
 accordion-padding = 36
 
-# Center mouse when switching monitors
+# TOP-LEVEL ONLY (not inside any block):
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 automatically-unhide-macos-hidden-apps = false
@@ -20,7 +21,7 @@ automatically-unhide-macos-hidden-apps = false
 preset = 'qwerty'
 
 # -------------------------
-# Gaps — single assignment with per‑monitor override
+# Gaps (per-monitor override) — single assignment per key
 # -------------------------
 [gaps]
 inner.horizontal = [{ monitor."CR320QB" = 16 }, 8]
@@ -31,7 +32,7 @@ outer.top        = [{ monitor."CR320QB" = 24 }, 12]
 outer.bottom     = [{ monitor."CR320QB" = 24 }, 12]
 
 # -------------------------
-# Send apps to workspace 1 (valid on-window-detected usage)
+# Valid on-window-detected entries (ONLY these keys inside)
 # -------------------------
 [[on-window-detected]]
 if.app-id = "com.google.Chrome"
@@ -46,7 +47,7 @@ if.app-id = "com.googlecode.iterm2"
 run = "move-node-to-workspace 1"
 
 # -------------------------
-# Binding Modes
+# Keybindings (main mode)
 # -------------------------
 [mode.main.binding]
 # Layout toggles
@@ -54,14 +55,6 @@ alt-slash  = 'layout tiles horizontal vertical'
 alt-comma  = 'layout accordion horizontal vertical'
 alt-f      = 'layout floating tiling'
 alt-backslash = 'balance-sizes'
-alt-w = [
-  'flatten-workspace-tree',
-  'layout tiles horizontal vertical',
-  'balance-sizes',
-  'focus right',
-  'resize smart +300'
-]
-
 
 # Focus
 alt-h = 'focus left'
@@ -78,6 +71,18 @@ alt-shift-l = 'move right'
 # Resize (bigger steps for 32")
 alt-minus = 'resize smart -100'
 alt-equal = 'resize smart +100'
+
+# “Make right pane wide” macro (no service mode needed)
+alt-w = [
+  'flatten-workspace-tree',
+  'layout tiles horizontal vertical',
+  'balance-sizes',
+  'focus right',
+  'resize smart +300'
+]
+
+# Convenience mouse helper
+alt-m = 'move-mouse window-lazy-center'
 
 # Workspaces 1–9
 alt-1 = 'workspace 1'
@@ -101,15 +106,13 @@ alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
 
-# Quick workspace switches
+# Quick workspace ops
 alt-tab       = 'workspace-back-and-forth'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
-
-# Enter service mode
 alt-shift-semicolon = 'mode service'
 
 # -------------------------
-# Service Mode — “make right pane wide” macro
+# Service mode
 # -------------------------
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
@@ -117,27 +120,19 @@ r   = ['flatten-workspace-tree', 'mode main']
 f   = ['layout floating tiling', 'mode main']
 backspace = ['close-all-windows-but-current', 'mode main']
 
-# One-tap layout macro: two panes, right wide
-w = [
-  'flatten-workspace-tree',
-  'layout tiles horizontal vertical',
-  'balance-sizes',
-  'focus right',
-  'resize smart +300',
-  'mode main'
-]
-
+# Join
 alt-shift-h = ['join-with left', 'mode main']
 alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
+# Media
 down       = 'volume down'
 up         = 'volume up'
 shift-down = ['volume set 0', 'mode main']
 
 # -------------------------
-# Pin key workspaces to your 32"
+# Pin key workspaces to CR320QB
 # -------------------------
 [workspace-to-monitor-force-assignment]
 "1" = "CR320QB"
