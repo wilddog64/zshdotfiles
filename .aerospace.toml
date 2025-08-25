@@ -1,0 +1,45 @@
+# ~/.aerospace.toml
+
+after-startup-command = []
+start-at-login = true
+
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# Layouts: tiles | accordion
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'horizontal'
+accordion-padding = 36
+
+# Center mouse when switching monitors
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+automatically-unhide-macos-hidden-apps = false
+
+[key-mapping]
+preset = 'qwerty'
+
+# -------------------------
+# Gaps — single assignment with per‑monitor override
+# -------------------------
+[gaps]
+# On CR320QB use bigger gaps; otherwise fall back to the default after the comma
+inner.horizontal = [{ monitor."CR320QB" = 16 }, 8]
+inner.vertical   = [{ monitor."CR320QB" = 16 }, 8]
+outer.left       = [{ monitor."CR320QB" = 24 }, 12]
+outer.right      = [{ monitor."CR320QB" = 24 }, 12]
+outer.top        = [{ monitor."CR320QB" = 24 }, 12]
+outer.bottom     = [{ monitor."CR320QB" = 24 }, 12]
+
+# -------------------------
+# Binding Modes
+# -------------------------
+[mode.main.binding]
+# Layout toggles
+alt-slash  = 'layout tiles horizontal vertical'
+alt-comma  = 'layout accordion horizontal vertical'
+alt-f      = 'layout floating tiling'
+alt-backslash = 'balance-sizes'
+
+# Focus
+alt-h = 'focus left'
