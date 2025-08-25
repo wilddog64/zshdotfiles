@@ -28,8 +28,8 @@ inner.horizontal = [{ monitor."CR320QB" = 16 }, 8]
 inner.vertical   = [{ monitor."CR320QB" = 16 }, 8]
 outer.left       = [{ monitor."CR320QB" = 24 }, 12]
 outer.right      = [{ monitor."CR320QB" = 24 }, 12]
-outer.top        = [{ monitor."CR320QB" = 24 }, 12]
-outer.bottom     = [{ monitor."CR320QB" = 24 }, 12]
+outer.top        = [{ monitor."CR320QB" = 200 }, 12]
+outer.bottom     = [{ monitor."CR320QB" = 120 }, 12]
 
 # -------------------------
 # Valid on-window-detected entries (ONLY these keys inside)
@@ -73,13 +73,9 @@ alt-minus = 'resize smart -100'
 alt-equal = 'resize smart +100'
 
 # “Make right pane wide” macro (no service mode needed)
-alt-w = [
-  'flatten-workspace-tree',
-  'layout tiles horizontal vertical',
-  'balance-sizes',
-  'focus right',
-  'resize smart +300'
-]
+alt-w = 'resize smart +300'
+
+alt-shift-r = 'flatten-workspace-tree'
 
 # Convenience mouse helper
 alt-m = 'move-mouse window-lazy-center'
