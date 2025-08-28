@@ -16,7 +16,7 @@
     tags             = "!f() { git tag | sort -V; }; f"
     timeline         = log --topo-order --date relative --pretty='%Cgreen %h %an %ai %s' --graph
     tip              = log --date relative --pretty='%Cgreen %h %an %ai %s' -1
-    todayschanges    = "!f() { git whatchanged --oneline --since=yesterday | grep -v '^:'; }; f"
+    todayschanges    = "!f() { git whatchanged --i-still-use-this --oneline --since=yesterday | grep -v '^:'; }; f"
 
 [branch]
     autosetuprebase = always
