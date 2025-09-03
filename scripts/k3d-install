@@ -1,0 +1,625 @@
+#!/usr/bin/env bash
+
+# k3d-install - K3d Kubernetes cluster setup with Istio and storage configuration
+#
+# USAGE:
+#   ./k3d-install                    # Run default installation workflow
+#   ./k3d-install <function> [args]  # Run specific function
+#
+# FUNCTIONS:
+#   install_colima                   # Install Colima container runtime (macOS)
+#   install_docker                   # Install Docker CLI and configure it
+#   install_k3d                      # Install K3d Kubernetes distribution
+#   create_k3d_cluster <name>        # Create cluster with specified name
+#   configure_k3d_cluster_istio      # Install Istio on the cluster
+#   install_helm                     # Install Helm package manager
+#   install_smb_csi_driver           # Install SMB CSI driver (Linux only)
+#   create_nfs_share                 # Setup NFS export on host
+#
+# ISTIO TESTING:
+#   test_istio                       # Istio functionality tests
+#
+# NFS DEBUGGING (for issue #1383 - github.com/k3d-io/k3d/issues/1383):
+#   test_nfs_connectivity            # Test network connectivity to NFS
+#   test_nfs_direct                  # Test direct NFS mounting
+#
+# Note: The above script functions list in NFS DEBUGGING section do not address K3d NFS mounting issues on macOS. The code leave here for the reference purpose only
+
+function command_exist() {
+    command -v "$1" &> /dev/null
+}
+
+function install_redhat_kubernetes_client() {
+  if ! command_exist kubectl; then
+     sudo dnf install -y kubernetes-client
+  fi
+}
+
+function install_kubernetes_cli() {
+   if is_redhat_family ; then
+     install_redhat_kubernetes_client
+   fi
+}
+
+function is_mac() {
+   if [[ "$(uname -s)" == "Darwin" ]]; then
+      return 0
+   else
+      return 1
+   fi
+}
+
+function install_mac_helm() {
+  brew install helm
+  if [[ $? != 0 ]]; then
+    echo problem install helm
+    exit -1
+  fi
+}
+
+function install_redhat_helm() {
+  sudo dnf install -y helm
+  if [[ $? != 0 ]]; then
+    echo problem install helm
+    exit -1
+  fi
+}
+
+function install_helm() {
+  if command_exist helm; then
+    echo helm already installed, skip
+    return 0
+  fi
+
+  if is_mac; then
+    install_mac_helm
+  elif is_redhat_family ; then
+    install_redhat_helm
+  fi
+}
+
+function is_linux() {
+   if [[ "$(uname -s)" == "Linux" ]]; then
+      return 0
+   else
+      return 1
+   fi
+}
+
+function is_redhat_family() {
+   [[ -f /etc/redhat-release ]] && return 0 || return 1
+}
+
+function is_debian_family() {
+   [[ -f /etc/debian_version ]] && return 0 || return 1
+}
+
+function is_wsl() {
+   if [[ -n "$WSL_DISTRO_NAME" ]]; then
+      return 0
+   elif egrep -qi "(Microsoft|WSL)" /proc/version &> /dev/null; then
+      return 0
+   else
+      return 1
+   fi
+}
+
+function install_colima() {
+   if ! command_exist colima ; then
+      echo colima does not exist, install it
+      brew install colima
+   else
+      echo colima installed already
+   fi
+}
+
+function install_docker() {
+
+   if is_mac; then
+      install_colima
+   fi
+
+   if  ! command_exist docker && is_mac ; then
+      echo docker does not exist, install it
+      brew install docker
+   else
+      echo docker installed already
+   fi
+
+   if is_mac; then
+      docker context use colima
+      export DOCKER_HOST=unix:///Users/$USER/.colima/docker.sock
+      colima start
+   fi
+
+
+   # grep DOKER_HOST $HOME/.zsh/zshrc | wc -l 2>&1 > /dev/null
+   # if $? == 0 ; then
+   #    echo "export DOCKER_HOST=unix:///Users/$USER/.colima/docker.sock" >> $HOME/.zsh/zshrc
+   #    echo "export DOCKER_CONTEXT=colima" >> $HOME/.zsh/zshrc
+   #    echo "restart your shell to apply the changes"
+   # fi
+}
+
+function install_k3d() {
+   install_docker
+   install_helm
+   install_istioctl
+
+   if ! command_exist k3d ; then
+      echo k3d does not exist, install it
+      curl -f -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
+   else
+      echo k3d installed already
+   fi
+}
+
+function install_istioctl() {
+   install_dir="${1:-/usr/local/bin}"
+
+   if command_exist istioctl ; then
+      echo "istioctl already exists, skip installation"
+      return 0
+   fi
+
+   echo "install dir: ${install_dir}"
+   if [[ ! -e "$install_dir" && ! -d "$install_dir" ]]; then
+      mkdir -p "${install_dir}"
+   fi
+
+   if  ! command_exist istioctl ; then
+      echo installing istioctl
+      tmp_script=$(mktemp)
+      pushd /tmp
+      curl -f -s https://raw.githubusercontent.com/istio/istio/master/release/downloadIstioCandidate.sh -o "$tmp_script"
+      istio_bin=$(bash "$tmp_script" | perl -nle 'print $1 if /add the (.*) directory/')
+      if [[ -z "$istio_bin" ]]; then
+         echo "Failed to download istioctl"
+         exit 1
+      fi
+      sudo cp -v "$istio_bin/istioctl" "${install_dir}/"
+      popd
+   fi
+
+   trap 'rm -rf /tmp/istio-*' EXIT TERM
+}
+
+function _create_k3d_cluster() {
+   cluster_yaml=$1
+
+   if is_mac ; then
+     k3d cluster create --config "${cluster_yaml}"
+   elif is_redhat_family ; then
+     sudo k3d cluster create --config "${cluster_yaml}"
+   fi
+}
+
+function _list_k3d_cluster() {
+   if is_mac ; then
+      k3d cluster list
+   elif is_redhat_family ; then
+      sudo k3d cluster list
+   fi
+}
+
+function _kubectl() {
+   if ! command_exist kubectl ; then
+      echo "kubectl is not installed. Please install it first."
+      exit 1
+   fi
+
+   if is_mac ; then
+      kubectl "$@"
+   else
+      sudo kubectl "$@"
+   fi
+
+   if [[ $? != 0 ]]; then
+      echo "Kubectl command failed: $@"
+      exit 1
+   fi
+}
+
+function _istioctl() {
+   if ! command_exist istioctl ; then
+      echo "istioctl is not installed. Please install it first."
+      exit 1
+   fi
+
+   if is_mac ; then
+      istioctl "$@"
+   else
+      sudo istioctl "$@"
+   fi
+
+   if [[ $? != 0 ]]; then
+      echo "Istioctl command failed: $@"
+      exit 1
+   fi
+}
+
+function _helm() {
+   if ! command_exist helm ; then
+      echo "helm is not installed. Please install it first."
+      exit 1
+   fi
+
+   if is_mac ; then
+      helm "$@"
+   else
+      sudo helm "$@"
+   fi
+
+   if [[ $? != 0 ]]; then
+      echo "Helm command failed: $@"
+      exit 1
+   fi
+
+}
+
+function _curl() {
+   if ! command_exist curl ; then
+      echo "curl is not installed. Please install it first."
+      exit 1
+   fi
+
+   if is_mac ; then
+      curl "$@"
+   else
+      sudo curl "$@"
+   fi
+
+   if [[ $? != 0 ]]; then
+      echo "Curl command failed: $@"
+      exit 1
+   fi
+}
+
+function _kill() {
+   if is_mac ; then
+      kill "$@"
+   else
+      sudo kill "$@"
+   fi
+   if [[ $? != 0 ]]; then
+      echo "Kill command failed: $@"
+      exit 1
+   fi
+}
+
+function _ip() {
+   if is_mac ; then
+      ifconfig en0 | grep inet | awk '$1=="inet" {print $2}'
+   else
+      ip -4 route get 8.8.8.8 | perl -nle 'print $1 if /src (.*) uid/'
+   fi
+}
+
+function create_k3d_cluster() {
+   cluster_name=$1
+
+   if _list_k3d_cluster | grep -q "$cluster_name"; then
+      echo "Cluster $cluster_name already exists, skip"
+      return 0
+   fi
+
+   yaml=$(mktemp -t k3d-XXXX.yaml)
+    cat > "$yaml" <<EOF
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: $cluster_name
+servers: 1
+agents: 3
+ports:
+  - port: 8080:80
+    nodeFilters: [loadbalancer]
+  - port: 8443:443
+    nodeFilters: [loadbalancer]
+options:
+  k3d:
+    wait: true
+  k3s:
+    extraArgs:
+      - arg: "--disable=traefik"
+        nodeFilters: ["server:*"]
+      - arg: "--disable=local-storage"
+        nodeFilters: ["server:*"]
+hostAliases:
+  - ip: "$(_ip)"
+    hostnames: ["host.k3d.internal"]
+EOF
+
+   _create_k3d_cluster "$yaml"
+
+   trap 'cleanup_on_success "$yaml"' EXIT
+}
+
+function cleanup_on_success() {
+   file_to_cleanup=$1
+   echo "Cleaning up temporary files..."
+   if [[ $? == 0 ]]; then
+      rm -f "$file_to_cleanup"
+   else
+      echo "Error occurred, not cleaning up $file_to_cleanup"
+   fi
+}
+
+function configure_k3d_cluster_istio() {
+   cluster_name=$1
+
+   install_kubernetes_cli
+   install_istioctl
+   _istioctl x precheck
+   _istioctl install -y \
+     --set profile=default \
+     --set values.pilot.resources.requests.cpu=100m \
+     --set values.pilot.resources.requests.memory=256Mi \
+     --set values.global.proxy.resources.requests.cpu=50m \
+     --set values.global.proxy.resources.requests.memory=64Mi \
+     --set values.gateways.istio-ingressgateway.resources.requests.cpu=100m \
+     --set values.gateways.istio-ingressgateway.resources.requests.memory=256Mi \
+     --set values.gateways.istio-ingressgateway.type=LoadBalancer
+   _kubectl label ns default istio-injection=enabled --overwrite
+}
+
+function install_smb_csi_driver() {
+   if is_mac ; then
+      echo "warning: SMB CSI driver is not supported on macOS"
+      exit 0
+   fi
+   install_helm
+   _helm repo add smb-csi-driver https://kubernetes-sigs.github.io/smb-csi-driver
+   _helm repo update
+   _helm upgrade --install smb-csi-driver smb-csi-driver/smb-csi-driver \
+      --namespace kube-system
+
+   if [[ $? != 0 ]]; then
+      echo "Failed to install SMB CSI driver"
+      exit 1
+   fi
+}
+
+function create_nfs_share() {
+   if grep -q "k3d-nfs" /etc/exports ; then
+      echo "NFS share already exists, skip"
+      return 0
+   fi
+
+   if is_mac ; then
+      echo "Creating NFS share on macOS"
+      mkdir -p $HOME/k3d-nfs
+      if ! grep "$HOME/k3d-nfs" /etc/exports 2>&1 > /dev/null; then
+         ip=$(ipconfig getifaddr en0)
+         mask=$(ipconfig getoption en0 subnet_mask)
+         prefix=$(python3 -c "import ipaddress; print(ipaddress.IPv4Network('0.0.0.0/$mask').prefixlen)")
+         network=$(python3 -c "import ipaddress; print(ipaddress.IPv4Network('$ip/$prefix', strict=False).network_address)")
+         export_line="/Users/$USER/k3d-nfs -alldirs -rw -insecure -mapall=$(id -u):$(id -g) -network $network -mask $mask"
+         echo "$export_line" | \
+            sudo tee -a /etc/exports
+         sudo nfsd enable
+         sudo nfsd restart  # Full restart instead of update
+         showmount -e localhost
+      fi
+   fi
+}
+
+function test_nfs_connectivity() {
+  echo "Testing basic connectivity to NFS server..."
+
+  # Create a pod with networking tools
+  _kubectl run nfs-connectivity-test --image=nicolaka/netshoot --rm -it --restart=Never -- bash -c "
+    echo 'Attempting to reach NFS port on host...'
+    nc -zv host.k3d.internal 2049
+    echo 'DNS lookup for host...'
+    nslookup host.k3d.internal
+    echo 'Tracing route to host...'
+    traceroute host.k3d.internal
+    echo 'Testing rpcinfo...'
+    rpcinfo -p host.k3d.internal 2>/dev/null || echo 'RPC failed'
+  "
+}
+
+function test_nfs_direct() {
+  echo "Testing NFS connectivity directly from a pod..."
+
+  # Create a pod that mounts NFS directly
+  cat <<EOF | _kubectl apply -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nfs-test-direct
+spec:
+  containers:
+  - name: nfs-mount-test
+    image: busybox
+    command: ["sh", "-c", "mount | grep nfs; echo 'Testing NFS mount...'; mkdir -p /mnt/test; mount -t nfs -o vers=3,nolock host.k3d.internal:/Users/$(whoami)/k3d-nfs /mnt/test && echo 'Mount successful' || echo 'Mount failed'; ls -la /mnt/test; sleep 3600"]
+    securityContext:
+      privileged: true
+  restartPolicy: Never
+EOF
+
+  echo "Waiting for pod to be ready..."
+  sleep 5
+  _kubectl logs nfs-test-direct
+}
+
+
+function test_istio() {
+    echo "Testing Istio installation and functionality..."
+
+    # 1. Create a very simple test deployment and service
+    _kubectl create namespace istio-test 2>/dev/null || true
+    _kubectl label namespace istio-test istio-injection=enabled --overwrite
+
+    # Deploy a minimal nginx pod
+    _kubectl apply -f - -n istio-test <<EOF
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-test
+  template:
+    metadata:
+      labels:
+        app: nginx-test
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:stable
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-test
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: nginx-test
+EOF
+
+    # Wait for deployment
+    _kubectl rollout status deployment/nginx-test -n istio-test --timeout=60s
+
+    # Verify that the Istio proxy has been injected
+    echo "Checking for Istio sidecar..."
+    if _kubectl get pod -n istio-test -l app=nginx-test -o jsonpath='{.items[0].spec.containers[*].name}' | grep -q istio-proxy; then
+        echo "✅ Istio sidecar injection is working!"
+    else
+        echo "❌ Istio sidecar was not injected! Check your Istio installation."
+        return 1
+    fi
+
+    # Test direct access first (bypassing Istio)
+    echo "Testing direct pod access..."
+    _kubectl port-forward -n istio-test svc/nginx-test 8888:80 &
+    PF_PID=$!
+    sleep 3
+    if curl -s localhost:8888 | grep -q "Welcome to nginx"; then
+        echo "✅ Direct access to the pod is working!"
+    else
+        echo "❌ Failed to access the pod directly"
+        exit -1
+    fi
+    if is_mac ; then
+       echo here
+       lsof -iTCP:8080 -sTCP:LISTEN -nP | awk '$1 == "kubectl" {print $2}' | xargs kill
+    else
+       sudo lsof -iTCP:8080 -sTCP:LISTEN -nP | awk '$1 == "kubectl" {print $2}' | sudo xargs kill
+    fi
+
+    # Create Istio Gateway and VirtualService
+    _kubectl apply -f - -n istio-test <<EOF
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: test-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: test-vs
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - test-gateway
+  http:
+  - route:
+    - destination:
+        host: nginx-test
+        port:
+          number: 80
+EOF
+
+    # Verify Gateway creation
+    if _kubectl get gateway -n istio-test test-gateway; then
+        echo "✅ Istio Gateway created successfully"
+    else
+        echo "❌ Failed to create Istio Gateway"
+        exit -1
+    fi
+
+    # Verify VirtualService creation
+    if _kubectl get virtualservice -n istio-test test-vs; then
+        echo "✅ Istio VirtualService created successfully"
+    else
+        echo "❌ Failed to create Istio VirtualService"
+        exit -1
+    fi
+
+    # Test through Istio gateway
+    echo "Testing through Istio gateway..."
+    _kubectl port-forward -n istio-system svc/istio-ingressgateway 8080:80 &
+    GATEWAY_PF_PID=$!
+    sleep 15
+
+    echo "Making request through Istio Gateway..."
+    if _curl -s localhost:8080 | grep -q "Welcome to nginx"; then
+        echo "✅ Request through Istio Gateway successful!"
+        echo "🎉 ISTIO IS WORKING CORRECTLY! 🎉"
+    else
+        echo "❌ Failed to access through Istio Gateway"
+        echo "Detailed response:"
+        _curl -v localhost:8080
+        exit -1
+    fi
+
+    echo "For a more complete test, you could try accessing the Istio ingress gateway's external IP:"
+    _kubectl get svc -n istio-system istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+    echo ""
+    trap 'cleanup_istio_test_namespace' EXIT TERM
+}
+
+function cleanup_istio_test_namespace() {
+
+    echo "Cleaning up Istio test namespace..."
+    echo "warning: port forwarding will not remove if process failed"
+    if [[ $? == 0 ]]; then
+       # Kill the port-forwarding process if it exists
+       if [ ! -z "$PF_PID" ]; then
+           echo "port forward PID: $PF_PID" | tee /tmp/pf_id.txt
+           _kill $PF_PID 2>/dev/null || true
+       fi
+       _kubectl delete namespace istio-test --ignore-not-found
+    fi
+}
+
+function deploy_k3d_cluster() {
+   cluster_name="${1:-k3d-cluster}"
+
+   create_k3d_cluster "$cluster_name"
+   configure_k3d_cluster_istio "$cluster_name"
+   # install_smb_csi_driver
+}
+
+## -- main --
+# Command line argument handling
+if [[ $# -gt 0 ]]; then
+    function_name=$1
+    shift  # Remove the function name from the arguments
+
+    if [[ "$(type -t $function_name)" == "function" ]]; then
+        # Call the function with remaining arguments
+        $function_name "$@"
+    else
+        echo "Error: Function '$function_name' not found"
+        exit 1
+    fi
+fi
+
