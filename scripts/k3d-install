@@ -73,7 +73,7 @@ function install_helm() {
 
   if is_mac; then
     install_mac_helm
-  elif is_redhat_family ; then
+  elif is_linux ; then
     install_redhat_helm
   fi
 }
