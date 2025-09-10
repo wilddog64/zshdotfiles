@@ -1,5 +1,34 @@
 # for XWin ...
 
+{
+  # Compile zcompdump, if modified, to increase startup speed.
+  zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
+  if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
+    zcompile "$zcompdump"
+  fi
+} &!
+
+test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
+
+# Set Spaceship ZSH as a prompt
+# autoload -U promptinit; promptinit
+# prompt spaceship
+autoload -U +X bashcompinit && bashcompinit
+
+# [ -r "$HOME/.smartcd_config" ] && ( [ -n $BASH_VERSION ] || [ -n $ZSH_VERSION ] ) && source ~/.smartcd_config
+
+complete -o nospace -C /usr/local/bin/vault vault
+
+source ~/.zsh/bindingkeys
+# zprof
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+if [[ -r ~/.p10k.zsh ]]; then
+   source ~/.p10k.zsh
+   typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
+fi
+
+
 # === get all apps and create an aliases for them
 
 
@@ -24,11 +53,9 @@ if [[ -r ~/.zsh/bindingkeys ]]; then
     source ~/.zsh/bindingkeys
 fi
 
-which fzf 2>&1 > /dev/null
-if [[ $? == 0 ]]; then
-  echo loading fzf key-bindings for zsh
-  source ~/.zsh/fzf-shell/key-bindings.zsh
-fi
+command -v fzf 2>&1 > /dev/null
+echo loading fzf key-bindings for zsh
+source ~/.zsh/fzf-shell/key-bindings.zsh
 
 # === zsh completion styles
 if [[ -r ~/.zsh/zsh_comp_styles ]]; then
@@ -281,12 +308,6 @@ which yq
 if [[ $? == 0 ]]; then
    echo load yq zsh auto completion
    eval $(yq shell-completion zsh)
-fi
-
-which fzf
-if [[ $? == 0 ]]; then
-   echo loading fzf zsh integration
-   eval $(fzf --zsh)
 fi
 
 fix_wsl_process
