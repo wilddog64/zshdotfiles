@@ -27,6 +27,7 @@ zplug "plugins/kubectl", from:oh-my-zsh
 zplug "plugins/per-directory-history", from:oh-my-zsh
 zplug "plugins/terraform", from:oh-my-zsh
 zplug "plugins/z", from:oh-my-zsh
+zplug "lib/directories", from:oh-my-zsh
 zplug "pyenv/pyenv", from:github, hook-build: "ln -sf $ZPLUG_REPOS/pyenv/pyenv ~/.pyenv"
 zplug "zsh-users/zsh-autosuggestions", defer:2
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
