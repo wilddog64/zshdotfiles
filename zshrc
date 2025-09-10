@@ -81,23 +81,6 @@ fi
 # ===magic mv
 autoload -U zmv
 
-
-# ===load completion system
-# autoload -Uz compinit
-# for dump in ~/.zcompdump(N.mh+24); do
-#   compinit
-# done
-# compinit -C
-
-# autoload -U compinit
-# if [ -n "$OS" -a "$OS" = "Windows_NT" ]
-# then
-#     compinit -u
-#     export PATH=$PATH:/cygdrive/c/tools/bin
-# else
-#     compinit
-# fi
-
 # ===load completion list module
 zmodload zsh/complist
 
@@ -106,10 +89,6 @@ zmodload zsh/datetime
 
 # === zsh/sched module ===
 zmodload zsh/sched
-
-# if [[ -e ~/.oh-my-zsh/plugins/aws/aws.plugin.zsh ]]; then
-#   source ~/.oh-my-zsh/plugins/aws/aws.plugin.zsh
-# fi
 
 # === backward delete all the way to slash
 backward-delete-to-slash () {
@@ -163,12 +142,6 @@ if [[ -e /usr/libexec/java_home ]]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
 fi
 
-if [[ -e ~/tools/rundeck ]]; then
-  export RUNDECK_BASE=~/tools/rundeck/tools
-  export RUNDECK_TOOL_BIN=$RUNDECK_BASE/bin
-  export PATH=$PATH:$RUNDECK_TOOL_BIN
-fi
-
 if [[ -e $(brew --prefix nvm) ]]; then
   if [[ ! -e ~/.nvm ]]; then
     mkdir -p ~/.nvm
@@ -201,16 +174,6 @@ fi
 # make gcloud autocompletion work
 if [[ -e $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ]]; then
      source $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
-fi
-
-# which fasd
-# if [[ $? == 0 ]]; then
-#     eval "$(fasd --init posix-alias zsh-hook)"
-# fi
-
-# enable hal commands completion
-if [[ -e ~/.zsh/hal_completion ]]; then
-    source ~/.zsh/hal_completion
 fi
 
 # which starship 2>&1 > /dev/null
