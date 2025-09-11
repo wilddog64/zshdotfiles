@@ -114,19 +114,7 @@ fpath=(
 autoload -U zen
 
 [[ -s `brew --prefix`/etc/autojump.sh  ]] && . `brew --prefix`/etc/autojump.sh
-eval `keychain --eval --agents ssh --inherit any ~/.ssh/id_ed25519`
-
-which pyenv 2>&1 > /dev/null
-if [[ $? == 0 ]]; then
-  echo initialize pyenv ...
-  eval "$(pyenv init --path)"
-fi
-
-which pyenv-virtualenv-init 2>&1 > /dev/null
-if [[ $? == 0 ]]; then
-  echo "initialize pyenv virtualenv"
-  eval "$(pyenv virtualenv-init -)"
-fi
+eval `keychain ~/.ssh/id_rsa`
 
 which hub 2>&1 > /dev/null
 if [[ $? == 0 ]]; then
