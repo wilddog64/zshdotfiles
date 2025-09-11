@@ -1,11 +1,33 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# for XWin ...
+
+{
+  # Compile zcompdump, if modified, to increase startup speed.
+  zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
+  if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
+    zcompile "$zcompdump"
+  fi
+} &!
+
+test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
+
+# Set Spaceship ZSH as a prompt
+# autoload -U promptinit; promptinit
+# prompt spaceship
+autoload -U +X bashcompinit && bashcompinit
+
+# [ -r "$HOME/.smartcd_config" ] && ( [ -n $BASH_VERSION ] || [ -n $ZSH_VERSION ] ) && source ~/.smartcd_config
+
+complete -o nospace -C /usr/local/bin/vault vault
+
+source ~/.zsh/bindingkeys
+# zprof
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+if [[ -r ~/.p10k.zsh ]]; then
+   source ~/.p10k.zsh
+   typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 fi
 
-# for XWin ...
 
 # === get all apps and create an aliases for them
 
@@ -15,27 +37,25 @@ if [[ -r ~/.zsh/my_func.zsh ]]; then
     source ~/.zsh/my_func.zsh
 fi
 
-# === kgc.sh: get kubernetes containers error detail
-if [[ -r ~/.zsh/kgc.sh ]]; then
-   source ~/.zsh/kgc.sh
-fi
-
 # === cd names as commands  --- very handy
 if [[ -r ~/.zsh/cdnames ]]; then
     echo load cdnames
     source ~/.zsh/cdnames
 fi
 
-if [[ -r ~/.zsh/fzf-shell/key-bindings.zsh ]]; then
-   echo source key-bindings.zsh
-   source ~/.zsh/fzf-shell/key-bindings.zsh
-fi
+# if [[ -r ~/.zsh/fzf.zsh ]]; then
+#   source ~/.zsh/fzf.zsh
+# fi
 
 # === key bindings
 if [[ -r ~/.zsh/bindingkeys ]]; then
     echo load keybinding
     source ~/.zsh/bindingkeys
 fi
+
+command -v fzf 2>&1 > /dev/null
+echo loading fzf key-bindings for zsh
+source ~/.zsh/fzf-shell/key-bindings.zsh
 
 # === zsh completion styles
 if [[ -r ~/.zsh/zsh_comp_styles ]]; then
@@ -61,23 +81,6 @@ fi
 # ===magic mv
 autoload -U zmv
 
-
-# ===load completion system
-# autoload -Uz compinit
-# for dump in ~/.zcompdump(N.mh+24); do
-#   compinit
-# done
-# compinit -C
-
-# autoload -U compinit
-# if [ -n "$OS" -a "$OS" = "Windows_NT" ]
-# then
-#     compinit -u
-#     export PATH=$PATH:/cygdrive/c/tools/bin
-# else
-#     compinit
-# fi
-
 # ===load completion list module
 zmodload zsh/complist
 
@@ -86,10 +89,6 @@ zmodload zsh/datetime
 
 # === zsh/sched module ===
 zmodload zsh/sched
-
-# if [[ -e ~/.oh-my-zsh/plugins/aws/aws.plugin.zsh ]]; then
-#   source ~/.oh-my-zsh/plugins/aws/aws.plugin.zsh
-# fi
 
 # === backward delete all the way to slash
 backward-delete-to-slash () {
@@ -114,20 +113,8 @@ fpath=(
        ~/.zfunctions )
 autoload -U zen
 
-which keychain 2>&1 > /dev/null
-[[ $? == 0 ]] && eval `keychain --eval id_ed25519`
-
-which pyenv 2>&1 > /dev/null
-if [[ $? == 0 ]]; then
-  echo initialize pyenv ...
-  eval "$(pyenv init --path)"
-fi
-
-which pyenv-virtualenv-init 2>&1 > /dev/null
-if [[ $? == 0 ]]; then
-  echo "initialize pyenv virtualenv"
-  eval "$(pyenv virtualenv-init -)"
-fi
+[[ -s `brew --prefix`/etc/autojump.sh  ]] && . `brew --prefix`/etc/autojump.sh
+eval `keychain ~/.ssh/id_rsa`
 
 which hub 2>&1 > /dev/null
 if [[ $? == 0 ]]; then
@@ -143,8 +130,7 @@ if [[ -e /usr/libexec/java_home ]]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
 fi
 
-brew --prefix nvm
-if [[ $? == 0 ]]; then
+if [[ -e $(brew --prefix nvm) ]]; then
   if [[ ! -e ~/.nvm ]]; then
     mkdir -p ~/.nvm
   fi
@@ -178,16 +164,6 @@ if [[ -e $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path
      source $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 fi
 
-# which fasd
-# if [[ $? == 0 ]]; then
-#     eval "$(fasd --init posix-alias zsh-hook)"
-# fi
-
-# enable hal commands completion
-if [[ -e ~/.zsh/hal_completion ]]; then
-    source ~/.zsh/hal_completion
-fi
-
 # which starship 2>&1 > /dev/null
 # if [[ $? == 0 ]]; then
 #     eval "$(starship init zsh)"
@@ -199,17 +175,17 @@ fi
 
 if [[ -e $HOMEBREW_PREFIX/share/antigen/antigen.zsh ]]; then
   echo loading antigen
-  source $HOMEBREW_PREFIX/share/antigen/antigen.zsh
+    source $HOMEBREW_PREFIX/share/antigen/antigen.zsh
 fi
 
 if [[ -e $HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh ]]; then
   echo load fzf key-bindings script
-  source $HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh
+    source $HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh
 fi
 
 if [[ -e $HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh ]]; then
   echo loading fzf auto complete script
-  source $HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh
+    source $HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh
 fi
 
 if [[ -r $HOME/.smartcd_config ]]; then
@@ -222,14 +198,14 @@ if [[ ! -e ~/.zplug/init.zsh ]]; then
 fi
 
 if [[ -n "$TILIX_ID" ]] || [[ -n "$VTE_VERSION" ]]; then
-  source /etc/profile.d/vte-2.91.sh
+  source /etc/profile.d/vte.sh
 fi
 
-which rbenv
-if [[ $? == 0 ]]; then
-  echo initializing rbenv
-  eval "$(rbenv init - zsh)"
-fi
+# rbenv=$(brew --prefix rbenv)
+# if [[ -e $rbenv ]]; then
+#   echo initializing rbenv
+#   eval "$(rbenv init - zsh)"
+# fi
 
 sleep 3 # sleep one second for zplug to be ready
 echo load zplug
@@ -241,14 +217,19 @@ set +o vi
 
 # === for normal aliases, so we our aliases setup won't overwrite by zplug
 if [[ -r ~/.zsh/aliases ]]; then
-   echo load aliases
-   source ~/.zsh/aliases
+    echo load aliases
+    source ~/.zsh/aliases
 fi
 
 which gh 2>&1 > /dev/null
 if [[ $? == 0 ]]; then
    echo load gh completion
    eval $(gh completion -s zsh)
+fi
+
+export kafka_home=$(brew --prefix kafka)
+if [[ ! -z  kafka_home ]]; then
+   export PATH=$PATH:$kafka_home/bin
 fi
 
 which eksctl 2>&1 > /dev/null
@@ -264,23 +245,10 @@ if [[ $? == 0 ]]; then
    source /tmp/chef_completion.zsh
 fi
 
-kubectl_plugin=$HOME/.zplug/repos/robbyrussell/oh-my-zsh/plugins/kubectl/kubectl.plugin.zsh
-if [[ -f  "$kubectl_plugin" ]]; then
-   echo "loading kubectl plugin"
-   source "$kubectl_plugin"
+which yq
+if [[ $? == 0 ]]; then
+   echo load yq zsh auto completion
+   eval $(yq shell-completion zsh)
 fi
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-PATH="/Users/cliang/perl5/bin:$HOME/.local/bin:${PATH:+:${PATH}}"
-export PATH
-PERL5LIB="/Users/cliang/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/cliang/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/cliang/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/cliang/perl5"; export PERL_MM_OPT;
-
-# >>>> Vagrant command completion (start)
-fpath=(/opt/vagrant/embedded/gems/gems/vagrant-2.4.1/contrib/zsh $fpath)
-compinit
-# <<<<  Vagrant command completion (end)
+fix_wsl_process

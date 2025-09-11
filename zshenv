@@ -2,62 +2,46 @@
 unsetopt global_rcs
 
 # === for hoembrew environment
-export PATH="/usr/local/bin:/usr/local/sbin${PATH+:$PATH}";
-export MANPATH="/usr/local/share/man${MANPATH+:$MANPATH}:";
-export INFOPATH="/usr/local/share/info:${INFOPATH:-}";
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+# export HOMEBREW_PREFIX="/usr/local";
+# export HOMEBREW_CELLAR="/usr/local/Cellar";
+# export HOMEBREW_REPOSITORY="/usr/local/Homebrew";
+# export PATH="/usr/local/bin:/usr/local/sbin${PATH+:$PATH}";
+# export MANPATH="/usr/local/share/man${MANPATH+:$MANPATH}:";
+# export INFOPATH="/usr/local/share/info:${INFOPATH:-}";
 
 # === user specific environment variables: path, perl library, and ruby
-export USER_BIN=~/bin
+export user_bin=~/bin
 export LESS_ADVANCED_PREPROCESSOR=1
 export LESSCLOSE="lessclose.sh %s %s"
 export GREP_COLOR=auto
 export FTP_PASSIVE=1
 export AUTOJUMP_KEEP_SYMLINKS=1
 export TOUCHBAR_GIT_ENABLED=true
+export OMI_HOME=/opt/omi
+export OMI_BIN=$OMI_HOME/bin
 # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
-export PATH=/usr/local/bin:$USER_BIN:$PATH
-
-PUPPET_HOME=/opt/puppetlabs/puppet
-PUPPET_BIN=$PUPPET_HOME/bin
-export PATH=$PUPPET_BIN:$PATH
-
-which brew 2>&1 > /dev/null
-if [[ $? == 0 ]] ; then
-   eval $(brew shellenv)
-   # setup homebrew environment variables
-   export BREW_ROOT=$(brew --prefix)
-   export HOMEBREW_BIN=$HOMEBREW_PREFIX/bin
-   export HOMEBREW_SBIN=$HOMEBREW_PREFIX/sbin
-   export FZF_BASE=$HOMEBREW_PREFIX/opt/fzf
-   export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-   export HOMEBREW_NO_INSTALL_CLEANUP=1
-   export HOMEBREW_GITHUB_API_TOKEN=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
-   export PHPBREW_SET_PROMPT=1
-   export PHPBREW_RC_ENABLE=1
-   export HOMEBREW_NO_AUTO_UPDATE=1
-   export MONO_GAC_PREFIX=$BREW_ROOT
-   export GNUBIN=$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin
-
-   export GROOVY_HOME=$HOMEBREW_PREFIX/opt/groovy/libexec
-   export GROOVY_HOME=/usr/local/opt/groovy/libexec
-   export EDITOR=$HOMEBREW_PREFIX/bin/nvim
-   export VISUAL=$HOMEBREW_PREFIX/bin/nvim
-   export DOTNET_PATH=$HOMEBREW_PREFIX/share/dotnet
-   export POSTGRES_BIN=$HOMEBREW_PREFIX/opt/libpq/bin
-   export OPENSSL_BIN=$HOMEBREW_PREFIX/opt/openssl/bin
-   export GTAR_PATH=$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin
-   export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$HOMEBREW_BIN:$GNUBIN:$HOMEBREW_BIN:$HOMEBREW_SBIN:$GIT_CONTRIB:$PATH:$PUPPET_BOLT:~/bin:$POSTGRES_BIN
-   export LESSOPEN="|$BREW_ROOT/bin/lesspipe.sh %s"
-   export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-fi
+LOCAL_BIN=/home/cliang/.local/bin
+export PATH=/usr/local/bin:/opt/puppetlabs/bin:$LOCAL_BIN:$OMI_BIN:$PATH
+export OPENJDK11_BIN=$(brew --prefix openjdk@11)/bin
+export PATH=":$OPENJDK11_BIN:$PATH"
 # populate homebrew enviornment variables
+eval $(brew shellenv)
+# setup homebrew environment variables
+export BREW_ROOT=$(brew --prefix)
+export HOMEBREW_BIN=$HOMEBREW_PREFIX/bin
+export HOMEBREW_SBIN=$HOMEBREW_PREFIX/sbin
+
+export FZF_BASE=$HOMEBREW_PREFIX/opt/fzf
+
 # === make command line editing like vi, ya ya ya!!!
 # export ZSH_THEME=powerlevel10k
-export ZSH_THEME=agnoster
+# export ZSH_THEME=agnoster
 set -o vi
 
 # === for groovy
+export GROOVY_HOME=$HOMEBREW_PREFIX/opt/groovy/libexec
 
 # === locale language settings
 export LANG=en_US.UTF-8
@@ -84,10 +68,21 @@ export JAVA_HOME=/usr
 # export GIT_CONTRIB=/usr/local/Cellar/git/1.9.0/share/git-core/contrib
 
 # setup GROOVY_HOME environment variable
+export GROOVY_HOME=/usr/local/opt/groovy/libexec
 
+export EDITOR=$HOMEBREW_PREFIX/bin/vim
+export VISUAL=$HOMEBREW_PREFIX/bin/nvim
 
+export LESSOPEN="|$BREW_ROOT/bin/lesspipe.sh %s"
 # for docker client
 # /usr/local/opt/coreutils/libexec/gnubin
+export GNUBIN=$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin
+
+export DOTNET_PATH=$HOMEBREW_PREFIX/share/dotnet
+export POSTGRES_BIN=$HOMEBREW_PREFIX/opt/libpq/bin
+export OPENSSL_BIN=$HOMEBREW_PREFIX/opt/openssl/bin
+export GTAR_PATH=$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin
+export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$HOMEBREW_BIN:$GNUBIN:$HOMEBREW_BIN:$HOMEBREW_SBIN:$GIT_CONTRIB:$PATH:$PUPPET_BOLT:~/bin:$POSTGRES_BIN
 
 export GOENVGOROOT=$HOME/.goenvs
 export GOENVTARGET=$HOME/go/bin
@@ -97,6 +92,7 @@ export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$GNUBIN:$GIT_CONTRIB:$PATH:$GOE
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=gray,bold,underline"
 
 # MONO assembly
+export MONO_GAC_PREFIX=$BREW_ROOT
 
 # for AWS CLI to access Instance Meta Data Service (IMDS)
 export NO_PROXY=169.254.169.254
@@ -104,10 +100,18 @@ export NO_PROXY=169.254.169.254
 # make zsh vim mode faster
 export KEYTIMEOUT=1
 
-# export VAULT_ADDR=https://vault.sea.bigfishgames.com
+export VAULT_ADDR=https://vault.sea.bigfishgames.com
 if [[ ! -e ~/.zsh_history ]]; then
     mkdir -p ~/.zsh_history
 fi
+
+export HOMEBREW_PREFIX="/usr/local";
+export HOMEBREW_CELLAR="/usr/local/Cellar";
+export HOMEBREW_REPOSITORY="/usr/local/Homebrew";
+export PATH="/usr/local/bin:/usr/local/sbin${PATH+:$PATH}";
+export MANPATH="/usr/local/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/usr/local/share/info:${INFOPATH:-}";
+export FORGIT_INSTALL_DIR=~/.zplug/repos/wfxr/forgit
 
 # if [[ -z $DISPLAY && -z $SSH_CONNECTION ]]; then
 #     disp_no=($( ps -xww | grep -F X11.app | awk '{print $NF}' | grep -e ":[0-9]"  ))
@@ -124,6 +128,9 @@ if [[ -e $HOME/.phpbrew/bashrc ]]; then
     source $HOME/.phpbrew/bashrc
 fi
 
+export PHPBREW_SET_PROMPT=1
+export PHPBREW_RC_ENABLE=1
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 # === options for customizing zsh behavior
 setopt AUTO_NAME_DIRS
@@ -170,26 +177,57 @@ setopt PATH_DIRS # perform a path search even on command names with slashes in t
 setopt MULTIOS   # Allow multiple redirection echo 'a'>b>c
 
 # === job control
-setopt AUTO_CONTINUE         # stopped jobs that are removed from job table used disown command are automatically send a CONT signal
+setopt AUTO_CONTINUE                 # stopped jobs that are removed from job table used disown command are automatically send a CONT signal
 
 # === options for completion
-# setopt MENU_COMPLETE       # turn on menu completion
-setopt COMPLETE_IN_WORD      # complete in the middle of a word
-setopt REC_EXACT             # recognize exact match in completion
-setopt ALWAYS_TO_END         # always move cursor to the end after completion
+# setopt MENU_COMPLETE                 # turn on menu completion
+setopt COMPLETE_IN_WORD              # complete in the middle of a word
+setopt REC_EXACT                     # recognize exact match in completion
+setopt ALWAYS_TO_END                 # always move cursor to the end after completion
 
 setopt PRINT_EIGHT_BIT
 
 # === options for jobs
 setopt AUTO_RESUME
 
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
-# === this will alow backward-kill-word to only eimilate one component in a path instead of the whole path
-export WORDCHARS=${WORDCHARS//\//}
+export HOMEBREW_NO_INSTALL_CLEANUP=1
 
 # so we can have lazygit applied vim editing style
-which oh-my-posh 2>&1 > /dev/null
-if [[ $? == 0 ]]; then
-   export LZG_KEYBIND_MODE=vim
-   eval $(oh-my-posh init zsh)
-fi
+export LZG_KEYBIND_MODE=vim
+
+export POSH_THEMES_PATH=~/.local/share/oh-my-posh/themes
+
+export POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+
+platform=$(uname -r)
+
+# access windows directory
+export WINHOME=/mnt/c
+export WINDOWS=$WINHOME/Windows
+export WINSYS=$WINDOWS/system
+export WINSYS32=$WINDOWS/system32
+export WINPROGFILES=$WINHOME/Program\ Files
+export WINPROGFILES86=$WINHOME/Program\ Files\ \(x86\)/
+export USERPROFILE=/mnt/c/Users/chengkai.liang
+export USERDOWNLOAD=$USERPROFILE/Downloads
+export USERAPPDATA=$USERPROFILE/AppData
+export USERLOCAL=$USERAPPDATA/Local
+export USERPROGS=$USERLOCAL/Programs
+export WINAPPS=$USERLOCAL/Microsoft/WindowsApps
+export WINGET_LINKS=$USERLOCAL/Microsoft/Winget/Links
+export WINCMDER=$USERPROFILE/Cmder
+export WINBIN=$USERPROFILE/bin
+export WINTOOL=$WINHOME/tools/neovim/nvim-win64/bin/
+export PROGRAMDATA=$WINHOME/ProgramData/chocolatey/bin
+export CHCO_HOME=$PROGRAMDATA/chocolatey
+export CHCO_BIN=$CHCO_HOME/bin
+export HOMEBREW_CURLRC=1
+
+
+# search path for windows apps
+export PATH=$HOMEBREW_BIN:$CHCO_BIN:$WINSYS:$WINSYS32:$WINAPPS:$WINGET_LINKS:$WINCMDER:$WINDOWS:$WINBIN:$WINTOOL:$USRBIN:$PROGRAMDATA:$PATH
+export BROWSER=wslview
+export LPASS_AGENT_TIMEOUT=0
+export ZSH_AUTOSUGGEST_USE_ASYNC=1
