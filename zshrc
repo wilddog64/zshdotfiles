@@ -65,7 +65,7 @@ if [[ -r ~/.zsh/zsh_comp_styles ]]; then
 fi
 
 # initialize docker
-if [[ $(which docker-machine) == 0 ]]; then
+if command -v docker-machine >/dev/null 2>&1; then
 	eval $(docker-machine env)
 fi
 
@@ -192,8 +192,7 @@ if [[ $? == 0 ]]; then
    eval $(gh completion -s zsh)
 fi
 
-which yq >/dev/null 2>&1
-if [[ $? == 0 ]]; then
+if command -v yq >/dev/null 2>&1; then
    if [[ -f $HOME/.zsh/scripts/yq.complete.zsh ]]; then
       echo source yq completion
       source $HOME/.zsh/scripts/yq.complete.zsh
