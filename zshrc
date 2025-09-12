@@ -17,7 +17,9 @@ autoload -U +X bashcompinit && bashcompinit
 
 # [ -r "$HOME/.smartcd_config" ] && ( [ -n $BASH_VERSION ] || [ -n $ZSH_VERSION ] ) && source ~/.smartcd_config
 
-complete -o nospace -C /usr/local/bin/vault vault
+if command -v vault >/dev/null 2>&1; then
+   complete -o nospace -C $(which vault) vault
+fi
 
 source ~/.zsh/bindingkeys
 # zprof
