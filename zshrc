@@ -63,7 +63,7 @@ if [[ -r ~/.zsh/zsh_comp_styles ]]; then
 fi
 
 # initialize docker
-if [[ $(which docker-machine) == 0 ]]; then
+if command -v docker-machine >/dev/null 2>&1; then
 	eval $(docker-machine env)
 fi
 
@@ -227,9 +227,15 @@ if [[ $? == 0 ]]; then
    eval $(gh completion -s zsh)
 fi
 
-export kafka_home=$(brew --prefix kafka)
-if [[ ! -z  kafka_home ]]; then
-   export PATH=$PATH:$kafka_home/bin
+if command -v yq >/dev/null 2>&1; then
+   if [[ -f $HOME/.zsh/scripts/yq.complete.zsh ]]; then
+      echo source yq completion
+      source $HOME/.zsh/scripts/yq.complete.zsh
+   else
+      echo load yq zsh auto completion
+      eval $(yq shell-completion zsh) >/dev/null 2>&1
+   fi
+
 fi
 
 which eksctl 2>&1 > /dev/null
