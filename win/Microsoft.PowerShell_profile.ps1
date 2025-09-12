@@ -29,3 +29,9 @@ Set-PSReadLineKeyHandler -chord Tab -function ForwardWord
 
 Import-Module Az.Tools.Predictor
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
+
+# Enable direnv in PowerShell
+if (Get-Command direnv -ErrorAction SilentlyContinue) {
+  $hook = (direnv hook pwsh) -join "`n"   # or: direnv hook pwsh | Out-String
+    Invoke-Expression $hook
+}
