@@ -241,5 +241,3 @@ if [[ $? == 0 ]]; then
    fi
 
 fi
-
-fix_wsl_process
