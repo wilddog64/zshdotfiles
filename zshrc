@@ -116,7 +116,9 @@ fpath=(
 autoload -U zen
 
 if [[ -z $IS_MAC ]]; then
-   eval `keychain ~/.ssh/id_rsa`
+   if command -v keychain >/dev/null 2>&1 ; then
+      eval `keychain ~/.ssh/id_rsa`
+   fi
 elif [[ -n $IS_MAC ]]; then
    eval `keychain ~/.ssh/id_ed25519`
 fi
