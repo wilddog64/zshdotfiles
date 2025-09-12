@@ -113,8 +113,11 @@ fpath=(
        ~/.zfunctions )
 autoload -U zen
 
-[[ -s `brew --prefix`/etc/autojump.sh  ]] && . `brew --prefix`/etc/autojump.sh
-eval `keychain ~/.ssh/id_ed25519`
+if [[ ! -z $IS_MAC ]]; then
+   eval `keychain ~/.ssh/id_rsa`
+elif [[ -n $IS_MAC ]]; then
+   eval `keychain ~/.ssh/id_ed25519`
+fi
 
 which hub 2>&1 > /dev/null
 if [[ $? == 0 ]]; then
@@ -130,7 +133,7 @@ if [[ -e /usr/libexec/java_home ]]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
 fi
 
-if [[ -e $(brew --prefix nvm) ]]; then
+if [[ -n $BREW_EXIST ]] && [[ -e $(brew --prefix nvm) ]]; then
   if [[ ! -e ~/.nvm ]]; then
     mkdir -p ~/.nvm
   fi

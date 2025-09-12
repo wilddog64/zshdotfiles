@@ -2,7 +2,15 @@
 unsetopt global_rcs
 
 # === for hoembrew environment
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+BREW_EXIST=$(command -v brew 2>/dev/null)
+IS_WSL=$(uname -r | grep -i microsoft)
+IS_MAC=$(uname -s | grep -i Darwin)
+
+if [[ ! -z $BREW_EXIST ]] && [[ -z IS_WSL ]]; then
+   eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+elif [[ ! -z $IS_MAC ]]; then
+   eval $(/opt/homebrew/bin/brew shellenv)
+fi
 # export HOMEBREW_PREFIX="/usr/local";
 # export HOMEBREW_CELLAR="/usr/local/Cellar";
 # export HOMEBREW_REPOSITORY="/usr/local/Homebrew";
@@ -24,16 +32,9 @@ export OMI_BIN=$OMI_HOME/bin
 
 LOCAL_BIN=$HOME/.local/bin
 export PATH=/usr/local/bin:/opt/puppetlabs/bin:$LOCAL_BIN:$OMI_BIN:$PATH
-export OPENJDK11_BIN=$(brew --prefix openjdk@11)/bin
-export PATH=":$OPENJDK11_BIN:$PATH"
 # populate homebrew enviornment variables
-eval $(brew shellenv)
 # setup homebrew environment variables
-export BREW_ROOT=$(brew --prefix)
-export HOMEBREW_BIN=$HOMEBREW_PREFIX/bin
-export HOMEBREW_SBIN=$HOMEBREW_PREFIX/sbin
 
-export FZF_BASE=$HOMEBREW_PREFIX/opt/fzf
 
 # === make command line editing like vi, ya ya ya!!!
 # export ZSH_THEME=powerlevel10k
@@ -41,7 +42,21 @@ export FZF_BASE=$HOMEBREW_PREFIX/opt/fzf
 set -o vi
 
 # === for groovy
-export GROOVY_HOME=$HOMEBREW_PREFIX/opt/groovy/libexec
+if [[ ! -z $BREW_EXIST ]]; then
+   export FZF_BASE=$HOMEBREW_PREFIX/opt/fzf
+   export GROOVY_HOME=$HOMEBREW_PREFIX/opt/groovy/libexec
+   export EDITOR=$HOMEBREW_PREFIX/bin/vim
+   export VISUAL=$HOMEBREW_PREFIX/bin/nvim
+   export LESSOPEN="|$BREW_ROOT/bin/lesspipe.sh %s"
+   export GNUBIN=$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin
+   export DOTNET_PATH=$HOMEBREW_PREFIX/share/dotnet
+   export POSTGRES_BIN=$HOMEBREW_PREFIX/opt/libpq/bin
+   export OPENSSL_BIN=$HOMEBREW_PREFIX/opt/openssl/bin
+   export GTAR_PATH=$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin
+   export HOMEBREW_PREFIX="/usr/local";
+   export HOMEBREW_CELLAR="/usr/local/Cellar";
+   export HOMEBREW_REPOSITORY="/usr/local/Homebrew";
+fi
 
 # === locale language settings
 export LANG=en_US.UTF-8
@@ -70,18 +85,9 @@ export JAVA_HOME=/usr
 # setup GROOVY_HOME environment variable
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
 
-export EDITOR=$HOMEBREW_PREFIX/bin/vim
-export VISUAL=$HOMEBREW_PREFIX/bin/nvim
 
-export LESSOPEN="|$BREW_ROOT/bin/lesspipe.sh %s"
 # for docker client
 # /usr/local/opt/coreutils/libexec/gnubin
-export GNUBIN=$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin
-
-export DOTNET_PATH=$HOMEBREW_PREFIX/share/dotnet
-export POSTGRES_BIN=$HOMEBREW_PREFIX/opt/libpq/bin
-export OPENSSL_BIN=$HOMEBREW_PREFIX/opt/openssl/bin
-export GTAR_PATH=$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin
 export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$HOMEBREW_BIN:$GNUBIN:$HOMEBREW_BIN:$HOMEBREW_SBIN:$GIT_CONTRIB:$PATH:$PUPPET_BOLT:~/bin:$POSTGRES_BIN
 
 export GOENVGOROOT=$HOME/.goenvs
@@ -105,9 +111,6 @@ if [[ ! -e ~/.zsh_history ]]; then
     mkdir -p ~/.zsh_history
 fi
 
-export HOMEBREW_PREFIX="/usr/local";
-export HOMEBREW_CELLAR="/usr/local/Cellar";
-export HOMEBREW_REPOSITORY="/usr/local/Homebrew";
 export PATH="/usr/local/bin:/usr/local/sbin${PATH+:$PATH}";
 export MANPATH="/usr/local/share/man${MANPATH+:$MANPATH}:";
 export INFOPATH="/usr/local/share/info:${INFOPATH:-}";
@@ -190,8 +193,6 @@ setopt PRINT_EIGHT_BIT
 # === options for jobs
 setopt AUTO_RESUME
 
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 
 # so we can have lazygit applied vim editing style
@@ -202,29 +203,6 @@ export POSH_THEMES_PATH=~/.local/share/oh-my-posh/themes
 export POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 
 platform=$(uname -r)
-
-# access windows directory
-export WINHOME=/mnt/c
-export WINDOWS=$WINHOME/Windows
-export WINSYS=$WINDOWS/system
-export WINSYS32=$WINDOWS/system32
-export WINPROGFILES=$WINHOME/Program\ Files
-export WINPROGFILES86=$WINHOME/Program\ Files\ \(x86\)/
-export USERPROFILE=/mnt/c/Users/chengkai.liang
-export USERDOWNLOAD=$USERPROFILE/Downloads
-export USERAPPDATA=$USERPROFILE/AppData
-export USERLOCAL=$USERAPPDATA/Local
-export USERPROGS=$USERLOCAL/Programs
-export WINAPPS=$USERLOCAL/Microsoft/WindowsApps
-export WINGET_LINKS=$USERLOCAL/Microsoft/Winget/Links
-export WINCMDER=$USERPROFILE/Cmder
-export WINBIN=$USERPROFILE/bin
-export WINTOOL=$WINHOME/tools/neovim/nvim-win64/bin/
-export PROGRAMDATA=$WINHOME/ProgramData/chocolatey/bin
-export CHCO_HOME=$PROGRAMDATA/chocolatey
-export CHCO_BIN=$CHCO_HOME/bin
-export HOMEBREW_CURLRC=1
-
 
 # search path for windows apps
 export PATH=$HOMEBREW_BIN:$CHCO_BIN:$WINSYS:$WINSYS32:$WINAPPS:$WINGET_LINKS:$WINCMDER:$WINDOWS:$WINBIN:$WINTOOL:$USRBIN:$PROGRAMDATA:$PATH
