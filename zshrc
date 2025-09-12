@@ -113,7 +113,7 @@ fpath=(
        ~/.zfunctions )
 autoload -U zen
 
-if [[ ! -z $IS_MAC ]]; then
+if [[ -z $IS_MAC ]]; then
    eval `keychain ~/.ssh/id_rsa`
 elif [[ -n $IS_MAC ]]; then
    eval `keychain ~/.ssh/id_ed25519`
