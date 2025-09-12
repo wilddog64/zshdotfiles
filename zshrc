@@ -113,8 +113,13 @@ fpath=(
        ~/.zfunctions )
 autoload -U zen
 
-[[ -s `brew --prefix`/etc/autojump.sh  ]] && . `brew --prefix`/etc/autojump.sh
-eval `keychain ~/.ssh/id_rsa`
+if [[ -z $IS_MAC ]]; then
+   if command -v keychain >/dev/null 2>&1 ; then
+      eval `keychain ~/.ssh/id_rsa`
+   fi
+elif [[ -n $IS_MAC ]]; then
+   eval `keychain ~/.ssh/id_ed25519`
+fi
 
 which hub 2>&1 > /dev/null
 if [[ $? == 0 ]]; then
