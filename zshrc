@@ -114,7 +114,7 @@ fpath=(
 autoload -U zen
 
 [[ -s `brew --prefix`/etc/autojump.sh  ]] && . `brew --prefix`/etc/autojump.sh
-eval `keychain ~/.ssh/id_rsa`
+eval `keychain ~/.ssh/id_ed25519`
 
 which hub 2>&1 > /dev/null
 if [[ $? == 0 ]]; then
