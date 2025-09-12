@@ -55,9 +55,10 @@ if [[ -r ~/.zsh/bindingkeys ]]; then
     source ~/.zsh/bindingkeys
 fi
 
-command -v fzf 2>&1 > /dev/null
-echo loading fzf key-bindings for zsh
-source ~/.zsh/fzf-shell/key-bindings.zsh
+if command -v fzf 2>&1 > /dev/null; then
+   echo loading fzf key-bindings for zsh
+   source ~/.zsh/fzf-shell/key-bindings.zsh
+fi
 
 # === zsh completion styles
 if [[ -r ~/.zsh/zsh_comp_styles ]]; then
