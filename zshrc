@@ -197,16 +197,6 @@ if [[ ! -e ~/.zplug/init.zsh ]]; then
   curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 fi
 
-if [[ -n "$TILIX_ID" ]] || [[ -n "$VTE_VERSION" ]]; then
-  source /etc/profile.d/vte.sh
-fi
-
-# rbenv=$(brew --prefix rbenv)
-# if [[ -e $rbenv ]]; then
-#   echo initializing rbenv
-#   eval "$(rbenv init - zsh)"
-# fi
-
 sleep 3 # sleep one second for zplug to be ready
 echo load zplug
 source ~/.zplug/init.zsh
@@ -240,10 +230,16 @@ if [[ $? == 0 ]]; then
    source /tmp/chef_completion.zsh
 fi
 
-which yq
+which yq >/dev/null 2>&1
 if [[ $? == 0 ]]; then
-   echo load yq zsh auto completion
-   eval $(yq shell-completion zsh)
+   if [[ -f $HOME/.zsh/scripts/yq.complete.zsh ]]; then
+      echo source yq completion
+      source $HOME/.zsh/scripts/yq.complete.zsh
+   else
+      echo load yq zsh auto completion
+      eval $(yq shell-completion zsh) >/dev/null 2>&1
+   fi
+
 fi
 
 fix_wsl_process
