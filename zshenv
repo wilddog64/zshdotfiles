@@ -1,12 +1,13 @@
 # make cursor shown at the end of command line when recall history
 unsetopt global_rcs
-
 # === for hoembrew environment
 BREW_EXIST=$(command -v brew 2>/dev/null)
 IS_WSL=$(uname -r | grep -i microsoft)
 IS_MAC=$(uname -s | grep -i Darwin)
+IS_DEB=$(uname -r | grep -i ubuntu)
+IS_REDHAT=$(uname -r | grep -i el7)
 
-if [[ ! -z $BREW_EXIST ]] && [[ -z IS_WSL ]]; then
+if [[ ! -z $IS_DEB ]] || [[ -z IS_WSL ]] || [[ IS_REDHAT ]]; then
    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 elif [[ ! -z $IS_MAC ]]; then
    eval $(/opt/homebrew/bin/brew shellenv)
