@@ -266,3 +266,5 @@ if [[ $? == 0 ]]; then
 fi
 
 fix_wsl_process
+
+source <(kubectl completion zsh)

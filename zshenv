@@ -144,7 +144,7 @@ setopt PUSHD_IGNORE_DUPS    # don't push duplicate old directory
                             # insert the first match immdiately.
 setopt -8                   # Append a trailing '/' to all directory names.
 setopt NOTIFY               # make shell notify background job immediately after they luanched
-unsetopt correct_all        # stop auto correct feature
+setopt correct_all
 
 # === command line history options
 export HISTFILE=~/.zsh/history  # history file
