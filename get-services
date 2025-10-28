@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+helmchart_path=$HOME/src/gitrepo/costco/ado/costcotravel-helm-charts/$1
+
+if [[ ! -r "$helmchart_path" ]]; then
+   echo "$helmchart_path does not exist"
+   exit 1
+fi
+
+# grep -C 2 ingressGateway | grep host: | perl -nle 'print "https://$1" if /host: (\S+)/'
+pushd "$helmchart_path" > /dev/null 2>&1 || exit 1
+
+for dir in $(ls -ad *); do
+   # echo $dir
+   h=$(grep -r -C 1 ingressGateway "$dir" |  perl -nle 'print "https://$1" if /host: (\S+)/')
+   p=$(grep -r -C 1 httpGet "$dir" | perl -nle 'print $1 if /path: (\S+)/')
+   echo "$h$p" | grep -v '^$' | grep 'liveness$'
+done
