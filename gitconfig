@@ -47,7 +47,7 @@
   trustExitCode = true
 [core]
   excludesFile = ~/.gitignore
-  autocrlf     = false
+   autocrlf = false
   safecrlf     = false
   eol          = crlf
   filemode     = false
@@ -59,8 +59,7 @@
   protocol = https
 [credential]
   credentialStore = cache
-	helper = 
-	helper = /usr/local/bin/git-credential-manager
+  helper = /usr/local/bin/git-credential-manager
 
 [bulkworkspaces]
   tmux-plugins = /Users/chengkli/.tmux/plugins
@@ -94,12 +93,12 @@
    defaultBranch = main
 
 [bulkworkspaces]
-	cisco-terraform = /Users/cliang/src/gitrepo/cisco/terraform
-	cisco-terraform-workspaces = /Users/cliang/src/gitrepo/cisco/terraform/workspaces
-	cisco-terraform-module = /Users/cliang/src/gitrepo/cisco/terraform/modules
-	aws-terraform = /Users/cliang/src/gitrepo/personal/aws/terraform
+   cisco-terraform = /Users/cliang/src/gitrepo/cisco/terraform
+   cisco-terraform-workspaces = /Users/cliang/src/gitrepo/cisco/terraform/workspaces
+   cisco-terraform-module = /Users/cliang/src/gitrepo/cisco/terraform/modules
+   aws-terraform = /Users/cliang/src/gitrepo/personal/aws/terraform
 [safe]
-	directory = /opt/puppetlabs/pdk/share/cache/pdk-templates.git
+   directory = /opt/puppetlabs/pdk/share/cache/pdk-templates.git
 
 [include]
    path = ~/.gitalias
