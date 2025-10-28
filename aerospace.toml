@@ -49,7 +49,7 @@ outer.right = [
 ]
 
 outer.top = [
-  { monitor."CR320QB" = 120 },
+  { monitor."CR320QB" = 200 },
   { monitor."Color LCD" = 12 },
   12
 ]
