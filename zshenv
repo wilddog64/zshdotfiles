@@ -190,7 +190,7 @@ setopt PRINT_EIGHT_BIT
 # === options for jobs
 setopt AUTO_RESUME
 
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl)"
 
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 
