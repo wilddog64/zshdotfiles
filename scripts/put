@@ -3,6 +3,8 @@ emulate -L zsh
 
 if [[ "${OSTYPE}" == darwin* ]] && (( ${+commands[pbcopy]} )) && (( ${+commands[pbpaste]} )); then
    pbpaste;
+elif (( ${+commands[socat]} )); then
+   socat - TCP:127.0.0.1:7365,forever=0
 elif [ -n "${DISPLAY:-}" ] && (( ${+commands[xsel]} )); then
    xsel --clipboard --output;
 elif [[ "${OSTYPE}" == (cygwin|msys)* ]]; then
