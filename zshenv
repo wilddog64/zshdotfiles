@@ -27,7 +27,6 @@ export PATH=/usr/local/bin:/opt/puppetlabs/bin:$LOCAL_BIN:$OMI_BIN:$PATH
 export OPENJDK11_BIN=$(brew --prefix openjdk@11)/bin
 export PATH=":$OPENJDK11_BIN:$PATH"
 # populate homebrew enviornment variables
-eval $(brew shellenv)
 # setup homebrew environment variables
 export BREW_ROOT=$(brew --prefix)
 export HOMEBREW_BIN=$HOMEBREW_PREFIX/bin
