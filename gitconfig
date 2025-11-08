@@ -1,6 +1,6 @@
 [user]
   name = chengkai liang
-  email = chengkai.liang@costcotravel.com
+  email = ckm.liang@gmail.com
 
 [alias]
     aliases          = config --get-regexp ^alias\\.*$
