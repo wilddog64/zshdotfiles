@@ -40,15 +40,18 @@ if [[ $? == 0 ]] ; then
    export MONO_GAC_PREFIX=$BREW_ROOT
    export GNUBIN=$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin
 
-   export GROOVY_HOME=$HOMEBREW_PREFIX/opt/groovy/libexec
-   export GROOVY_HOME=/usr/local/opt/groovy/libexec
+   if [[ -d $HOMEBREW_PREFIX/opt/groovy/libexec ]]; then
+      export GROOVY_HOME=$HOMEBREW_PREFIX/opt/groovy/libexec
+   elif [[ -d /usr/local/opt/groovy/libexec ]]; then
+      export GROOVY_HOME=/usr/local/opt/groovy/libexec
+   fi
    export EDITOR=$HOMEBREW_PREFIX/bin/nvim
    export VISUAL=$HOMEBREW_PREFIX/bin/nvim
    export DOTNET_PATH=$HOMEBREW_PREFIX/share/dotnet
    export POSTGRES_BIN=$HOMEBREW_PREFIX/opt/libpq/bin
    export OPENSSL_BIN=$HOMEBREW_PREFIX/opt/openssl/bin
    export GTAR_PATH=$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin
-   export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$HOMEBREW_BIN:$GNUBIN:$HOMEBREW_BIN:$HOMEBREW_SBIN:$GIT_CONTRIB:$PATH:$PUPPET_BOLT:~/bin:$POSTGRES_BIN
+   export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$HOMEBREW_BIN:$GNUBIN:$HOMEBREW_SBIN:$GIT_CONTRIB:$POSTGRES_BIN:$PATH
    export LESSOPEN="|$BREW_ROOT/bin/lesspipe.sh %s"
    export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl)"
 fi
@@ -92,7 +95,7 @@ export JAVA_HOME=/usr
 export GOENVGOROOT=$HOME/.goenvs
 export GOENVTARGET=$HOME/go/bin
 export GOENVHOME=$HOME/workspace
-export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$GNUBIN:$GIT_CONTRIB:$PATH:$GOENVTARGET:~/bin
+export PATH=$PATH:$GOENVTARGET
 # zsh auto-suggestion higlight style
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=gray,bold,underline"
 
