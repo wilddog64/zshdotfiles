@@ -8,6 +8,7 @@ export INFOPATH="/usr/local/share/info:${INFOPATH:-}";
 
 # === user specific environment variables: path, perl library, and ruby
 export USER_BIN=$HOME/bin
+export USER_LOCAL_BIN=$HOME/.local/bin
 export LESS_ADVANCED_PREPROCESSOR=1
 export LESSCLOSE="lessclose.sh %s %s"
 export GREP_COLOR=auto
@@ -16,7 +17,7 @@ export AUTOJUMP_KEEP_SYMLINKS=1
 export TOUCHBAR_GIT_ENABLED=true
 # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
-export PATH=/usr/local/bin:$USER_BIN:$PATH
+export PATH=/usr/local/bin:$USER_BIN:$USER_LOCAL_BIN:$PATH
 
 PUPPET_HOME=/opt/puppetlabs/puppet
 PUPPET_BIN=$PUPPET_HOME/bin
