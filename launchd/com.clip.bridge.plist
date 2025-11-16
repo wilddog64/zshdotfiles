@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>Label</key><string>com.clip.bridge</string>
+  <key>RunAtLoad</key><true/>
+  <key>KeepAlive</key><true/>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/zsh</string>
+    <string>-lc</string>
+    <string>
+pkill -f 'socat .*7365' || true; pkill -f 'socat .*7366' || true;
+socat TCP-LISTEN:7365,bind=127.0.0.1,reuseaddr,fork SYSTEM:'/usr/bin/pbpaste' &amp;
+socat TCP-LISTEN:7366,bind=127.0.0.1,reuseaddr,fork SYSTEM:'/usr/bin/pbcopy'  &amp;
+pkill -f 'autossh.*ubuntu-on-m2' || true;
+AUTOSSH_GATETIME=0 AUTOSSH_LOGFILE=$HOME/.autossh-ubuntu.log autossh -M 0 -N -f ubuntu -o ExitOnForwardFailure=yes -R 127.0.0.1:7365:127.0.0.1:7365 -R 127.0.0.1:7366:127.0.0.1:7366
+    </string>
+  </array>
+</dict></plist>
