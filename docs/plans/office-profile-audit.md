@@ -7,7 +7,7 @@ Snapshot of Costco/WSL-specific content that should move behind the future opt-i
 - `zshenv:4-232`  
   - Hard-codes Linuxbrew paths (`/home/linuxbrew/.linuxbrew`) and duplicates `/usr/local` Homebrew exports.  
   - Adds office tooling PATH entries (`/opt/puppetlabs`, `/opt/omi`, OpenJDK tap) and exports for Puppet, OMI, dotnet, postgres, OpenSSL, GNU tar, etc.  
-  - Sets company-specific variables like `VAULT_ADDR`, `FORGIT_INSTALL_DIR`, PHPBREW/PHP flags, HOMEBREW tokens, and Ruby build options.  
+  - Sets company-specific variables like `FORGIT_INSTALL_DIR`, PHPBREW/PHP flags, HOMEBREW tokens, and Ruby build options.  
   - Enables aggressive `setopt` history/completion knobs that may not be desired globally.  
   - Defines WSL/Windows bridge variables (`WINHOME`, `WINAPPS`, chocolatey, Cmder) and rewrites `PATH` to include Windows tools, `wslview`, `LPASS`, etc.
 
