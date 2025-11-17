@@ -25,6 +25,7 @@ zplug "cxreg/smartcd", from:github, hook-build:"make install; ln -sf ~/.zsh/smar
 # commands
 zplug "greymd/tmux-xpanes", as:command, use:"bin/xpanes"
 zplug "mogensen/keychain", as:command, hook-build:"ln -sf $ZPLUG_REPOS/mogensen/keychain/keychain.sh $ZPLUG_BIN/keychain.sh"
+zplug "github/hub", as:command, use:"bin/hub", hook-build:"script/build"
 
 # OMZ libs (tiny)
 zplug "lib/clipboard", from:oh-my-zsh, defer:2
@@ -49,4 +50,3 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:3
 
 # pyenv (don’t initialize eagerly; create a lazy stub)
 zplug "pyenv/pyenv", from:github, hook-build:"ln -sf $ZPLUG_REPOS/pyenv/pyenv ~/.pyenv", defer:3
-

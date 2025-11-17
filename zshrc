@@ -58,6 +58,7 @@ fi
 if command -v fzf 2>&1 > /dev/null; then
    echo loading fzf key-bindings for zsh
    source ~/.zsh/fzf-shell/key-bindings.zsh
+   export ZSH_FZF_LOADED=1
 fi
 
 # === zsh completion styles
@@ -116,104 +117,22 @@ fpath=(
        ~/.zfunctions )
 autoload -U zen
 
-if [[ -z $IS_MAC ]]; then
-   if command -v keychain >/dev/null 2>&1 ; then
-      eval `keychain ~/.ssh/id_rsa`
-   fi
-elif [[ -n $IS_MAC ]]; then
-   eval `keychain ~/.ssh/id_ed25519`
-fi
-
-which hub 2>&1 > /dev/null
-if [[ $? == 0 ]]; then
-  echo 'initialize hub'
-  eval "$(hub alias -s)"
-fi
-
-if [[ -e ~/perl5/perlbrew/etc/bashrc ]]; then
-  source ~/perl5/perlbrew/etc/bashrc
-fi
-
-if [[ -e /usr/libexec/java_home ]]; then
-  export JAVA_HOME=$(/usr/libexec/java_home)
-fi
-
-if [[ -e $(brew --prefix nvm) ]]; then
-  if [[ ! -e ~/.nvm ]]; then
-    mkdir -p ~/.nvm
-  fi
-  export NVM_DIR=~/.nvm
-  source $(brew --prefix nvm)/nvm.sh
-fi
-
-unalias run-help
-autoload run-help
-HELPDIR=/usr/local/share/zsh/help
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-autoload -U promptinit; promptinit
-# prompt spaceship
-
-export SPACESHIP_TIME_SHOW=true
-
-if [[ -e /opt/puppetlabs/pdk ]]; then
-    export PATH=$PATH:/opt/puppetlabs/pdk/bin
-fi
-
-which goenv 2>&1 > /dev/null
-if [[ $? == 0 ]]; then
-    echo initialize go env
-    eval "$(goenv init -)"
-fi
-
-# make gcloud autocompletion work
-if [[ -e $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ]]; then
-     source $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
-fi
-
-# which starship 2>&1 > /dev/null
-# if [[ $? == 0 ]]; then
-#     eval "$(starship init zsh)"
-# fi
-
-if [[ -e $HOMEBREW_PREFIX/bin/direnv ]]; then
-    eval "$(direnv hook zsh)"
-fi
-
-if [[ -e $HOMEBREW_PREFIX/share/antigen/antigen.zsh ]]; then
-  echo loading antigen
-    source $HOMEBREW_PREFIX/share/antigen/antigen.zsh
-fi
-
-if [[ -e $HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh ]]; then
-  echo load fzf key-bindings script
-    source $HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh
-fi
-
-if [[ -e $HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh ]]; then
-  echo loading fzf auto complete script
-    source $HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh
-fi
-
-if [[ -r $HOME/.smartcd_config ]]; then
-    echo loading smartcd config
-    source ~/.smartcd_config
-fi
-
 if [[ ! -e ~/.zplug/init.zsh ]]; then
   curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 fi
 
-if [[ -n "$TILIX_ID" ]] || [[ -n "$VTE_VERSION" ]]; then
-  source /etc/profile.d/vte.sh
+ZSH_OFFICE_RC="${ZSH_OFFICE_RC:-${ZDOTDIR:-$HOME/.zsh}/office/zshrc}"
+if [[ -z ${ZSH_PROFILE:-} && -f "$ZSH_OFFICE_RC" ]]; then
+  export ZSH_PROFILE=office
+fi
+if [[ ${ZSH_PROFILE:-} == office && -f "$ZSH_OFFICE_RC" ]]; then
+  source "$ZSH_OFFICE_RC"
 fi
 
-# rbenv=$(brew --prefix rbenv)
-# if [[ -e $rbenv ]]; then
-#   echo initializing rbenv
-#   eval "$(rbenv init - zsh)"
-# fi
+if command -v hub >/dev/null 2>&1; then
+  echo 'initialize hub'
+  eval "$(hub alias -s)"
+fi
 
 sleep 3 # sleep one second for zplug to be ready
 echo load zplug
@@ -228,43 +147,3 @@ if [[ -r ~/.zsh/aliases ]]; then
     echo load aliases
     source ~/.zsh/aliases
 fi
-
-which gh 2>&1 > /dev/null
-if [[ $? == 0 ]]; then
-   echo load gh completion
-   eval $(gh completion -s zsh)
-fi
-
-if command -v yq >/dev/null 2>&1; then
-   if [[ -f $HOME/.zsh/scripts/yq.complete.zsh ]]; then
-      echo source yq completion
-      source $HOME/.zsh/scripts/yq.complete.zsh
-   else
-      echo load yq zsh auto completion
-      eval $(yq shell-completion zsh) >/dev/null 2>&1
-   fi
-
-fi
-
-which eksctl 2>&1 > /dev/null
-if [[ $? == 0 ]]; then
-   echo loading eksctl completion
-   eval $(eksctl completion zsh)
-fi
-
-which chef 2>&1 > /dev/null
-if [[ $? == 0 ]]; then
-   echo loading chef environment settings for zsh
-   chef shell-init zsh > /tmp/chef_completion.zsh
-   source /tmp/chef_completion.zsh
-fi
-
-which yq
-if [[ $? == 0 ]]; then
-   echo load yq zsh auto completion
-   eval $(yq shell-completion zsh)
-fi
-
-fix_wsl_process
-
-source <(kubectl completion zsh)
