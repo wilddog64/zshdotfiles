@@ -22,12 +22,10 @@ zplug "b4b4r07/zsh-vimode-visual", defer:3
 # smartcd (build once, then lazy load)
 zplug "cxreg/smartcd", from:github, hook-build:"make install; ln -sf ~/.zsh/smartcd_config ~/.smartcd_config", defer:2
 
-# commands
+# commands / helpers
 zplug "greymd/tmux-xpanes", as:command, use:"bin/xpanes"
 zplug "mogensen/keychain", as:command, hook-build:"ln -sf $ZPLUG_REPOS/mogensen/keychain/keychain.sh $ZPLUG_BIN/keychain.sh"
 zplug "github/hub", as:command, use:"bin/hub", hook-build:"script/build"
-
-# Lightweight replacements
 zplug "rupa/z", use:z.sh, defer:2
 zplug "jimhester/per-directory-history", defer:2
 
