@@ -162,13 +162,19 @@ if command -v hub >/dev/null 2>&1; then
   eval "$(hub alias -s)"
 fi
 
-echo load zplug
-source ~/.zplug/init.zsh
-source ~/.zsh/zplugs.zsh
-if ! zplug check --verbose; then
-   zplug install
+if [[ -t 1 ]]; then
+   echo load zplug
+   source ~/.zplug/init.zsh
+   source ~/.zsh/zplugs.zsh
+   ZPLUG_HOME="${ZPLUG_HOME:-$HOME/.zplug}"
+   mkdir -p "$ZPLUG_HOME/log" "$ZPLUG_HOME/cache" 2>/dev/null || true
+   if [[ -w "$ZPLUG_HOME/log" && -w "$ZPLUG_HOME/cache" ]]; then
+      if ! zplug check --verbose; then
+         zplug install
+      fi
+   fi
+   zplug load --verbose
 fi
-zplug load --verbose
 set +o vi
 
 # === for normal aliases, so we our aliases setup won't overwrite by zplug
