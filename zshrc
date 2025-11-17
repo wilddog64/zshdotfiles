@@ -145,11 +145,12 @@ if command -v hub >/dev/null 2>&1; then
   eval "$(hub alias -s)"
 fi
 
-sleep 3 # sleep one second for zplug to be ready
 echo load zplug
 source ~/.zplug/init.zsh
 source ~/.zsh/zplugs.zsh
-! zplug check --verbose  && zplug install
+if ! zplug check --verbose; then
+   zplug install
+fi
 zplug load --verbose
 set +o vi
 
