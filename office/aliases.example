@@ -1,0 +1,11 @@
+# Office-only aliases. Copy to ~/.zsh/office/aliases (and keep it ignored)
+# so these overrides are loaded only when ZSH_PROFILE=office.
+
+alias shef-client='shef -c ~/.chef/knife.rb'
+alias fed='duoauth -e "https://duo.gov.wbx2.com/dag/saml2/idp/SSOService.php?spentityid=DISBBN5ZD2RGHEHSQJZY" -u chengkli.fed -k --profile fedramp'
+alias staging='awssamlapi --profile staging'
+alias sandbox='awssamlapi --profile sandbox'
+alias vi=/home/linuxbrew/.linuxbrew/bin/nvim
+alias docker=podman
+alias omi=omicli
+alias eyaml=/opt/puppetlabs/bin/eyaml

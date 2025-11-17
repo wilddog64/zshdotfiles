@@ -14,6 +14,8 @@ Goal: keep the main shell configuration portable while allowing an opt-in Costco
   - Office-only aliases, functions, PATH exports, and Windows bridge scripts.
   - Documentation for required secrets and how to obtain them.
 - Decide how to package helper scripts (e.g., keep them in `office/bin` or similar) and how main configs reference them.
+  - Windows bridge wrappers now live under `office/win/`; keep a symlink to `~/bin` when the office profile is enabled.
+  - Cross-platform helpers should move into `scripts/` so they can be symlinked into `~/.local/bin` without pulling in office dependencies.
 
 ## 3. Refactor & Document
 - Move office-specific blocks from the core configs into the new office snippets; replace them with guarded `if [[ -f ~/.zsh/office.zshrc ]]` style includes.

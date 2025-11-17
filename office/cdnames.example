@@ -1,0 +1,37 @@
+# Office-only directory shortcuts. Copy to ~/.zsh/office/cdnames
+# and keep the real file ignored from git.
+
+src=~/src
+gitrepo=~src/gitrepo
+golang=~gitrepo/golang
+costco=~gitrepo/costco
+wbx=~costco/wbx-ref-arch
+java=~gitrepo/java
+py=~costco/python
+puppet_repo=~costco/puppet-repo
+puppet=~costco/puppet
+vagrant=~costco/vagrant
+packer=~costco/packer
+gradle=~gitrepo/gradle
+personal=~gitrepo/personal
+aws=~personal/aws
+terra=~personal/terraform
+ansible=~costco/ansible
+ado=~costco/ado
+k8s=~ado/k8s-iac
+argoapps=~ado/k8s-iac/argocd/apps/
+tfs=~ado/tfs
+
+winhome=/mnt/c
+windows=~winhome/Windows
+winsys=~windows/System
+winsys32=~windows/System32
+winprgdata=~winhome/ProgramData
+winprgfiles=~winhome/Program\ Files/
+winprgfiles86=~winhome/Program\ Files\ \(x86\)/
+winusr=$USERPROFILE
+winusrdownload=$USERPROFILE/Downloads
+winusrloc=$USERLOCAL
+winusrappdata=$USERAPPDATA
+winusrprogs=$USERPROGS
+winlocsettings=~winusr/Local\ Settings

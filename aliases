@@ -19,7 +19,6 @@ alias help=run-help
 alias recp='cp -R'
 alias rm='rm -i'
 alias zmv='noglob zmv -W'
-alias shef-client='shef -c ~/.chef/knife.rb'
 alias nd='ls -ld *(/om[1])'
 alias lsd='ls -ld'
 alias lsd='ls -ald'
@@ -32,19 +31,17 @@ alias md='mkdir -p'
 alias r='exec -l $SHELL'
 alias zs="z | sort -V"
 # alias smartcd='EDITOR=vim smartcd "$@"'
-alias fed='duoauth -e "https://duo.gov.wbx2.com/dag/saml2/idp/SSOService.php?spentityid=DISBBN5ZD2RGHEHSQJZY" -u chengkli.fed -k --profile fedramp'
-alias staging='awssamlapi --profile staging'
-alias sandbox='awssamlapi --profile sandbox'
 alias tree='tree --du -h'
 alias get="base64 | xargs -0 printf '\e]52;c;%s\007'"
-alias vi=/home/linuxbrew/.linuxbrew/bin/nvim
 alias ipy=ipython
-alias docker=podman
-alias omi=omicli
 alias lzg=lazygit
 alias gpusho='git push origin $(git symbolic-ref --short HEAD)'
 alias gdiffw='git diff --word-diff=color --word-diff-regex=.'
 alias glookz='git remote && git log --pretty=oneline --abbrev-commit | awk '"'"'{print $1}'"'"' | xargs -I {} git show {} | fzf'
 alias g=git
-alias eyaml=/opt/puppetlabs/bin/eyaml
 alias uuid='uuidcdef -u'
+
+ZSH_OFFICE_ALIASES="${ZSH_OFFICE_ALIASES:-${ZDOTDIR:-$HOME/.zsh}/office/aliases}"
+if [[ ${ZSH_PROFILE:-} == office && -r "$ZSH_OFFICE_ALIASES" ]]; then
+    source "$ZSH_OFFICE_ALIASES"
+fi

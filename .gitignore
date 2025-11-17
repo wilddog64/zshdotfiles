@@ -6,3 +6,5 @@ tags
 .zshrc
 office/zshenv
 office/zshrc
+office/aliases
+office/cdnames
