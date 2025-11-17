@@ -92,10 +92,15 @@ This configuration uses zplug for plugin management. Plugins are defined in `zpl
 3. Modify key bindings in `bindingkeys`
 4. Add directory shortcuts to `cdnames`
 5. Manage helper binaries via `scripts/README.md`
+6. Opt into the Costco office profile using [`docs/office-profile.md`](docs/office-profile.md)
 
 ## Helper Scripts
 
 Portable utilities live under `scripts/`. Run `~/.zsh/scripts/sync-local-bin` to populate `~/.local/bin` (or set `LOCAL_BIN_DIR`) with symlinks to every executable in that directory. See [`scripts/README.md`](scripts/README.md) for details.
+
+## Office Profile
+
+Costco/WSL-specific configuration lives behind an opt-in profile. Copy the `.example` files under `office/` to `~/.zsh/office/` and (optionally) export `ZSH_PROFILE=office` to enable it. The full checklist lives in [`docs/office-profile.md`](docs/office-profile.md).
 
 ## Performance
 
