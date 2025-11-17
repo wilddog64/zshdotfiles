@@ -100,6 +100,9 @@ export POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 
 # Office profile (disabled unless ZSH_PROFILE=office)
 ZSH_OFFICE_ENV="${ZSH_OFFICE_ENV:-${ZDOTDIR:-$HOME/.zsh}/office/zshenv}"
+if [[ -z ${ZSH_PROFILE:-} && -f "$ZSH_OFFICE_ENV" ]]; then
+  export ZSH_PROFILE=office
+fi
 if [[ ${ZSH_PROFILE:-} == office && -f "$ZSH_OFFICE_ENV" ]]; then
   source "$ZSH_OFFICE_ENV"
 fi

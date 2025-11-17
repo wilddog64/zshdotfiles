@@ -55,10 +55,21 @@ if [[ -r ~/.zsh/bindingkeys ]]; then
     source ~/.zsh/bindingkeys
 fi
 
-if command -v fzf 2>&1 > /dev/null; then
-   echo loading fzf key-bindings for zsh
-   source ~/.zsh/fzf-shell/key-bindings.zsh
-   export ZSH_FZF_LOADED=1
+if [[ -z ${ZSH_FZF_LOADED:-} ]]; then
+   for _fzf_src in \
+      "${HOMEBREW_PREFIX:-}/opt/fzf/shell/key-bindings.zsh" \
+      "/usr/local/opt/fzf/shell/key-bindings.zsh" \
+      "${HOME}/.fzf/shell/key-bindings.zsh" \
+      "${HOME}/.zsh/fzf-shell/key-bindings.zsh"
+   do
+      if [[ -r $_fzf_src ]]; then
+         echo "loading fzf key-bindings from $_fzf_src"
+         source "$_fzf_src"
+         export ZSH_FZF_LOADED=1
+         break
+      fi
+   done
+   unset _fzf_src
 fi
 
 # === zsh completion styles
@@ -146,4 +157,19 @@ set +o vi
 if [[ -r ~/.zsh/aliases ]]; then
     echo load aliases
     source ~/.zsh/aliases
+fi
+
+if command -v gh >/dev/null 2>&1; then
+   echo load gh completion
+   eval "$(gh completion -s zsh)"
+fi
+
+if command -v yq >/dev/null 2>&1; then
+   if [[ -f $HOME/.zsh/scripts/yq.complete.zsh ]]; then
+      echo source yq completion
+      source $HOME/.zsh/scripts/yq.complete.zsh
+   else
+      echo load yq zsh auto completion
+      eval "$(yq shell-completion zsh)" >/dev/null 2>&1
+   fi
 fi
