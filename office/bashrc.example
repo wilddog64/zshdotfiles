@@ -1,0 +1,26 @@
+# Office-only bash customizations.
+# Copy to ~/.zsh/office/bashrc (kept out of git) to re-enable Costco/WSL tweaks.
+
+# WSL-specific aliases and wrappers
+alias vi="/usr/local/bin/nvim.appimage"
+alias xsel='/root/src/gitrepo/personal/win-bash-xclip-xsel/xsel'
+alias yank="xsel -i < $@"
+alias put="xsel -o"
+alias minikube='/mnt/c/minikube/minikube.exe'
+alias kubectl='/mnt/c/minikube/minikube.exe kubectl'
+
+# Office credential helpers
+if command -v keychain >/dev/null 2>&1; then
+    eval "$(keychain --eval --agents ssh --inherit any id_rsa)"
+fi
+
+# Bash-it prompt/tools
+export BASH_IT="$HOME/.bash-it"
+export BASH_IT_THEME='bobby'
+export GIT_HOSTING='git@git.domain.com'
+unset MAILCHECK
+export IRC_CLIENT='irssi'
+export TODO="t"
+export SCM_CHECK=true
+
+source "$BASH_IT"/bash_it.sh

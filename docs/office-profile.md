@@ -10,6 +10,7 @@ cp ~/.zsh/office/zshenv.example ~/.zsh/office/zshenv
 cp ~/.zsh/office/zshrc.example ~/.zsh/office/zshrc
 cp ~/.zsh/office/aliases.example ~/.zsh/office/aliases
 cp ~/.zsh/office/cdnames.example ~/.zsh/office/cdnames
+cp ~/.zsh/office/bashrc.example ~/.zsh/office/bashrc
 ```
 
 These copies stay untracked because `.gitignore` excludes the real files. Update them with internal hosts/secrets as needed.
