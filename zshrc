@@ -173,3 +173,14 @@ if command -v yq >/dev/null 2>&1; then
       eval "$(yq shell-completion zsh)" >/dev/null 2>&1
    fi
 fi
+
+if [[ -x $HOME/.zsh/scripts/sync-local-bin ]]; then
+   autoload -Uz add-zsh-hook
+   _zsh_sync_local_bin_once() {
+      if [[ -z ${ZSH_SYNC_LOCAL_BIN_DONE:-} ]]; then
+         ZSH_SYNC_LOCAL_BIN_DONE=1
+         "$HOME/.zsh/scripts/sync-local-bin" >/dev/null 2>&1 &
+      fi
+   }
+   add-zsh-hook precmd _zsh_sync_local_bin_once
+fi
