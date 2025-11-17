@@ -1,12 +1,29 @@
 # for XWin ...
 
+ZDOTCACHE_DIR="${ZDOTCACHE_DIR:-${ZDOTDIR:-$HOME/.zsh}/.cache}"
+mkdir -p "$ZDOTCACHE_DIR"
+ZSH_COMPDUMP="${ZSH_COMPDUMP:-$ZDOTCACHE_DIR/.zcompdump}"
+
+ZPLUG_STATE_DIR="${ZPLUG_STATE_DIR:-$ZDOTCACHE_DIR/zplug}"
+mkdir -p "$ZPLUG_STATE_DIR/cache" "$ZPLUG_STATE_DIR/log"
+export ZPLUG_CACHE_DIR="${ZPLUG_CACHE_DIR:-$ZPLUG_STATE_DIR/cache}"
+export ZPLUG_LOG_PATH="${ZPLUG_LOG_PATH:-$ZPLUG_STATE_DIR/log/trace.log}"
+: >| "$ZPLUG_LOG_PATH" 2>/dev/null || true
+
 {
   # Compile zcompdump, if modified, to increase startup speed.
-  zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
+  zcompdump="$ZSH_COMPDUMP"
   if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
     zcompile "$zcompdump"
   fi
 } &!
+
+autoload -Uz compinit
+if [[ ! -s "$ZSH_COMPDUMP" ]]; then
+  compinit -d "$ZSH_COMPDUMP"
+else
+  compinit -C -d "$ZSH_COMPDUMP"
+fi
 
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
 
