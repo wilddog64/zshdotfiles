@@ -15,6 +15,8 @@ A comprehensive ZSH shell configuration setup with various plugins, completions,
 ├── hal_completion   # HAL command completions
 ├── kgc.sh          # Kubernetes container utilities
 ├── my_func.zsh     # Personal shell functions
+├── office/         # Office-only overlays (see docs/plans)
+├── scripts/        # Cross-platform helper scripts
 └── zplugs.zsh      # Plugin configurations
 ```
 
@@ -89,6 +91,11 @@ This configuration uses zplug for plugin management. Plugins are defined in `zpl
 2. Add custom functions to `my_func.zsh`
 3. Modify key bindings in `bindingkeys`
 4. Add directory shortcuts to `cdnames`
+5. Manage helper binaries via `scripts/README.md`
+
+## Helper Scripts
+
+Portable utilities live under `scripts/`. Run `~/.zsh/scripts/sync-local-bin` to populate `~/.local/bin` (or set `LOCAL_BIN_DIR`) with symlinks to every executable in that directory. See [`scripts/README.md`](scripts/README.md) for details.
 
 ## Performance
 
