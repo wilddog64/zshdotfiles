@@ -1,0 +1,93 @@
+# Office / WSL profile overrides.
+# Copy to ~/.zsh/office/zshenv (or point ZSH_OFFICE_ENV to your copy)
+# and set ZSH_PROFILE=office to enable these settings.
+
+# Linuxbrew / Homebrew
+if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
+
+if command -v brew >/dev/null 2>&1; then
+  export BREW_ROOT=$(brew --prefix)
+else
+  export BREW_ROOT=${BREW_ROOT:-/usr/local}
+fi
+
+export HOMEBREW_PREFIX=${HOMEBREW_PREFIX:-/usr/local}
+export HOMEBREW_CELLAR=${HOMEBREW_CELLAR:-/usr/local/Cellar}
+export HOMEBREW_REPOSITORY=${HOMEBREW_REPOSITORY:-/usr/local/Homebrew}
+export HOMEBREW_BIN=$HOMEBREW_PREFIX/bin
+export HOMEBREW_SBIN=$HOMEBREW_PREFIX/sbin
+export MANPATH="/usr/local/share/man${MANPATH+:$MANPATH}:"
+export INFOPATH="/usr/local/share/info:${INFOPATH:-}"
+export FZF_BASE=$HOMEBREW_PREFIX/opt/fzf
+
+# Toolchain paths
+export OMI_HOME=/opt/omi
+export OMI_BIN=$OMI_HOME/bin
+LOCAL_BIN=$HOME/.local/bin
+export PATH="/usr/local/bin:/opt/puppetlabs/bin:$LOCAL_BIN:$OMI_BIN:$PATH"
+
+if command -v brew >/dev/null 2>&1; then
+  OPENJDK_PREFIX=$(brew --prefix openjdk@11 2>/dev/null)
+  if [[ -n $OPENJDK_PREFIX ]]; then
+    export PATH="$OPENJDK_PREFIX/bin:$PATH"
+  fi
+fi
+
+export DOTNET_PATH=$HOMEBREW_PREFIX/share/dotnet
+export POSTGRES_BIN=$HOMEBREW_PREFIX/opt/libpq/bin
+export OPENSSL_BIN=$HOMEBREW_PREFIX/opt/openssl/bin
+export GTAR_PATH=$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin
+export GNUBIN=$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin
+export PATH="$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$HOMEBREW_BIN:$GNUBIN:$HOMEBREW_SBIN:$PATH:$POSTGRES_BIN"
+
+export GOENVGOROOT=$HOME/.goenvs
+export GOENVTARGET=$HOME/go/bin
+export GOENVHOME=$HOME/workspace
+export PATH="$GOENVTARGET:$PATH"
+
+export MONO_GAC_PREFIX=$BREW_ROOT
+export LESSOPEN="|$BREW_ROOT/bin/lesspipe.sh %s"
+export EDITOR=$HOMEBREW_PREFIX/bin/vim
+export VISUAL=$HOMEBREW_PREFIX/bin/nvim
+
+# Networking / services
+export NO_PROXY=169.254.169.254
+export VAULT_ADDR=https://vault.sea.bigfishgames.com
+
+# Homebrew behavior / languages
+if command -v brew >/dev/null 2>&1; then
+  export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl 2>/dev/null)"
+fi
+export HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_NO_INSTALL_CLEANUP=1
+export HOMEBREW_CURLRC=1
+export FORGIT_INSTALL_DIR=~/.zplug/repos/wfxr/forgit
+
+# Windows bridge (WSL)
+if [[ -d /mnt/c ]]; then
+  export WINHOME=/mnt/c
+  export WINDOWS=$WINHOME/Windows
+  export WINSYS=$WINDOWS/system
+  export WINSYS32=$WINDOWS/system32
+  export WINPROGFILES=$WINHOME/Program\ Files
+  export WINPROGFILES86=$WINHOME/Program\ Files\ \(x86\)/
+  export USERPROFILE=/mnt/c/Users/chengkai.liang
+  export USERDOWNLOAD=$USERPROFILE/Downloads
+  export USERAPPDATA=$USERPROFILE/AppData
+  export USERLOCAL=$USERAPPDATA/Local
+  export USERPROGS=$USERLOCAL/Programs
+  export WINAPPS=$USERLOCAL/Microsoft/WindowsApps
+  export WINGET_LINKS=$USERLOCAL/Microsoft/Winget/Links
+  export WINCMDER=$USERPROFILE/Cmder
+  export WINBIN=$USERPROFILE/bin
+  export WINTOOL=$WINHOME/tools/neovim/nvim-win64/bin/
+  export PROGRAMDATA=$WINHOME/ProgramData/chocolatey/bin
+  export CHCO_HOME=$PROGRAMDATA/chocolatey
+  export CHCO_BIN=$CHCO_HOME/bin
+
+  export PATH="$HOMEBREW_BIN:$CHCO_BIN:$WINSYS:$WINSYS32:$WINAPPS:$WINGET_LINKS:$WINCMDER:$WINDOWS:$WINBIN:$WINTOOL:$USRBIN:$PROGRAMDATA:$PATH"
+  export BROWSER=wslview
+  export LPASS_AGENT_TIMEOUT=0
+fi
