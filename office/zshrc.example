@@ -1,13 +1,17 @@
 # Office-specific zsh customizations.
 # Copy to ~/.zsh/office/zshrc (and set ZSH_PROFILE=office) to enable.
 
+_office_keychain_dir="$HOME/.keychain"
 if [[ -z $IS_MAC ]]; then
-   if command -v keychain >/dev/null 2>&1 ; then
-      eval `keychain ~/.ssh/id_rsa`
+   if command -v keychain >/dev/null 2>&1 && [[ -t 1 ]] && ([[ ! -e $_office_keychain_dir ]] || [[ -w $_office_keychain_dir ]]); then
+      eval "$(keychain ~/.ssh/id_rsa)"
    fi
 elif [[ -n $IS_MAC ]]; then
-   eval `keychain ~/.ssh/id_ed25519`
+   if command -v keychain >/dev/null 2>&1 && [[ -t 1 ]] && ([[ ! -e $_office_keychain_dir ]] || [[ -w $_office_keychain_dir ]]); then
+      eval "$(keychain ~/.ssh/id_ed25519)"
+   fi
 fi
+unset _office_keychain_dir
 
 if [[ -e ~/perl5/perlbrew/etc/bashrc ]]; then
   source ~/perl5/perlbrew/etc/bashrc
