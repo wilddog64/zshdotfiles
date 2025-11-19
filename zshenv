@@ -41,7 +41,6 @@ setopt CDABLE_VARS
 setopt PUSHD_IGNORE_DUPS
 setopt -8
 setopt NOTIFY
-setopt correct_all
 
 # === command line history options
 export HISTFILE=~/.zsh/history
