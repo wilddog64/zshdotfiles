@@ -4,5 +4,14 @@ bindkey -M viins '^O' copy-prev-shell-word
 bindkey '^P' push-line-or-edit # push current command line into a buffer, for later use
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
-bindkey '^w' backward-kill-word
+
+# Kill only the trailing path component when editing paths like /a/b/c
+function backward-kill-path-component() {
+  # Remove slash from WORDCHARS so backward-kill-word stops at the previous /
+  local WORDCHARS=${WORDCHARS//\/}
+  zle backward-kill-word
+}
+zle -N backward-kill-path-component
+bindkey '^w' backward-kill-path-component
+
 bindkey '^y' yank
