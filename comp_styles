@@ -9,9 +9,14 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*' users resolve
 
+# Run plain completion first, then a second pass with relaxed substring rules
+zstyle ':completion:*' completer _complete _complete:substring _match _approximate
+zstyle ':completion:*:substring:*:*:*' matcher-list \
+  'r:|[._-]=** r:|=**' \
+  'r:|/=** r:|=**'
+
 # allow approximate matching
 zstyle ':completion:*' auto-description 'Specify: %d'
-zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' insert-unambiguous true
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
