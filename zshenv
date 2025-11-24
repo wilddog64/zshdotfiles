@@ -37,9 +37,9 @@ setopt -E                   # push silent - won't print when doing pushd/popd
 # setopt -Y                   # menu completion
 setopt -Q                   # perform a path search even / in a string
 
-setopt CDABLE_VARS
-setopt PUSHD_IGNORE_DUPS
-setopt -8
+setopt CDABLE_VARS          # cd to named directories
+setopt PUSHD_IGNORE_DUPS    # don't push duplicates onto the directory stack
+setopt -8                   # no beep on errors
 setopt NOTIFY
 
 # === command line history options
@@ -81,7 +81,7 @@ setopt AUTO_CONTINUE
 
 # === completion options
 # setopt MENU_COMPLETE
-setopt COMPLETE_IN_WORD
+setopt COMPLETE_IN_WORD    # complete even in the middle of a word
 setopt REC_EXACT
 setopt ALWAYS_TO_END
 setopt PRINT_EIGHT_BIT
@@ -93,6 +93,8 @@ setopt AUTO_RESUME
 export KEYTIMEOUT=1
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=gray,bold,underline"
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
+typeset -gA ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[history-expansion]='fg=yellow,bold'
 export LZG_KEYBIND_MODE=vim
 export POSH_THEMES_PATH=~/.local/share/oh-my-posh/themes
 export POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
