@@ -1,19 +1,55 @@
 #!/usr/bin/env bash
 
-service_name=$1
-HELMCHART_PATH=$HOME/src/gitrepo/costco/ado/costcotravel-helm-charts/$1
+set -euo pipefail
+
+service_name=${1:-}
+if [[ -z "$service_name" ]]; then
+   echo "Usage: $(basename "$0") <service_name>"
+   exit 1
+fi
+
+HELMCHART_PATH=$HOME/src/gitrepo/costco/ado/costcotravel-helm-charts/$service_name
 
 if [[ ! -r "$HELMCHART_PATH" ]]; then
    echo "$HELMCHART_PATH does not exist"
    exit 1
 fi
 
-# grep -C 2 ingressGateway | grep host: | perl -nle 'print "https://$1" if /host: (\S+)/'
 pushd "$HELMCHART_PATH" > /dev/null 2>&1 || exit 1
 
-for dir in $(ls -ad *); do
+declare -A seen_liveness
+declare -A seen_swagger
+declare -a liveness_output
+declare -a swagger_output
+
+for dir in */; do
+   [[ -d "$dir" ]] || continue
+   values_file="${dir}values.yaml"
+   [[ -f "$values_file" ]] || continue
+   dir=${dir%/}
    # echo $dir
-   h=$(grep -r -C 1 ingressGateway "$dir" |  perl -nle 'print "https://$1" if /host: (\S+)/')
-   p=$(grep -r -C 1 httpGet "$dir" | perl -nle 'print $1 if /path: (\S+)/')
-   echo "$h$p" | grep -v '^$' | grep 'liveness$'
+   h=$(grep -r -C 1 ingressGateway "$dir" |  perl -nle 'print "https://$1" if /host: (\S+)/' | head -n 1)
+   [[ -z "$h" ]] && continue
+   while IFS= read -r path; do
+      [[ -z "$path" ]] && continue
+      line="$h$path"
+      [[ "$line" != https://* ]] && continue
+      if [[ -z "${seen_liveness[$line]+1}" ]]; then
+         seen_liveness["$line"]=1
+         liveness_output+=("$line")
+         suffix="/actuator/health/liveness"
+         if [[ "$line" == *"$suffix" ]]; then
+            base=${line%"$suffix"}
+            swagger="${base%/}/swagger-ui/index.html"
+            if [[ -z "${seen_swagger[$swagger]+1}" ]]; then
+               seen_swagger["$swagger"]=1
+               swagger_output+=("$swagger")
+            fi
+         fi
+      fi
+   done < <(grep -r -C 1 httpGet "$dir" | perl -nle 'print $1 if /path: (\S+)/' | grep 'liveness$')
 done
+
+printf '%s\n' "${liveness_output[@]}"
+printf '\n'
+printf '%s\n' "${swagger_output[@]}"
