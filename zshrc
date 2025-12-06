@@ -90,7 +90,7 @@ if [[ -z ${ZSH_FZF_LOADED:-} ]]; then
 fi
 
 # === zsh completion styles
-if [[ -r ~/.zsh/zsh_comp_styles ]]; then
+if [[ -r ~/.zsh/comp_styles ]]; then
     source ~/.zsh/comp_styles
 fi
 
