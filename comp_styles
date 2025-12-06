@@ -22,6 +22,9 @@ zstyle ':completion:*:*:xdvi:*' file-sort time
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 zstyle ':completion:*:match:*' original only
 
+# allow substring matches after failing normal prefix completion
+zstyle ':completion:*' matcher-list '' 'r:|?=** l:|?=**'
+
 zstyle ':completion:*:cd:*' ignore-parents parent pwd
 
 # message format
