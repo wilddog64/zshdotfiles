@@ -61,7 +61,7 @@ if command -v fzf 2>&1 > /dev/null; then
 fi
 
 # === zsh completion styles
-if [[ -r ~/.zsh/zsh_comp_styles ]]; then
+if [[ -r ~/.zsh/comp_styles ]]; then
     source ~/.zsh/comp_styles
 fi
 
