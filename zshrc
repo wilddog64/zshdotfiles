@@ -204,3 +204,13 @@ if command -v yq >/dev/null 2>&1; then
    fi
 
 fi
+
+# === pyenv (ensure shims are available so local versions activate)
+if [[ -d $HOME/.pyenv ]]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$("$PYENV_ROOT/bin/pyenv" init -)"
+    if command -v pyenv >/dev/null 2>&1; then
+        eval "$(pyenv virtualenv-init -)"
+    fi
+fi
