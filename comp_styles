@@ -83,3 +83,8 @@ zstyle ':completion:*:processes-names' command "ps -eo cmd= | sed 's:\([^ ]*\).*
 
 # don't complete the same twice for kill/diff
 zstyle ':completion:*:(kill|diff):*' ignored-line yes
+
+
+# git completion
+zstyle ':completion:*:*:git:*' log-command 'git log --oneline --decorate -n 30'
+zstyle ':completion:*:*:git:*' rehash true
