@@ -34,6 +34,8 @@ zplug "lib/directories", from:oh-my-zsh, defer:2
 zplug "plugins/brew",       from:oh-my-zsh, if:"type brew     >/dev/null 2>&1", defer:2
 zplug "plugins/gh",         from:oh-my-zsh, if:"type gh       >/dev/null 2>&1", defer:2
 zplug "plugins/git",        from:oh-my-zsh,                                defer:2
+zplug "git/git",            from:github,    if:"type git      >/dev/null 2>&1", \
+                               use:"contrib/completion/git-completion.zsh", defer:2
 zplug "plugins/azure",      from:oh-my-zsh, if:"type az       >/dev/null 2>&1", defer:2
 zplug "plugins/dotnet",     from:oh-my-zsh, if:"type dotnet   >/dev/null 2>&1", defer:2
 zplug "plugins/terraform",  from:oh-my-zsh, if:"type terraform>/dev/null 2>&1", defer:2
@@ -41,6 +43,7 @@ zplug "plugins/helm",       from:oh-my-zsh, if:"type helm     >/dev/null 2>&1", 
 zplug "plugins/kubectl",    from:oh-my-zsh, if:"type kubectl  >/dev/null 2>&1", defer:2
 zplug "plugins/per-directory-history", from:oh-my-zsh, defer:2
 zplug "plugins/z",          from:oh-my-zsh, defer:2
+zplug 'junegunn/fzf-git.sh', use: "fzf-git.sh", defer:2
 
 # autosuggest + syntax highlight (keep these near the end; high defer)
 zplug "zsh-users/zsh-autosuggestions", defer:2
@@ -49,4 +52,3 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:3
 
 # pyenv (don’t initialize eagerly; create a lazy stub)
 zplug "pyenv/pyenv", from:github, hook-build:"ln -sf $ZPLUG_REPOS/pyenv/pyenv ~/.pyenv", defer:3
-
