@@ -39,13 +39,13 @@ run() {
 
   # Create a new session (without attaching it) and link to base session
   # to share windows
-  tmux new-session -d -t $base_session -s $session_id
+  tmux new-session -d -t "$base_session" -s "$session_id"
 
   # Create a new window in that session
   tmux new-window
 
   # Attach to the new session
-  tmux attach-session -t $session_id
+  tmux attach-session -t "$session_id"
 }
 
 if [[ -z "$1" ]]; then
@@ -63,7 +63,7 @@ trap purge EXIT
 
 if [[ "$tmux_nb" == "0" ]]; then
   echo "Launching tmux base session $base_session ..."
-  tmux new-session -s $base_session
+  tmux new-session -s "$base_session"
 elif [[ -z "$TMUX" ]]; then
   # Make sure we are not already in a tmux session
   run
