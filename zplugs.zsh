@@ -36,3 +36,5 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:3
 
 # pyenv (don’t initialize eagerly; create a lazy stub)
 zplug "pyenv/pyenv", from:github, hook-build:"ln -sf $ZPLUG_REPOS/pyenv/pyenv ~/.pyenv", defer:3
+zplug "plugins/kubectl", from:oh-my-zsh
+zplug "lib/directories", from:oh-my-zsh
