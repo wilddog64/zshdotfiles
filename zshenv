@@ -107,3 +107,6 @@ fi
 if [[ ${ZSH_PROFILE:-} == office && -f "$ZSH_OFFICE_ENV" ]]; then
   source "$ZSH_OFFICE_ENV"
 fi
+
+export CLICOLOR=1
+export LSCOLORS=Gxfxcxdxbxegedabagacad
