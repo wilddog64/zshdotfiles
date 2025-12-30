@@ -4,9 +4,11 @@ tags
 .zcompdump
 .zcompdump-clianseaosxl3-5.8
 .zshrc
+<<<<<<< HEAD
 .cache/
 office/zshenv
 office/zshrc
 office/aliases
 office/cdnames
 office/bashrc
+cache/
