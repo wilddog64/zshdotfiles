@@ -196,3 +196,6 @@ if [[ $? == 0 ]]; then
    export LZG_KEYBIND_MODE=vim
    eval $(oh-my-posh init zsh)
 fi
+
+export CLICOLOR=1
+export LSCOLORS=Gxfxcxdxbxegedabagacad
