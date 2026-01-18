@@ -161,6 +161,7 @@ setopt AUTO_PUSHD
 setopt PUSHD_MINUS
 setopt PUSHD_SILENT
 setopt PUSHD_TO_HOME
+setopt INTERACTIVE_COMMENTS     # allow comments in interactive shell
 
 DIRSTACKSIZE=10
 
