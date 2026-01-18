@@ -132,7 +132,7 @@ fi
 setopt AUTO_NAME_DIRS
 setopt -J                   # set AUTO_CD
 setopt -E                   # push silent - won't print when doing pushd/popd
-# setopt -Y                   # menu completion
+# setopt -Y                 # menu completion
 setopt -Q                   # perform a path search even / in a string
 
 setopt CDABLE_VARS          # expand an argument for CD if it is not a directory or does not begin with '/'.  Expand it as it was preceded by '~'
@@ -145,7 +145,7 @@ unsetopt correct_all        # stop auto correct feature
 # === command line history options
 export HISTFILE=~/.zsh/history  # history file
 export HISTSIZE=10000           # lines to be saved
-export SAVEHIST=5000
+export SAVEHIST=5000            # lines to be saved to history file
 setopt HIST_EXPIRE_DUPS_FIRST   # replace the oldest history event that is duplicated
 setopt HIST_FIND_NO_DUPS        # do not find duplicated commands
 setopt HIST_IGNORE_ALL_DUPS     # ignore all duplication commands
@@ -157,13 +157,13 @@ setopt INC_APPEND_HISTORY       # append history as the order of command is exec
 setopt SHARE_HISTORY            # make history share amount different zsh sessions
 setopt EXTENDED_HISTORY         # enable timestamp with history
 setopt HIST_FCNTL_LOCK          # use OS provide fcntl library
-setopt AUTO_PUSHD
-setopt PUSHD_MINUS
-setopt PUSHD_SILENT
-setopt PUSHD_TO_HOME
+setopt AUTO_PUSHD               # automatically pushd when cd is used
+setopt PUSHD_MINUS              # pushd with - will swap the top two directories
+setopt PUSHD_SILENT             # do not print the directory stack after pushd/popd
+setopt PUSHD_TO_HOME            # cd to home directory when pushd without argument
 setopt INTERACTIVE_COMMENTS     # allow comments in interactive shell
 
-DIRSTACKSIZE=10
+DIRSTACKSIZE=10                 # limit the size of directory stack
 
 # zsh regex
 setopt EXTENDED_GLOB        # Enable extended globbing
@@ -182,10 +182,10 @@ setopt COMPLETE_IN_WORD      # complete in the middle of a word
 setopt REC_EXACT             # recognize exact match in completion
 setopt ALWAYS_TO_END         # always move cursor to the end after completion
 
-setopt PRINT_EIGHT_BIT
+setopt PRINT_EIGHT_BIT       # allow 8-bit characters to be printed without being escaped
 
 # === options for jobs
-setopt AUTO_RESUME
+setopt AUTO_RESUME           # automatically resume stopped jobs when shell is interactive
 
 
 # === this will alow backward-kill-word to only eimilate one component in a path instead of the whole path
