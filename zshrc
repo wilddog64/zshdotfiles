@@ -208,3 +208,5 @@ if [[ -x $HOME/.zsh/scripts/sync-local-bin ]]; then
    }
    add-zsh-hook precmd _zsh_sync_local_bin_once
 fi
+
+command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
