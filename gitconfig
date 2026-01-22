@@ -17,6 +17,7 @@
     timeline         = log --topo-order --date relative --pretty='%Cgreen %h %an %ai %s' --graph
     tip              = log --date relative --pretty='%Cgreen %h %an %ai %s' -1
     todayschanges    = "!f() { git whatchanged --i-still-use-this --oneline --since=yesterday | grep -v '^:'; }; f"
+    fileinfo         = "!f() { git log --follow --pretty --date=relative --pretty='%Cgreen %h %an %ai %s' -- $1; }; f"
 
 [branch]
   autosetuprebase = always
