@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-xsel -i --crlf
+win32yank -i --crlf

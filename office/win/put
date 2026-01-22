@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-xsel -o --lf
+win32yank -o
