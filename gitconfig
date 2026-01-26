@@ -67,6 +67,7 @@
 	cisco-terraform-workspaces = /Users/cliang/src/gitrepo/cisco/terraform/workspaces
 	cisco-terraform-module = /Users/cliang/src/gitrepo/cisco/terraform/modules
 	aws-terraform = /Users/cliang/src/gitrepo/personal/aws/terraform
+	ansible = /home/parallels/src/gitrepo/personal/ansible
 [safe]
 	directory = /opt/puppetlabs/pdk/share/cache/pdk-templates.git
 
