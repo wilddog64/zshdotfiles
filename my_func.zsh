@@ -225,3 +225,31 @@ tmx-nvim-fzf() {
     tmux attach -t "$sess" \; select-window -t "$win" \; select-pane -t "$pane"
   fi
 }
+
+# _gemini: Scoped and Logged wrapper for Gemini CLI
+# Automatically logs sessions to ~/.gemini/sessions/ and syncs the global repo.
+_gemini() {
+  local project_root
+  project_root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+  local project_name=$(basename "$project_root")
+  local timestamp=$(date +'%Y
+# _gemini: Scoped and Logged wrapper for Gemini CLI
+# Automatically logs sessions to ~/.gemini/sessions/ and syncs the global repo.
+_gemini() {
+  local project_root
+  project_root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+  local project_name=$(basename "$project_root")
+  local timestamp=$(date +'%Y%m%d-%H%M%S')
+  local log_dir="$HOME/.gemini/sessions/${project_name}"
+  local log_file="${log_dir}/${timestamp}.log"
+
+  mkdir -p "$log_dir"
+
+  echo "[gemini] Project: ${project_name} | Session: ${timestamp}"
+  
+  # Execute gemini-cli, tee output to log, and sync global repo
+  gemini-cli "$@" 2>&1 | tee "$log_file"
+  
+  # Auto-sync the global ~/.gemini repo to capture the new log
+  ~/bin/sync-gemini ~/.gemini >/dev/null 2>&1 || true
+}
