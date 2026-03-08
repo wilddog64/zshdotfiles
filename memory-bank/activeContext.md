@@ -11,12 +11,24 @@ Goal: replace ad-hoc per-project `.envrc` files with symlinks to `~/.zsh/envrc/`
 
 | # | Step | Status |
 |---|---|---|
-| 1 | Create `~/.zsh/envrc/personal.envrc` — common config for all personal projects | pending |
-| 2 | Create `~/.zsh/envrc/k3d-manager.envrc` — k3d-manager specific (PATH, core.hooksPath) | pending |
-| 3 | Symlink `~/src/gitrepo/personal/.envrc` → `~/.zsh/envrc/personal.envrc` | pending |
-| 4 | Symlink `~/src/gitrepo/personal/k3d-manager/.envrc` → `~/.zsh/envrc/k3d-manager.envrc` | pending |
-| 5 | Remove old k3d-manager `.envrc` from git tracking | pending |
-| 6 | Commit `~/.zsh` dotfiles | pending |
+| 1 | Create `~/.zsh/envrc/personal.envrc` — common config for all personal projects | done |
+| 2 | Create `~/.zsh/envrc/k3d-manager.envrc` — k3d-manager specific (PATH, core.hooksPath) | done |
+| 3 | Symlink `~/src/gitrepo/personal/.envrc` → `~/.zsh/envrc/personal.envrc` | done |
+| 4 | Symlink `~/src/gitrepo/personal/k3d-manager/.envrc` → `~/.zsh/envrc/k3d-manager.envrc` | done |
+| 5 | Remove old k3d-manager `.envrc` from git tracking + add to .gitignore | done |
+| 6 | Create `scripts/hooks/pre-commit` in k3d-manager (tracked hook) | pending |
+| 7 | Wire `_agent_lint` into pre-commit behind `K3DM_ENABLE_AI=1` | pending |
+
+## Ubuntu Replication (Gemini — one-time setup)
+
+```bash
+# Run on Ubuntu after pulling latest ~/.zsh dotfiles
+ln -s ~/.zsh/envrc/personal.envrc ~/src/gitrepo/personal/.envrc
+ln -s ~/.zsh/envrc/k3d-manager.envrc ~/src/gitrepo/personal/k3d-manager/.envrc
+```
+
+Note: `~/.local/bin/sync-claude` does not exist on Ubuntu — `personal.envrc` handles
+this via `uname -s` check (Ubuntu only gets `sync-gemini`).
 
 ---
 
