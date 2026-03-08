@@ -1,0 +1,39 @@
+# .clinerules — ~/.zsh dotfiles
+
+## What This Repo Is
+Personal dotfiles for macOS (M4 Air) and Ubuntu (Parallels VM).
+Shell config, aliases, scripts, direnv, git config, and tool configs.
+
+## Layout
+```
+~/.zsh/
+  scripts/       # personal shell scripts (sync-claude, sync-gemini, etc.)
+  envrc/         # per-project direnv configs, symlinked to project roots
+  memory-bank/   # AI cross-session context
+  functions/     # zsh functions
+  aliases        # shell aliases
+  zshrc          # main zsh config
+  direnvrc       # direnv global config
+```
+
+## Conventions
+- `~/.local/bin/` is the target for user-local binaries (migration from `~/bin/` in progress)
+- Scripts live in `~/.zsh/scripts/` — `~/.local/bin/` entries are symlinks to here
+- `envrc/` files are symlinked to project roots — never committed inside project repos
+- `direnvrc` is the global direnv config — do not add project-specific logic here
+
+## envrc Pattern
+- `envrc/personal.envrc` → symlinked to `~/src/gitrepo/personal/.envrc`
+- `envrc/k3d-manager.envrc` → symlinked to `~/src/gitrepo/personal/k3d-manager/.envrc`
+- Per-repo `.envrc` calls `source_up` to inherit from parent
+- Machine differences handled via `uname -s` check inside envrc files
+
+## Security
+- Never commit tokens, passwords, or API keys
+- Never commit `.envrc.local` files (machine secrets go there)
+- `sync-claude` and `sync-gemini` are safe — they sync agent state, no credentials
+
+## Agent Rules
+- Claude: owns memory-bank writes, reviews changes before committing
+- Do not add new scripts without documenting purpose in memory-bank
+- `~/bin/` references are legacy — use `~/.local/bin/` in new scripts
