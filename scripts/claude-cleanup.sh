@@ -7,6 +7,10 @@ set -euo pipefail
 CLAUDE_DIR="${HOME}/.claude"
 RETENTION_DAYS=14
 
-find "${CLAUDE_DIR}/projects" -name "*.jsonl" -mtime +${RETENTION_DAYS} -delete 2>/dev/null || true
-find "${CLAUDE_DIR}/file-history" -type f -mtime +${RETENTION_DAYS} -delete 2>/dev/null || true
+log() { echo "[claude-cleanup] $*" | tee /dev/stderr | logger -t claude-cleanup; }
+
+sessions_deleted=$(find "${CLAUDE_DIR}/projects" -name "*.jsonl" -mtime +${RETENTION_DAYS} -print -delete 2>/dev/null | wc -l | tr -d ' ')
+history_deleted=$(find "${CLAUDE_DIR}/file-history" -type f -mtime +${RETENTION_DAYS} -print -delete 2>/dev/null | wc -l | tr -d ' ')
 find "${CLAUDE_DIR}/file-history" -type d -empty -delete 2>/dev/null || true
+
+log "done — removed ${sessions_deleted} session(s), ${history_deleted} file-history entries (retention: ${RETENTION_DAYS}d)"
