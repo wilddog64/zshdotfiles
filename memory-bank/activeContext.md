@@ -1,49 +1,53 @@
 # Active Context — ~/.zsh dotfiles
 
-## Current Focus (as of 2026-03-08)
+## Snapshot (2026-03-20)
 
-Setting up `envrc/` directory to manage per-project direnv configs centrally.
-Goal: replace ad-hoc per-project `.envrc` files with symlinks to `~/.zsh/envrc/`.
+Repository was scanned to refresh operating rules and working context for future edits.
 
----
+## Repo Purpose
 
-## envrc Setup — Step by Step
+Personal zsh-first dotfiles for macOS + Ubuntu, including shell startup, aliases,
+functions, scripts, direnv glue, and terminal/tmux/tool configuration.
 
-| # | Step | Status |
-|---|---|---|
-| 1 | Create `~/.zsh/envrc/personal.envrc` — common config for all personal projects | done |
-| 2 | Create `~/.zsh/envrc/k3d-manager.envrc` — k3d-manager specific (PATH, core.hooksPath) | done |
-| 3 | Symlink `~/src/gitrepo/personal/.envrc` → `~/.zsh/envrc/personal.envrc` | done |
-| 4 | Symlink `~/src/gitrepo/personal/k3d-manager/.envrc` → `~/.zsh/envrc/k3d-manager.envrc` | done |
-| 5 | Remove old k3d-manager `.envrc` from git tracking + add to .gitignore | done |
-| 6 | Create `scripts/hooks/pre-commit` in k3d-manager (tracked hook) | pending |
-| 7 | Wire `_agent_lint` into pre-commit behind `K3DM_ENABLE_AI=1` | pending |
+## Current Canonical Structure
 
-## Ubuntu Replication (Gemini — one-time setup)
+- Root startup/config: `zshrc`, `zprofile`, `zshenv`, `aliases`, `direnvrc`
+- Reusable shell helpers: `functions/*.sh`
+- User-invoked automation: `scripts/*`
+- Direnv source-of-truth: `envrc/*.envrc` (symlinked into project repos)
+- AI memory/state: `memory-bank/activeContext.md`
 
-```bash
-# Run on Ubuntu after pulling latest ~/.zsh dotfiles
-ln -s ~/.zsh/envrc/personal.envrc ~/src/gitrepo/personal/.envrc
-ln -s ~/.zsh/envrc/k3d-manager.envrc ~/src/gitrepo/personal/k3d-manager/.envrc
-```
+## Confirmed Operating Patterns
 
-Note: `~/.local/bin/sync-claude` does not exist on Ubuntu — `personal.envrc` handles
-this via `uname -s` check (Ubuntu only gets `sync-gemini`).
+1. **Direnv layering**
+   - `envrc/personal.envrc`:
+     - macOS: runs `~/.local/bin/sync-claude ~/.claude` + `~/.local/bin/sync-gemini ~/.gemini`
+     - non-macOS: runs only `~/.local/bin/sync-gemini ~/.gemini`
+   - `envrc/k3d-manager.envrc`:
+     - `source_up`
+     - appends local `bin/` to `PATH`
+     - sets `git config core.hooksPath scripts/hooks`
+     - exports `AGENT_LINT_GATE_VAR` and `AGENT_LINT_AI_FUNC`
 
----
+2. **Script inventory highlights**
+   - Sync: `scripts/sync-agent-state.sh`, `scripts/sync-claude`, `scripts/sync-gemini`
+   - Clipboard/tmux: `scripts/yank`, `scripts/put`, `scripts/yanks`
+   - Safety/sanitization: `scripts/sanitize.sh`, `sanitize.sed`
+   - Session helper: `scripts/tmx`
 
-## Decisions Made
+3. **Style conventions observed**
+   - Most automation scripts use strict mode (`set -euo pipefail` / `set -eu`)
+   - Naming is generally short and hyphenated
+   - Root files include legacy + modern config; preserve behavior unless asked to refactor
 
-- `~/.local/bin/` is the target for user binaries — migration from `~/bin/` planned separately
-- `personal.envrc` handles `sync-claude` (macOS) / `sync-gemini` (Ubuntu) via `uname -s` check
-- `k3d-manager.envrc` will add `git config core.hooksPath scripts/hooks` (for agent_lint wiring)
-- Per-repo `.envrc` uses `source_up` to inherit from parent `personal.envrc`
-- `.envrc` files inside project repos are gitignored — symlinks only, never committed
+## Maintenance Notes
 
----
+- Prefer `~/.local/bin` over legacy `~/bin` references in new/updated work.
+- Keep project-specific direnv behavior in `envrc/*.envrc`, not `direnvrc`.
+- Treat `services-output/` as sensitive output; sanitize before sharing.
 
-## What Comes After envrc Setup
+## Follow-up Items (non-blocking)
 
-- Create `scripts/hooks/pre-commit` in k3d-manager (tracked hook file)
-- Wire `_agent_lint` into pre-commit behind `K3DM_ENABLE_AI=1` guard
-- `k3d-manager.envrc` sets `git config core.hooksPath scripts/hooks` automatically on `cd`
+- If touched later, modernize scripts lacking strict mode or quoting hardening.
+- Review secret handling in local shell env files and migrate sensitive values to
+  non-committed/local mechanisms.

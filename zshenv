@@ -15,6 +15,7 @@ export GREP_COLOR=auto
 export FTP_PASSIVE=1
 export AUTOJUMP_KEEP_SYMLINKS=1
 export TOUCHBAR_GIT_ENABLED=true
+export COLORTERM=truecolor
 # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 export PATH=/usr/local/bin:$USER_BIN:$USER_LOCAL_BIN:$PATH
