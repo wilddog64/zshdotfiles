@@ -1,39 +1,54 @@
 # .clinerules — ~/.zsh dotfiles
 
 ## What This Repo Is
-Personal dotfiles for macOS (M4 Air) and Ubuntu (Parallels VM).
-Shell config, aliases, scripts, direnv, git config, and tool configs.
+Personal zsh-focused dotfiles used across macOS and Ubuntu environments.
+It contains shell startup files, aliases/functions, helper scripts, tmux/terminal config,
+and direnv setup for personal project trees.
 
-## Layout
+## Canonical Layout
 ```
 ~/.zsh/
-  scripts/       # personal shell scripts (sync-claude, sync-gemini, etc.)
-  envrc/         # per-project direnv configs, symlinked to project roots
-  memory-bank/   # AI cross-session context
-  functions/     # zsh functions
-  aliases        # shell aliases
-  zshrc          # main zsh config
-  direnvrc       # direnv global config
+  zshrc, zprofile, zshenv      # core shell startup files
+  aliases                      # common aliases
+  functions/                   # reusable zsh helper functions (*.sh in this repo)
+  scripts/                     # user-invoked helper scripts
+  envrc/                       # shared direnv files, symlinked into project repos
+  memory-bank/                 # cross-session AI state/context
+  fzf-shell/                   # fzf completion + keybindings
 ```
 
-## Conventions
-- `~/.local/bin/` is the target for user-local binaries (migration from `~/bin/` in progress)
-- Scripts live in `~/.zsh/scripts/` — `~/.local/bin/` entries are symlinks to here
-- `envrc/` files are symlinked to project roots — never committed inside project repos
-- `direnvrc` is the global direnv config — do not add project-specific logic here
+## Repo Conventions
+- Prefer `~/.local/bin/` for user binaries/symlinks; treat `~/bin/` references as legacy.
+- Keep automation logic in `scripts/`; keep shell sourcing/config in root files.
+- Do not add project-specific logic to `direnvrc`; keep it in `envrc/*.envrc`.
+- `envrc/` files are the source of truth; project-local `.envrc` files should be symlinks.
 
-## envrc Pattern
-- `envrc/personal.envrc` → symlinked to `~/src/gitrepo/personal/.envrc`
-- `envrc/k3d-manager.envrc` → symlinked to `~/src/gitrepo/personal/k3d-manager/.envrc`
-- Per-repo `.envrc` calls `source_up` to inherit from parent
-- Machine differences handled via `uname -s` check inside envrc files
+## Current envrc Pattern
+- `envrc/personal.envrc` is shared baseline for personal repos.
+  - macOS (`uname -s == Darwin`): run both `sync-claude` and `sync-gemini`.
+  - non-macOS: run `sync-gemini` only.
+- `envrc/k3d-manager.envrc` does:
+  - `source_up`
+  - appends local `bin/` to `PATH`
+  - sets `git config core.hooksPath scripts/hooks`
+  - exports agent lint mapping vars (`AGENT_LINT_GATE_VAR`, `AGENT_LINT_AI_FUNC`)
 
-## Security
-- Never commit tokens, passwords, or API keys
-- Never commit `.envrc.local` files (machine secrets go there)
-- `sync-claude` and `sync-gemini` are safe — they sync agent state, no credentials
+## Script/Style Guidelines
+- For shell scripts: include strict mode (`set -euo pipefail`) unless intentionally incompatible.
+- Prefer short hyphenated script names in `scripts/`.
+- Keep line length near <=100 chars and indentation consistent (2 spaces preferred).
+- Reuse existing clipboard/tmux patterns (`scripts/yank`, `scripts/put`) instead of creating duplicates.
 
-## Agent Rules
-- Claude: owns memory-bank writes, reviews changes before committing
-- Do not add new scripts without documenting purpose in memory-bank
-- `~/bin/` references are legacy — use `~/.local/bin/` in new scripts
+## Security Rules
+- Never commit secrets (tokens, passwords, private keys, machine-specific creds).
+- Never commit `.envrc.local` (local secrets belong there, outside git).
+- Sanitize shareable output with `scripts/sanitize.sh` (uses `sanitize.sed`).
+- Treat `services-output/` as sensitive output area; scrub before sharing.
+
+## Agent Operating Rules
+- Claude owns writes to `memory-bank/`; keep entries concise and factual.
+- When adding/changing scripts, update memory-bank context with purpose and usage.
+- Prefer non-destructive edits and preserve behavior unless task asks for functional change.
+- Validate shell edits with:
+  - `zsh -n <file>` for zsh files
+  - `shellcheck scripts/<file>` for shell scripts when applicable
