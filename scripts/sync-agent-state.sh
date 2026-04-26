@@ -32,7 +32,7 @@ cd "$PHYSICAL_DIR"
 
 # Stage trackable changes
 # We use a broad pattern but allow for specific agent files
-git add . 2>/dev/null || true
+git add . ':(exclude)image-cache' 2>/dev/null || true
 
 # Only commit if there are staged changes
 if ! git diff --cached --quiet; then
