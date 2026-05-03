@@ -52,7 +52,7 @@ if [[ $? == 0 ]] ; then
    export POSTGRES_BIN=$HOMEBREW_PREFIX/opt/libpq/bin
    export OPENSSL_BIN=$HOMEBREW_PREFIX/opt/openssl/bin
    export GTAR_PATH=$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin
-   export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$HOMEBREW_BIN:$GNUBIN:$HOMEBREW_SBIN:$GIT_CONTRIB:$POSTGRES_BIN:$PATH
+   export PATH=$GTAR_PATH:$OPENSSL_BIN:$DOTNET_PATH:$HOMEBREW_BIN:$GNUBIN:$HOMEBREW_SBIN:${GIT_CONTRIB:+$GIT_CONTRIB:}$POSTGRES_BIN:$PATH
    export LESSOPEN="|$BREW_ROOT/bin/lesspipe.sh %s"
    export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl)"
 fi
