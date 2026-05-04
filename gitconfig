@@ -60,18 +60,18 @@
     process = git-lfs filter-process
     required = true
 [pull]
-	rebase = true
+   rebase = true
 [init]
    defaultBranch = main
 [bulkworkspaces]
-	cisco-terraform = /Users/cliang/src/gitrepo/cisco/terraform
-	cisco-terraform-workspaces = /Users/cliang/src/gitrepo/cisco/terraform/workspaces
-	cisco-terraform-module = /Users/cliang/src/gitrepo/cisco/terraform/modules
-	aws-terraform = /Users/cliang/src/gitrepo/personal/aws/terraform
-	ansible = /home/parallels/src/gitrepo/personal/ansible
-	shopping-carts = /Users/cliang/src/gitrepo/personal/shopping-carts
+   cisco-terraform = /Users/cliang/src/gitrepo/cisco/terraform
+   cisco-terraform-workspaces = /Users/cliang/src/gitrepo/cisco/terraform/workspaces
+   cisco-terraform-module = /Users/cliang/src/gitrepo/cisco/terraform/modules
+   aws-terraform = /Users/cliang/src/gitrepo/personal/aws/terraform
+   ansible = /home/parallels/src/gitrepo/personal/ansible
+   shopping-carts = /Users/cliang/src/gitrepo/personal/shopping-carts
 [safe]
-	directory = /opt/puppetlabs/pdk/share/cache/pdk-templates.git
+   directory = /opt/puppetlabs/pdk/share/cache/pdk-templates.git
 
 [include]
    path = ~/.gitalias
