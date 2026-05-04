@@ -42,3 +42,4 @@ alias ipy=ipython
 alias ~='cd'
 alias tmn=tmuxinator
 alias lzg=lazygit
+alias cline='cline --tui'
