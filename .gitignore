@@ -5,3 +5,5 @@ tags
 .zcompdump-clianseaosxl3-5.8
 .zshrc
 cache/
+.cache/
+office/
