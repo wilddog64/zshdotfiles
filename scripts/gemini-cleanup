@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# gemini-cleanup - utility to manage ~/.gemini/tmp bloat
+
+set -euo pipefail
+
+TMP_DIR="${HOME}/.gemini/tmp"
+
+if [[ ! -d "$TMP_DIR" ]]; then
+  echo "Error: Directory $TMP_DIR does not exist."
+  exit 1
+fi
+
+case "${1:-status}" in
+  status)
+    echo "Scanning $TMP_DIR..."
+    du -sh "$TMP_DIR"
+    echo ""
+    echo "Top 10 largest project directories:"
+    du -sh "$TMP_DIR"/* 2>/dev/null | sort -rh | head -n 10
+    ;;
+  
+  purge-logs)
+    echo "Purging tool-outputs..."
+    find "$TMP_DIR" -type d -name "tool-outputs" -exec rm -rf {} +
+    echo "Done."
+    ;;
+
+  purge-old)
+    days="${2:-7}"
+    echo "Purging files older than $days days..."
+    find "$TMP_DIR" -type f -mtime +"$days" -delete
+    # Also delete empty project directories
+    find "$TMP_DIR" -mindepth 1 -maxdepth 1 -type d -empty -delete
+    echo "Done."
+    ;;
+
+  purge-all-but-last)
+    echo "Purging all project directories except the most recently modified one..."
+    # Find most recent dir (ignoring the . or ..)
+    recent=$(ls -td "$TMP_DIR"/*/ | head -n 1)
+    for dir in "$TMP_DIR"/*/; do
+      if [[ "$dir" != "$recent" ]]; then
+        echo "Deleting $dir"
+        rm -rf "$dir"
+      fi
+    done
+    echo "Done."
+    ;;
+
+  *)
+    echo "Usage: gemini-cleanup {status|purge-logs|purge-old [days]|purge-all-but-last}"
+    exit 1
+    ;;
+esac
