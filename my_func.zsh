@@ -246,10 +246,10 @@ _gemini() {
   mkdir -p "$log_dir"
 
   echo "[gemini] Project: ${project_name} | Session: ${timestamp}"
-  
+
   # Execute gemini-cli, tee output to log, and sync global repo
   gemini-cli "$@" 2>&1 | tee "$log_file"
-  
+
   # Auto-sync the global ~/.gemini repo to capture the new log
   ~/bin/sync-gemini ~/.gemini >/dev/null 2>&1 || true
 }
