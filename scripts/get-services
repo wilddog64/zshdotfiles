@@ -28,7 +28,14 @@ for dir in */; do
    [[ -f "$values_file" ]] || continue
    dir=${dir%/}
    # echo $dir
-   h=$(grep -r -C 1 ingressGateway "$dir" |  perl -nle 'print "https://$1" if /host: (\S+)/' | head -n 1)
+   host_file="${dir}/values-${dir}.yaml"
+   if [[ ! -r "$host_file" ]]; then
+      host_file="$values_file"
+   fi
+   h=$(grep -C 1 ingressGateway "$host_file" | perl -nle 'print "https://$1" if /host: (\S+)/' | head -n 1)
+   if [[ -z "$h" && "$host_file" != "$values_file" ]]; then
+      h=$(grep -C 1 ingressGateway "$values_file" | perl -nle 'print "https://$1" if /host: (\S+)/' | head -n 1)
+   fi
    [[ -z "$h" ]] && continue
    while IFS= read -r path; do
       [[ -z "$path" ]] && continue
