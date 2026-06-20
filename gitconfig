@@ -28,7 +28,7 @@
     interactive = true
     ui   = true
 [push]
-    default = upstream
+    default = simple
 [core]
   excludesFile = ~/.gitignore
   autocrlf     = false
@@ -38,6 +38,7 @@
   ignorecase   = false
   editor       = nvim
   pager        = less -+$LESS -FRX
+  hooksPath = .githooks
 [hub]
     protocol = https
 [credential]
