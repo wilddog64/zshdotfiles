@@ -34,6 +34,29 @@ cd "$PHYSICAL_DIR"
 # We use a broad pattern but allow for specific agent files
 git add . ':(exclude)image-cache' 2>/dev/null || true
 
+# Defense-in-depth: never commit credentials or volatile runtime state, even if the
+# target dir lacks a .gitignore for them. Unstage anything matching a sensitive pattern.
+while IFS= read -r _f; do
+  case "$_f" in
+    *oauth*token*|*oauth*creds*|*.pem|*.key|*.p12|*.pfx|*id_rsa|*id_dsa|\
+    .env|*/.env|*.env|*.log|*.db|*.db-shm|*.db-wal|*token.json|*credentials.json)
+      git reset -q -- "$_f" 2>/dev/null || true
+      echo "[$AGENT_NAME-sync] skipped sensitive/runtime file: $_f"
+      ;;
+  esac
+done < <(git diff --cached --name-only 2>/dev/null)
+
+# If ggshield is available, block the sync on any detected secret in staged changes.
+if command -v ggshield >/dev/null 2>&1 && ! git diff --cached --quiet; then
+  ggshield secret scan pre-commit >/dev/null 2>&1
+  _gg_rc=$?
+  if [[ $_gg_rc -eq 1 ]]; then
+    echo "[$AGENT_NAME-sync] ABORT: ggshield detected a secret in staged changes — not committing"
+    git reset -q 2>/dev/null || true
+    exit 1
+  fi
+fi
+
 # Only commit if there are staged changes
 if ! git diff --cached --quiet; then
   git commit -m "chore: sync on $(date '+%Y-%m-%d %H:%M') — ${PROJECT_NAME}"
