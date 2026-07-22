@@ -28,15 +28,21 @@ for dir in */; do
    [[ -f "$values_file" ]] || continue
    dir=${dir%/}
    # echo $dir
-   host_file="${dir}/values-${dir}.yaml"
-   if [[ ! -r "$host_file" ]]; then
-      host_file="$values_file"
+   host_name="$dir"
+   if [[ "$dir" == "prod-pci" ]]; then
+      host_name="prod"
    fi
-   h=$(grep -C 1 ingressGateway "$host_file" | perl -nle 'print "https://$1" if /host: (\S+)/' | head -n 1)
+   host_file="${dir}/values-${host_name}.yaml"
+   h=""
+   if [[ -r "$host_file" ]]; then
+      h=$(grep -C 1 ingressGateway "$host_file" | perl -nle 'print "https://$1" if /host: (\S+)/' | head -n 1 || true)
+   fi
    if [[ -z "$h" && "$host_file" != "$values_file" ]]; then
-      h=$(grep -C 1 ingressGateway "$values_file" | perl -nle 'print "https://$1" if /host: (\S+)/' | head -n 1)
+      h=$(grep -C 1 ingressGateway "$values_file" | perl -nle 'print "https://$1" if /host: (\S+)/' | head -n 1 || true)
    fi
    [[ -z "$h" ]] && continue
+   [[ "$h" == https://service.fully.qualified.domain.name* ]] && continue
+   paths=$(grep -r -C 1 httpGet "$dir" | perl -nle 'print $1 if /path: (\S+)/' | grep 'liveness$' || true)
    while IFS= read -r path; do
       [[ -z "$path" ]] && continue
       line="$h$path"
@@ -54,7 +60,7 @@ for dir in */; do
             fi
          fi
       fi
-   done < <(grep -r -C 1 httpGet "$dir" | perl -nle 'print $1 if /path: (\S+)/' | grep 'liveness$')
+   done <<<"$paths"
 done
 
 printf '%s\n' "${liveness_output[@]}"
